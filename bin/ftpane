@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# ftpane - switch pane (based on @george-b)
+panes=$(tmux list-panes -s -F '#I:#P - #{pane_current_path} #{pane_current_command}')
+current_window=$(tmux display-message -p '#I')
+
+target=$(echo "$panes" | fzf-tmux +m --reverse)
+res=$?
+[ "$res" -eq "130" ] && exit 0
+[ "$res" -eq "0" ] || exit $res
+
+target_window=$(echo $target | awk 'BEGIN{FS=":|-"} {print$1}')
+target_pane=$(echo $target | awk 'BEGIN{FS=":|-"} {print$2}' | cut -c 1)
+
+if [[ $current_window -eq $target_window ]]; then
+   tmux select-pane -t ${target_window}.${target_pane}
+else
+   tmux select-pane -t ${target_window}.${target_pane} &&
+      tmux select-window -t $target_window
+fi

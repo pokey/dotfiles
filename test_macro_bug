@@ -1,0 +1,17 @@
+1. copy the following line into a buffer using the command "wy$
+
+jcehin
+
+2. search for hello: /hello<enter>
+
+3. run macro starting with cursor at 'hello'
+
+
+hello
+something
+
+hello
+something
+
+hello
+something

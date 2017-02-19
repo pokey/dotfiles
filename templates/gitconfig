@@ -1,0 +1,15 @@
+[user]
+	name = $fullname
+	email = $email
+[alias]
+	co = checkout
+	ci = commit
+	br = branch
+	st = status
+[push]
+	default = matching
+[color "diff"]
+	meta = yellow bold
+[pager]
+	diff = diff-so-fancy | less --tabs=3 -RX
+	show = diff-so-fancy | less --tabs=3 -RX

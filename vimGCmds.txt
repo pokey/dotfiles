@@ -1,0 +1,57 @@
+["x]gP
+["x]gp
+g CTRL-A
+g CTRL-G
+g CTRL-H
+g CTRL-]
+g#
+g$
+g&
+g'{mark}
+g*
+g0
+g8
+g<
+g<Down>
+g<End>
+g<Home>
+g<LeftMouse>
+g<MiddleMouse>
+g<RightMouse>
+g<Up>
+g?
+g??
+g?g?
+g@{motion}
+gD
+gE
+gF
+gH
+gI
+gJ
+gQ
+gR
+gU{motion}
+gV
+g]
+g^
+g`{mark}
+ga
+gd
+ge
+gf
+gg
+gh
+gi
+gj
+gk
+gm
+go
+gq{motion}
+gr{char}
+gs
+gu{motion}
+gv
+gw{motion}
+gx
+g~{motion}

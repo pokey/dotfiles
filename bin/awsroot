@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+eval "$(pyenv init -)"
+pyenv shell awsenv
+awsenv root

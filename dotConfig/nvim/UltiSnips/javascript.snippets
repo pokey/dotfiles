@@ -1,0 +1,40 @@
+global !p
+def stripType(name):
+   if name.endswith('.ios'):
+      return name[:-4]
+   return name
+endglobal
+
+snippet rc "React class" b
+const `!p snip.rv = stripType(snip.basename)` = React.createClass({
+	render() {
+		return (
+			$0
+		);
+	}
+});
+endsnippet
+
+snippet ed "Export" b
+export default ${1:`!p snip.rv = stripType(snip.basename)`};
+endsnippet
+
+snippet i "Import" b
+import $1 from '${2:./$1}';
+endsnippet
+
+snippet ir "Import react" b
+import React, {$0} from 'react-native';
+endsnippet
+
+snippet s "Styles" b
+const styles = {
+	$1: {
+		$0
+	},
+};
+endsnippet
+
+snippet cl "Console log" b
+console.log(${2:\`$1\`});
+endsnippet

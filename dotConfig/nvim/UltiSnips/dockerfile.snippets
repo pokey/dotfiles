@@ -1,0 +1,14 @@
+snippet f "FROM" b
+FROM $0
+endsnippet
+
+snippet c "COPY" b
+COPY $0
+endsnippet
+
+snippet a "apt-get install" b
+RUN apt-get update && apt-get install -y \
+    $0 \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+endsnippet

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# FixMe: [correctness] Only lowercase first letter
+fromLower=`echo $1 | tr '[:upper:]' '[:lower:]'`
+toLower=`echo $2 | tr '[:upper:]' '[:lower:]'`
+fromAllcap=`echo $1 | tr '[:lower:]' '[:upper:]'`
+toAllcap=`echo $2 | tr '[:lower:]' '[:upper:]'`
+typeset -u first=`echo $1|nawk '{print substr($1,1,1)}'`
+rest=`echo $1|nawk '{print substr($1,2)}'`
+fromCap=$first$rest
+typeset -u first=`echo $2|nawk '{print substr($1,1,1)}'`
+rest=`echo $2|nawk '{print substr($1,2)}'`
+toCap=$first$rest
+find . -name "*$fromCap*" | fgrep -v .git | sed "s/\(.*\)$fromCap\(.*\)/cp \0 \1$toCap\2/" | sh
+find . -name "*$fromLower*" | fgrep -v .git | sed "s/\(.*\)$fromLower\(.*\)/cp \0 \1$toLower\2/" | sh
+find . -name "*$fromAllcap*" | fgrep -v .git | sed "s/\(.*\)$fromAllcap\(.*\)/cp \0 \1$toAllcap\2/" | sh
+# FixMe: [correctness] Only perform substitutions on new files, since
+# otherwise replacing with substring could cause issues
+# find . -type f | fgrep -v .git | xargs fgrep -l $fromLower | grep -v \.swp$ | grep -v \.swo$ | xargs sed -i "s/$fromLower/$toLower/g"
+# find . -type f | fgrep -v .git | xargs fgrep -l $fromAllcap | grep -v \.swp$ | grep -v \.swo$ | xargs sed -i "s/$fromAllcap/$toAllcap/g"
+# find . -type f | fgrep -v .git | xargs fgrep -l $fromCap | grep -v \.swp$ | grep -v \.swo$ | xargs sed -i "s/$fromCap/$toCap/g"

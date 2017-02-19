@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Add todo for shell setup
+
+pushd `dirname $0` > /dev/null
+BASEPATH=$(git rev-parse --show-toplevel)
+popd > /dev/null
+
+todoFile=$BASEPATH/todo.txt
+lines=$(cat "$todoFile" | sort | uniq -c | sort -r)
+
+targets=$(echo "$lines" | fzf-tmux --print-query)
+res="$?"
+case "$res" in
+   0) target=$(tail -n 1 <<< "$targets" | sed -e 's/^\s*[[:digit:]]\+\s*//') ;;
+   1) target="$targets" ;;
+   130) exit 0 ;;
+   *) exit "$res" ;;
+esac
+
+echo "$target" >> "$todoFile"

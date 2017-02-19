@@ -1,0 +1,3 @@
+PATH=\$PATH:$BASEPATH/bin
+source $BASEPATH/rc/rc
+source $BASEPATH/rc/zshrc

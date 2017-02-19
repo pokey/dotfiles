@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# ftsess - switch session (based on @george-b)
+sessions=$(tmux list-sessions -F '#S')
+
+target=$(echo "$sessions" | fzf-tmux +m --reverse)
+res=$?
+[ "$res" -eq "130" ] && exit 0
+[ "$res" -eq "0" ] || exit $res
+
+tmux switch-client -t "$target"

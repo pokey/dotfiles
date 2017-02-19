@@ -1,0 +1,443 @@
+<?xml version="1.0"?>
+<root>
+   <item>
+      <name>Pokey</name>
+      <list>
+         <item>
+            <name>Disable wrong shift</name>
+            <identifier>private.shift_fix</identifier>
+            <autogen> --KeyToKey--
+               KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_1, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_2, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_3, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_4, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_5, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_6, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::TAB, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::Q, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::W, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::E, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::R, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::T, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::A, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::S, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::D, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::F, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::G, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::Z, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::X, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::C, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::V, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::B, ModifierFlag::SHIFT_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+         </item>
+         <item>
+            <name>Disable wrong right shift</name>
+            <identifier>private.shift_right_fix</identifier>
+            <autogen> --KeyToKey--
+               KeyCode::BACKSLASH, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::EQUAL, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::MINUS, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::SLASH, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::DOT, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::SEMICOLON, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::COMMA, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::QUOTE, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_0, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_9, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_8, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_7, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::M, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::N, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::L, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::K, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::J, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::H, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::P, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::O, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::I, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::U, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::Y, ModifierFlag::SHIFT_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+         </item>
+         <item>
+            <name>Return to control</name>
+            <identifier>private.return2controlL</identifier>
+            <autogen>--KeyToKey--
+               KeyCode::RETURN, KeyCode::CONTROL_R
+            </autogen>
+         </item>
+         <item>
+            <name>Space to command</name>
+            <appendix>(+ When you type space only, send space)</appendix>
+            <identifier>private.space2commandL_space</identifier>
+            <autogen>--KeyOverlaidModifier--
+               KeyCode::SPACE, KeyCode::COMMAND_L, KeyCode::SPACE
+            </autogen>
+         </item>
+         <item>
+            <name>Disable wrong control</name>
+            <identifier>private.control_fix</identifier>
+            <autogen> --KeyToKey--
+               KeyCode::BACKQUOTE, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_1, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_2, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_3, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_4, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_5, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_6, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::TAB, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::Q, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::W, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::E, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::R, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::T, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::A, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::S, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::D, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::F, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::G, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::Z, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::X, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::C, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::V, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::B, ModifierFlag::CONTROL_L,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+         </item>
+         <item>
+            <name>Disable wrong right control</name>
+            <identifier>private.control_right_fix</identifier>
+            <autogen> --KeyToKey--
+               KeyCode::BACKSLASH, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::EQUAL, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::MINUS, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::SLASH, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::DOT, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::SEMICOLON, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::COMMA, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::BRACKET_LEFT, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::BRACKET_RIGHT, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::QUOTE, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_0, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_9, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_8, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::KEY_7, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::M, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::N, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::L, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::K, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::J, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::H, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::P, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::O, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::I, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::U, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> --KeyToKey--
+               KeyCode::Y, ModifierFlag::CONTROL_R,
+               KeyCode::B, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L
+            </autogen>
+         </item>
+         <item>
+            <name>Extra simultaneous</name>
+            <identifier>private.extra_simultaneous</identifier>
+            <autogen> __SimultaneousKeyPresses__
+               KeyCode::F, KeyCode::K,
+               KeyCode::H, ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> __SimultaneousKeyPresses__
+               KeyCode::G, KeyCode::J,
+               KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+            </autogen>
+            <autogen> __SimultaneousKeyPresses__
+               KeyCode::F, KeyCode::H,
+               KeyCode::H, ModifierFlag::CONTROL_L
+            </autogen>
+            <autogen> __SimultaneousKeyPresses__
+               KeyCode::V, KeyCode::J,
+               KeyCode::S, ModifierFlag::CONTROL_R
+            </autogen>
+         </item>
+      </list>
+   </item>
+</root>

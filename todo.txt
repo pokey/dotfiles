@@ -1,0 +1,77 @@
+frequent items in vim open
+single keystroke to press enter after completion in cmd line
+single keystroke to press enter after completion in cmd line
+quick add alias to cmd line
+single keystroke to execute cmd from bash history, ctrl-e to edit
+cd to aribtrary dir in ~
+complete previous non-file cmd args
+single keystroke to execute cmd from bash history, ctrl-e to edit
+notification for long-running commands
+automatically accept likely result without showing fzf
+ability to edit dir with 'j' cmd
+quick add alias to cmd line
+unify file creation and search in vim
+fasd for vim
+quick add alias to cmd line
+page up in fzf
+longer time for vim peekaboo
+quick go to alias section of rc
+fasd tab completion for arbitrary cmd-line args
+single keystroke to press enter after completion in cmd line
+quick add alias to cmd line
+single keystroke to execute cmd from bash history, ctrl-e to edit
+single keystroke to press enter after completion in cmd line
+single keystroke to press enter after completion in cmd line
+quick acknowledgement of cmd output in statusline of tmux
+fasd tab completion for arbitrary cmd-line args
+quick acknowledgement of cmd output in statusline of tmux
+single keystroke to press enter after completion in cmd line
+ability to edit dir with 'j' cmd
+fasd tab completion for arbitrary cmd-line args
+single keystroke to execute cmd from bash history, ctrl-e to edit
+quick go to alias section of rc
+vim shortcut to reload file
+single keystroke to execute cmd from bash history, ctrl-e to edit
+machine learning to improve bash search history ranking
+single keystroke to press enter after completion in cmd line
+fasd tab completion for arbitrary cmd-line args
+fasd tab completion for arbitrary cmd-line args
+ml to predict that after mv a dir you'll cd to it
+ml to predict that after mv a dir you'll cd to it
+fasd tab completion for arbitrary cmd-line args
+single keystroke to press enter after completion in cmd line
+notification for long-running commands
+quick acknowledgement of cmd output in statusline of tmux
+notification for long-running commands
+single keystroke to execute cmd from bash history, ctrl-e to edit
+single keystroke to execute cmd from bash history, ctrl-e to edit
+unify file creation and search in vim
+complete previous non-file cmd args
+quick add alias to cmd line
+machine learning to improve bash search history ranking
+machine learning to improve bash search history ranking
+single keystroke to execute cmd from bash history, ctrl-e to edit
+single keystroke to press enter after completion in cmd line
+single keystroke to execute cmd from bash history, ctrl-e to edit
+single keystroke to press enter after completion in cmd line
+quick go to alias section of rc
+machine learning to improve bash search history ranking
+page up in fzf
+single keystroke to press enter after completion in cmd line
+page up in fzf
+shortcut to jump to vimrc
+patch inconsolata-g like in http://stackoverflow.com/questions/9821973/tmux-borders-are-drawn-with-dashed-lines-how-can-i-change-them-to-continuous-li
+quick add alias to cmd line
+machine learning to improve bash search history ranking
+single keystroke to execute cmd from bash history, ctrl-e to edit
+single keystroke to press enter after completion in cmd line
+fasd for vim
+longer time for vim peekaboo
+single keystroke to press enter after completion in cmd line
+single keystroke to execute cmd from bash history, ctrl-e to edit
+machine learning for vim fzf: current file type
+single keystroke to press enter after completion in cmd line
+fasd for vim
+path completion in vim cmd mode
+recent buffers in vim
+expandable aliases should be regular aliases too

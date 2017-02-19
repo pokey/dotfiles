@@ -1,0 +1,39 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory extendedglob nomatch notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '$HOME/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+zstyle ':completion:*' menu select=5
+
+# Add colors to ls
+alias ls='ls -G'
+
+# Make ~~ expand to root of current git repo
+bindkey -s ~~ '$(git rev-parse --show-toplevel)\t/'
+
+# Git prompt
+source ~/zsh-git-prompt/zshrc.sh
+PROMPT='%B%m%~%b$(git_super_status) %# '
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+bindkey -s '^J' '**\t'
+
+source ~/sources/git-flow-completion/git-flow-completion.zsh
+
+source ~/.zsh/abbreviations.sh
+
+
+# [ -d $HOME/torch ] && . $HOME/torch/install/bin/torch-activate
+
+
+[ -d $HOME/torch-cl ] && . $HOME/torch-cl/install/bin/torch-activate

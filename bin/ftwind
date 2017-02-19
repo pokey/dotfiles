@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# ftwind - switch window (based on @george-b)
+windows=$(tmux list-windows -F '#I - #(basename #{pane_current_path}) (#{window_name})')
+
+target=$(echo "$windows" | fzf-tmux +m --reverse)
+res=$?
+[ "$res" -eq "130" ] && exit 0
+[ "$res" -eq "0" ] || exit $res
+
+target_window=$(echo $target | awk 'BEGIN{FS=":|-"} {print$1}')
+
+tmux select-window -t $target_window

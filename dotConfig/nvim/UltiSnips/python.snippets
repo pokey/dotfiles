@@ -1,0 +1,16 @@
+snippet dst
+hello
+endsnippet
+global !p
+from UltiSnips import UltiSnips_Manager
+def expand_snip(snip, name):
+   # line = snip.buffer[snip.line]
+   snip.buffer[snip.line] = ' '*4
+   snip.cursor.set(snip.line, 4)
+   # snip.buffer[snip.line] = line[:snip.column] + name + line[snip.column:]
+   # snip.cursor.set(snip.line, snip.column + len(name)+1)
+   # UltiSnips_Manager.expand()
+endglobal
+post_expand "expand_snip(snip, 'dst')"
+snippet src
+endsnippet

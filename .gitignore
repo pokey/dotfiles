@@ -1,0 +1,10 @@
+# Backups
+*~
+
+# Swap files
+*.swp
+*.swo
+*.swn
+*.bak
+dotConfig/nvim/plugged/
+dotConfig/nvim/.netrwhist

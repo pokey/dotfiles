@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# If pane is not zoomed, zoom pane before running command
+
+if [ -n "$TMUX_PANE" ] && tmux list-panes -F '#F' | grep -vq Z; then
+   tmux resize-pane -Z
+   "$@"
+   tmux resize-pane -Z
+else
+   "$@"
+fi

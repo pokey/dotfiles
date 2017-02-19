@@ -1,0 +1,5 @@
+vim-align:
+  - When aligning around '=', a '.' will get glued to the '=' next to it
+fzf:
+  - print-query combined expect inconsistent; should be an empty
+    line when you press enter with no selection

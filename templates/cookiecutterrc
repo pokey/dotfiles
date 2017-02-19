@@ -1,0 +1,5 @@
+default_context:
+    full_name: "$fullname"
+    email: "$email"
+    github_username: "$gh_user"
+cookiecutters_dir: "~/.cookiecutters/"

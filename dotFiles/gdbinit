@@ -1,0 +1,5 @@
+set print pretty on
+define ff
+finish
+step
+end

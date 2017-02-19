@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sysctl -a | ag kern.sleeptime | cut -d\  -f10-
+
