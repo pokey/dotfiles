@@ -114,14 +114,12 @@ $HOME/.fzf/install
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
-# Install tldr
+# Install useful MacOS stuff
 if test "$(uname)" = "Darwin"; then
   brew tap tldr-pages/tldr && brew install tldr
+  brew install reattach-to-user-namespace
+  brew install thefuck
 fi
-
-# Useful stuff
-test "$(uname)" = "Darwin" && brew install reattach-to-user-namespace
-test "$(uname)" = "Darwin" && brew install thefuck
 
 $INSTALL hub
 
@@ -154,6 +152,10 @@ read ssid
 export BASEPATH fullname gh_user email ssid
 
 # Instantiate template files
+backup "$HOME/.cookiecutterrc"
+backup "$HOME/.gitconfig"
+backup "$HOME/.zshrc"
+backup "$HOME/.bashrc"
 $SCRIPTPATH/template.sh cookiecutterrc "$HOME/.cookiecutterrc"
 $SCRIPTPATH/template.sh gitconfig "$HOME/.gitconfig"
 $SCRIPTPATH/template.sh zshrc "$HOME/.zshrc"
