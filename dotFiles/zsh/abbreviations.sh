@@ -2,8 +2,8 @@
 setopt extendedglob
 typeset -Ag abbreviations
 abbreviations=(
-  "gca"   "git commit -am \"__CURSOR__\""
   "gc"    "git commit -m \"__CURSOR__\""
+  "gca"   "git commit -am \"__CURSOR__\""
   "gcm"   'git commit --amend'
   "gcam"  'git commit -a --amend'
   "gp"    'git push origin HEAD'
@@ -29,6 +29,7 @@ abbreviations=(
   "awd"   "eval $(awsdev)"
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)'
+  "ppv"   "pip freeze -l | ag"
 )
 
 magic-abbrev-expand() {

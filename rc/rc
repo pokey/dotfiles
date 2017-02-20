@@ -1,6 +1,10 @@
+# Make shared libs work
 export LD_LIBRARY_PATH=/usr/local/lib
+
+# Core dumps
 ulimit -c unlimited
 
+# Setup PATH
 export PATH=$PATH:/usr/local/texlive/2011/bin/x86_64-linux:~/bin:/usr/local/ssl/bin:~/bin:~/packer
 export PATH=$PATH:/Library/TeX/Root/bin/x86_64-darwin
 export PATH=$PATH:$HOME/bin
@@ -8,6 +12,7 @@ export PATH=$PATH:/usr/local/sbin
 export MANPATH=$MANPATH:/usr/local/texlive/2011/texmf/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 
+# Other envvars
 export VISUAL=nvim
 export EDITOR=nvim
 export VIMPAGER_VIM=nvim
@@ -16,67 +21,25 @@ export VIMPAGER_RC=$HOME/.vimpagerrc
 
 [ -d $HOME/.custom.rc ] && source $HOME/.custom.rc
 
+# Make vim tty stuff behave nicely
 stty ixany
 stty ixoff -ixon
 stty stop undef
 stty start undef
-
-# No ttyctl, so we need to save and then restore terminal settings
 vim()
 {
+    # No ttyctl, so we need to save and then restore terminal settings
     local STTYOPTS="$(stty -g)"
     stty stop '' -ixoff
     command nvim "$@"
     stty "$STTYOPTS"
 }
 
+# Init nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# some more ls aliases
-alias   ll='ls -alF'
-alias   la='ls -A'
-alias    l='ls -CF'
-alias    h='ls'
-alias   gs='git status'
-alias   gd='zoom-run git diff'
-alias   gp='git push origin HEAD'
-alias  gpf='git push --force origin HEAD'
-alias  gpl='git pull'
-alias   ga='git add'
-alias  gcm='git commit --amend'
-alias gcam='git commit -a --amend'
-alias   gm='git merge'
-alias   gA='git add -A'
-alias   hs='sudo salt-call --local state.highstate'
-alias   vu='vim +PlugUpgrade +PlugUpdate +PlugClean +qall'
-alias    k='cd ..'
-alias    c='cd'
-alias   vm='ssh vm'
-alias   tl='zoom-run tldr'
-alias   pr='git pull-request -b develop'
-alias   sz='source ~/.zshrc'
-alias  pie='pip install -e .'
-alias  fff='git flow feature finish'
-alias  ffp='git flow feature publish'
-# From http://macsimplelife.blogspot.com/2007/11/mac-os-x-hibernate-issue.html
-alias  hon='sudo pmset -a hibernatemode 25'
-alias hoff='sudo pmset -a hibernatemode 3'
-alias  ccp='cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git'
-alias   pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pysu='pyenv shell --unset'
-alias   sp='python -c "import site; print(site.getsitepackages()[0])"'
-
-# Run man zoomed if in a tmux pane
-alias man='zoom-run man'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+source "$HOME/.sh/aliases.sh"
 
 # For now only use vimpager on os x
 if test "$(uname)" = "Darwin"; then
@@ -84,6 +47,7 @@ if test "$(uname)" = "Darwin"; then
    export PAGER=vimpager
    alias ll='ls++ -A'
 
+   # ls++
    PATH="$HOME/perl5/bin${PATH+:}${PATH}"; export PATH;
    PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
    PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
@@ -92,6 +56,7 @@ if test "$(uname)" = "Darwin"; then
    export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
+# fasd
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
    fasd --init auto >| "$fasd_cache"
@@ -104,61 +69,16 @@ export FZF_DEFAULT_COMMAND='ag -l --hidden --ignore .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--exact"
 
-j() {
-   local dir
-   dir="$(fasd -Rdl "$1" | fzf-tmux -1 -0 --no-sort +m)" && cd "${dir}" || return 1
-}
+source "$HOME/.sh/commands.sh"
 
-v() {
-  local file
-  file="$(fasd -Rfl "$1" | fzf-tmux -1 -0 --no-sort +m)" && vim "${file}" || return 1
-}
-
-# go - checkout git branch
-go() {
-  local branches branch
-  branches=$(git branch -vv --color)
-  branch=$(echo "$branches" | fzf-tmux --ansi -n 1 +m -0 -1 -q "$1")
-  if test "$?" = "0"; then
-    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-  fi
-}
-
-# list git branches
-gb() {
-  local branches branch out key
-  branches=$(git branch -vv --color)
-  out=$(echo "$branches" | fzf-tmux --ansi -n 1 +m -0 -q "$1" --expect=ctrl-d)
-  if test "$?" = "0"; then
-    key=$(head -1 <<< "$out")
-    branch=$(head -2 <<< "$out" | tail -1 | awk '{print $1}' | sed "s/.* //")
-    case "$key" in
-       ctrl-d) git branch -d $branch ;;
-            *) git checkout $branch ;;
-    esac
-  fi
-}
-
-# git commit browser
-gl() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf-tmux --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
-      --bind "ctrl-m:execute:
-                echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R'"
-}
-
-mc() {
-   mkdir $1
-   cd $1
-}
-
+# Init hub
 eval "$(hub alias -s)"
 
+# Init virtualenv
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+# Init pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
@@ -171,5 +91,6 @@ if test "$(uname)" = "Darwin"; then
    defaults write NSGlobalDomain InitialKeyRepeat -int 20
 fi
 
+# Init thefuck
 eval $(thefuck --alias)
 alias fu='fuck'

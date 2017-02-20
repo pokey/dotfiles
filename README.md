@@ -13,7 +13,8 @@ Setup
 
       and following instructions.
    1. Install [Homebrew](brew.sh)
-1. Setup ssh
+   1. Setup [wakatime](https://wakatime.com/) and make note of API key
+1. Setup github and clone this repo
    1. Generate ssh key
 
       ```
@@ -39,4 +40,24 @@ Setup
    ./init/init.sh
    ```
 
-   from this directory
+   from this directory.
+   Notes:
+   - This will backup and disable all your customizations for vim, terminal,
+     etc.  You can add bash customizations to `~/.custom.rc`.  If you need
+     other customizations, file an issue, and I can add a way to source custom
+     vim, tmux, etc.
+   - This will remap your keyboard kind of severely, but it's reversible if you
+     find it too annoying.  It's better for RSI and faster.  In particular:
+     - `<enter>` => `<ctrl>`
+     - `F+J` simultaneously => `<enter>`
+     - `<caps lock>` => `<ctrl>`
+     - `<ctrl>` => `<enter>` (use this if `F+J` isn't working; doesn't work in
+       some random contexts)
+     - Key repeat rate is jacked up really high.  Every millisecond counts :-)
+
+     Try to use the right ctrl (ie `<enter>`) when hitting keys with the left
+     hand, and vice versa (ie `<caps lock>`.  This helps with RSI.
+1. Switch to better iTerm2 font
+   1. Go to the menu iTerm2 > Preferences... > Profiles > Text > Change Font
+   1. Select Inconsolata-g for Powerline.  I like 18pt
+1. Read the [docs](doc)

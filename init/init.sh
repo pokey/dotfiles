@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-# Select package manager
+# Select package manager based on OS
 case "$(uname)" in
    Darwin) INSTALL='brew install' ;;
         *) INSTALL='sudo apt-get install' ;;
 esac
 
+# Get paths
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
 BASEPATH=$(git rev-parse --show-toplevel)
@@ -14,8 +15,10 @@ popd > /dev/null
 DOTFILES="$BASEPATH/dotFiles"
 DOTCONFIG="$BASEPATH/dotConfig"
 
+# Work in the home directory
 cd $HOME
 
+# Back up a file before overwriting it
 function backup {
    dst="$1"
    bak="$dst.bak"
@@ -38,7 +41,7 @@ for file in $DOTFILES/*; do
    backup "$dst"
 
    # Add symlink
-   ln -s $src $dst
+   ln -s "$src" "$dst"
 done
 
 # Set up symlinks to dotConfig
@@ -52,11 +55,12 @@ for file in $DOTCONFIG/*; do
       exit 1
    fi
 
-   ln -s $src $dst
+   ln -s "$src" "$dst"
 done
 
 $INSTALL pyenv-virtualenv
 
+# Setup neovim python
 $SCRIPTPATH/neovim_python.sh
 
 # Install neovim
@@ -65,7 +69,7 @@ case "$(uname)" in
    *) sudo apt-get install neovim ;;
 esac
 
-# Make old vim still work
+# Make old vim still work (ish)
 backup "$HOME/.vim"
 backup "$HOME/.vimrc"
 ln -s $HOME/.config/nvim $HOME/.vim 
@@ -75,7 +79,7 @@ ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
 # Note that this will ask for the wakatime api key
 vim +PluginInstall +qall
 
-# zsh
+# setup zsh
 git clone https://github.com/olivierverdier/zsh-git-prompt.git
 $INSTALL zsh
 command -v zsh | sudo tee -a /etc/shells
@@ -90,6 +94,7 @@ esac
 mkdir -p $HOME/sources
 mkdir -p $HOME/bin
 
+# Install ls++
 if test "$(uname)" = "Darwin"; then
    cpan Term::ExtendedColor
    cd ~/sources
@@ -114,6 +119,7 @@ if test "$(uname)" = "Darwin"; then
   brew tap tldr-pages/tldr && brew install tldr
 fi
 
+# Useful stuff
 test "$(uname)" = "Darwin" && brew install reattach-to-user-namespace
 test "$(uname)" = "Darwin" && brew install thefuck
 
@@ -130,9 +136,9 @@ pip install virtualenvwrapper
 # Install git-flow completions
 cd sources
 git clone git@github.com:petervanderdoes/git-flow-completion.git
-cd
+cd $HOME
 
-# Download Inconsolata-g for Powerline
+# Download Inconsolata-g for Powerline font
 curl -so "$HOME/Library/Fonts/Inconsolata-g for Powerline.otf" \
    https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata-g/Inconsolata-g%20for%20Powerline.otf
 
@@ -143,6 +149,7 @@ read gh_user
 echo -n "email: "
 read email
 
+# Instantiate template files
 $SCRIPTPATH/cookiecutter.sh "$fullname" "$gh_user" "$email"
 $SCRIPTPATH/gitconfig.sh "$fullname" "$email"
 $SCRIPTPATH/rc.sh "$BASEPATH"
