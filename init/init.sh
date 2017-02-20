@@ -142,14 +142,20 @@ cd $HOME
 curl -so "$HOME/Library/Fonts/Inconsolata-g for Powerline.otf" \
    https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata-g/Inconsolata-g%20for%20Powerline.otf
 
+# For use in template files
 echo -n "Full name: "
 read fullname
 echo -n "GitHub user name: "
 read gh_user
 echo -n "email: "
 read email
+echo -n "home wifi ssid: "
+read ssid
+export BASEPATH fullname gh_user email ssid
 
 # Instantiate template files
-$SCRIPTPATH/cookiecutter.sh "$fullname" "$gh_user" "$email"
-$SCRIPTPATH/gitconfig.sh "$fullname" "$email"
-$SCRIPTPATH/rc.sh "$BASEPATH"
+$SCRIPTPATH/template.sh cookiecutterrc "$HOME/.cookiecutterrc"
+$SCRIPTPATH/template.sh gitconfig "$HOME/.gitconfig"
+$SCRIPTPATH/template.sh zshrc "$HOME/.zshrc"
+$SCRIPTPATH/template.sh bashrc "$HOME/.bashrc"
+$SCRIPTPATH/template.sh hammerspoon "$BASEPATH/dotFiles/hammerspoon/ssid.lua"

@@ -1,6 +1,8 @@
+local ssid = require "ssid"
+
 local wifiWatcher = nil
-local homeSSID = "webbie"
 local lastSSID = hs.wifi.currentNetwork()
+local homeSSID = ssid.homeSSID
 
 function ssidChangedCallback()
     newSSID = hs.wifi.currentNetwork()

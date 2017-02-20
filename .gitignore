@@ -8,3 +8,6 @@
 *.bak
 dotConfig/nvim/plugged/
 dotConfig/nvim/.netrwhist
+
+# Personalized stuff
+dotFiles/hammerspoon/ssid.lua
