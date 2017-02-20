@@ -6,6 +6,7 @@ abbreviations=(
   "gca"   "git commit -am \"__CURSOR__\""
   "gcm"   'git commit --amend'
   "gcam"  'git commit -a --amend'
+  "gm"    'git merge'
   "gp"    'git push origin HEAD'
   "gpf"   'git push --force origin HEAD'
   "ix"    "| xargs"
