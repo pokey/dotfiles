@@ -8,3 +8,5 @@ just use all the time.
   that allows me to have lots of different terminal sessions open and switch
   between them
 - [fzf](fzf.md) contains info about how I use the fzf fuzzy-finder
+- [hammerspoon](hammerspoon.md) contains info about customizations that
+  leverage hammerspoon
