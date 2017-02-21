@@ -110,7 +110,7 @@ if test "$(uname)" = "Darwin"; then
 fi
 
 # Install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git "$HOMe/.fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 $HOME/.fzf/install
 
 # Install tpm
