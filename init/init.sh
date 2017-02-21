@@ -60,6 +60,7 @@ done
 
 $INSTALL pyenv-virtualenv
 $INSTALL tmux
+$INSTALL fasd
 
 # Setup neovim python
 $SCRIPTPATH/neovim_python.sh
@@ -130,8 +131,6 @@ case "$(uname)" in
    Darwin) brew install git-flow-avh ;;
    *) sudo apt-get install git-flow ;;
 esac
-
-pip install virtualenvwrapper
 
 # Install git-flow completions
 cd sources

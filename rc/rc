@@ -53,8 +53,9 @@ if test "$(uname)" = "Darwin"; then
    PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
    PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
    PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
-   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
+
+[ -f /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
 
 # fasd
 fasd_cache="$HOME/.fasd-init-bash"
@@ -73,10 +74,6 @@ source "$HOME/.sh/commands.sh"
 
 # Init hub
 eval "$(hub alias -s)"
-
-# Init virtualenv
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Init pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

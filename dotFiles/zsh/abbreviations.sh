@@ -27,7 +27,7 @@ abbreviations=(
   "gp"    "git push"
   "ga"    "git add"
   "pr"    "git pull-request -b"
-  "awd"   "eval $(awsdev)"
+  "awd"   'eval $(awsdev)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)'
   "ppv"   "pip freeze -l | ag"
