@@ -7,6 +7,8 @@ local eventTypes = hs.eventtap.event.types
 
 local log = hs.logger.new('simultaneous', 'debug')
 
+log.d("Keyboard hello.")
+
 keyUpDown = function(modifiers, key)
    eventtap.event.newKeyEvent(modifiers, key, true):post()
    eventtap.event.newKeyEvent(modifiers, key, false):post()
@@ -121,5 +123,3 @@ end)
 simultaneous('v', 'j', function()
    keyUpDown({"ctrl"}, hs.keycodes.map['s'])
 end)
-
-log.d("Got key", key, to_string(modifiers))

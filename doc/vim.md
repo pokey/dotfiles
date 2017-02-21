@@ -10,6 +10,7 @@ Shortcuts
 #### Normal and insert mode
 - `V+J` simultaneously saves the file.  If in insert mode, it exits insert mode
   first.  This is basically always how I exit insert mode.
+
 #### Normal mode
 - `<leader> k` opens a file from the current directory, allowing you to search
   using `fzf`.  With a file selected, press
@@ -20,6 +21,10 @@ Shortcuts
   same shortcuts as above will work.
 - `gs` searches all files in the currenty directory and displays the results
   using `fzf`.  You can select a result to open that in a buffer.
+- `<shift>-q` quits vim
+
+##### Window management
+- `<leader> <space>` switches windows
 
 ### Python
 #### Normal mode
