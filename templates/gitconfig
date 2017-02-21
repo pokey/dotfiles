@@ -8,7 +8,7 @@
 	st = status
 [push]
 	default = matching
-[color "diff"]
+[color \"diff\"]
 	meta = yellow bold
 [pager]
 	diff = diff-so-fancy | less --tabs=3 -RX

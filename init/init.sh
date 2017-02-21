@@ -59,6 +59,7 @@ for file in $DOTCONFIG/*; do
 done
 
 $INSTALL pyenv-virtualenv
+$INSTALL tmux
 
 # Setup neovim python
 $SCRIPTPATH/neovim_python.sh
@@ -119,6 +120,7 @@ if test "$(uname)" = "Darwin"; then
   brew tap tldr-pages/tldr && brew install tldr
   brew install reattach-to-user-namespace
   brew install thefuck
+  brew install diff-so-fancy
 fi
 
 $INSTALL hub
