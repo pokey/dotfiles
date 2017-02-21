@@ -21,3 +21,9 @@ Shortcuts
 - The `nw <name>` command in a terminal window can be used to name a window for
   use when searching
 - `<prefix> <number>` selects a window by number
+
+### Pane management
+- `<prefix> '` 
+- `<prefix> d` 
+- `<prefix> z` 
+- `<prefix> o` 

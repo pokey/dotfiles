@@ -121,3 +121,5 @@ end)
 simultaneous('v', 'j', function()
    keyUpDown({"ctrl"}, hs.keycodes.map['s'])
 end)
+
+log.d("Got key", key, to_string(modifiers))

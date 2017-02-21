@@ -143,8 +143,9 @@ There are a bunch of aliases to make git faster and easier to use
 - `gcm` amends previous commit
 - `gcam` adds changed files and amends previous commit
 
-#### Pushing to server
-- `gp` pushes to server
+#### Dealing with server
+- `gp` => `git push`
+- `gpl` => `git pull`
 - `gpf` force pushes to server.  Use this after you've amended a previous
   commit
 
