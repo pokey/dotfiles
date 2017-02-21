@@ -27,6 +27,7 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey -s '^J' '**\t'
+bindkey -s '^G' '^A^K'
 
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 

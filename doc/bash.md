@@ -12,6 +12,8 @@ There are a bunch of aliases and commands to make it faster to work in the
 terminal.
 
 ### General
+- `<ctrl-g>` wipes out the current line.  I use this whenever I start typing
+  something and change my mind.
 - `<ctrl-r>` uses `fzf` to search through previous commands
 - `l` => `ls`
 - `ll` is `ls` with lots of info about files
