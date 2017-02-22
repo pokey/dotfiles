@@ -27,6 +27,7 @@ alias  ccp='cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git'
 alias   pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pysu='pyenv shell --unset'
 alias   sp='python -c "import site; print(site.getsitepackages()[0])"'
+alias   cg='cd $(git rev-parse --show-toplevel)'
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run man'

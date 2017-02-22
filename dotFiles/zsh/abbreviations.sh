@@ -31,6 +31,7 @@ abbreviations=(
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)'
   "ppv"   "pip freeze -l | ag"
+  "cg"    'cd $(git rev-parse --show-toplevel)'
 )
 
 magic-abbrev-expand() {

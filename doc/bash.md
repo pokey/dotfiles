@@ -120,6 +120,7 @@ There are a bunch of aliases to make git faster and easier to use
 
 #### General
 - `~~` expands to the root directory of the current git repo
+- `cg` changes directory to the root of the current git repo
 
 #### Branches
 - `go <branch>` will use `fzf` to find branches by name and change to that
