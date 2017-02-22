@@ -15,13 +15,17 @@ Shortcuts
 - `<leader> k` opens a file from the current directory, allowing you to search
   using `fzf`.  With a file selected, press
   - `<enter>` to open the file in the current window
-  - `<ctrl>-v` to open the file in a new vertical split
-  - `<ctrl>-x` to open the file in a new horizontal split
+  - `<ctrl-v>` to open the file in a new vertical split
+  - `<ctrl-x>` to open the file in a new horizontal split
 - `<leader> j` allows you to select an already open buffer using `fzf`.  The
   same shortcuts as above will work.
 - `gs` searches all files in the currenty directory and displays the results
   using `fzf`.  You can select a result to open that in a buffer.
-- `<shift>-q` quits vim
+- `<shift-q>` quits vim
+
+#### Insert mode
+- `<ctrl-x> <ctrl-f>` when your cursor is at the end of a word will allow you
+  to select a file using `fzf` to insert at current position in buffer.
 
 ##### Window management
 - `<leader> <space>` switches windows

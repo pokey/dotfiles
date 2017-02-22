@@ -5,12 +5,12 @@ simulatneously as `<prefix>`
 
 Setup
 -----
-Make sure to press `<prefix> <shift>-i` the first time to install the plugins.
+Make sure to press `<prefix> <shift-i>` the first time to install the plugins.
 
 Shortcuts
 ---------
 ### Session management
-- `<prefix> <shift>-c` starts a new session.
+- `<prefix> <shift-c>` starts a new session.
 - `<prefix> i` searches for open sessions using `fzf`
 - `<prefix> s` switches to previous session
 
@@ -27,3 +27,4 @@ Shortcuts
 - `<prefix> d` 
 - `<prefix> z` 
 - `<prefix> o` 
+- `<prefix> }` swaps the panes in the current window
