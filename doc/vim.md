@@ -22,6 +22,7 @@ Shortcuts
 - `gs` searches all files in the currenty directory and displays the results
   using `fzf`.  You can select a result to open that in a buffer.
 - `<shift-q>` quits vim
+- `gr` reloads the current file
 
 #### Insert mode
 - `<ctrl-x> <ctrl-f>` when your cursor is at the end of a word will allow you

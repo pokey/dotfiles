@@ -66,7 +66,7 @@ nnoremap <silent> gn :noh<cr>
 nnoremap <silent> gu :UndotreeToggle<cr>
 nnoremap <silent> gf :NERDTreeToggle<cr>
 nnoremap <silent> gk :Goyo<cr>
-nnoremap <silent> gr :RainbowParentheses!!<cr>
+nnoremap <silent> gr :e<cr>
 nmap <bslash><bslash> gcc
 nmap <bslash> gc
 vmap <bslash> gc
