@@ -102,6 +102,9 @@ terminal.
   ```
 
   Make sure to put a space after that last `evl` so abbrevation can expand.
+- `glances` brings up a display with a bunch of information about system,
+  running processes, etc.  I usually always have this running in a tmux
+  session.
 
 ### Python
 - `ccp` will create a brand new python project from a cookiecutter template in

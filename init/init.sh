@@ -62,6 +62,9 @@ $INSTALL pyenv-virtualenv
 $INSTALL tmux
 $INSTALL fasd
 
+brew install python
+pip install glances
+
 # Setup neovim python
 $SCRIPTPATH/neovim_python.sh
 
