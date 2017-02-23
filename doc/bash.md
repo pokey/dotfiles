@@ -141,7 +141,9 @@ There are a bunch of aliases to make git faster and easier to use
 - `gA` adds all files (including untracked) to git
 
 #### Commiting changes
-- `gc <message>` commits with given message
+- `gc <message>` commits with given message.  Note that if you accidentally use
+  this command when you meant to use `gca`, you can press `<ctrl-x>` with the
+  command visible to correct it.
 - `gca <message>` adds changed files and commits with given message
 - `gcm` amends previous commit
 - `gcam` adds changed files and amends previous commit

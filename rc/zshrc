@@ -29,6 +29,13 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 bindkey -s '^J' '**\t'
 bindkey -s '^G' '^A^K'
 
+fix-git-merge() {
+   BUFFER=${BUFFER/-m/-am}
+   CURSOR=$(($CURSOR+1))
+}
+zle -N fix-git-merge
+bindkey '^X' fix-git-merge
+
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 
 source ~/.zsh/abbreviations.sh
