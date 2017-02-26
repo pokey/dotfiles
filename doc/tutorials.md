@@ -46,12 +46,13 @@ start working on it.
    up [vim-surround](https://github.com/tpope/vim-surround) and thinking about
    motions to understand what this is doing.  In particular, why `<shift-w>`
    instead of `w`?
-1. `f=r><v-j>` to replace `==` with `>=` and save
+1. `f= r> <v-j>` to replace `==` with `>=` and save
 1. `<shift-a> , <v-j>` to add comma at the end then exit insert mode and save
-1. `gsi]` to sort dependencies
+1. `gsi]` to sort dependencies.  Note this won't do anything, as they're
+   already sorted.  But good practice to do whenever you add a dep.
 1. `<v-j>` to save
 1. `<f-k> '` to create a new pane above the current.  We'll use this one for
-   git sort of stuff and managing the directory.
+   git stuff and managing the directory.
 1. `<f-k> z` to zoom the pane
 1. `j sp<enter><enter>` to change to the `spaghetti` directory
 1. `pys spa<tab><enter>` to activate the `spaghetti` pyenv
@@ -81,9 +82,9 @@ start working on it.
 1. `ffp<enter>` to publish branch
 1. `pr<enter>` to create a pull request
 1. `<shift-q>` to accept message and finish creating pull request.  You could
-   also edit it.  It's vim.  You should follow the same guidelines here as for
+   also edit it.  It's vim.  I don't often change this, but sometimes it's
+   useful. You should follow the same guidelines here as for
    [commit messages](https://github.com/erlang/otp/wiki/Writing-good-commit-messages).
-   I don't often change this, but sometimes it's useful.
-1. Hold down `cmd` and click on the link.  You can see your pull request.  You
+1. Hold down `<cmd>` and click on the link.  You can see your pull request.  You
    can send this link to others so that they can see what you've done and
    comment on it.
