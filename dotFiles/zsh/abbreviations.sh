@@ -62,8 +62,10 @@ bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
 bindkey -M isearch " " self-insert
 
-bindkey -s 'lf ' '!$\t'
-bindkey -s 'lc ' '!!:0\t'
-bindkey -s 'l1 ' '!!:1\t'
-bindkey -s 'l2 ' '!!:2\t'
-bindkey -s 'l3 ' '!!:3\t'
+bindkey -s 'lf ' '!$\t '
+bindkey -s 'lc ' '!!:0\t '
+
+for i in {1..9};
+do
+   bindkey -s "l$i " "!!:$i\t "
+done
