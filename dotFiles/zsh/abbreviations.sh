@@ -9,6 +9,8 @@ abbreviations=(
   "gm"    'git merge'
   "gp"    'git push origin HEAD'
   "gpf"   'git push --force origin HEAD'
+  "grc"   'git rebase --continue'
+  "gcp"   'git cherry-pick'
   "ix"    "| xargs"
   "ia"    "| ag"
   "ih"    "| head"
@@ -23,6 +25,7 @@ abbreviations=(
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
   "pi"    "pip install"
+  "pie"   "pip install -e ."
   "gn"    "git checkout -b"
   "gp"    "git push"
   "ga"    "git add"
@@ -58,3 +61,9 @@ zle -N no-magic-abbrev-expand
 bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
 bindkey -M isearch " " self-insert
+
+bindkey -s 'lf ' '!$\t'
+bindkey -s 'lc ' '!!:0\t'
+bindkey -s 'l1 ' '!!:1\t'
+bindkey -s 'l2 ' '!!:2\t'
+bindkey -s 'l3 ' '!!:3\t'

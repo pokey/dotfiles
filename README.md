@@ -61,3 +61,9 @@ Setup
    1. Go to the menu iTerm2 > Preferences... > Profiles > Text > Change Font
    1. Select Inconsolata-g for Powerline.  I like 18pt
 1. Read the [docs](doc)
+
+Updates
+-------
+Whenever you pull a new version, run `sz` in any open shells to update zsh
+settings, and `vu` to download new vim plugins.  Then you can type `gv` in any
+running vim processes to reload vim settings.

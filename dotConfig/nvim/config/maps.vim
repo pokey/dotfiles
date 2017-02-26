@@ -4,8 +4,8 @@ let g:user_emmet_leader_key='<c-y>'
 imap <leader>, <c-y>,
 vmap <leader>, <c-y>,
 
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+xmap gl <Plug>(EasyAlign)
+nmap gl <Plug>(EasyAlign)
 
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -34,6 +34,8 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+nnoremap gv :source ~/.config/nvim/init.vim<cr>
+
 map <silent> <Char-0xA1> :tabn 1<cr>
 map <silent> <Char-0x2122> :tabn 2<cr>
 map <silent> <Char-0xA3> :tabn 3<cr>
@@ -47,8 +49,6 @@ nnoremap <silent> g; :History:<cr>
 nnoremap <silent> g? :Helptags/<cr>
 nnoremap <silent> gx :Commands<cr>
 nnoremap <silent> gi :UltiSnipsEdit<cr>
-nnoremap qa :tabe<space>
-nnoremap gl :cd %:h<cr>
 nnoremap <silent> Q :q<cr>
 nnoremap <silent> <C-k> <C-w><C-w>
 nnoremap <silent> <leader><space> <C-w><C-w>
@@ -58,7 +58,7 @@ nnoremap <C-s> :w<cr>
 imap <C-s> <ESC>:w<cr>
 nnoremap <leader>n :e<space>%:h/
 nnoremap <leader>i :Isort<cr>
-nnoremap gs :Ag<space>
+nnoremap ga :Ag<space>
 nnoremap <C-p> :e<space>
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
@@ -82,8 +82,8 @@ nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p`]
 vnoremap <Leader>P "+P
 
-onoremap ii :<c-u>normal! `[v`]<cr>
-vnoremap ii :<c-u>normal! `[v`]<cr>
+onoremap iu :<c-u>normal! `[v`]<cr>
+vnoremap iu :<c-u>normal! `[v`]<cr>
 
 onoremap i0 i)
 vnoremap i0 i)
@@ -94,7 +94,7 @@ map <C-y> :let g:SMARTAUTOCOMPLETE_URI='http://localhost:808
 
 nnoremap ge :Xbit<cr>
 
-nnoremap <silent> <leader>w :ToggleExtraWidth<cr>
+nnoremap <silent> <leader>e :ToggleExtraWidth<cr>
 
 " multi search on alt 8
 nmap 8 :exe "Search ".expand("<cword>")<cr>

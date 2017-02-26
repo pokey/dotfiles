@@ -1,10 +1,10 @@
-Bash customizations
+Zsh customizations
 ===================
 
-I use iTerm2 as my terminal emulator.  Always run `tmux` the first time you
-startup your computer and run iTerm2.  If you open iTerm2 again and you haven't
-restarted your computer, you can use `tmux attach` to attach to an existing
-tmux session.
+I use [iTerm2](https://www.iterm2.com/) as my terminal emulator and `zsh` as my
+shell.  Always run `tmux` the first time you startup your computer and run
+iTerm2.  If you open iTerm2 again and you haven't restarted your computer, you
+can use `tmux attach` to attach to an existing tmux session.
 
 Shortcuts
 ---------
@@ -15,6 +15,8 @@ terminal.
 - `<ctrl-g>` wipes out the current line.  I use this whenever I start typing
   something and change my mind.
 - `<ctrl-r>` uses `fzf` to search through previous commands
+- `c` => `cd`
+- `k` => `cd ..`
 - `l` => `ls`
 - `ll` is `ls` with lots of info about files
 - `j <name>` will use `fzf` to find recently used directories matching name and
@@ -102,6 +104,11 @@ terminal.
   ```
 
   Make sure to put a space after that last `evl` so abbrevation can expand.
+- `lc` expands to last command
+- `lf` expands to the final argument of the previous command.  Need to press
+  space to expand
+- `l<number>` refers to arg `<number>` of previous command.  `0` is the
+  previous command itself.
 - `glances` brings up a display with a bunch of information about system,
   running processes, etc.  I usually always have this running in a tmux
   session.

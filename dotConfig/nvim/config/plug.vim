@@ -58,5 +58,8 @@ Plug 'FooSoft/vim-argwrap/'
 Plug 'fisadev/vim-isort'
 
 Plug 'python-rope/ropevim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'christoomey/vim-sort-motion'
 
 call plug#end()
