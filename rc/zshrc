@@ -34,7 +34,7 @@ fix-git-merge() {
    CURSOR=$(($CURSOR+1))
 }
 zle -N fix-git-merge
-bindkey '^X' fix-git-merge
+bindkey '^o' fix-git-merge
 
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 

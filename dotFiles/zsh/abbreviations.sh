@@ -32,18 +32,34 @@ abbreviations=(
   "pr"    "git pull-request -b"
   "awd"   'eval $(awsdev)'
   "ev"    '$(__CURSOR__)'
-  "evl"   '$(!!)'
+  "evl"   '$(!!)__EXPAND__'
   "ppv"   "pip freeze -l | ag"
-  "cg"    'cd $(git rev-parse --show-toplevel)'
+  "cg"    'cd $(git rev-parse --show-toplevel)__EXPAND__'
+  "lf"    '!$__EXPAND__'
+  "lc"    '!!:0__EXPAND__'
 )
 
-magic-abbrev-expand() {
-    local MATCH
-    LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
-    command=${abbreviations[$MATCH]}
-    LBUFFER+=${command:-$MATCH}
+for i in {1..9};
+do
+   abbreviations+=("l$i" "!!:${i}__EXPAND__")
+done
 
-    if [[ "${command}" =~ "__CURSOR__" ]]
+magic-abbrev-expand() {
+    local MATCH MBEGIN MEND expansion expand
+    LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
+    expansion=${abbreviations[$MATCH]}
+
+    if [[ "${expansion}" == *__EXPAND__ ]]
+    then
+       expand=true
+       expansion=${expansion%%__EXPAND__}
+    fi
+
+    LBUFFER+=${expansion:-$MATCH}
+
+    [[ "$expand" ]] && zle expand-or-complete
+
+    if [[ "${expansion}" =~ "__CURSOR__" ]]
     then
         RBUFFER=${LBUFFER[(ws:__CURSOR__:)2]}
         LBUFFER=${LBUFFER[(ws:__CURSOR__:)1]}
@@ -61,11 +77,3 @@ zle -N no-magic-abbrev-expand
 bindkey " " magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
 bindkey -M isearch " " self-insert
-
-bindkey -s 'lf ' '!$\t '
-bindkey -s 'lc ' '!!:0\t '
-
-for i in {1..9};
-do
-   bindkey -s "l$i " "!!:$i\t "
-done
