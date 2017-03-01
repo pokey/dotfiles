@@ -26,19 +26,22 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-bindkey -s '^J' '**\t'
-bindkey -s '^G' '^A^K'
-
 fix-git-merge() {
    BUFFER=${BUFFER/-m/-am}
    CURSOR=$(($CURSOR+1))
 }
 zle -N fix-git-merge
-bindkey '^o' fix-git-merge
 
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 
 source ~/.zsh/abbreviations.sh
+
+autoload edit-command-line; zle -N edit-command-line
+
+bindkey '|a' fix-git-merge
+bindkey '|e' edit-command-line
+bindkey -s '|j' '**\t'
+bindkey -s '|k' '^A^K'
 
 
 # [ -d $HOME/torch ] && . $HOME/torch/install/bin/torch-activate

@@ -12,9 +12,18 @@ There are a bunch of aliases and commands to make it faster to work in the
 terminal.
 
 ### General
-- `<ctrl-g>` wipes out the current line.  I use this whenever I start typing
+- `<g-j k>` wipes out the current line.  I use this whenever I start typing
   something and change my mind.
 - `<ctrl-r>` uses `fzf` to search through previous commands
+- `<g-j e>` opens the current command in vim so you can edit it
+- `<g-j j>` looks for files beginning with prefix using `fzf`.  Press it right
+  at the end of a word.  For example
+
+  ```
+  vim map<g-j j>
+  ```
+
+  in this directory will quickly let you edit `dotConfig/nvim/config/maps.vim`
 - `c` => `cd`
 - `k` => `cd ..`
 - `l` => `ls`
@@ -152,7 +161,7 @@ There are a bunch of aliases to make git faster and easier to use
 
 #### Commiting changes
 - `gc <message>` commits with given message.  Note that if you accidentally use
-  this command when you meant to use `gca`, you can press `<ctrl-o>` with the
+  this command when you meant to use `gca`, you can press `<g-j> a` with the
   command visible to correct it.
 - `gca <message>` adds changed files and commits with given message
 - `gcm` amends previous commit
