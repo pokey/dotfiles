@@ -38,10 +38,22 @@ source ~/.zsh/abbreviations.sh
 
 autoload edit-command-line; zle -N edit-command-line
 
+# From http://superuser.com/a/378045
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    bg
+    zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N fancy-ctrl-z
+
 bindkey '|a' fix-git-merge
 bindkey '|e' edit-command-line
 bindkey -s '|j' '**\t'
 bindkey -s '|k' '^A^K'
+bindkey '^Z' fancy-ctrl-z
 
 
 # [ -d $HOME/torch ] && . $HOME/torch/install/bin/torch-activate

@@ -41,6 +41,7 @@ abbreviations=(
   "cg"    'cd $(git rev-parse --show-toplevel)__EXPAND__'
   "lf"    '!$__EXPAND__'
   "lc"    '!!:0__EXPAND__'
+  "k9"    'kill -9 __EXPAND__'
 )
 
 for i in {1..9};
@@ -61,7 +62,7 @@ magic-abbrev-expand() {
 
     LBUFFER+=${expansion:-$MATCH}
 
-    [[ "$expand" ]] && zle expand-or-complete
+    [[ "$expand" ]] && zle fzf-completion
 
     if [[ "${expansion}" =~ "__CURSOR__" ]]
     then

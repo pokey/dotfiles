@@ -121,6 +121,9 @@ terminal.
 - `glances` brings up a display with a bunch of information about system,
   running processes, etc.  I usually always have this running in a tmux
   session.
+- `k9` uses `fzf` to find a list of processes to kill forcefully
+- `<ctrl-z>` when in the middle of typing a line lets you run a different
+  command and then puts the current command back on the buffer
 
 ### Python
 - `ccp` will create a brand new python project from a cookiecutter template in
