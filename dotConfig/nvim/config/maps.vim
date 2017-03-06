@@ -7,10 +7,6 @@ vmap <leader>, <c-y>,
 xmap gl <Plug>(EasyAlign)
 nmap gl <Plug>(EasyAlign)
 
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
 " tnoremap <Esc> <C-\><C-n>
 
 " s{char}{char} to move to {char}{char}
@@ -73,6 +69,11 @@ vmap <bslash> gc
 nnoremap gm :!cp<space>%<space>%:h/
 nnoremap <silent> <leader>a :ArgWrap<CR>
 nnoremap <silent> <leader>g :RopeGotoDefinition<cr>
+
+nnoremap <silent> gt :Tags<cr>
+nnoremap <silent> <leader>f <c-]>
+nnoremap <silent> <leader>; <c-t>
+nnoremap <silent> <leader>o :TagbarToggle<cr>
 
 vnoremap <Leader>y "+y
 vnoremap <Leader>d "+d
