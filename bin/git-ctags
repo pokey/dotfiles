@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+PATH="/usr/local/bin:$PATH"
+dir="`git rev-parse --git-dir`"
+repo_dir="`git rev-parse --show-toplevel`"
+trap 'rm -f "$dir/tags.$$"' EXIT INT TERM
+ag -g '' "$repo_dir" | \
+   ctags -L - --tag-relative=yes --fields=+l --extras=+q -o "$dir/tags.$$"
+mv "$dir/tags.$$" "$dir/tags"

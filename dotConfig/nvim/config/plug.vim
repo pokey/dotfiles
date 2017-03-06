@@ -62,4 +62,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'christoomey/vim-sort-motion'
 
+Plug 'universal-ctags/ctags'
+Plug 'majutsushi/tagbar'
+Plug 'craigemery/vim-autotag'
+
 call plug#end()

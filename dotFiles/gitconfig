@@ -1,15 +1,21 @@
-[user]
-	name = $fullname
-	email = $email
+[include]
+   path = .gitconfig.personal
 [alias]
 	co = checkout
 	ci = commit
 	br = branch
 	st = status
+	ctags = "!git-ctags"
 [push]
 	default = matching
-[color \"diff\"]
+[color "diff"]
 	meta = yellow bold
 [pager]
 	diff = diff-so-fancy | less --tabs=3 -RX
 	show = diff-so-fancy | less --tabs=3 -RX
+[init]
+	templatedir = ~/.git_template
+[push]
+	default = tracking
+[core]
+	excludesfile = ~/.gitignore

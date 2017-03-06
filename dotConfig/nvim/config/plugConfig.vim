@@ -2,6 +2,9 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+let g:autotagTagsFile=".git/tags"
+let g:autotagCtagsCmd="ctags --fields=+l --tag-relative=yes --extras=+q"
+
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 
 let g:airline_powerline_fonts = 1

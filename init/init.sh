@@ -125,6 +125,8 @@ if test "$(uname)" = "Darwin"; then
   brew install reattach-to-user-namespace
   brew install thefuck
   brew install diff-so-fancy
+  brew tap universal-ctags/universal-ctags && \
+     brew install --HEAD universal-ctags
 fi
 
 $INSTALL hub
@@ -157,11 +159,11 @@ export BASEPATH fullname gh_user email ssid
 
 # Instantiate template files
 backup "$HOME/.cookiecutterrc"
-backup "$HOME/.gitconfig"
+backup "$HOME/.gitconfig.personal"
 backup "$HOME/.zshrc"
 backup "$HOME/.bashrc"
 $SCRIPTPATH/template.sh cookiecutterrc "$HOME/.cookiecutterrc"
-$SCRIPTPATH/template.sh gitconfig "$HOME/.gitconfig"
+$SCRIPTPATH/template.sh gitconfig.personal "$HOME/.gitconfig.personal"
 $SCRIPTPATH/template.sh zshrc "$HOME/.zshrc"
 $SCRIPTPATH/template.sh bashrc "$HOME/.bashrc"
 $SCRIPTPATH/template.sh hammerspoon "$BASEPATH/dotFiles/hammerspoon/ssid.lua"
