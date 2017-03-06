@@ -45,7 +45,7 @@ Plug 'mattn/emmet-vim'
 Plug 'easymotion/vim-easymotion'
 
 Plug 'terryma/vim-multiple-cursors'
-Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'vito-c/jq.vim'
