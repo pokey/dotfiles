@@ -54,6 +54,17 @@ Shortcuts
 ##### Window management
 - `<g-j> <space>` switches windows
 
+### ctags
+ctags is a really useful tool for navigating files.  It tracks all the function
+and class declarations in all your files, and lets you search for them and jump
+to them.
+#### Normal mode
+- `gt` opens a list of tags in `fzf`.
+- `<g-j> f` finds the tag corresponding to the word under your cursor
+- `<g-j> ;` jumps back to where you were after finding the tag under the cursor
+- `<g-j> o` opens a sidebar which shows you all the tags in the current file.
+  See [tagbar](https://github.com/majutsushi/tagbar) for more info.
+
 ### Python
 #### Normal mode
 - `<g-j> i` sorts imports
