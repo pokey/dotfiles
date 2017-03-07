@@ -84,6 +84,8 @@ set suffixes=.bak,~,.o,.h,.info,.swp,.class
 " patterns to put to ignore when completing file names
 set wildignore=*.bak,~,*.o,*.info,*.swp,*.class
 
+set notagrelative
+
 " get special definitions for different file types
 
 " get directory browser
