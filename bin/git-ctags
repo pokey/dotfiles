@@ -8,4 +8,4 @@ dir="$(git rev-parse --git-dir)"
 trap 'rm -f "$dir/tags.$$"' EXIT INT TERM
 
 ag -l | ctags -L - $CTAGS_FLAGS -o "$dir/tags.$$"
-mv "$dir/tags.$$" "$dir/tags"
+mv "$dir/tags.$$" ".tags"

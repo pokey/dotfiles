@@ -2,7 +2,7 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-let g:autotagTagsFile=".git/tags"
+let g:autotagTagsFile=".tags"
 let g:autotagCtagsCmd="ctags ".$CTAGS_FLAGS
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
