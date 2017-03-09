@@ -66,4 +66,6 @@ Plug 'universal-ctags/ctags'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
 
+Plug 'junegunn/gv.vim'
+
 call plug#end()
