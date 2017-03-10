@@ -18,7 +18,7 @@ export EDITOR=nvim
 export VIMPAGER_VIM=nvim
 export PAGER=$HOME/.config/nvim/plugged/vimpager/vimpager
 export VIMPAGER_RC=$HOME/.vimpagerrc
-export CTAGS_FLAGS="--fields=+l --extras=+q"
+export CTAGS_FLAGS="--tag-relative=yes --fields=+l --extras=+q"
 
 [ -d $HOME/.custom.rc ] && source $HOME/.custom.rc
 
