@@ -50,3 +50,14 @@ mc() {
    mkdir $1
    cd $1
 }
+
+# tags - search ctags
+tags() {
+  local line
+  [ -e .tags ] &&
+  line=$(
+    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' .tags |
+    cut -c1-80 | fzf-tmux --nth=1,2
+  ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
+                                      -c "silent tag $(cut -f2 <<< "$line")"
+}

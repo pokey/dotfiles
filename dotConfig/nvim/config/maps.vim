@@ -75,6 +75,8 @@ nnoremap <silent> <leader>f <c-]>
 nnoremap <silent> <leader>; <c-t>
 nnoremap <silent> <leader>o :TagbarToggle<cr>
 
+nnoremap <silent> <leader>b :Gbrowse<cr>
+
 vnoremap <Leader>y "+y
 vnoremap <Leader>d "+d
 nnoremap <Leader>y "+y`]
