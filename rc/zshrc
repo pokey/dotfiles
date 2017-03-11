@@ -49,10 +49,10 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 
-bindkey '|a' fix-git-merge
-bindkey '|e' edit-command-line
-bindkey -s '|j' '**\t'
-bindkey -s '|k' '^A^K'
+bindkey '^Qa' fix-git-merge
+bindkey '^Qe' edit-command-line
+bindkey -s '^Qj' '**\t'
+bindkey -s '^Qk' '^A^K'
 bindkey '^Z' fancy-ctrl-z
 
 

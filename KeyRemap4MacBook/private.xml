@@ -427,7 +427,7 @@
             </autogen>
             <autogen> __SimultaneousKeyPresses__
                KeyCode::G, KeyCode::J,
-               KeyCode::BACKSLASH, ModifierFlag::SHIFT_L
+               KeyCode::Q, ModifierFlag::CONTROL_R
             </autogen>
             <autogen> __SimultaneousKeyPresses__
                KeyCode::F, KeyCode::H,
