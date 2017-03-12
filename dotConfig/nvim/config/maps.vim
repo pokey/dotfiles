@@ -24,50 +24,85 @@ nnoremap <silent> <c-h>k :TmuxNavigateUp<cr>
 nnoremap <silent> <c-h>l :TmuxNavigateRight<cr>
 " nnoremap <silent> <c-h>o :TmuxNavigatePrevious<cr>
 
+" Make visual mode yank / paste leave cursor at end, making it easier to
+" repeat the command
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" Source vim again
 nnoremap gv :source ~/.config/nvim/init.vim<cr>
 
+" Tab navigation
 map <silent> <Char-0xA1> :tabn 1<cr>
 map <silent> <Char-0x2122> :tabn 2<cr>
 map <silent> <Char-0xA3> :tabn 3<cr>
 map <silent> <Char-0xA2> :tabn 4<cr>
 map <silent> <Char-0x221E> :tabn 5<cr>
 
-nnoremap <silent> <leader>k :FZF<cr>
-nnoremap <silent> <leader>j :Buffers<cr>
+" Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>
 nnoremap <silent> g? :Helptags/<cr>
 nnoremap <silent> gx :Commands<cr>
+
+" UltiSnips
 nnoremap <silent> gi :UltiSnipsEdit<cr>
-nnoremap <silent> Q :q<cr>
+
+" Window movement
 nnoremap <silent> <C-k> <C-w><C-w>
 nnoremap <silent> <leader><space> <C-w><C-w>
-" tnoremap <silent> <C-k> <C-\><C-n><C-w><C-w>
+
+" Quit
+nnoremap <silent> Q :q<cr>
+
+" Reload current buffer
+nnoremap <silent> gr :e<cr>
+
+" Open file under cursor in new tab
 nnoremap <silent> <C-j> :vertical wincmd F<CR>
+
+" Save shortcuts
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <ESC>:w<cr>
+
+" Opening files / buffers using fzf
+nnoremap <silent> <leader>k :FZF<cr>
+nnoremap <silent> <leader>j :Buffers<cr>
+
+" Opening files manually
 nnoremap <leader>n :e<space>%:h/
-nnoremap <leader>i :Isort<cr>
-nnoremap ga :Ag<space>
 nnoremap <C-p> :e<space>
-imap <c-x><c-f> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-nnoremap <silent> gn :noh<cr>
-nnoremap <silent> gu :UndotreeToggle<cr>
-nnoremap <silent> gf :NERDTreeToggle<cr>
-nnoremap <silent> gk :Goyo<cr>
-nnoremap <silent> gr :e<cr>
-nmap <bslash><bslash> gcc
-nmap <bslash> gc
-vmap <bslash> gc
-nnoremap gm :!cp<space>%<space>%:h/
+
+" Python stuff
+nnoremap <leader>i :Isort<cr>
 nnoremap <silent> <leader>a :ArgWrap<CR>
 nnoremap <silent> <leader>g :RopeGotoDefinition<cr>
 
+" Find in files
+nnoremap ga :Ag<space>
+
+" Completion using fzf in insert mode
+imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Clear highlighting after search
+nnoremap <silent> gn :noh<cr>
+
+" Various displays
+nnoremap <silent> gu :UndotreeToggle<cr>
+nnoremap <silent> gf :NERDTreeToggle<cr>
+nnoremap <silent> gk :Goyo<cr>
+
+" Commenting things out
+nmap <bslash><bslash> gcc
+nmap <bslash> gc
+vmap <bslash> gc
+
+" Move file
+nnoremap gm :!cp<space>%<space>%:h/
+
+" Ctags
 nnoremap <silent> <leader>t :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
 nnoremap <silent> <leader>p <c-t>
@@ -80,6 +115,7 @@ tnoremap <silent> <leader>; <C-\><C-n>:tabn<cr>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <silent> <leader><space> <C-\><C-n><C-w><C-w>
 
+" Git
 nnoremap <silent> <leader>b :Gbrowse<cr>
 
 " vnoremap <Leader>y "+y
