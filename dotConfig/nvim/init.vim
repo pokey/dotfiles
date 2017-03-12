@@ -13,6 +13,8 @@ set directory=$HOME/.tmp//
 " define the top hel file
 " set helpfile=$VIM/doc/help.txt
 
+set showtabline=0
+
 set hidden
 
 " no scrolling acceptable

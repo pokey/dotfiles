@@ -7,8 +7,6 @@ vmap <leader>, <c-y>,
 xmap gl <Plug>(EasyAlign)
 nmap gl <Plug>(EasyAlign)
 
-" tnoremap <Esc> <C-\><C-n>
-
 " s{char}{char} to move to {char}{char}
 nmap <leader>s <Plug>(easymotion-overwin-f2)
 
@@ -51,7 +49,7 @@ nnoremap <silent> <leader><space> <C-w><C-w>
 " tnoremap <silent> <C-k> <C-\><C-n><C-w><C-w>
 nnoremap <silent> <C-j> :vertical wincmd F<CR>
 nnoremap <C-s> :w<cr>
-imap <C-s> <ESC>:w<cr>
+inoremap <C-s> <ESC>:w<cr>
 nnoremap <leader>n :e<space>%:h/
 nnoremap <leader>i :Isort<cr>
 nnoremap ga :Ag<space>
@@ -70,20 +68,27 @@ nnoremap gm :!cp<space>%<space>%:h/
 nnoremap <silent> <leader>a :ArgWrap<CR>
 nnoremap <silent> <leader>g :RopeGotoDefinition<cr>
 
-nnoremap <silent> gt :Tags<cr>
+nnoremap <silent> <leader>t :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
-nnoremap <silent> <leader>; <c-t>
+nnoremap <silent> <leader>p <c-t>
 nnoremap <silent> <leader>o :TagbarToggle<cr>
+
+" Terminal
+nnoremap <silent> <leader>z :tabe <bar> term<cr>
+nnoremap <silent> <leader>; :tabn<cr>
+tnoremap <silent> <leader>; <C-\><C-n>:tabn<cr>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <silent> <leader><space> <C-\><C-n><C-w><C-w>
 
 nnoremap <silent> <leader>b :Gbrowse<cr>
 
-vnoremap <Leader>y "+y
-vnoremap <Leader>d "+d
-nnoremap <Leader>y "+y`]
-nnoremap <Leader>p "+p`]
-nnoremap <Leader>P "+P
-vnoremap <Leader>p "+p`]
-vnoremap <Leader>P "+P
+" vnoremap <Leader>y "+y
+" vnoremap <Leader>d "+d
+" nnoremap <Leader>y "+y`]
+" nnoremap <Leader>p "+p`]
+" nnoremap <Leader>P "+P
+" vnoremap <Leader>p "+p`]
+" vnoremap <Leader>P "+P
 
 onoremap iu :<c-u>normal! `[v`]<cr>
 vnoremap iu :<c-u>normal! `[v`]<cr>
