@@ -103,7 +103,7 @@ vmap <bslash> gc
 nnoremap gm :!cp<space>%<space>%:h/
 
 " Ctags
-nnoremap <silent> <leader>t :Tags<cr>
+nnoremap <silent> gt :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
 nnoremap <silent> <leader>p <c-t>
 nnoremap <silent> <leader>o :TagbarToggle<cr>
