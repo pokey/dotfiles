@@ -2,6 +2,8 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+let g:vim_markdown_new_list_item_indent = 2
+
 let g:jsx_ext_required = 0
 let g:tmux_navigator_no_mappings = 1
 
