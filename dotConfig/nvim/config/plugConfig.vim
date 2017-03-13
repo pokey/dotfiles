@@ -2,6 +2,9 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+let g:jsx_ext_required = 0
+let g:tmux_navigator_no_mappings = 1
+
 let g:autotagTagsFile=".tags"
 let g:autotagCtagsCmd="ctags ".$CTAGS_FLAGS
 

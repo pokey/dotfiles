@@ -34,16 +34,33 @@ nnoremap <silent> p p`]
 nnoremap gv :source ~/.config/nvim/init.vim<cr>
 
 " Tab navigation
-map <silent> <Char-0xA1> :tabn 1<cr>
-map <silent> <Char-0x2122> :tabn 2<cr>
-map <silent> <Char-0xA3> :tabn 3<cr>
-map <silent> <Char-0xA2> :tabn 4<cr>
-map <silent> <Char-0x221E> :tabn 5<cr>
+nnoremap <silent> <leader>0 :tabn 1<cr>
+tnoremap <silent> <leader>0 <C-\><C-n>:tabn 1<cr>
+nnoremap <silent> <leader>1 :tabn 2<cr>
+tnoremap <silent> <leader>1 <C-\><C-n>:tabn 2<cr>
+nnoremap <silent> <leader>2 :tabn 3<cr>
+tnoremap <silent> <leader>2 <C-\><C-n>:tabn 3<cr>
+nnoremap <silent> <leader>3 :tabn 4<cr>
+tnoremap <silent> <leader>3 <C-\><C-n>:tabn 4<cr>
+nnoremap <silent> <leader>4 :tabn 5<cr>
+tnoremap <silent> <leader>4 <C-\><C-n>:tabn 5<cr>
+nnoremap <silent> <leader>5 :tabn 6<cr>
+tnoremap <silent> <leader>5 <C-\><C-n>:tabn 6<cr>
+nnoremap <silent> <leader>6 :tabn 7<cr>
+tnoremap <silent> <leader>6 <C-\><C-n>:tabn 7<cr>
+nnoremap <silent> <leader>7 :tabn 8<cr>
+tnoremap <silent> <leader>7 <C-\><C-n>:tabn 8<cr>
+nnoremap <Leader>; :exe "tabn ".g:lasttab<CR>
+tnoremap <Leader>; <C-\><C-n>:exe "tabn ".g:lasttab<CR>
+nnoremap <silent> <leader>n :tabn<cr>
+tnoremap <silent> <leader>n <C-\><C-n>:tabn<cr>
+nnoremap <silent> <leader>p :tabp<cr>
+tnoremap <silent> <leader>p <C-\><C-n>:tabp<cr>
 
 " Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>
-nnoremap <silent> g? :Helptags/<cr>
+nnoremap <silent> g? :Helptags<cr>
 nnoremap <silent> gx :Commands<cr>
 
 " UltiSnips
@@ -71,7 +88,7 @@ nnoremap <silent> <leader>k :FZF<cr>
 nnoremap <silent> <leader>j :Buffers<cr>
 
 " Opening files manually
-nnoremap <leader>n :e<space>%:h/
+nnoremap <leader>e :e<space>%:h/
 nnoremap <C-p> :e<space>
 
 " Python stuff
@@ -105,13 +122,11 @@ nnoremap gm :!cp<space>%<space>%:h/
 " Ctags
 nnoremap <silent> gt :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
-nnoremap <silent> <leader>p <c-t>
+nnoremap <silent> <leader>' <c-t>
 nnoremap <silent> <leader>o :TagbarToggle<cr>
 
 " Terminal
-nnoremap <silent> <leader>z :tabe <bar> term<cr>
-nnoremap <silent> <leader>; :tabn<cr>
-tnoremap <silent> <leader>; <C-\><C-n>:tabn<cr>
+nnoremap <silent> <leader>c :tabe <bar> tabm <bar> term<cr>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <silent> <leader><space> <C-\><C-n><C-w><C-w>
 
@@ -138,7 +153,7 @@ map <C-y> :let g:SMARTAUTOCOMPLETE_URI='http://localhost:808
 
 nnoremap ge :Xbit<cr>
 
-nnoremap <silent> <leader>e :ToggleExtraWidth<cr>
+nnoremap <silent> <leader>E :ToggleExtraWidth<cr>
 
 " multi search on alt 8
 nmap 8 :exe "Search ".expand("<cword>")<cr>
