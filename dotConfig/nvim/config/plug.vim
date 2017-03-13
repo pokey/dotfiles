@@ -68,4 +68,7 @@ Plug 'craigemery/vim-autotag'
 
 Plug 'junegunn/gv.vim'
 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
 call plug#end()
