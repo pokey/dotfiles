@@ -57,6 +57,8 @@ tnoremap <silent> <leader>n <C-\><C-n>:tabn<cr>
 nnoremap <silent> <leader>p :tabp<cr>
 tnoremap <silent> <leader>p <C-\><C-n>:tabp<cr>
 
+nnoremap <silent> <leader>d :ZoomToggle<CR>
+
 " Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>

@@ -32,3 +32,18 @@ function! s:AddExtraWidth()
    endif
 endfunction
 command! AddExtraWidth call s:AddExtraWidth()
+
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        silent exec 'topleft split | buf ' . t:other 
+        " XXX Figure out how to get it to play nicely with termenter autocmd
+        silent exec 'wincmd j'
+        let t:zoomed = 0
+    else
+        let t:other = expand('%')
+        let t:zoomed = 1
+        silent exec 'q'
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
