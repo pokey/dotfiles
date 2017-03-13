@@ -134,6 +134,7 @@ tnoremap <silent> <leader><space> <C-\><C-n><C-w><C-w>
 
 " Git
 nnoremap <silent> <leader>b :Gbrowse<cr>
+vnoremap <silent> <leader>b :Gbrowse<cr>
 
 " vnoremap <Leader>y "+y
 " vnoremap <Leader>d "+d
