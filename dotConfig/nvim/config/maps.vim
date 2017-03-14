@@ -62,6 +62,7 @@ nnoremap <silent> <leader>d :ZoomToggle<CR>
 " Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>
+nnoremap <silent> gh :History<cr>
 nnoremap <silent> g? :Helptags<cr>
 nnoremap <silent> gx :Commands<cr>
 

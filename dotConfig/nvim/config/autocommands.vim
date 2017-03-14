@@ -20,6 +20,13 @@ augroup tabs
   au FileType snippets setlocal noexpandtab
   au BufRead,BufNewFile *.java set softtabstop=2 shiftwidth=2 expandtab
   au BufRead,BufNewFile *.otl set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+  au BufRead,BufNewFile *.py
+    \ setlocal tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ smarttab
+    \ expandtab
 augroup end
 
 augroup gzip
