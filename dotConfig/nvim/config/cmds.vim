@@ -47,3 +47,53 @@ function! s:ZoomToggle() abort
     endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
+
+" Take a traceback that's been converted to a python string and make it pretty
+function! s:PrettyTraceback()
+    " Save cursor position and 'a' register
+    let l:save_cursor = getpos(".")   
+    let l:var_a = getreg('a', 1, 1)
+    let l:var_amode = getregtype('a')
+
+    " Find string, yank it, and store it
+    call search('Trace', 'b')
+    normal! hv
+    call search("[^\\\\]'")
+    silent normal! l"ay
+    let l:val = getreg('a')
+
+    " Turn into python program
+    " XXX Don't just randomly save it to __pretty_traceback__
+    let l:val = substitute(l:val, '\n', '', 'g')
+    let l:val = "open('__pretty_traceback__', 'w').write(".l:val.")"
+
+    " Run the python program
+    exe "python ".l:val
+
+    " Restore cursor position and 'a' register
+    call setpos('.', l:save_cursor)   
+    call setreg('a', l:var_a, l:var_amode)
+    silent exe "spl __pretty_traceback__"
+endfunction
+command! PrettyTraceback call s:PrettyTraceback()
+
+" Adapted from https://ubuntuincident.wordpress.com/2016/06/01/vim-run-current-file-with-python/
+function! s:RunWithPython()
+   " This is the macro to grab the traceback: ?Tracebackhv/[^\\]'ly
+   let first = getline(1)
+   let first = substitute(first, "^#!", "", "")
+   let first = substitute(first, "\n", "", "")
+   let exe = ""    " the Python binary to call
+
+   if first =~ "/usr/bin/env "
+      let exe = split(first)[-1]
+   elseif first == "/opt/anaconda3/bin/python3"
+      let exe = first
+   endif
+   if exe == ""
+      let exe = "python"
+   endif
+   " echo exe
+   echo system(exe . " " . expand('%'))
+endfunction
+command! RunWithPython call s:RunWithPython()

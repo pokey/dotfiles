@@ -7,6 +7,11 @@ vmap <leader>, <c-y>,
 xmap gl <Plug>(EasyAlign)
 nmap gl <Plug>(EasyAlign)
 
+nnoremap <silent> gp :lprev<cr>
+nnoremap <silent> gn :lnext<cr>
+nnoremap <silent> qp :cprev<cr>
+nnoremap <silent> qn :cnext<cr>
+
 " s{char}{char} to move to {char}{char}
 nmap <leader>s <Plug>(easymotion-overwin-f2)
 
@@ -59,10 +64,15 @@ tnoremap <silent> <leader>p <C-\><C-n>:tabp<cr>
 
 nnoremap <silent> <leader>d :ZoomToggle<CR>
 
+nnoremap <leader>[ <esc>
+vnoremap <leader>[ <esc>
+inoremap <leader>[ <esc>
+tnoremap <leader>[ <C-\><C-n>
+
 " Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>
-nnoremap <silent> gh :History<cr>
+nnoremap <silent> <leader>h :History<cr>
 nnoremap <silent> g? :Helptags<cr>
 nnoremap <silent> gx :Commands<cr>
 
@@ -72,6 +82,7 @@ nnoremap <silent> gi :UltiSnipsEdit<cr>
 " Window movement
 nnoremap <silent> <C-k> <C-w><C-w>
 nnoremap <silent> <leader><space> <C-w><C-w>
+nnoremap <silent> <leader>o <C-w><C-w>
 
 " Quit
 nnoremap <silent> Q :q<cr>
@@ -107,7 +118,7 @@ imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Clear highlighting after search
-nnoremap <silent> gn :noh<cr>
+nnoremap <silent> gh :noh<cr>
 
 " Various displays
 nnoremap <silent> gu :UndotreeToggle<cr>
@@ -126,12 +137,16 @@ nnoremap gm :!cp<space>%<space>%:h/
 nnoremap <silent> gt :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
 nnoremap <silent> <leader>' <c-t>
-nnoremap <silent> <leader>o :TagbarToggle<cr>
+nnoremap <silent> go :TagbarToggle<cr>
 
 " Terminal
 nnoremap <silent> <leader>c :tabe <bar> tabm <bar> term<cr>
+tnoremap <silent> <leader>c <C-\><C-n>:tabe <bar> tabm <bar> term<cr>
+tnoremap <silent> <leader>t <C-\><C-n>:PrettyTraceback<cr>
+nnoremap <silent> <leader>t :PrettyTraceback<cr>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <silent> <leader><space> <C-\><C-n><C-w><C-w>
+tnoremap <silent> <leader>o <C-\><C-n><C-w><C-w>
 
 " Git
 nnoremap <silent> <leader>b :Gbrowse<cr>

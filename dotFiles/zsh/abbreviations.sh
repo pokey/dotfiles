@@ -43,6 +43,7 @@ abbreviations=(
   "lf"    '!$__EXPAND__'
   "lc"    '!!:0__EXPAND__'
   "k9"    'kill -9 __EXPAND__'
+  "ghc"   'git rev-parse HEAD'
 )
 
 for i in {1..9};
