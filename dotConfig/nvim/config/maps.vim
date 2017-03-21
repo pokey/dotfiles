@@ -39,28 +39,17 @@ nnoremap <silent> p p`]
 nnoremap gv :source ~/.config/nvim/init.vim<cr>
 
 " Tab navigation
-nnoremap <silent> <leader>0 :tabn 1<cr>
-tnoremap <silent> <leader>0 <C-\><C-n>:tabn 1<cr>
-nnoremap <silent> <leader>1 :tabn 2<cr>
-tnoremap <silent> <leader>1 <C-\><C-n>:tabn 2<cr>
-nnoremap <silent> <leader>2 :tabn 3<cr>
-tnoremap <silent> <leader>2 <C-\><C-n>:tabn 3<cr>
-nnoremap <silent> <leader>3 :tabn 4<cr>
-tnoremap <silent> <leader>3 <C-\><C-n>:tabn 4<cr>
-nnoremap <silent> <leader>4 :tabn 5<cr>
-tnoremap <silent> <leader>4 <C-\><C-n>:tabn 5<cr>
-nnoremap <silent> <leader>5 :tabn 6<cr>
-tnoremap <silent> <leader>5 <C-\><C-n>:tabn 6<cr>
-nnoremap <silent> <leader>6 :tabn 7<cr>
-tnoremap <silent> <leader>6 <C-\><C-n>:tabn 7<cr>
-nnoremap <silent> <leader>7 :tabn 8<cr>
-tnoremap <silent> <leader>7 <C-\><C-n>:tabn 8<cr>
-nnoremap <Leader>; :exe "tabn ".g:lasttab<CR>
-tnoremap <Leader>; <C-\><C-n>:exe "tabn ".g:lasttab<CR>
+for i in range(0, 9)
+   exe "nnoremap <silent> <leader>".i." :tabn ".(i+1)."<cr>"
+   exe "tnoremap <silent> <leader>".i.
+   \   " <C-\\><C-n>:call g:TermLeave() <bar> tabn ".(i+1)."<cr>"
+endfor
+nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<CR>
+tnoremap <silent> <Leader>; <C-\><C-n>:call g:TermLeave() <bar> exe "tabn ".g:lasttab<CR>
 nnoremap <silent> <leader>n :tabn<cr>
-tnoremap <silent> <leader>n <C-\><C-n>:tabn<cr>
+tnoremap <silent> <leader>n <C-\><C-n>:call g:TermLeave() <bar> tabn<cr>
 nnoremap <silent> <leader>p :tabp<cr>
-tnoremap <silent> <leader>p <C-\><C-n>:tabp<cr>
+tnoremap <silent> <leader>p <C-\><C-n>:call g:TermLeave() <bar> tabp<cr>
 
 nnoremap <silent> <leader>d :ZoomToggle<CR>
 
@@ -141,12 +130,12 @@ nnoremap <silent> go :TagbarToggle<cr>
 
 " Terminal
 nnoremap <silent> <leader>c :tabe <bar> tabm <bar> term<cr>
-tnoremap <silent> <leader>c <C-\><C-n>:tabe <bar> tabm <bar> term<cr>
-tnoremap <silent> <leader>t <C-\><C-n>:PrettyTraceback<cr>
+tnoremap <silent> <leader>c <C-\><C-n>:call g:TermLeave() <bar> tabe <bar> tabm <bar> term<cr>
+tnoremap <silent> <leader>t <C-\><C-n>:call g:TermLeave() <bar> PrettyTraceback<cr>
 nnoremap <silent> <leader>t :PrettyTraceback<cr>
 tnoremap <Esc> <C-\><C-n>
-tnoremap <silent> <leader><space> <C-\><C-n><C-w><C-w>
-tnoremap <silent> <leader>o <C-\><C-n><C-w><C-w>
+tnoremap <silent> <leader><space> <C-\><C-n>:call g:TermLeave() <bar> wincmd w<cr>
+tnoremap <silent> <leader>o <C-\><C-n>:call g:TermLeave() <bar> wincmd w<cr>
 
 " Git
 nnoremap <silent> <leader>b :Gbrowse<cr>

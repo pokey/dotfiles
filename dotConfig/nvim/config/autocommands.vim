@@ -11,7 +11,7 @@ augroup end
 
 augroup termenter
    au!
-   au BufWinEnter,WinEnter term://* startinsert
+   au BufEnter term://* MaybeEnterTerm
 augroup end
 
 augroup tabs

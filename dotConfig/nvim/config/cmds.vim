@@ -73,7 +73,7 @@ function! s:PrettyTraceback()
     " Restore cursor position and 'a' register
     call setpos('.', l:save_cursor)   
     call setreg('a', l:var_a, l:var_amode)
-    silent exe "spl __pretty_traceback__"
+    exe "spl __pretty_traceback__"
 endfunction
 command! PrettyTraceback call s:PrettyTraceback()
 
@@ -97,3 +97,15 @@ function! s:RunWithPython()
    echo system(exe . " " . expand('%'))
 endfunction
 command! RunWithPython call s:RunWithPython()
+
+function! g:TermLeave()
+   let b:was_term = 1
+endfunction
+
+function! s:MaybeEnterTerm()
+   if exists('b:was_term') && b:was_term
+      let b:was_term = 0
+      startinsert
+   endif
+endfunction
+command! MaybeEnterTerm call s:MaybeEnterTerm()
