@@ -14,3 +14,7 @@ endglobal
 post_expand "expand_snip(snip, 'dst')"
 snippet src
 endsnippet
+
+snippet nt "namedtuple" b
+$1 = namedtuple("$1", ["$0"])
+endsnippet

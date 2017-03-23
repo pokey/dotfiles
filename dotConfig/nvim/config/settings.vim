@@ -1,6 +1,8 @@
 set directory=$HOME/.tmp//
 set nocompatible
 
+set virtualedit=""
+
 set showtabline=0
 
 set hidden

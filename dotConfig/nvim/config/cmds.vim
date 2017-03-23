@@ -8,7 +8,7 @@ function! SetExecutableBit()
   checktime
   execute "au! FileChangedShell " . fname
 endfunction
-command! Xbit call SetExecutableBit()
+command! -bar Xbit call SetExecutableBit()
 
 " When the screen is smaller than wrap width, use this shortcut to make it wide
 " enough, and then switch back to even split
@@ -22,7 +22,7 @@ function! s:ToggleExtraWidth()
       silent exec 'vertical resize ' . l:half
    endif
 endfunction
-command! ToggleExtraWidth call s:ToggleExtraWidth()
+command! -bar ToggleExtraWidth call s:ToggleExtraWidth()
 
 function! s:AddExtraWidth()
    let l:textwidth = &textwidth
@@ -31,7 +31,7 @@ function! s:AddExtraWidth()
       silent exec 'vertical resize ' . l:textwidth
    endif
 endfunction
-command! AddExtraWidth call s:AddExtraWidth()
+command! -bar AddExtraWidth call s:AddExtraWidth()
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
@@ -46,7 +46,7 @@ function! s:ZoomToggle() abort
         silent exec 'q'
     endif
 endfunction
-command! ZoomToggle call s:ZoomToggle()
+command! -bar ZoomToggle call s:ZoomToggle()
 
 " Take a traceback that's been converted to a python string and make it pretty
 function! s:PrettyTraceback()
@@ -65,7 +65,7 @@ function! s:PrettyTraceback()
     " Turn into python program
     " XXX Don't just randomly save it to __pretty_traceback__
     let l:val = substitute(l:val, '\n', '', 'g')
-    let l:val = "open('__pretty_traceback__', 'w').write(".l:val.")"
+    let l:val = "open('.__pretty_traceback__', 'w').write(".l:val.")"
 
     " Run the python program
     exe "python ".l:val
@@ -73,9 +73,9 @@ function! s:PrettyTraceback()
     " Restore cursor position and 'a' register
     call setpos('.', l:save_cursor)   
     call setreg('a', l:var_a, l:var_amode)
-    exe "spl __pretty_traceback__"
+    exe "spl .__pretty_traceback__"
 endfunction
-command! PrettyTraceback call s:PrettyTraceback()
+command! -bar PrettyTraceback call s:PrettyTraceback()
 
 " Adapted from https://ubuntuincident.wordpress.com/2016/06/01/vim-run-current-file-with-python/
 function! s:RunWithPython()
@@ -96,11 +96,12 @@ function! s:RunWithPython()
    " echo exe
    echo system(exe . " " . expand('%'))
 endfunction
-command! RunWithPython call s:RunWithPython()
+command! -bar RunWithPython call s:RunWithPython()
 
-function! g:TermLeave()
+function! s:TermLeave()
    let b:was_term = 1
 endfunction
+command! -bar TermLeave call s:TermLeave()
 
 function! s:MaybeEnterTerm()
    if exists('b:was_term') && b:was_term
@@ -108,4 +109,4 @@ function! s:MaybeEnterTerm()
       startinsert
    endif
 endfunction
-command! MaybeEnterTerm call s:MaybeEnterTerm()
+command! -bar MaybeEnterTerm call s:MaybeEnterTerm()

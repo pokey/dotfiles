@@ -7,6 +7,9 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
 
+let g:UltiSnipsJumpForwardTrigger="<leader>k"
+let g:UltiSnipsJumpBackwardTrigger="<leader>f"
+
 let g:jsx_ext_required = 0
 let g:tmux_navigator_no_mappings = 1
 

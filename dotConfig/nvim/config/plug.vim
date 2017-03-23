@@ -18,6 +18,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-unimpaired'
+Plug 'pokey/vim-eunuch'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

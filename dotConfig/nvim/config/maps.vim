@@ -42,14 +42,14 @@ nnoremap gv :source ~/.config/nvim/init.vim<cr>
 for i in range(0, 9)
    exe "nnoremap <silent> <leader>".i." :tabn ".(i+1)."<cr>"
    exe "tnoremap <silent> <leader>".i.
-   \   " <C-\\><C-n>:call g:TermLeave() <bar> tabn ".(i+1)."<cr>"
+   \   " <C-\\><C-n>:TermLeave <bar> tabn ".(i+1)."<cr>"
 endfor
 nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<CR>
-tnoremap <silent> <Leader>; <C-\><C-n>:call g:TermLeave() <bar> exe "tabn ".g:lasttab<CR>
+tnoremap <silent> <Leader>; <C-\><C-n>:TermLeave <bar> exe "tabn ".g:lasttab<CR>
 nnoremap <silent> <leader>n :tabn<cr>
-tnoremap <silent> <leader>n <C-\><C-n>:call g:TermLeave() <bar> tabn<cr>
+tnoremap <silent> <leader>n <C-\><C-n>:TermLeave <bar> tabn<cr>
 nnoremap <silent> <leader>p :tabp<cr>
-tnoremap <silent> <leader>p <C-\><C-n>:call g:TermLeave() <bar> tabp<cr>
+tnoremap <silent> <leader>p <C-\><C-n>:TermLeave <bar> tabp<cr>
 
 nnoremap <silent> <leader>d :ZoomToggle<CR>
 
@@ -130,12 +130,17 @@ nnoremap <silent> go :TagbarToggle<cr>
 
 " Terminal
 nnoremap <silent> <leader>c :tabe <bar> tabm <bar> term<cr>
-tnoremap <silent> <leader>c <C-\><C-n>:call g:TermLeave() <bar> tabe <bar> tabm <bar> term<cr>
-tnoremap <silent> <leader>t <C-\><C-n>:call g:TermLeave() <bar> PrettyTraceback<cr>
+tnoremap <silent> <leader>c <C-\><C-n>:TermLeave <bar> tabe <bar> tabm <bar> term<cr>
+tnoremap <silent> <leader>t <C-\><C-n>:TermLeave <bar> PrettyTraceback<cr>
 nnoremap <silent> <leader>t :PrettyTraceback<cr>
 tnoremap <Esc> <C-\><C-n>
-tnoremap <silent> <leader><space> <C-\><C-n>:call g:TermLeave() <bar> wincmd w<cr>
-tnoremap <silent> <leader>o <C-\><C-n>:call g:TermLeave() <bar> wincmd w<cr>
+tnoremap <silent> <leader><space> <C-\><C-n>:TermLeave <bar> wincmd w<cr>
+tnoremap <silent> <leader>o <C-\><C-n>:TermLeave <bar> wincmd w<cr>
+
+augroup termnormmaps
+   au!
+   au BufEnter term://* nnoremap <buffer> <c-p> a<c-p>
+augroup end
 
 " Git
 nnoremap <silent> <leader>b :Gbrowse<cr>
