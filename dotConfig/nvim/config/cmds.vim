@@ -110,3 +110,5 @@ function! s:MaybeEnterTerm()
    endif
 endfunction
 command! -bar MaybeEnterTerm call s:MaybeEnterTerm()
+
+command! -bar -nargs=1 -bang RenameCopy saveas<bang> %:h/<args>
