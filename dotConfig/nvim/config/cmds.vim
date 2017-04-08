@@ -26,8 +26,8 @@ command! -bar ToggleExtraWidth call s:ToggleExtraWidth()
 
 function! s:AddExtraWidth()
    let l:textwidth = &textwidth
-   let l:mywidth = winwidth(0)
-   if (l:mywidth < l:textwidth)
+   let l:winwidth = winwidth(0)
+   if (l:winwidth < l:textwidth)
       silent exec 'vertical resize ' . l:textwidth
    endif
 endfunction
