@@ -38,10 +38,6 @@ vim()
     stty "$STTYOPTS"
 }
 
-# Init nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
 source "$HOME/.sh/aliases.sh"
 
 # For now only use vimpager on os x
