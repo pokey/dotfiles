@@ -60,3 +60,5 @@ bindkey '^Z' fancy-ctrl-z
 
 
 [ -d $HOME/torch-cl ] && . $HOME/torch-cl/install/bin/torch-activate
+
+source "$HOME/.zsh.plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

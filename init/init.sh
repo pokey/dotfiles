@@ -146,6 +146,10 @@ cd $HOME
 curl -so "$HOME/Library/Fonts/Inconsolata-g for Powerline.otf" \
    https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata-g/Inconsolata-g%20for%20Powerline.otf
 
+mkdir -p $HOME/.zsh.plugins
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+   $HOME/.zsh.plugins/zsh-syntax-highlighting
+
 # For use in template files
 echo -n "Full name: "
 read fullname
