@@ -58,6 +58,8 @@ vnoremap <leader>[ <esc>
 inoremap <leader>[ <esc>
 tnoremap <leader>[ <C-\><C-n>
 
+vmap <silent> <c-k> <Plug>VSurround]%a()<esc>"+P
+
 " Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>
@@ -69,7 +71,6 @@ nnoremap <silent> gx :Commands<cr>
 nnoremap <silent> gi :UltiSnipsEdit<cr>
 
 " Window movement
-nnoremap <silent> <C-k> <C-w><C-w>
 nnoremap <silent> <leader><space> <C-w><C-w>
 nnoremap <silent> <leader>o <C-w><C-w>
 
