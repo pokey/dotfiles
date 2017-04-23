@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd $HOME/src/source-code-modeling
+asciinema rec -c "tmux attach" "data/$USER"

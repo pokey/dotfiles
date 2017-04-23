@@ -9,6 +9,7 @@ export PATH=$PATH:/usr/local/texlive/2011/bin/x86_64-linux:~/bin:/usr/local/ssl/
 export PATH=$PATH:/Library/TeX/Root/bin/x86_64-darwin
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:$HOME/.cargo/bin
 export MANPATH=$MANPATH:/usr/local/texlive/2011/texmf/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 

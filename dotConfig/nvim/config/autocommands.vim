@@ -27,6 +27,13 @@ augroup tabs
     \ textwidth=79
     \ smarttab
     \ expandtab
+  au BufRead,BufNewFile *.js
+    \ setlocal tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
+    \ textwidth=79
+    \ smarttab
+    \ expandtab
 augroup end
 
 augroup gzip
