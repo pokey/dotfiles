@@ -9,6 +9,7 @@ abbreviations=(
   "gcl"   'pbpaste | xargs git clone'
   "gm"    'git merge'
   "gp"    'git push origin HEAD'
+  "gb"    'git branch'
   "gr"    'git rebase'
   "gri"   'git rebase -i'
   "grh"   'git reset --hard'

@@ -10,21 +10,11 @@ v() {
   file="$(fasd -Rfl "$1" | fzf-tmux -1 -0 --no-sort +m)" && vim "${file}" || return 1
 }
 
-# go - checkout git branch
-go() {
-  local branches branch
-  branches=$(git branch -vv --color)
-  branch=$(echo "$branches" | fzf-tmux --ansi -n 1 +m -0 -1 -q "$1")
-  if test "$?" = "0"; then
-    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-  fi
-}
-
 # list git branches
-gb() {
+go() {
   local branches branch out key
   branches=$(git branch -vv --color)
-  out=$(echo "$branches" | fzf-tmux --ansi -n 1 +m -0 -q "$1" --expect=ctrl-d)
+  out=$(echo "$branches" | fzf-tmux --ansi -n 1 +m -0 -1 -q "$1" --expect=ctrl-d)
   if test "$?" = "0"; then
     key=$(head -1 <<< "$out")
     branch=$(head -2 <<< "$out" | tail -1 | awk '{print $1}' | sed "s/.* //")
