@@ -58,6 +58,7 @@ vnoremap <leader>[ <esc>
 inoremap <leader>[ <esc>
 tnoremap <leader>[ <C-\><C-n>
 
+" Create markdown link from clipboard
 vmap <silent> <c-k> <Plug>VSurround]%a()<esc>"+P
 
 " Lists

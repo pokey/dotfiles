@@ -1,0 +1,19 @@
+snippet k "main() (main)"
+[$1]($0)
+endsnippet
+
+snippet u "using namespace" b
+using namespace ${1:std};
+endsnippet
+
+snippet i "include" b
+#include <${1:iostream}>
+endsnippet
+
+snippet I "include local" b
+#include "${1:`!p snip.rv += snip.basename`.h}"
+endsnippet
+
+snippet c "cout" b
+cout << ${2:"$1"} << endl;
+endsnippet
