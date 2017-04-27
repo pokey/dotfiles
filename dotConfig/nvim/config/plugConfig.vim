@@ -51,3 +51,14 @@ let g:syntastic_html_tidy_ignore_errors = [
     \ ]
 
 let g:peekaboo_delay = 750
+
+let g:user_emmet_settings = {
+\    'html' : {
+\        'snippets' : {
+\            'fa': '<i class="fa fa-|" aria-hidden="true"></i>',
+\        },
+\        'aliases': {
+\            'se': 'section',
+\        },
+\    },
+\}
