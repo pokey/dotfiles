@@ -3,13 +3,27 @@
 # Init pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# Name of new virtualenv
+MAJOR_VERSION=3
+
+if [ "$#" -ge 2 ]; then
+   if [ "$1" == "-2" ]; then
+      MAJOR_VERSION=2
+   elif [ "$1" == "-3" ]; then
+      MAJOR_VERSION=3
+   else
+      echo "Unexpected argument \"$2\""
+      exit -1
+   fi
+   shift
+fi
+
 NAME="$1"
 
 # Get latest Python version
-PYTHON3_VERSION=$(pyenv install -l | grep -e '3.[0-9]\+.[0-9]\+$' | grep -v - |
+PYTHON_VERSION=$(pyenv install -l |
+                  grep -e "$MAJOR_VERSION.[0-9]\\+.[0-9]\\+$" | grep -v - |
                   tail -1 | tr -d '[:space:]')
 
-pyenv virtualenv $PYTHON3_VERSION $NAME
+pyenv virtualenv $PYTHON_VERSION $NAME
 pyenv shell $NAME
 pip install --upgrade pip
