@@ -24,4 +24,19 @@ snippet co "click.option" b
 	'--$1',
 )
 endsnippet
-	
+
+snippet cf "click.file" b
+@click.option(
+	'--$1',
+	'-$2',
+	type=click.File('${3:r}'),
+)
+endsnippet
+
+snippet e "click.echo" b
+click.echo(${0:"$1"})
+endsnippet
+
+snippet cd "click.echo.debug" b
+click.echo("$1: {}".format($1))
+endsnippet

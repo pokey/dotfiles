@@ -148,6 +148,9 @@ augroup end
 nnoremap <silent> <leader>b :Gbrowse<cr>
 vnoremap <silent> <leader>b :Gbrowse<cr>
 
+nnoremap <silent> <leader><C-n> :MultipleCursorsFind <C-R>/<CR>
+vnoremap <silent> <leader><C-n> :MultipleCursorsFind <C-R>/<CR>
+
 " vnoremap <Leader>y "+y
 " vnoremap <Leader>d "+d
 " nnoremap <Leader>y "+y`]
