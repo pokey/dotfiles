@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-openssl enc -d -aes-256-cbc -in $1 -out $2
+in="$1"
+out="$2"
+
+gpg --output "$out" --decrypt "$in"

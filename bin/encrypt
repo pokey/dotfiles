@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+in="$1"
+out="$2"
+
+gpg --output "$out" --symmetric --cipher-algo AES256 "$in"
