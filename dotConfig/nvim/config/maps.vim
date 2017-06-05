@@ -103,6 +103,7 @@ nnoremap <silent> <leader>g :RopeGotoDefinition<cr>
 
 " Find in files
 nnoremap ga :Ag<space>
+nnoremap <silent> gy :Ag<space> <c-r><c-w><cr>
 
 " Completion using fzf in insert mode
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)
