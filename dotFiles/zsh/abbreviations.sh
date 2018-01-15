@@ -10,31 +10,42 @@ abbreviations=(
   "gm"    'git merge'
   "gp"    'git push origin HEAD'
   "gb"    'git branch'
+  "gf"    'git fetch'
   "gr"    'git rebase'
   "gri"   'git rebase -i'
+  "grd"   'git rebase develop'
+  "grid"  'git rebase -i develop'
   "grh"   'git reset --hard'
   "grs"   'git reset --soft'
   "gpf"   'git push --force origin HEAD'
   "grc"   'git rebase --continue'
   "gcp"   'git cherry-pick'
+  "ghp"   'git subtree push --prefix dist origin master'
+  "god"   'git checkout develop'
+  "gt"    'git ctags'
+  "gct"   'git ctags'
   "ix"    "| xargs"
+  "ixx"   "| xargs -n1 -I{}"
   "ia"    "| ag"
   "ih"    "| head"
-  "tx"    "tar -xzvf"
-  "tc"    "tar -czvf"
+  "tx"    "tar xzf"
+  "tc"    "tar czf"
+  "tt"    "tar tzf"
   "fi"    "git flow init"
   "ffs"   "git flow feature start"
   "ffn"   "git flow feature start"
   "ffp"   "git flow feature publish"
-  "fff"   "git flow feature finish"
   "nd"    "npm install -D"
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
   "pi"    "pip install"
   "pie"   "pip install -e ."
+  "pis"   "pip install flake8 flake8-isort flake8-print jupyter"
+  "gpie"  "gpip -e ."
   "gn"    "git checkout -b"
   "gp"    "git push"
   "ga"    "git add"
+  "gai"   "git add -i"
   "pr"    "git pull-request -b"
   "awd"   'eval $(awsdev)'
   "ev"    '$(__CURSOR__)'
@@ -45,11 +56,22 @@ abbreviations=(
   "lc"    '!!:0__EXPAND__'
   "k9"    'kill -9 __EXPAND__'
   "ghc"   'git rev-parse HEAD'
+  "rf"    'rm -rf'
 )
 
 for i in {1..9};
 do
    abbreviations+=("l$i" "!!:${i}__EXPAND__")
+done
+
+for i in {1..9};
+do
+   abbreviations+=("l${i}f" "!-${i}\$__EXPAND__")
+   abbreviations+=("l${i}c" "!-${i}:0__EXPAND__")
+   for j in {1..9};
+   do
+      abbreviations+=("l${i}${j}" "!-${i}:${j}__EXPAND__")
+   done
 done
 
 magic-abbrev-expand() {

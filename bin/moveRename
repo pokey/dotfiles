@@ -1,31 +1,47 @@
 #!/bin/bash
 
+DRY_RUN=false
+
+if [ "$#" -ge 3 ]; then
+   if [ "$1" == "-d" ]; then
+      DRY_RUN=true
+   else
+      echo "Unexpected argument \"$2\""
+      exit -1
+   fi
+   shift
+fi
+
+from="$1"
+to="$2"
+
 # FixMe: [correctness] Only lowercase first letter
-fromLower=`echo $1 | tr '[:upper:]' '[:lower:]'`
-toLower=`echo $2 | tr '[:upper:]' '[:lower:]'`
-fromAllcap=`echo $1 | tr '[:lower:]' '[:upper:]'`
-toAllcap=`echo $2 | tr '[:lower:]' '[:upper:]'`
+fromLower=$(echo $from | tr '[:upper:]' '[:lower:]')
+toLower=$(echo $to | tr '[:upper:]' '[:lower:]')
+fromAllcap=$(echo $from | tr '[:lower:]' '[:upper:]')
+toAllcap=$(echo $to | tr '[:lower:]' '[:upper:]')
+fromCap="$(tr '[:lower:]' '[:upper:]' <<< ${from:0:1})${from:1}"
+toCap="$(tr '[:lower:]' '[:upper:]' <<< ${to:0:1})${to:1}"
 
-typeset -u first=`echo $1|nawk '{print substr($1,1,1)}'`
-rest=`echo $1|nawk '{print substr($1,2)}'`
-fromCap=$first$rest
+# FixMe: Don't duplicate code here; use variables
+if [ "$DRY_RUN" = true ] ; then
+   ag -lg "$fromCap" | sed "s/\(.*\)$fromCap\(.*\)/mv \0 \1$toCap\2/"
+   ag -lg "$fromLower" | sed "s/\(.*\)$fromLower\(.*\)/mv \0 \1$toLower\2/"
+   ag -lg "$fromAllcap" | sed "s/\(.*\)$fromAllcap\(.*\)/mv \0 \1$toAllcap\2/"
 
-typeset -u first=`echo $2|nawk '{print substr($1,1,1)}'`
-rest=`echo $2|nawk '{print substr($1,2)}'`
-toCap=$first$rest
+   # FixMe: [correctness] Only perform substitutions on new files, since
+   # otherwise replacing with substring could cause issues
+   ag -sl "$fromLower" | xargs echo sed -i "s/$fromLower/$toLower/g"
+   ag -sl "$fromAllcap" | xargs echo sed -i "s/$fromAllcap/$toAllcap/g"
+   ag -sl "$fromCap" | xargs echo sed -i "s/$fromCap/$toCap/g"
+else
+   ag -lg "$fromCap" | sed "s/\(.*\)$fromCap\(.*\)/mv \0 \1$toCap\2/" | sh
+   ag -lg "$fromLower" | sed "s/\(.*\)$fromLower\(.*\)/mv \0 \1$toLower\2/" | sh
+   ag -lg "$fromAllcap" | sed "s/\(.*\)$fromAllcap\(.*\)/mv \0 \1$toAllcap\2/" | sh
 
-find . -name "*$fromCap*" | fgrep -v .git | \
-   sed "s/\(.*\)$fromCap\(.*\)/mv \0 \1$toCap\2/" | sh
-find . -name "*$fromLower*" | fgrep -v .git | \
-   sed "s/\(.*\)$fromLower\(.*\)/mv \0 \1$toLower\2/" | sh
-find . -name "*$fromAllcap*" | fgrep -v .git | \
-   sed "s/\(.*\)$fromAllcap\(.*\)/mv \0 \1$toAllcap\2/" | sh
-
-# FixMe: [correctness] Only perform substitutions on new files, since
-# otherwise replacing with substring could cause issues
-find . -type f | fgrep -v .git | xargs fgrep -l $fromLower | \
-   grep -v \.swp$ | grep -v \.swo$ | xargs sed -i "s/$fromLower/$toLower/g"
-find . -type f | fgrep -v .git | xargs fgrep -l $fromAllcap | \
-   grep -v \.swp$ | grep -v \.swo$ | xargs sed -i "s/$fromAllcap/$toAllcap/g"
-find . -type f | fgrep -v .git | xargs fgrep -l $fromCap | grep -v \.swp$ | \
-   grep -v \.swo$ | xargs sed -i "s/$fromCap/$toCap/g"
+   # FixMe: [correctness] Only perform substitutions on new files, since
+   # otherwise replacing with substring could cause issues
+   ag -sl "$fromLower" | xargs sed -i "s/$fromLower/$toLower/g"
+   ag -sl "$fromAllcap" | xargs sed -i "s/$fromAllcap/$toAllcap/g"
+   ag -sl "$fromCap" | xargs sed -i "s/$fromCap/$toCap/g"
+fi

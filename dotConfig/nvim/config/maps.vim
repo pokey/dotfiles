@@ -61,6 +61,10 @@ tnoremap <leader>[ <C-\><C-n>
 " Create markdown link from clipboard
 vmap <silent> <c-k> <Plug>VSurround]%a()<esc>"+P
 
+" Wrap in function call
+nmap <silent> qf ysiw)i
+vmap <silent> qf S)i
+
 " Lists
 nnoremap <silent> g/ :History/<cr>
 nnoremap <silent> g; :History:<cr>

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+profileName="$1"
+
+eval "$(pyenv init -)"
+pyenv shell awsenv
+awsenv "$profileName"

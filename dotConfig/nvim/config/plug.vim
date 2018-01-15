@@ -19,6 +19,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -71,5 +72,9 @@ Plug 'junegunn/gv.vim'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'vim-python/python-syntax'
 
 call plug#end()

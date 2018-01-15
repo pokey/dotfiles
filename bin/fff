@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+### Finish a PR gracefully ###
+set -euo pipefail
+IFS=$'\n\t'
+
+
+get_branch() {
+    # Get current branch
+    # Thanks StackOverflow: http://stackoverflow.com/a/12142066/678823
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    echo "$branch"
+}
+
+
+get_branch_name() {
+    # Determine what type of branch this is
+    branch_name="$(echo "$1" | awk -F '/' '{print $2}')"
+    echo "$branch_name"
+}
+
+
+get_branch_type() {
+    # Determine what type of branch this is
+    branch_type="$(echo "$1" | awk -F '/' '{print $1}')"
+    echo "$branch_type"
+}
+
+
+is_supported() {
+    # Check if branch type is supported by git-flow
+    supported_branch_types=("feature" "bugfix" "release" "hotfix" "support")
+    for e in "${supported_branch_types[@]}"; do
+        if [[ "${1}" == "${e}" ]]; then
+            return 0
+        else
+            return 1
+        fi
+    done
+}
+
+
+git_finish_branch() {
+    # Pass type, keep remote branch
+    # git flow assumes current branch is to be finished
+    git flow "${1}" finish -k --showcommands
+}
+
+
+git_delete_branch() {
+    # Pass type and name, remove remote branch
+    git flow "${1}" delete "${2}" -r --showcommands
+}
+
+
+main() {
+    branch="$(get_branch)"
+    branch_type="$(get_branch_type "$branch")"
+    branch_name="$(get_branch_name "$branch")"
+    if $(is_supported "$branch_type"); then
+        # Will checkout develop when done with merge
+        echo "Finishing branch $branch"
+        git_finish_branch "$branch_type"
+        # Push to remote origin
+        echo "Pushing to remote origin"
+        git push
+        # Now it's safe to delete
+        echo "Deleting branch $branch"
+        git_delete_branch "$branch_type" "$branch_name"
+    else
+        echo "Branch type not supported"
+    fi
+}
+
+main

@@ -41,6 +41,28 @@ mc() {
    cd $1
 }
 
+bk() {
+   file="$1"
+   cp "$file" "$file.bak"
+}
+
+bkm() {
+   file="$1"
+   mv "$file" "$file.bak"
+}
+
+aw() {
+   profileName="$1"
+   eval $(awsenvwrapper "$1")
+}
+
+pyn() {
+   for last; do true; done
+   name="$last"
+   pyenv_new "$@"
+   pyenv shell $name
+}
+
 # tags - search ctags
 tags() {
   local line
