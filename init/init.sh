@@ -96,6 +96,12 @@ case "$(uname)" in
    *) sudo apt-get install silversearcher-ag ;;
 esac
 
+# Install ripgrep
+case "$(uname)" in
+   Darwin) brew install ripgrep ;;
+   *) sudo apt-get install ripgrep ;;
+esac
+
 mkdir -p $HOME/sources
 mkdir -p $HOME/bin
 
