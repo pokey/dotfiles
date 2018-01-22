@@ -77,4 +77,6 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-python/python-syntax'
 
+Plug 'keith/swift.vim'
+
 call plug#end()
