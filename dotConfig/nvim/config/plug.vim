@@ -79,4 +79,6 @@ Plug 'vim-python/python-syntax'
 
 Plug 'keith/swift.vim'
 
+Plug 'ruanyl/vim-sort-imports'
+
 call plug#end()

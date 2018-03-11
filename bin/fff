@@ -33,10 +33,9 @@ is_supported() {
     for e in "${supported_branch_types[@]}"; do
         if [[ "${1}" == "${e}" ]]; then
             return 0
-        else
-            return 1
         fi
     done
+    return 1
 }
 
 
@@ -68,7 +67,7 @@ main() {
         echo "Deleting branch $branch"
         git_delete_branch "$branch_type" "$branch_name"
     else
-        echo "Branch type not supported"
+        echo "Branch type '$branch_type' not supported"
     fi
 }
 

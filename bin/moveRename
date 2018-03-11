@@ -15,33 +15,17 @@ fi
 from="$1"
 to="$2"
 
-# FixMe: [correctness] Only lowercase first letter
-fromLower=$(echo $from | tr '[:upper:]' '[:lower:]')
-toLower=$(echo $to | tr '[:upper:]' '[:lower:]')
-fromAllcap=$(echo $from | tr '[:lower:]' '[:upper:]')
-toAllcap=$(echo $to | tr '[:lower:]' '[:upper:]')
-fromCap="$(tr '[:lower:]' '[:upper:]' <<< ${from:0:1})${from:1}"
-toCap="$(tr '[:lower:]' '[:upper:]' <<< ${to:0:1})${to:1}"
-
 # FixMe: Don't duplicate code here; use variables
 if [ "$DRY_RUN" = true ] ; then
-   ag -lg "$fromCap" | sed "s/\(.*\)$fromCap\(.*\)/mv \0 \1$toCap\2/"
-   ag -lg "$fromLower" | sed "s/\(.*\)$fromLower\(.*\)/mv \0 \1$toLower\2/"
-   ag -lg "$fromAllcap" | sed "s/\(.*\)$fromAllcap\(.*\)/mv \0 \1$toAllcap\2/"
+   ag -lg "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/"
 
    # FixMe: [correctness] Only perform substitutions on new files, since
    # otherwise replacing with substring could cause issues
-   ag -sl "$fromLower" | xargs echo sed -i "s/$fromLower/$toLower/g"
-   ag -sl "$fromAllcap" | xargs echo sed -i "s/$fromAllcap/$toAllcap/g"
-   ag -sl "$fromCap" | xargs echo sed -i "s/$fromCap/$toCap/g"
+   ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs echo sed -i "s/$from/$to/g"
 else
-   ag -lg "$fromCap" | sed "s/\(.*\)$fromCap\(.*\)/mv \0 \1$toCap\2/" | sh
-   ag -lg "$fromLower" | sed "s/\(.*\)$fromLower\(.*\)/mv \0 \1$toLower\2/" | sh
-   ag -lg "$fromAllcap" | sed "s/\(.*\)$fromAllcap\(.*\)/mv \0 \1$toAllcap\2/" | sh
+   ag -lg "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/" | sh
 
    # FixMe: [correctness] Only perform substitutions on new files, since
    # otherwise replacing with substring could cause issues
-   ag -sl "$fromLower" | xargs sed -i "s/$fromLower/$toLower/g"
-   ag -sl "$fromAllcap" | xargs sed -i "s/$fromAllcap/$toAllcap/g"
-   ag -sl "$fromCap" | xargs sed -i "s/$fromCap/$toCap/g"
+   ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs sed -i "s/$from/$to/g"
 fi

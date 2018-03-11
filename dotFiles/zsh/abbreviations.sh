@@ -35,12 +35,14 @@ abbreviations=(
   "ffs"   "git flow feature start"
   "ffn"   "git flow feature start"
   "ffp"   "git flow feature publish"
+  "frs"   "git flow release start"
+  "frp"   "git flow release publish"
   "nd"    "npm install -D"
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
   "pi"    "pip install"
   "pie"   "pip install -e ."
-  "pis"   "pip install flake8 flake8-isort flake8-print jupyter"
+  "pis"   "pip install flake8 flake8-isort flake8-print jupyterlab"
   "gpie"  "gpip -e ."
   "gn"    "git checkout -b"
   "gp"    "git push"
@@ -57,6 +59,7 @@ abbreviations=(
   "k9"    'kill -9 __EXPAND__'
   "ghc"   'git rev-parse HEAD'
   "rf"    'rm -rf'
+  "cs"    'cd ~/src'
 )
 
 for i in {1..9};

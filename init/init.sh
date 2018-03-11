@@ -177,3 +177,8 @@ $SCRIPTPATH/template.sh gitconfig.personal "$HOME/.gitconfig.personal"
 $SCRIPTPATH/template.sh zshrc "$HOME/.zshrc"
 $SCRIPTPATH/template.sh bashrc "$HOME/.bashrc"
 $SCRIPTPATH/template.sh hammerspoon "$BASEPATH/dotFiles/hammerspoon/ssid.lua"
+
+# JS import sort
+npm install -g import-sort-cli import-sort-parser-babylon \
+   import-sort-parser-typescript import-sort-style-renke
+

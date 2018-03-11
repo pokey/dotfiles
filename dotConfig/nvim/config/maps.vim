@@ -101,9 +101,12 @@ nnoremap <leader>e :e<space>%:h/
 nnoremap <C-p> :e<space>
 
 " Python stuff
-nnoremap <leader>i :Isort<cr>
+autocmd FileType python nnoremap <buffer> <leader>i :Isort<cr>
 nnoremap <silent> <leader>a :ArgWrap<CR>
 nnoremap <silent> <leader>g :RopeGotoDefinition<cr>
+
+" JS stuff
+autocmd FileType javascript nnoremap <buffer> <leader>i :SortImport<cr>
 
 " Find in files
 nnoremap ga :Rg<space>
