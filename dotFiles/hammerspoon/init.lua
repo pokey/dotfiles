@@ -1,6 +1,5 @@
 require "caffeine"
 require "wifi"
-require "keyboard"
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()

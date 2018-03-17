@@ -28,9 +28,16 @@ augroup tabs
     \ smarttab
     \ expandtab
   au BufRead,BufNewFile *.js
-    \ setlocal tabstop=2
-    \ softtabstop=2
-    \ shiftwidth=2
+    \ setlocal tabstop=3
+    \ softtabstop=3
+    \ shiftwidth=3
+    \ textwidth=79
+    \ smarttab
+    \ expandtab
+  au BufRead,BufNewFile *.json
+    \ setlocal tabstop=3
+    \ softtabstop=3
+    \ shiftwidth=3
     \ textwidth=79
     \ smarttab
     \ expandtab
