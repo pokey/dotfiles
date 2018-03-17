@@ -223,14 +223,6 @@
                 },
                 {
                     "from": {
-                        "key_code": "left_control"
-                    },
-                    "to": {
-                        "key_code": "return_or_enter"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "return_or_enter"
                     },
                     "to": {
