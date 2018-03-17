@@ -7,6 +7,7 @@ Plug 'saltstack/salt-vim'
 Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
 Plug 'pangloss/vim-javascript'
+Plug 'jparise/vim-graphql'
 Plug 'mxw/vim-jsx'
 
 Plug 'tpope/vim-fugitive'
@@ -80,5 +81,7 @@ Plug 'vim-python/python-syntax'
 Plug 'keith/swift.vim'
 
 Plug 'ruanyl/vim-sort-imports'
+
+Plug 'lepture/vim-velocity'
 
 call plug#end()

@@ -50,6 +50,7 @@ nnoremap <silent> <leader>n :tabn<cr>
 tnoremap <silent> <leader>n <C-\><C-n>:TermLeave <bar> tabn<cr>
 nnoremap <silent> <leader>p :tabp<cr>
 tnoremap <silent> <leader>p <C-\><C-n>:TermLeave <bar> tabp<cr>
+tnoremap <silent> <leader>' <C-\><C-n>pa
 
 nnoremap <silent> <leader>d :ZoomToggle<CR>
 
