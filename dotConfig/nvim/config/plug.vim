@@ -50,7 +50,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'neomake/neomake'
 
-Plug 'sheerun/vim-polyglot'
 Plug 'vito-c/jq.vim'
 
 Plug 'hashivim/vim-terraform'
