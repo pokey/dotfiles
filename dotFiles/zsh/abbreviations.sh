@@ -60,6 +60,8 @@ abbreviations=(
   "ghc"   'git rev-parse HEAD'
   "rf"    'rm -rf'
   "cs"    'cd ~/src'
+  "cpr"   'cp -rf'
+  "cf"    'cp -rf'
 )
 
 for i in {1..9};

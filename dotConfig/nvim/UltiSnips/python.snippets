@@ -25,6 +25,14 @@ snippet co "click.option" b
 )
 endsnippet
 
+snippet cd "click.directory" b
+@click.option(
+	"--$1",
+	"-$2",
+	type=click.Path(exists=True, file_okay=False)
+)
+endsnippet
+
 snippet cc "click.command" b
 #!/usr/bin/env python
 import click
@@ -62,10 +70,6 @@ endsnippet
 
 snippet pd "print debug" b
 print(f"$1: {$1}")
-endsnippet
-
-snippet cd "click.echo.debug" b
-click.echo("$1: {}".format($1))
 endsnippet
 
 snippet ni "Not implemented" b
