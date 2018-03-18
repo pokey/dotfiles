@@ -63,10 +63,6 @@ set hlsearch
 " set the minimum window height
 set winminheight=0
 
-set textwidth=79
-
-set smartindent
-
 " set highlight mode
 " set highlight=8b,@-,db,es,lb,mb,M-,nu,rs,sr,tb,vr,ws
 
@@ -81,7 +77,8 @@ set tags=.tags;
 set ignorecase
 set smartcase
 
-set tabstop=3 shiftwidth=3 softtabstop=3 expandtab
+set smartindent
+set tabstop=3 shiftwidth=3 softtabstop=3 expandtab smarttab textwidth=79
 
 set timeout timeoutlen=400
 

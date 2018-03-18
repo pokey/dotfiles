@@ -101,17 +101,15 @@ nnoremap <silent> <leader>j :Buffers<cr>
 nnoremap <leader>e :e<space>%:h/
 nnoremap <C-p> :e<space>
 
-" Python stuff
-autocmd FileType python nnoremap <buffer> <leader>i :Isort<cr>
 nnoremap <silent> <leader>a :ArgWrap<CR>
-nnoremap <silent> <leader>g :RopeGotoDefinition<cr>
 
-" JS stuff
+" Sorting imports
+autocmd FileType python nnoremap <buffer> <leader>i :Isort<cr>
 autocmd FileType javascript nnoremap <buffer> <leader>i :SortImport<cr>
 
 " Find in files
 nnoremap ga :Rg<space>
-nnoremap <silent> gy :Rg<space> <c-r><c-w><cr>
+nnoremap <silent> gy :Rgw<space> <c-r><c-w><cr>
 
 " Completion using fzf in insert mode
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)

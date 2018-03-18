@@ -18,26 +18,12 @@ augroup tabs
   au!
   au FileType make setlocal noexpandtab
   au FileType snippets setlocal noexpandtab
-  au BufRead,BufNewFile *.java set softtabstop=2 shiftwidth=2 expandtab
-  au BufRead,BufNewFile *.otl set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-  au BufRead,BufNewFile *.py
+  au BufRead,BufNewFile *.java setlocal softtabstop=2 shiftwidth=2 expandtab
+  au BufRead,BufNewFile *.otl setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+  au FileType python
     \ setlocal tabstop=4
     \ softtabstop=4
     \ shiftwidth=4
-    \ textwidth=79
-    \ smarttab
-    \ expandtab
-  au BufRead,BufNewFile *.js
-    \ setlocal tabstop=3
-    \ softtabstop=3
-    \ shiftwidth=3
-    \ textwidth=79
-    \ smarttab
-    \ expandtab
-  au BufRead,BufNewFile *.json
-    \ setlocal tabstop=3
-    \ softtabstop=3
-    \ shiftwidth=3
     \ textwidth=79
     \ smarttab
     \ expandtab
@@ -92,3 +78,23 @@ augroup tableave
    au!
    au TabLeave * let g:lasttab = tabpagenr()
 augroup end
+
+augroup syntax_highlighting
+   au!
+   au Filetype yaml call s:SetYamlOptions()
+augroup end
+
+function! s:SetYamlOptions()
+   unlet! b:current_syntax
+   runtime! syntax/yaml.vim
+
+   unlet! b:current_syntax
+   syntax include @YaML syntax/yaml.vim
+
+   unlet! b:current_syntax
+   syntax include @VTL syntax/velocity.vim
+   syntax region vtlEmbedded matchgroup=Snip start='#{vtl' end='#vtl}' containedin=@YaML contains=@VTL
+
+   hi link Snip SpecialComment
+   let b:current_syntax = 'yaml.velocity'
+endfunction
