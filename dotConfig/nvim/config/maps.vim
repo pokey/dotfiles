@@ -149,6 +149,7 @@ tnoremap <silent> <leader>o <C-\><C-n>:TermLeave <bar> wincmd w<cr>
 augroup termnormmaps
    au!
    au BufEnter term://* nnoremap <buffer> <c-p> a<c-p>
+   au BufEnter term://* nnoremap <buffer> q a
 augroup end
 
 " Git

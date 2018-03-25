@@ -10,6 +10,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
 Plug 'mxw/vim-jsx'
 
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
