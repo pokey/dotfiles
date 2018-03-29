@@ -105,18 +105,12 @@ esac
 mkdir -p $HOME/sources
 mkdir -p $HOME/bin
 
-# Install ls++
-if test "$(uname)" = "Darwin"; then
-   cpan Term::ExtendedColor
-   cd ~/sources
-   git clone git://github.com/trapd00r/ls--.git
-   cd ls--
-   perl Makefile.PL
-   make && sudo make install
+# Install rust
+curl https://sh.rustup.rs -sSf | sh
 
-   cp ls++.conf $HOME/.ls++.conf
-   cd
-fi
+# Install exa (replacement for ls)
+# github.com/ogham/exa
+cargo install exa
 
 # Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"

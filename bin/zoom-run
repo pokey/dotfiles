@@ -3,8 +3,8 @@
 
 if [ -n "$TMUX_PANE" ] && tmux list-panes -F '#F' | grep -vq Z; then
    tmux resize-pane -Z
-   "$@"
+   $@
    tmux resize-pane -Z
 else
-   "$@"
+   $@
 fi

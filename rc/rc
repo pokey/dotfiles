@@ -17,9 +17,8 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 # Other envvars
 export VISUAL=nvim
 export EDITOR=nvim
-export VIMPAGER_VIM=nvim
-export PAGER=$HOME/.config/nvim/plugged/vimpager/vimpager
-export VIMPAGER_RC=$HOME/.vimpagerrc
+export VIMPAGER_VIM="nvim"
+export PAGER="$HOME/.config/nvim/plugged/vimpager/vimpager -u NONE"
 export CTAGS_FLAGS="--tag-relative=yes --fields=+l --extras=+q"
 # Hack around https://github.com/junegunn/fzf/issues/809
 export FZF_TMUX=1
@@ -41,21 +40,6 @@ vim()
 }
 
 source "$HOME/.sh/aliases.sh"
-
-# For now only use vimpager on os x
-if test "$(uname)" = "Darwin"; then
-   alias vc='vimcat'
-   export PAGER=vimpager
-   alias ll='ls++ -A'
-   alias lt='ls++ -Atr'
-
-   # ls++
-   PATH="$HOME/perl5/bin${PATH+:}${PATH}"; export PATH;
-   PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-   PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-   PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
-   PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
-fi
 
 [ -f /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
 

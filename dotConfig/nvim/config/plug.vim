@@ -2,15 +2,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'wakatime/vim-wakatime'
 
-Plug 'stephpy/vim-yaml'
 Plug 'saltstack/salt-vim'
 Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
-Plug 'pangloss/vim-javascript'
-Plug 'jparise/vim-graphql'
-Plug 'mxw/vim-jsx'
+Plug 'sheerun/vim-polyglot'
 
-Plug 'leafgarland/typescript-vim'
+Plug 'jparise/vim-graphql'
 Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'tpope/vim-fugitive'
@@ -74,13 +71,8 @@ Plug 'craigemery/vim-autotag'
 Plug 'junegunn/gv.vim'
 
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'vim-python/python-syntax'
-
-Plug 'keith/swift.vim'
 
 Plug 'ruanyl/vim-sort-imports'
 

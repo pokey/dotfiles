@@ -78,7 +78,7 @@ set ignorecase
 set smartcase
 
 set smartindent
-set tabstop=3 shiftwidth=3 softtabstop=3 expandtab smarttab textwidth=79
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab smarttab textwidth=79
 
 set timeout timeoutlen=400
 
