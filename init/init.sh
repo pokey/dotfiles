@@ -105,12 +105,9 @@ esac
 mkdir -p $HOME/sources
 mkdir -p $HOME/bin
 
-# Install rust
-curl https://sh.rustup.rs -sSf | sh
-
 # Install exa (replacement for ls)
 # github.com/ogham/exa
-cargo install exa
+brew install exa
 
 # Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
