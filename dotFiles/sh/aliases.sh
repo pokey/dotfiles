@@ -1,9 +1,9 @@
 alias    l='exa'
-alias   ll='exa -l --git'
-alias   la='exa -a'
-alias  lla='exa -la --git'
-alias  lal='exa -la --git'
-alias   lt='exa -l --tree --git'
+alias   ll="exa $EXA_LA_OPTIONS"
+alias   la="exa -a"
+alias  lla="exa -a $EXA_LA_OPTIONS"
+alias  lal="exa -a $EXA_LA_OPTIONS"
+alias   lt="exa --tree --git-ignore $EXA_LA_OPTIONS"
 alias   gs='git status'
 alias   gd='zoom-run git diff'
 alias  gdp='zoom-run git diff head~'

@@ -29,7 +29,10 @@ Setup
 
    1. Add ssh key to github
    1. Clone this repo
-1. Setup iTerm2 colors
+1. Setup iTerm2 colors. NOTE: I actually use
+   [alacritty](https://github.com/jwilm/alacritty) now.  File an issue if you'd
+   like me to rewrite this section with instructions for how to set this up and
+   configure your colors.
    1. Open iTerm2
    1. Go to the menu iTerm2 > Preferences... > Profiles > Colors > Color
       Presets... > Import...
@@ -51,8 +54,6 @@ Setup
      - `<enter>` => `<ctrl>`
      - `F+J` simultaneously => `<enter>`
      - `<caps lock>` => `<ctrl>`
-     - `<ctrl>` => `<enter>` (use this if `F+J` isn't working; doesn't work in
-       some random contexts)
      - Key repeat rate is jacked up really high.  Every millisecond counts :-)
 
      Try to use the right ctrl (ie `<enter>`) when hitting keys with the left

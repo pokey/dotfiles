@@ -14,6 +14,8 @@ export PATH=$PATH:/usr/local/Cellar/qt@5.5/5.5.1_1/bin
 export MANPATH=$MANPATH:/usr/local/texlive/2011/texmf/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 
+export EXA_LA_OPTIONS="-l --git --color-scale --classify --group-directories-first"
+
 # Other envvars
 export VISUAL=nvim
 export EDITOR=nvim

@@ -26,8 +26,11 @@ terminal.
   in this directory will quickly let you edit `dotConfig/nvim/config/maps.vim`
 - `c` => `cd`
 - `k` => `cd ..`
-- `l` => `ls`
-- `ll` is `ls` with lots of info about files
+- `l` => `exa`, which is a souped-up `ls`
+- `la` is `l` including hidden files
+- `ll` is `l` with lots of info about files
+- `lal` is `l` including hidden files with lots of info about files
+- `lt` displays a tree view of the current directory
 - `j <name>` will use `fzf` to find recently used directories matching name and
   change to that directory
 - `mc` is shorthand for making a directory and then changing to it
