@@ -33,6 +33,8 @@ let g:airline_mode_map = {
     \ '' : 'S',
     \ }
 let g:airline_section_x = airline#section#create_right(['tagbar', 'filetype'])
+let g:airline#extensions#obsession#enabled = 1
+let g:airline#extensions#obsession#indicator_text = '🔴'
 
 highlight clear SignColumn
 highlight SpellBad ctermbg=000

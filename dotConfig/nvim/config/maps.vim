@@ -15,6 +15,8 @@ nnoremap <silent> qn :cnext<cr>
 " s{char}{char} to move to {char}{char}
 nmap <leader>s <Plug>(easymotion-overwin-f2)
 
+nnoremap <leader>r :Obsession<cr>
+
 " Move to line
 map <Leader>l <Plug>(easymotion-bd-jk)
 nmap <Leader>l <Plug>(easymotion-overwin-line)
