@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Based on https://gist.github.com/splaspood/1473761
+
 list_config_sections () {
     fixed_file=$(cat $1 | sed 's/ = /=/g')   # fix ' = ' to be '='
     IFS=$'\n' && ini=( $fixed_file )         # convert to line-array

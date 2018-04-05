@@ -55,8 +55,8 @@ zle -N fancy-ctrl-z
 
 bindkey '^Qa' fix-git-merge
 bindkey '^Qe' edit-command-line
-bindkey -s '^Qj' '**\t'
-bindkey -s '^Qk' '^A^K'
+bindkey -s '^Qk' '**\t'
+bindkey -s '^Qj' '^A^K'
 bindkey '^Z' fancy-ctrl-z
 
 

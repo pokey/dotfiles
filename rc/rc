@@ -17,8 +17,8 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 export EXA_LA_OPTIONS="-l --git --color-scale --classify --group-directories-first"
 
 # Other envvars
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL="nvim --noplugin"
+export EDITOR="nvim --noplugin"
 export VIMPAGER_VIM="nvim"
 export PAGER="$HOME/.config/nvim/plugged/vimpager/vimpager -u NONE"
 export CTAGS_FLAGS="--tag-relative=yes --fields=+l --extras=+q"
