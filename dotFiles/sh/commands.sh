@@ -56,6 +56,11 @@ aw() {
    eval $(awsenvwrapper "$1")
 }
 
+awm() {
+   profileName="$1"
+   eval $(awsmfa "$1")
+}
+
 pyn() {
    for last; do true; done
    name="$last"

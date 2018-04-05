@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+list_config_sections () {
+    fixed_file=$(cat $1 | sed 's/ = /=/g')   # fix ' = ' to be '='
+    IFS=$'\n' && ini=( $fixed_file )         # convert to line-array
+    ini=( ${ini[*]//;*/} )                   # remove comments
+    ini=( ${ini[*]//*=*/} )                  # remove assignments
+    ini=( ${ini[*]/#[/} )                    # remove section prefix
+    ini=( ${ini[*]/%]/} )                    # remove section suffix
+    echo "${ini[*]}"                         # return the result
+}
+
+list_config_sections "$HOME/.aws/credentials"

@@ -34,7 +34,11 @@ zle -N fix-git-merge
 
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 
+[ -f /usr/local/bin/aws_zsh_completer.sh ] && \
+    source /usr/local/bin/aws_zsh_completer.sh
+
 source ~/.zsh/abbreviations.sh
+source ~/.zsh/fzf-completions.sh
 
 autoload edit-command-line; zle -N edit-command-line
 

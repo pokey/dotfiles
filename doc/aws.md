@@ -47,7 +47,7 @@ Setup
    resources.
 1. Start [setting up](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html)
    the user with a virtual MFA device.  When it shows you the barcode, click on
-   "Manually configure" and copy the long string.
+   "Show secret key for manual configuration" and copy the long string.
 1. Run `ykman oath add -t aws-<PROFILE>`, and paste the string when prompted.
    This sets up your YubiKey to behave like a virtual MFA device.
 1. Run `ykman oath code -s aws-<PROFILE>` a couple times, waiting as necessary,
@@ -60,8 +60,8 @@ Using the cli
 -------------
 
 When you need to use the aws cli or the aws api eg via boto3 in a particular
-shell, type `awm<space>`, which will expand to a command where you then type
-your profile name and press enter. This will use the [`awsmfa`](../bin/awsmfa)
-command to set environment variables that activate the profile in that specific
-shell for the next 6 hours.  Note that any command you type in this shell will
-have access to these environment variables, so only run commands you trust.
+shell, use `awm <PROFILE>`.  It supports tab completion using fzf.  This wraps
+the [`awsmfa`](../bin/awsmfa) script to set environment variables that activate
+the profile in that specific shell for the next 6 hours.  Note that any command
+you type in this shell will have access to these environment variables, so only
+run commands you trust.
