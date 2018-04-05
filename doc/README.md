@@ -10,6 +10,7 @@ just use all the time.
 - [fzf](fzf.md) contains info about how I use the fzf fuzzy-finder
 - [hammerspoon](hammerspoon.md) contains info about customizations that
   leverage hammerspoon
+- [aws](aws.md) contains info about how I use the aws cli
 
 See the [tutorials](tutorials.md) for some examples combining commands to do
 various tasks.

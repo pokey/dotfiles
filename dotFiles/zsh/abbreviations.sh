@@ -51,6 +51,7 @@ abbreviations=(
   "gai"   "git add -i"
   "pr"    "git pull-request -b"
   "awd"   'eval $(awsdev)'
+  "awm"   'eval $(awsmfa __CURSOR__)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'
   "ppv"   "pip freeze -l | ag"

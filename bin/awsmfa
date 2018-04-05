@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Based on https://github.com/lokori/secretman/blob/580c2556ad54ec6f22da854f852f2de775a9e150/awsenv.sh
+# This script is designed so that the output is to be evaled, ie
+#
+# eval $(awsmfa <PROFILE>)
+#
+# where <PROFILE> is the name of an aws profile.  It assumes that you have ykman
+# installed, and that you have configured it to have an oath code, ie
+#
+# ykman oath add -t aws-<PROFILE>
+#
+# where <PROFILE> is the name of an aws profile.
+
+if [[ $# -ge 1 ]]; then
+    AWS_PROFILE="$1"
+else
+    (>&2 echo "ERROR: Please provide aws profile as argument.")
+    exit -1
+fi
+
+CALLER_IDENTITY=($(aws --profile "$AWS_PROFILE" sts get-caller-identity \
+                   --output text))
+
+
+AWS_ACCOUNT_NUMBER="${CALLER_IDENTITY[0]}"
+AWS_IAM_USER_ARN="${CALLER_IDENTITY[1]}"
+AWS_IAM_USERNAME="$(basename "$AWS_IAM_USER_ARN")"
+MFA_SERIAL="arn:aws:iam::$AWS_ACCOUNT_NUMBER:mfa/$AWS_IAM_USERNAME"
+
+TOKEN_CODE=$(ykman oath code -s "aws-${AWS_PROFILE}")
+PROFILE_INFO=($(aws sts get-session-token --serial-number "$MFA_SERIAL" \
+                --profile "$AWS_PROFILE" \
+                --token-code "$TOKEN_CODE" \
+                --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+                --output text))
+
+echo export AWS_ACCESS_KEY_ID="${PROFILE_INFO[0]}" \
+    AWS_SECRET_ACCESS_KEY="${PROFILE_INFO[1]}" \
+    AWS_SESSION_TOKEN="${PROFILE_INFO[2]}"
