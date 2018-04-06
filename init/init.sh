@@ -122,6 +122,7 @@ if test "$(uname)" = "Darwin"; then
   brew install reattach-to-user-namespace
   brew install thefuck
   brew install diff-so-fancy
+  brew install fd
   brew tap universal-ctags/universal-ctags && \
      brew install --HEAD universal-ctags
 fi

@@ -28,6 +28,8 @@ abbreviations=(
   "ixx"   "| xargs -n1 -I{}"
   "ia"    "| ag"
   "ih"    "| head"
+  "ip"    "faketty __LINE__ | zoom-run"
+  "lp"    "faketty !! | zoom-run__EXPAND__"
   "tx"    "tar xzf"
   "tc"    "tar czf"
   "tt"    "tar tzf"
@@ -81,8 +83,9 @@ do
 done
 
 magic-abbrev-expand() {
-    local MATCH MBEGIN MEND expansion expand
+    local MATCH MBEGIN MEND expansion expand line
     LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
+    line="$LBUFFER"
     expansion=${abbreviations[$MATCH]}
 
     if [[ "${expansion}" == *__EXPAND__ ]]
@@ -91,7 +94,12 @@ magic-abbrev-expand() {
        expansion=${expansion%%__EXPAND__}
     fi
 
-    LBUFFER+=${expansion:-$MATCH}
+    if [[ "${expansion}" =~ "__LINE__" ]] 
+    then
+        LBUFFER="${expansion[(ws:__LINE__:)1]}$line${expansion[(ws:__LINE__:)2]}"
+    else
+        LBUFFER+=${expansion:-$MATCH}
+    fi
 
     [[ "$expand" ]] && zle fzf-completion
 

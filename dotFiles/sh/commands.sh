@@ -57,8 +57,26 @@ aw() {
 }
 
 awm() {
-   profileName="$1"
-   eval $(awsmfa "$1")
+   profile_name="$1"
+   eval $(awsmfa "$profile_name")
+}
+
+printargs() {
+    for arg; do
+        echo "$arg"
+    done
+}
+
+faketty() {
+    cmd="$1"
+    if alias "$cmd" > /dev/null; then
+        output=$(alias "$cmd")
+        output=${output/#$cmd=\'/}
+        output=${output/%\'/}
+        cmd=$output
+    fi
+    shift
+    script -q /dev/null ${=cmd} $@
 }
 
 pyn() {

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# If pane is not zoomed, zoom pane before running command
+
+if [ "$#" -ge 2 ]; then
+   if [ "$1" == "-p" ]; then
+       has_pager=true
+       shift
+   fi
+fi
+
+term_height="$(tput lines)"
+cmd="$@"
+if [[ "$has_pager" ]]; then
+    output_height="$($cmd | wc -l)"
+else
+    output="$(cat)"
+    output_height="$(echo "$output" | wc -l)"
+fi
+
+can_zoom=$([ -n "$TMUX_PANE" ] && tmux list-panes -F '#F' | grep -vq Z && echo true)
+output_too_big=$([ "$output_height" -gt "$term_height" ] && echo true)
+
+if [ "$can_zoom" -a "$output_too_big" ] ; then
+    tmux resize-pane -Z
+    full_term_height="$(tput lines)"
+    if [[ "$has_pager" ]]; then
+        $cmd
+    else
+        echo "$output" | $PAGER
+    fi
+    if [ "$output_height" -gt "$full_term_height" ]; then
+        tmux resize-pane -Z
+    fi
+else
+    if [[ "$has_pager" ]]; then
+        $cmd
+    else
+        echo "$output" | $PAGER
+    fi
+fi

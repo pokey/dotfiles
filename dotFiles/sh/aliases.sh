@@ -3,11 +3,11 @@ alias   ll="exa $EXA_LA_OPTIONS"
 alias   la="exa -a"
 alias  lla="exa -a $EXA_LA_OPTIONS"
 alias  lal="exa -a $EXA_LA_OPTIONS"
-alias   lt="exa --tree --git-ignore $EXA_LA_OPTIONS --colour always | less --tabs=3 -RXF"
+alias   lt="exa --tree --git-ignore $EXA_LA_OPTIONS --colour always | less $LESS_OPTIONS"
 alias   gs='git status'
-alias   gd='zoom-run git diff'
-alias  gdp='zoom-run git diff head~'
-alias  gdh='zoom-run git diff head'
+alias   gd='zoom-run -p git diff'
+alias  gdp='zoom-run -p git diff head~'
+alias  gdh='zoom-run -p git diff head'
 alias  ghc='git rev-parse HEAD'
 alias   gf='git fetch'
 alias   gp='git push origin HEAD'
@@ -38,7 +38,7 @@ alias   k4='cd ../../../..'
 alias    c='cd'
 alias   c-='cd -'
 alias   vm='ssh vm'
-alias   tl='zoom-run tldr'
+alias   tl='zoom-run -p tldr'
 alias   pr='git pull-request -b develop'
 alias   sz='source ~/.zshrc'
 alias  pie='pip install -e .'
@@ -54,11 +54,13 @@ alias pysu='pyenv shell --unset'
 alias   sp='python -c "import site; print(site.getsitepackages()[0])"'
 alias   cg='cd $(git rev-parse --show-toplevel)'
 alias   cs='cd ~/src'
-alias   le='zoom-run $PAGER'
-alias    p='zoom-run $PAGER'
+alias   le='zoom-run -p $PAGER'
+alias    p='zoom-run -p $PAGER'
+alias    p='zoom-run -p $PAGER'
+alias   vc="$VIMCAT"
 
 # Run man zoomed if in a tmux pane
-alias man='zoom-run man'
+alias man='zoom-run -p man'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   foo; alert

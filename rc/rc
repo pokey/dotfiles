@@ -15,12 +15,14 @@ export MANPATH=$MANPATH:/usr/local/texlive/2011/texmf/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 
 export EXA_LA_OPTIONS="-l --git --color-scale --classify --group-directories-first"
+export LESS_OPTIONS="--tabs=3 -RXF"
 
 # Other envvars
 export VISUAL="nvim --noplugin"
 export EDITOR="nvim --noplugin"
 export VIMPAGER_VIM="nvim"
-export PAGER="$HOME/.config/nvim/plugged/vimpager/vimpager -u NONE"
+export PAGER="$HOME/.config/nvim/plugged/vimpager/vimpager -u $HOME/.config/nvim/vimpager_nopass.vim"
+export VIMCAT="$HOME/.config/nvim/plugged/vimpager/vimcat -u NONE"
 export CTAGS_FLAGS="--tag-relative=yes --fields=+l --extras=+q"
 # Hack around https://github.com/junegunn/fzf/issues/809
 export FZF_TMUX=1
