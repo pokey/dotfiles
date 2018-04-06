@@ -20,7 +20,7 @@ can_zoom=$([ -n "$TMUX_PANE" ] && tmux list-panes -F '#F' | grep -vq Z && echo t
 if [[ "$has_pager" ]]; then
     $cmd
 else
-    echo "$output" | $PAGER
+    echo "$output" | less --tabs=3 -RX
 fi
 
 [ "$can_zoom" ] && tmux resize-pane -Z

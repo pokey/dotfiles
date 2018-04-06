@@ -26,10 +26,11 @@ abbreviations=(
   "gct"   'git ctags'
   "ix"    "| xargs"
   "ixx"   "| xargs -n1 -I{}"
-  "ia"    "| ag"
+  "ia"    "| rg"
   "ih"    "| head"
   "ip"    "faketty __LINE__ | zoom-run"
   "lp"    "faketty !! | zoom-run__EXPAND__"
+  "pl"    "faketty !! | zoom-run__EXPAND__"
   "tx"    "tar xzf"
   "tc"    "tar czf"
   "tt"    "tar tzf"
@@ -59,6 +60,7 @@ abbreviations=(
   "cg"    'cd $(git rev-parse --show-toplevel)__EXPAND__'
   "lf"    '!$__EXPAND__'
   "lc"    '!!:0__EXPAND__'
+  "lw"    '!!__EXPAND__'
   "k9"    'kill -9 __EXPAND__'
   "ghc"   'git rev-parse HEAD'
   "rf"    'rm -rf'
