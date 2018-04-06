@@ -34,6 +34,7 @@ source $HOME/.config/nvim/config/plugConfig.vim
 source $HOME/.config/nvim/config/cmds.vim
 source $HOME/.config/nvim/config/maps.vim
 source $HOME/.config/nvim/config/autocommands.vim
+source $HOME/.config/nvim/config/colours.vim
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
