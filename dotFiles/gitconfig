@@ -11,8 +11,8 @@
 [color "diff"]
 	meta = yellow bold
 [pager]
-	diff = diff-so-fancy | less --tabs=3 -RX
-	show = diff-so-fancy | less --tabs=3 -RX
+	diff = diff-so-fancy | less --tabs=3 -RX -+F
+	show = diff-so-fancy | less --tabs=3 -RX -+F
 [init]
 	templatedir = ~/.git_template
 [push]

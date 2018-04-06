@@ -56,7 +56,6 @@ alias   cg='cd $(git rev-parse --show-toplevel)'
 alias   cs='cd ~/src'
 alias   le='zoom-run -p $PAGER'
 alias    p='zoom-run -p $PAGER'
-alias    p='zoom-run -p $PAGER'
 alias   vc="$VIMCAT"
 
 # Run man zoomed if in a tmux pane
