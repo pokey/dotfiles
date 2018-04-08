@@ -9,7 +9,12 @@
 [push]
 	default = matching
 [color "diff"]
-	meta = yellow bold
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [pager]
 	diff = diff-so-fancy | less --tabs=3 -RX -+F
 	show = diff-so-fancy | less --tabs=3 -RX -+F
@@ -19,3 +24,10 @@
 	default = tracking
 [core]
 	excludesfile = ~/.gitignore
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color]
+	ui = true
