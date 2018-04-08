@@ -60,6 +60,7 @@ Plug 'FooSoft/vim-argwrap/'
 
 Plug 'fisadev/vim-isort'
 
+Plug 'lambdalisue/vim-pyenv'
 Plug 'python-rope/ropevim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'

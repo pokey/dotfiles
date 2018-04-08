@@ -52,7 +52,6 @@ nnoremap <silent> <leader>n :tabn<cr>
 tnoremap <silent> <leader>n <C-\><C-n>:TermLeave <bar> tabn<cr>
 nnoremap <silent> <leader>p :tabp<cr>
 tnoremap <silent> <leader>p <C-\><C-n>:TermLeave <bar> tabp<cr>
-tnoremap <silent> <leader>' <C-\><C-n>pa
 
 nnoremap <silent> <leader>d :ZoomToggle<CR>
 
@@ -109,6 +108,8 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 autocmd FileType python nnoremap <buffer> <leader>i :Isort<cr>
 autocmd FileType javascript nnoremap <buffer> <leader>i :SortImport<cr>
 
+nnoremap <leader>v :PyenvActivate<space>
+
 " Find in files
 nnoremap ga :Rg<space>
 nnoremap <silent> gy :Rgw<space> <c-r><c-w><cr>
@@ -147,6 +148,7 @@ nnoremap <silent> <leader>t :PrettyTraceback<cr>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <silent> <leader><space> <C-\><C-n>:TermLeave <bar> wincmd w<cr>
 tnoremap <silent> <leader>o <C-\><C-n>:TermLeave <bar> wincmd w<cr>
+tnoremap <silent> <leader>' <C-\><C-n>pa
 
 augroup termnormmaps
    au!
