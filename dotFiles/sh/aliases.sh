@@ -1,4 +1,4 @@
-alias    l='exa'
+alias    l='exa --classify --group-directories-first'
 alias   ll="exa $EXA_LA_OPTIONS"
 alias   la="exa -a"
 alias  lla="exa -a $EXA_LA_OPTIONS"

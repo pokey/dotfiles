@@ -110,6 +110,8 @@ autocmd FileType javascript nnoremap <buffer> <leader>i :SortImport<cr>
 
 nnoremap <leader>v :PyenvActivate<space>
 
+inoremap <leader>k <c-p>
+
 " Find in files
 nnoremap ga :Rg<space>
 nnoremap <silent> gy :Rgw<space> <c-r><c-w><cr>
