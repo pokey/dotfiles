@@ -13,14 +13,15 @@ if [[ ! "$has_pager" ]]; then
     output="$(cat)"
 fi
 
-can_zoom=$([ -n "$TMUX_PANE" ] && tmux list-panes -F '#F' | grep -vq Z && echo true)
+can_zoom=$([ -n "$TMUX_PANE" ] && tmux list-panes -F '#F' | \
+           grep -vq Z && echo true)
 
 [ "$can_zoom" ] && tmux resize-pane -Z
 
 if [[ "$has_pager" ]]; then
     $cmd
 else
-    echo "$output" | less --tabs=3 -RX
+    echo "$output" | $PAGER
 fi
 
 [ "$can_zoom" ] && tmux resize-pane -Z
