@@ -70,9 +70,7 @@
                                         {"key_code": "v"},
                                         {"key_code": "j"}
                                     ],
-                                    "modifiers": {
-                                        "optional": ["any"]
-                                    }
+                                    "modifiers": {"optional": ["any"]}
                                 },
                                 "to": [
                                     {
@@ -89,9 +87,7 @@
                                         {"key_code": "t"},
                                         {"key_code": "j"}
                                     ],
-                                    "modifiers": {
-                                        "optional": ["any"]
-                                    }
+                                    "modifiers": {"optional": ["any"]}
                                 },
                                 "to": [
                                     {
@@ -276,6 +272,22 @@
                                 "to": [
                                     {
                                         "shell_command": "open -a 'Google Chrome.app'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "m"},
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Messages.app'"
                                     }
                                 ],
                                 "conditions": [
