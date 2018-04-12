@@ -71,7 +71,10 @@
                                     "simultaneous": [
                                         {"key_code": "v"},
                                         {"key_code": "j"}
-                                    ]
+                                    ],
+                                    "modifiers": {
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -87,7 +90,10 @@
                                     "simultaneous": [
                                         {"key_code": "t"},
                                         {"key_code": "j"}
-                                    ]
+                                    ],
+                                    "modifiers": {
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -98,7 +104,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "J+W as backspace",
+                                "description": "J+W as pokey_modifier",
                                 "type": "basic",
                                 "from": {
                                     "simultaneous": [
@@ -109,7 +115,7 @@
                                 "to": [
                                     {
                                         "set_variable": {
-                                            "name": "backspace_mode",
+                                            "name": "pokey_modifier",
                                             "value": 1
                                         }
                                     }
@@ -117,7 +123,7 @@
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
-                                            "name": "backspace_mode",
+                                            "name": "pokey_modifier",
                                             "value": 0
                                         }
                                     }
@@ -127,9 +133,7 @@
                                 "type": "basic",
                                 "from": {
                                     "key_code": "f",
-                                    "modifiers": {
-                                        "optional": ["any"]
-                                    }
+                                    "modifiers": {"optional": ["any"]}
                                 },
                                 "to": [
                                     {"key_code": "delete_or_backspace"}
@@ -137,7 +141,47 @@
                                 "conditions": [
                                     {
                                         "type": "variable_if",
-                                        "name": "backspace_mode",
+                                        "name": "pokey_modifier",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {"optional": ["any"]}
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["right_control"]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "pokey_modifier",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {"optional": ["any"]}
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["right_control", "right_shift"]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "pokey_modifier",
                                         "value": 1
                                     }
                                 ]
@@ -149,7 +193,7 @@
                                 "conditions": [
                                     {
                                         "type": "variable_if",
-                                        "name": "backspace_mode",
+                                        "name": "pokey_modifier",
                                         "value": 1
                                     }
                                 ]
@@ -221,6 +265,74 @@
                                 "to": [
                                     {
                                         "shell_command": "open -a 'Alacritty.app'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "k"},
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["right_control"]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "l"},
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["right_control"]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "1"},
+                                "to": [
+                                    {
+                                        "key_code": "1",
+                                        "modifiers": ["right_control"]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "2"},
+                                "to": [
+                                    {
+                                        "key_code": "2",
+                                        "modifiers": ["right_control"]
                                     }
                                 ],
                                 "conditions": [
