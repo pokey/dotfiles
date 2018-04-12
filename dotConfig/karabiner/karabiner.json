@@ -21,23 +21,15 @@
                                 "description": "F+J to <Enter>",
                                 "from": {
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "optional": ["any"]
                                     },
                                     "simultaneous": [
-                                        {
-                                            "key_code": "f"
-                                        },
-                                        {
-                                            "key_code": "j"
-                                        }
+                                        {"key_code": "f"},
+                                        {"key_code": "j"}
                                     ]
                                 },
                                 "to": [
-                                    {
-                                        "key_code": "return_or_enter"
-                                    }
+                                    {"key_code": "return_or_enter"}
                                 ],
                                 "type": "basic"
                             },
@@ -45,20 +37,14 @@
                                 "description": "F+K as tmux trigger",
                                 "from": {
                                     "simultaneous": [
-                                        {
-                                            "key_code": "f"
-                                        },
-                                        {
-                                            "key_code": "k"
-                                        }
+                                        {"key_code": "f"},
+                                        {"key_code": "k"}
                                     ]
                                 },
                                 "to": [
                                     {
                                         "key_code": "h",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
+                                        "modifiers": ["left_control"]
                                     }
                                 ],
                                 "type": "basic"
@@ -67,45 +53,218 @@
                                 "description": "G+J as vim leader",
                                 "from": {
                                     "simultaneous": [
-                                        {
-                                            "key_code": "g"
-                                        },
-                                        {
-                                            "key_code": "j"
-                                        }
+                                        {"key_code": "g"},
+                                        {"key_code": "j"}
                                     ]
                                 },
                                 "to": [
                                     {
                                         "key_code": "q",
-                                        "modifiers": [
-                                            "right_control"
-                                        ]
+                                        "modifiers": ["right_control"]
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
-                                "description": "V+J as vim save",
+                                "description": "V+J as ctrl",
                                 "from": {
                                     "simultaneous": [
-                                        {
-                                            "key_code": "v"
-                                        },
-                                        {
-                                            "key_code": "j"
-                                        }
+                                        {"key_code": "v"},
+                                        {"key_code": "j"}
                                     ]
                                 },
                                 "to": [
                                     {
-                                        "key_code": "s",
-                                        "modifiers": [
-                                            "right_control"
-                                        ]
+                                        "key_code": "left_control",
+                                        "lazy": true
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "description": "T+J as shift",
+                                "from": {
+                                    "simultaneous": [
+                                        {"key_code": "t"},
+                                        {"key_code": "j"}
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "lazy": true
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "J+W as backspace",
+                                "from": {
+                                    "modifiers": {
+                                        "optional": ["any"]
+                                    },
+                                    "simultaneous": [
+                                        {"key_code": "w"},
+                                        {"key_code": "j"}
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "J+W as backspace",
+                                "from": {
+                                    "modifiers": {
+                                        "optional": ["any"]
+                                    },
+                                    "simultaneous": [
+                                        {"key_code": "w"},
+                                        {"key_code": "j"}
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "disable return",
+                                "from": {
+                                    "key_code": "return_or_enter"
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "description": "disable delete",
+                                "from": {
+                                    "key_code": "delete_or_backspace"
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "description": "disable left_shift",
+                                "from": {
+                                    "key_code": "left_shift"
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "description": "disable right_shift",
+                                "from": {
+                                    "key_code": "right_shift"
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "simultaneous": [
+                                        {"key_code": "h"},
+                                        {"key_code": "v"}
+                                    ] 
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "launcher_mode",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "launcher_mode",
+                                            "value": 0
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "c"},
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Google Chrome.app'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "a"},
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Alacritty.app'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "t"},
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Things3.app'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "s"},
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Slack.app'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "n"},
+                                "to": [
+                                    {
+                                        "shell_command": "open 'things:///add?show-quick-entry=true'"
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "launcher_mode",
+                                        "value": 1
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -213,22 +372,6 @@
             "name": "Default profile",
             "selected": true,
             "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": {
-                        "key_code": "left_control"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "return_or_enter"
-                    },
-                    "to": {
-                        "key_code": "right_control"
-                    }
-                }
             ],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
