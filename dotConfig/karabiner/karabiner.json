@@ -99,66 +99,74 @@
                             },
                             {
                                 "description": "J+W as backspace",
+                                "type": "basic",
                                 "from": {
-                                    "modifiers": {
-                                        "optional": ["any"]
-                                    },
                                     "simultaneous": [
                                         {"key_code": "w"},
                                         {"key_code": "j"}
-                                    ]
+                                    ] 
                                 },
                                 "to": [
                                     {
-                                        "key_code": "delete_or_backspace"
+                                        "set_variable": {
+                                            "name": "backspace_mode",
+                                            "value": 1
+                                        }
                                     }
                                 ],
-                                "type": "basic"
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "backspace_mode",
+                                            "value": 0
+                                        }
+                                    }
+                                ]
                             },
                             {
-                                "description": "J+W as backspace",
-                                "from": {
-                                    "modifiers": {
-                                        "optional": ["any"]
-                                    },
-                                    "simultaneous": [
-                                        {"key_code": "w"},
-                                        {"key_code": "j"}
-                                    ]
-                                },
+                                "type": "basic",
+                                "from": {"key_code": "w"},
                                 "to": [
-                                    {
-                                        "key_code": "delete_or_backspace"
-                                    }
+                                    {"key_code": "delete_or_backspace"}
                                 ],
-                                "type": "basic"
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "backspace_mode",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {"key_code": "j"},
+                                "to": [{"key_code": "delete_or_backspace"}],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "backspace_mode",
+                                        "value": 1
+                                    }
+                                ]
                             },
                             {
                                 "description": "disable return",
-                                "from": {
-                                    "key_code": "return_or_enter"
-                                },
+                                "from": {"key_code": "return_or_enter"},
                                 "type": "basic"
                             },
                             {
                                 "description": "disable delete",
-                                "from": {
-                                    "key_code": "delete_or_backspace"
-                                },
+                                "from": {"key_code": "delete_or_backspace"},
                                 "type": "basic"
                             },
                             {
                                 "description": "disable left_shift",
-                                "from": {
-                                    "key_code": "left_shift"
-                                },
+                                "from": {"key_code": "left_shift"},
                                 "type": "basic"
                             },
                             {
                                 "description": "disable right_shift",
-                                "from": {
-                                    "key_code": "right_shift"
-                                },
+                                "from": {"key_code": "right_shift"},
                                 "type": "basic"
                             },
                             {
