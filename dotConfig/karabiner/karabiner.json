@@ -125,7 +125,12 @@
                             },
                             {
                                 "type": "basic",
-                                "from": {"key_code": "w"},
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "optional": ["any"]
+                                    }
+                                },
                                 "to": [
                                     {"key_code": "delete_or_backspace"}
                                 ],
