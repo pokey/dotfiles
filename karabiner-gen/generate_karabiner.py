@@ -26,10 +26,10 @@ complex_modifications = [
     for mapping in complex_modifications_input['launcher_mode']
 ]
 
-manipulators = (
-    config['profiles'][0]['complex_modifications']['rules'][0]['manipulators']
+rule = (
+    config['profiles'][0]['complex_modifications']['rules'][0]
 )
-manipulators = complex_modifications + manipulators
+rule['manipulators'] = complex_modifications + rule['manipulators']
 
 out = json.dumps(
     config,
