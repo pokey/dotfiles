@@ -46,14 +46,16 @@ for i in range(0, 9)
    exe "tnoremap <silent> <leader>".i.
    \   " <C-\\><C-n>:TermLeave <bar> tabn ".(i+1)."<cr>"
 endfor
-nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<CR>
-tnoremap <silent> <Leader>; <C-\><C-n>:TermLeave <bar> exe "tabn ".g:lasttab<CR>
+nnoremap <silent> <Leader><BS> :exe "tabn ".g:lasttab<CR>
+tnoremap <silent> <Leader><BS> <C-\><C-n>:TermLeave <bar> exe "tabn ".g:lasttab<CR>
 nnoremap <silent> <leader>n :tabn<cr>
 tnoremap <silent> <leader>n <C-\><C-n>:TermLeave <bar> tabn<cr>
 nnoremap <silent> <leader>p :tabp<cr>
 tnoremap <silent> <leader>p <C-\><C-n>:TermLeave <bar> tabp<cr>
 
 nnoremap <silent> <leader>d :ZoomToggle<CR>
+
+nnoremap <silent> g<BS> <c-^>
 
 nnoremap <leader>[ <esc>
 vnoremap <leader>[ <esc>
@@ -69,7 +71,7 @@ vmap <silent> qf S)i
 
 " Lists
 nnoremap <silent> g/ :History/<cr>
-nnoremap <silent> g; :History:<cr>
+nnoremap <silent> g: :History:<cr>
 nnoremap <silent> <leader>h :History<cr>
 nnoremap <silent> g? :Helptags<cr>
 nnoremap <silent> gx :Commands<cr>
