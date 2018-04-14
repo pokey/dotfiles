@@ -50,3 +50,7 @@ launcher_mode:
     to:
       key_code: m
       modifiers: ["right_command", "right_control"]
+  - from: e
+    to:
+      key_code: spacebar
+      modifiers: ["right_command", "right_control"]

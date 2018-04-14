@@ -58,12 +58,17 @@ for file in $DOTCONFIG/*; do
    ln -s "$src" "$dst"
 done
 
-$INSTALL pyenv-virtualenv
 $INSTALL tmux
 $INSTALL fasd
 
 brew install python
 pip install glances
+pip install pyyaml
+
+(cd karabiner-gen && \
+ ./generate_karabiner.py > ~/.config/karabiner/karabiner.json)
+
+$INSTALL pyenv-virtualenv
 
 # Setup neovim python
 $SCRIPTPATH/neovim_python.sh

@@ -1,5 +1,5 @@
 Run
 
 ```
-./generate_karabiner.py > ../dotConfig/karabiner/karabiner.json
+./generate_karabiner.py > ~/.config/karabiner/karabiner.json
 ```

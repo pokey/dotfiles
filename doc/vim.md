@@ -8,8 +8,8 @@ Shortcuts
 ---------
 ### General
 #### Normal and insert mode
-- `<VJ>` simultaneously saves the file.  If in insert mode, it exits insert mode
-  first.  This is basically always how I exit insert mode.
+- `<ctrl-s>` saves the file.  If in insert mode, it exits insert mode first.
+  This is basically always how I exit insert mode.
 
 #### Normal mode
 - `}` moves forward to the next blank line.  I use this all the time

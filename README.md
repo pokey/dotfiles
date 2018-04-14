@@ -51,13 +51,20 @@ Setup
      vim, tmux, etc.
    - This will remap your keyboard kind of severely, but it's reversible if you
      find it too annoying.  It's better for RSI and faster.  In particular:
-     - `<enter>` => `<ctrl>`
+     - `W+J` => `<shift>`
+     - `V+J` => `<ctrl>`
      - `F+J` simultaneously => `<enter>`
-     - `<caps lock>` => `<ctrl>`
-     - Key repeat rate is jacked up really high.  Every millisecond counts :-)
+     - `;` => `<backspace>`
+     - `D+;` => `;`
+     - `F+;` => `:`
+     - Key repeat rate is jacked up really high.  Every millisecond counts ☺️
+     - The right `<command>` button is remapped to be a launcher, so for
+       instance pressing `<right_command>-c` launches Google Chrome.  See
+       [`karabiner.yaml`](karabiner-gen/karabiner.yaml) for the exact
+       shortcuts
+     - A few other shortcuts. See
+       [`karabiner.yaml`](karabiner-gen/karabiner-input.json)
 
-     Try to use the right ctrl (ie `<enter>`) when hitting keys with the left
-     hand, and vice versa (ie `<caps lock>`.  This helps with RSI.
 1. Switch to better iTerm2 font
    1. Go to the menu iTerm2 > Preferences... > Profiles > Text > Change Font
    1. Select Inconsolata-g for Powerline.  I like 18pt
