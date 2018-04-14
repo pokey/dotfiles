@@ -70,6 +70,9 @@
                                         {"key_code": "v"},
                                         {"key_code": "j"}
                                     ],
+                                    "simultaneous_options": {
+                                        "key_up_when": "all"
+                                    },
                                     "modifiers": {"optional": ["any"]}
                                 },
                                 "to": [{
@@ -79,12 +82,15 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "T+J as shift",
+                                "description": "W+J as shift",
                                 "from": {
                                     "simultaneous": [
-                                        {"key_code": "t"},
+                                        {"key_code": "w"},
                                         {"key_code": "j"}
                                     ],
+                                    "simultaneous_options": {
+                                        "key_up_when": "all"
+                                    },
                                     "modifiers": {"optional": ["any"]}
                                 },
                                 "to": [{

@@ -1,9 +1,9 @@
 launcher_mode:
-  - from: semicolon
+  - from: quote
     to:
       key_code: right_arrow
       modifiers: ["right_control"]
-  - from: l
+  - from: semicolon
     to:
       key_code: left_arrow
       modifiers: ["right_control"]
@@ -32,4 +32,21 @@ launcher_mode:
       shell_command: open -a 'Slack.app'
   - from: n
     to:
-      shell_command: open 'things:///add?show-quick-entry=true'
+      key_code: o
+      modifiers: ["right_command", "right_shift", "right_control"]
+  - from: w
+    to:
+      key_code: w
+      modifiers: ["right_command", "right_control"]
+  - from: g
+    to:
+      key_code: g
+      modifiers: ["right_command", "right_control"]
+  - from: z
+    to:
+      key_code: a
+      modifiers: ["right_command", "right_control"]
+  - from: p
+    to:
+      key_code: m
+      modifiers: ["right_command", "right_control"]

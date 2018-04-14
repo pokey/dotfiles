@@ -26,7 +26,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "semicolon"
+                                    "key_code": "quote"
                                 },
                                 "to": [
                                     {
@@ -47,7 +47,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "l"
+                                    "key_code": "semicolon"
                                 },
                                 "to": [
                                     {
@@ -204,7 +204,100 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open 'things:///add?show-quick-entry=true'"
+                                        "key_code": "o",
+                                        "modifiers": [
+                                            "right_command",
+                                            "right_shift",
+                                            "right_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "launcher_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "w"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "w",
+                                        "modifiers": [
+                                            "right_command",
+                                            "right_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "launcher_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "g"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "g",
+                                        "modifiers": [
+                                            "right_command",
+                                            "right_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "launcher_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "z"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": [
+                                            "right_command",
+                                            "right_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "launcher_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "m",
+                                        "modifiers": [
+                                            "right_command",
+                                            "right_control"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -292,7 +385,10 @@
                                         {
                                             "key_code": "j"
                                         }
-                                    ]
+                                    ],
+                                    "simultaneous_options": {
+                                        "key_up_when": "all"
+                                    }
                                 },
                                 "to": [
                                     {
@@ -303,7 +399,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "T+J as shift",
+                                "description": "W+J as shift",
                                 "from": {
                                     "modifiers": {
                                         "optional": [
@@ -312,12 +408,15 @@
                                     },
                                     "simultaneous": [
                                         {
-                                            "key_code": "t"
+                                            "key_code": "w"
                                         },
                                         {
                                             "key_code": "j"
                                         }
-                                    ]
+                                    ],
+                                    "simultaneous_options": {
+                                        "key_up_when": "all"
+                                    }
                                 },
                                 "to": [
                                     {
