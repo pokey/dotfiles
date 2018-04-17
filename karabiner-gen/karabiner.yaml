@@ -18,6 +18,9 @@ launcher_mode:
   - from: a
     to:
       shell_command: open -a 'Alacritty.app'
+  - from: b
+    to:
+      shell_command: open -a 'Bear.app'
   - from: c
     to:
       shell_command: open -a 'Google Chrome.app'
@@ -30,6 +33,12 @@ launcher_mode:
   - from: s
     to:
       shell_command: open -a 'Slack.app'
+  - from: f
+    to:
+      shell_command: open -a 'Finder.app'
+  - from: v
+    to:
+      shell_command: open -a 'Preview.app'
   - from: n
     to:
       key_code: o
