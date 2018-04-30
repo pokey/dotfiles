@@ -67,6 +67,7 @@ abbreviations=(
   "cs"    'cd ~/src'
   "cpr"   'cp -rf'
   "cf"    'cp -rf'
+  "jl"    'jupyter lab'
 )
 
 for i in {1..9};

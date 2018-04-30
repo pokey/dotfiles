@@ -18,6 +18,24 @@
                         "description": "Simultaneous mappings",
                         "manipulators": [
                             {
+                                "description": "W+F+J to <Shift-Enter>",
+                                "from": {
+                                    "modifiers": {"optional": ["any"]},
+                                    "simultaneous": [
+                                        {"key_code": "w"},
+                                        {"key_code": "f"},
+                                        {"key_code": "j"}
+                                    ]
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "return_or_enter",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "description": "F+J to <Enter>",
                                 "from": {
                                     "modifiers": {"optional": ["any"]},
@@ -129,7 +147,7 @@
                             {
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "quote",
+                                    "key_code": "return_or_enter",
                                     "modifiers": {"mandatory": ["command"]}
                                 },
                                 "to": [
@@ -142,7 +160,7 @@
                             {
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "semicolon",
+                                    "key_code": "quote",
                                     "modifiers": {"mandatory": ["command"]}
                                 },
                                 "to": [
