@@ -113,13 +113,11 @@ command! -bar MaybeEnterTerm call s:MaybeEnterTerm()
 
 command! -bar -nargs=1 -bang RenameCopy saveas<bang> %:h/<args>
 
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --follow --color "always" '
+let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --smart-case --hidden -g ''!.git'' --follow --color "always" '
 
 command! -bang -nargs=* Rg call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
-let g:rg_words_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --follow --word-regexp --color "always" '
+let g:rg_words_command = 'rg --column --line-number --no-heading --fixed-strings --smart-case --hidden -g ''!.git'' --follow --word-regexp --color "always" '
 
 command! -bang -nargs=* Rg call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 command! -bang -nargs=* Rgw call fzf#vim#grep(g:rg_words_command .shellescape(<q-args>), 1, <bang>0)

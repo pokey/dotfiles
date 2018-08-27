@@ -15,6 +15,9 @@ launcher_mode:
     to:
       key_code: '2'
       modifiers: ["right_control"]
+  - from: a
+    to:
+      shell_command: open -a 'Postman.app'
   - from: s
     to:
       shell_command: open -a 'Alacritty.app'

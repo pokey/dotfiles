@@ -20,6 +20,7 @@ alias  grd='git rebase develop'
 alias grid='git rebase -i develop'
 alias  grc='git rebase --continue'
 alias  god='git checkout develop'
+alias  gom='git checkout master'
 alias  ghp='git subtree push --prefix dist origin master'
 alias  gct='git ctags'
 alias   gt='git ctags'
@@ -43,8 +44,13 @@ alias   tl='zoom-run -p tldr'
 alias   pr='git pull-request -b develop'
 alias   sz='source ~/.zshrc'
 alias  pie='pip install -e .'
+alias pieu='pip install -e . -U'
 alias   jl='jupyter lab'
 alias gpie='gpip -e .'
+alias gpit="gpip -e '.[test]'"
+alias  gst="git stash"
+alias gstp="git stash pop"
+alias gpieu='gpip -e . -U'
 alias  ffp='git flow feature publish'
 alias  frp='git flow release publish'
 # From http://macsimplelife.blogspot.com/2007/11/mac-os-x-hibernate-issue.html
@@ -59,6 +65,10 @@ alias   cs='cd ~/src'
 alias   le='zoom-run -p $PAGER'
 alias    p='zoom-run -p $PAGER'
 alias   vc="$VIMCAT"
+alias   vs="vim -S"
+alias   jo="jobs"
+alias   k1="kill %1"
+alias uuid="python -c \"import uuid; print(uuid.uuid4())\" | tr -d '\n'"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

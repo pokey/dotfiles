@@ -76,6 +76,14 @@ snippet pd "print debug" b
 print(f"$1: {$1}")
 endsnippet
 
+snippet ed "echo debug" b
+click.echo(f"$1: {$1}")
+endsnippet
+
+snippet md "mkdir" b
+$1.mkdir(parents=True, exist_ok=True)
+endsnippet
+
 snippet ni "Not implemented" b
 raise NotImplementedError()
 endsnippet

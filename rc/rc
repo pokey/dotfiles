@@ -4,6 +4,8 @@ export LD_LIBRARY_PATH=/usr/local/lib
 # Core dumps
 ulimit -c unlimited
 
+export GEM_HOME=$HOME/.gem
+
 # Setup PATH
 export PATH=$PATH:/usr/local/texlive/2011/bin/x86_64-linux:~/bin:/usr/local/ssl/bin:~/bin:~/packer
 export PATH=$PATH:/Library/TeX/Root/bin/x86_64-darwin
@@ -11,6 +13,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/usr/local/Cellar/qt@5.5/5.5.1_1/bin
+export PATH=$GEM_HOME/bin:$PATH
 export MANPATH=$MANPATH:/usr/local/texlive/2011/texmf/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 

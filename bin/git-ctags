@@ -4,4 +4,4 @@ PATH="/usr/local/bin:$PATH"
 
 cd "$(git rev-parse --show-toplevel)"
 
-ag -l | ctags -L - $CTAGS_FLAGS -o .tags
+fd | ctags -L - $CTAGS_FLAGS -o .tags

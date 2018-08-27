@@ -22,12 +22,14 @@ abbreviations=(
   "gcp"   'git cherry-pick'
   "ghp"   'git subtree push --prefix dist origin master'
   "god"   'git checkout develop'
+  "gom"   'git checkout master'
   "gt"    'git ctags'
   "gct"   'git ctags'
   "ix"    "| xargs"
   "ixx"   "| xargs -n1 -I{}"
   "ia"    "| rg"
   "ih"    "| head"
+  "ic"    "| pbcopy"
   "ip"    "faketty __LINE__ | zoom-run"
   "lp"    "faketty !! | zoom-run__EXPAND__"
   "pl"    "faketty !! | zoom-run__EXPAND__"
@@ -44,10 +46,16 @@ abbreviations=(
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
   "pi"    "pip install"
+  "pu"    "pip uninstall"
   "pie"   "pip install -e ."
   "pis"   "pip install flake8 flake8-isort flake8-print"
   "pisj"  "pip install flake8 flake8-isort flake8-print jupyterlab"
+  "pieu"  "pip install -e . -U"
   "gpie"  "gpip -e ."
+  "gpit"  "gpip -e '.[test]'"
+  "gpieu" "gpip -e . -U"
+  "gst"   "git stash"
+  "gstp"  "git stash pop"
   "gn"    "git checkout -b"
   "gp"    "git push"
   "ga"    "git add"
@@ -68,6 +76,9 @@ abbreviations=(
   "cpr"   'cp -rf'
   "cf"    'cp -rf'
   "jl"    'jupyter lab'
+  "vs"    'vim -S'
+  "jo"    'jobs'
+  "k1"    'kill %1'
 )
 
 for i in {1..9};
