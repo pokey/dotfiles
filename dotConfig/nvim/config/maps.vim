@@ -110,7 +110,7 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " Sorting imports
 autocmd FileType python nnoremap <buffer> <leader>i :Isort<cr>
-autocmd FileType javascript nnoremap <buffer> <leader>i :SortImport<cr>
+autocmd FileType javascript nnoremap <buffer> <leader>i :ALEFix<cr>
 
 nnoremap <leader>v :PyenvActivate<space>
 

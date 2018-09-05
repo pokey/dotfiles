@@ -79,6 +79,7 @@ abbreviations=(
   "vs"    'vim -S'
   "jo"    'jobs'
   "k1"    'kill %1'
+  "ya"    'yarn add'
 )
 
 for i in {1..9};

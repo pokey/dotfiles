@@ -8,7 +8,6 @@ Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plug 'sheerun/vim-polyglot'
 
 Plug 'jparise/vim-graphql'
-Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
@@ -78,5 +77,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ruanyl/vim-sort-imports'
 
 Plug 'lepture/vim-velocity'
+
+Plug 'w0rp/ale'
 
 call plug#end()

@@ -42,8 +42,12 @@ highlight SpellBad ctermbg=000
 let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
 let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = []
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+
+let b:ale_fixers = {'javascript': ['prettier', 'eslint', 'importjs']}
+let g:ale_javascript_prettier_use_global = 0
+let g:ale_javascript_eslint_use_global = 0
 
 let g:syntastic_html_tidy_ignore_errors = [
     \  'plain text isn''t allowed in <head> elements',
