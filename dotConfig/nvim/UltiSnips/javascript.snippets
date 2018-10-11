@@ -6,13 +6,49 @@ def stripType(name):
 endglobal
 
 snippet rc "React class" b
-const `!p snip.rv = stripType(snip.basename)` = React.createClass({
+export default class `!p snip.rv = stripType(snip.basename)` extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+	}
+
+	componentWillUnmount() {
+	}
+
 	render() {
 		return (
-			$0
+            $0
 		);
 	}
-});
+}
+endsnippet
+
+snippet c "constructor" b
+constructor(props) {
+	super(props);
+
+	$0
+}
+endsnippet
+
+snippet cf "function" b
+$1($2) {
+    $0
+}
+endsnippet
+
+snippet b "bind" b
+this.$1 = this.$1.bind(this);
+endsnippet
+
+snippet p "React component props" b
+const {$0} = this.props;
+endsnippet
+
+snippet s "React component state" b
+const {$0} = this.state;
 endsnippet
 
 snippet ed "Export" b
@@ -27,7 +63,7 @@ snippet ir "Import react" b
 import React, {$0} from 'react-native';
 endsnippet
 
-snippet s "Styles" b
+snippet sty "Styles" b
 const styles = {
 	$1: {
 		$0

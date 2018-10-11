@@ -45,6 +45,8 @@ abbreviations=(
   "nd"    "npm install -D"
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
+  "pyw"   "pyenv shell ${PWD##*/}__EXPAND__"
+  "pyc"   "pyenv shell ${PWD##*/}__EXPAND__"
   "pi"    "pip install"
   "pu"    "pip uninstall"
   "pie"   "pip install -e ."
@@ -52,6 +54,7 @@ abbreviations=(
   "pisj"  "pip install flake8 flake8-isort flake8-print jupyterlab"
   "pieu"  "pip install -e . -U"
   "gpie"  "gpip -e ."
+  "gpu"   "gpip -U"
   "gpit"  "gpip -e '.[test]'"
   "gpieu" "gpip -e . -U"
   "gst"   "git stash"
@@ -79,6 +82,7 @@ abbreviations=(
   "vs"    'vim -S'
   "jo"    'jobs'
   "k1"    'kill %1'
+  "k91"   'kill -9 %1'
   "ya"    'yarn add'
 )
 

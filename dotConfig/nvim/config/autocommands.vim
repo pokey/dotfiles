@@ -18,7 +18,6 @@ augroup tabs
   au!
   au FileType make setlocal noexpandtab
   au FileType snippets setlocal noexpandtab
-  au BufRead,BufNewFile *.java setlocal softtabstop=2 shiftwidth=2 expandtab
   au BufRead,BufNewFile *.otl setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
   au FileType python
     \ setlocal tabstop=4

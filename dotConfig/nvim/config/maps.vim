@@ -109,8 +109,9 @@ nnoremap <C-p> :e<space>
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " Sorting imports
-autocmd FileType python nnoremap <buffer> <leader>i :Isort<cr>
-autocmd FileType javascript nnoremap <buffer> <leader>i :ALEFix<cr>
+autocmd FileType python nnoremap <silent> <buffer> <leader>i :Isort<cr>
+autocmd FileType javascript nnoremap <silent> <buffer> <leader>i :ALEFix<cr>
+autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>i :ALEFix<cr>
 
 nnoremap <leader>v :PyenvActivate<space>
 
@@ -185,7 +186,7 @@ vnoremap i0 i)
 
 " nmap <C-y> :call g:AddFile()<CR>
 " nmap <C-y> :call g:AddParentDir()<CR>
-map <C-y> :let g:SMARTAUTOCOMPLETE_URI='http://localhost:808
+" map <C-y> :let g:SMARTAUTOCOMPLETE_URI='http://localhost:808
 
 nnoremap ge :Xbit<cr>
 

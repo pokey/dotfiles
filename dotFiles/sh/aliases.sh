@@ -68,6 +68,7 @@ alias   vc="$VIMCAT"
 alias   vs="vim -S"
 alias   jo="jobs"
 alias   k1="kill %1"
+alias  k91="kill -9 %1"
 alias uuid="python -c \"import uuid; print(uuid.uuid4())\" | tr -d '\n'"
 
 # Run man zoomed if in a tmux pane
