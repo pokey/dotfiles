@@ -13,7 +13,6 @@ Setup
 
       and following instructions.
    1. Install [Homebrew](brew.sh)
-   1. Setup [wakatime](https://wakatime.com/) and make note of API key
 1. Setup github and clone this repo
    1. Generate ssh key
 

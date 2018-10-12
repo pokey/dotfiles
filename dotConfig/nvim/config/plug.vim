@@ -1,7 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'wakatime/vim-wakatime'
-
 Plug 'saltstack/salt-vim'
 Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 

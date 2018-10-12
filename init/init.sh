@@ -86,7 +86,6 @@ ln -s $HOME/.config/nvim $HOME/.vim
 ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc 
 
 # Install vim plugins
-# Note that this will ask for the wakatime api key
 vim +PluginInstall +qall
 
 # setup zsh
