@@ -30,6 +30,8 @@ abbreviations=(
   "ia"    "| rg"
   "ih"    "| head"
   "ic"    "| pbcopy"
+  "ij"    '| jq ".__CURSOR__"'
+  "ijr"   '| jq -r ".__CURSOR__"'
   "ip"    "faketty __LINE__ | zoom-run"
   "lp"    "faketty !! | zoom-run__EXPAND__"
   "pl"    "faketty !! | zoom-run__EXPAND__"
@@ -48,6 +50,7 @@ abbreviations=(
   "pyw"   "pyenv shell ${PWD##*/}__EXPAND__"
   "pyc"   "pyenv shell ${PWD##*/}__EXPAND__"
   "pi"    "pip install"
+  "piu"   "pip install -U"
   "pu"    "pip uninstall"
   "pie"   "pip install -e ."
   "pis"   "pip install flake8 flake8-isort flake8-print"
@@ -83,7 +86,9 @@ abbreviations=(
   "jo"    'jobs'
   "k1"    'kill %1'
   "k91"   'kill -9 %1'
+  "nv"    'kill -9 %1 ; pyenv shell ${PWD##*/} ; nvim -S'
   "ya"    'yarn add'
+  "idc"   'uuid | pbcopy'
 )
 
 for i in {1..9};
