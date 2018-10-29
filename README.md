@@ -4,7 +4,10 @@ Setup
 1. Install deps
    1. Install [Hammerspoon](http://www.hammerspoon.org/)
    1. Install [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
-   1. Install [iTerm2](https://www.iterm2.com/downloads.html)
+   1. Install [iTerm2](https://www.iterm2.com/downloads.html). NOTE: I actually
+      use [alacritty](https://github.com/jwilm/alacritty) now.  File an issue
+      if you'd like me to rewrite this section with instructions for how to set
+      this up.
    1. Install command-line tools by running
 
       ```
@@ -12,7 +15,7 @@ Setup
       ```
 
       and following instructions.
-   1. Install [Homebrew](brew.sh)
+   1. Install [Homebrew](https://brew.sh)
 1. Setup github and clone this repo
    1. Generate ssh key
 
