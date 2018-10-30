@@ -1,3 +1,10 @@
+Dotfiles
+========
+These are my dot files.  Your mileage may vary.
+
+This setup has only been tested on MacOS, although a lot of it should work on
+Linux.
+
 Setup
 -----
 
@@ -7,13 +14,6 @@ Setup
    1. Install [Alacritty](https://github.com/jwilm/alacritty). I actually
       maintain a [fork](https://github.com/pokey/alacritty) that changes the
       visual bell color, because I find the white flash really annoying.
-   1. Install command-line tools by running
-
-      ```
-      g++
-      ```
-
-      and following instructions.
    1. Install [Homebrew](https://brew.sh)
 1. Setup github and clone this repo
    1. Generate ssh key
@@ -57,10 +57,12 @@ Setup
        shortcuts
      - A few other shortcuts. See
        [`karabiner.yaml`](karabiner-gen/karabiner-input.json)
-1. Run Alacritty
-1. Run `tmux`
-1. Run `F+K <shift>-I` to install tmux plugins
 1. Read the [docs](doc)
+
+Running
+-------
+1. Run the Alacritty application.
+1. Execute `tmux`.
 
 Updates
 -------

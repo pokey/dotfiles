@@ -86,7 +86,7 @@ ln -s $HOME/.config/nvim $HOME/.vim
 ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc 
 
 # Install vim plugins
-vim +PluginInstall +qall
+vim +PlugUpgrade +PlugUpdate +PlugClean +qall
 
 # setup zsh
 git clone https://github.com/olivierverdier/zsh-git-prompt.git
@@ -119,6 +119,7 @@ $HOME/.fzf/install
 
 # Install tpm
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+"$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 # Install useful MacOS stuff
 if test "$(uname)" = "Darwin"; then
