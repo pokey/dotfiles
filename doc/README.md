@@ -12,5 +12,9 @@ just use all the time.
   leverage hammerspoon
 - [aws](aws.md) contains info about how I use the aws cli
 
-See the [tutorials](tutorials.md) for some examples combining commands to do
-various tasks.
+Getting started
+===============
+1. Run the Alacritty application.
+1. Execute `tmux`.
+1. Try the [tutorials](tutorials.md) for some examples combining commands to do
+   various tasks.

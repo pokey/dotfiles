@@ -59,11 +59,6 @@ Setup
        [`karabiner.yaml`](karabiner-gen/karabiner-input.json)
 1. Read the [docs](doc)
 
-Running
--------
-1. Run the Alacritty application.
-1. Execute `tmux`.
-
 Updates
 -------
 Whenever you pull a new version, run `sz` in any open shells to update zsh
