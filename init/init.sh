@@ -173,3 +173,10 @@ $SCRIPTPATH/template.sh gitconfig.personal "$HOME/.gitconfig.personal"
 $SCRIPTPATH/template.sh zshrc "$HOME/.zshrc"
 $SCRIPTPATH/template.sh bashrc "$HOME/.bashrc"
 $SCRIPTPATH/template.sh hammerspoon "$BASEPATH/dotFiles/hammerspoon/ssid.lua"
+
+# Setup karabiner
+sudo python -m ensurepip
+brew install libyaml
+pip install --user pyyaml
+backup ~/.config/karabiner/karabiner.json
+(cd karabiner-gen ; ./generate_karabiner.py > ~/.config/karabiner/karabiner.json)

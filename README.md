@@ -4,10 +4,9 @@ Setup
 1. Install deps
    1. Install [Hammerspoon](http://www.hammerspoon.org/)
    1. Install [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
-   1. Install [iTerm2](https://www.iterm2.com/downloads.html). NOTE: I actually
-      use [alacritty](https://github.com/jwilm/alacritty) now.  File an issue
-      if you'd like me to rewrite this section with instructions for how to set
-      this up.
+   1. Install [Alacritty](https://github.com/jwilm/alacritty). I actually
+      maintain a [fork](https://github.com/pokey/alacritty) that changes the
+      visual bell color, because I find the white flash really annoying.
    1. Install command-line tools by running
 
       ```
@@ -31,14 +30,6 @@ Setup
 
    1. Add ssh key to github
    1. Clone this repo
-1. Setup iTerm2 colors. NOTE: I actually use
-   [alacritty](https://github.com/jwilm/alacritty) now.  File an issue if you'd
-   like me to rewrite this section with instructions for how to set this up and
-   configure your colors.
-   1. Open iTerm2
-   1. Go to the menu iTerm2 > Preferences... > Profiles > Colors > Color
-      Presets... > Import...
-   1. Select `my.itermcolors` from this directory
 1. Run
 
    ```
@@ -66,10 +57,9 @@ Setup
        shortcuts
      - A few other shortcuts. See
        [`karabiner.yaml`](karabiner-gen/karabiner-input.json)
-
-1. Switch to better iTerm2 font
-   1. Go to the menu iTerm2 > Preferences... > Profiles > Text > Change Font
-   1. Select Inconsolata-g for Powerline.  I like 18pt
+1. Run Alacritty
+1. Run `tmux`
+1. Run `F+K <shift>-I` to install tmux plugins
 1. Read the [docs](doc)
 
 Updates
