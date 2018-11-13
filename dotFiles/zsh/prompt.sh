@@ -1,20 +1,43 @@
-# Git prompt
-source ~/zsh-git-prompt/zshrc.sh
-
-function virtualenv_info(){
-    # Get Virtual Env
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        # Strip out the path and just leave the env name
-        echo "${VIRTUAL_ENV##*/}"
-    else
-        echo "NONE"
-        # In case you don't have one activated
-    fi
-}
-
 # disable the default virtualenv prompt change
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-export ZSH_THEME_GIT_PROMPT_PREFIX="|"
-export ZSH_THEME_GIT_PROMPT_SUFFIX=""
-export PROMPT='%B$(virtualenv_info)%~%b$(git_super_status)%# '
+# Spaceship prompt
+export SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  user          # Username section
+  package       # Package version
+  node          # Node.js section
+  ruby          # Ruby section
+  elixir        # Elixir section
+  xcode         # Xcode section
+  swift         # Swift section
+  golang        # Go section
+  php           # PHP section
+  rust          # Rust section
+  haskell       # Haskell Stack section
+  julia         # Julia section
+  docker        # Docker section
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  conda         # conda virtualenv section
+  dotnet        # .NET section
+  ember         # Ember.js section
+  kubecontext   # Kubectl context section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+export SPACESHIP_PROMPT_SEPARATE_LINE=false
+export SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_PROMPT_DEFAULT_PREFIX=''
+export SPACESHIP_GIT_PREFIX=''
+export SPACESHIP_DIR_PREFIX=''
+export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true

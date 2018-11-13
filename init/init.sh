@@ -153,6 +153,11 @@ mkdir -p $HOME/.zsh.plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
    $HOME/.zsh.plugins/zsh-syntax-highlighting
 
+# Install node, npm and spaceship-prompt
+brew install node
+brew install npm
+npm install -g spaceship-prompt
+
 # For use in template files
 echo -n "Full name: "
 read fullname
