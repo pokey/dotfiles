@@ -47,8 +47,9 @@ abbreviations=(
   "nd"    "npm install -D"
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
-  "pyw"   "pyenv shell ${PWD##*/}__EXPAND__"
-  "pyc"   "pyenv shell ${PWD##*/}__EXPAND__"
+  "pyw"   'pyenv shell ${PWD##*/}__EXPAND__'
+  "pynw"  'pyn ${PWD##*/}__EXPAND__'
+  "pyc"   'pyenv shell ${PWD##*/}__EXPAND__'
   "pi"    "pip install"
   "piu"   "pip install -U"
   "pu"    "pip uninstall"

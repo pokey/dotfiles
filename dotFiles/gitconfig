@@ -22,6 +22,7 @@
 	templatedir = ~/.git_template
 [push]
 	default = tracking
+	followTags = true
 [core]
 	excludesfile = ~/.gitignore
 [color "diff-highlight"]
