@@ -1,3 +1,6 @@
+# Custom prompt sections
+source ~/.zsh/prompt/sections/pokey_venv.sh
+
 # disable the default virtualenv prompt change
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -18,7 +21,7 @@ export SPACESHIP_PROMPT_ORDER=(
   julia         # Julia section
   docker        # Docker section
   aws           # Amazon Web Services section
-  venv          # virtualenv section
+  pokey_venv    # Pokey custom virtualenv section
   conda         # conda virtualenv section
   dotnet        # .NET section
   ember         # Ember.js section

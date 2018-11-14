@@ -20,7 +20,7 @@ alias ls='ls -G'
 # Make ~~ expand to root of current git repo
 bindkey -s ~~ '$(git rev-parse --show-toplevel)\t/'
 
-source ~/.zsh/prompt.sh
+source ~/.zsh/prompt/index.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

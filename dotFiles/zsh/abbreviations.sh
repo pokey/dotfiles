@@ -100,6 +100,7 @@ done
 for i in {1..9};
 do
    abbreviations+=("l${i}f" "!-${i}\$__EXPAND__")
+   abbreviations+=("l${i}w" "!-${i}__EXPAND__")
    abbreviations+=("l${i}c" "!-${i}:0__EXPAND__")
    for j in {1..9};
    do
