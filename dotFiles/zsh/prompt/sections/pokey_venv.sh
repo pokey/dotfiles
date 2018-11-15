@@ -43,7 +43,7 @@ spaceship_pokey_venv() {
     fi
 
     # If we're in a Python directory (ie has Python-related files), then we
-    # disply a red 'X' if there's no active virtualenv
+    # display a red 'X' if there's no active virtualenv
     local is_python=false
     [[ -f requirements.txt || -f pyproject.toml || -n *.py(#qN^/) ]] && \
         is_python=true
