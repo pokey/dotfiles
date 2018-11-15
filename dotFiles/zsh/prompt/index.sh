@@ -8,6 +8,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
   user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  pokey_venv    # Pokey custom virtualenv section
   package       # Package version
   node          # Node.js section
   ruby          # Ruby section
@@ -21,13 +24,10 @@ export SPACESHIP_PROMPT_ORDER=(
   julia         # Julia section
   docker        # Docker section
   aws           # Amazon Web Services section
-  pokey_venv    # Pokey custom virtualenv section
   conda         # conda virtualenv section
   dotnet        # .NET section
   ember         # Ember.js section
   kubecontext   # Kubectl context section
-  dir           # Current directory section
-  host          # Hostname section
   git           # Git section (git_branch + git_status)
   exec_time     # Execution time
   line_sep      # Line break
