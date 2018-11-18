@@ -22,7 +22,7 @@ export SPACESHIP_PROMPT_ORDER=(
   rust          # Rust section
   haskell       # Haskell Stack section
   julia         # Julia section
-  docker        # Docker section
+  # docker        # Docker section
   aws           # Amazon Web Services section
   conda         # conda virtualenv section
   dotnet        # .NET section
@@ -46,3 +46,4 @@ export SPACESHIP_GIT_STATUS_COLOR='124'
 export SPACESHIP_DIR_PREFIX=''
 export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
 export SPACESHIP_PACKAGE_PREFIX=''
+export SPACESHIP_PACKAGE_SYMBOL='⇢ '
