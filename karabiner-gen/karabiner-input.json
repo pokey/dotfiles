@@ -36,6 +36,35 @@
                                 "type": "basic"
                             },
                             {
+                                "description": "T+J to grave accent",
+                                "from": {
+                                    "modifiers": {"optional": ["any"]},
+                                    "simultaneous": [
+                                        {"key_code": "t"},
+                                        {"key_code": "j"}
+                                    ]
+                                },
+                                "to": [{
+                                    "key_code": "grave_accent_and_tilde"
+                                }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "H+V to tilde",
+                                "from": {
+                                    "modifiers": {"optional": ["any"]},
+                                    "simultaneous": [
+                                        {"key_code": "h"},
+                                        {"key_code": "v"}
+                                    ]
+                                },
+                                "to": [{
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": ["right_shift"]
+                                }],
+                                "type": "basic"
+                            },
+                            {
                                 "description": "F+J to <Enter>",
                                 "from": {
                                     "modifiers": {"optional": ["any"]},
@@ -202,6 +231,14 @@
                                     "modifiers": {"optional": ["any"]}
                                 },
                                 "to": [{"key_code": "caps_lock"}],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "disable grave accent",
+                                "from": {
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": {"optional": ["any"]}
+                                },
                                 "type": "basic"
                             },
                             {
