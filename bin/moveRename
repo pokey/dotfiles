@@ -17,13 +17,13 @@ to="$2"
 
 # FixMe: Don't duplicate code here; use variables
 if [ "$DRY_RUN" = true ] ; then
-   ag -lg "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/"
+   fd "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/"
 
    # FixMe: [correctness] Only perform substitutions on new files, since
    # otherwise replacing with substring could cause issues
    ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs echo sed -i "s/$from/$to/g"
 else
-   ag -lg "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/" | sh
+   fd "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/" | sh
 
    # FixMe: [correctness] Only perform substitutions on new files, since
    # otherwise replacing with substring could cause issues

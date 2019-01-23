@@ -28,6 +28,8 @@ abbreviations=(
   "ix"    "| xargs"
   "ixx"   "| xargs -n1 -I{}"
   "ia"    "| rg"
+  "ir"    "| rg"
+  "ig"    "| rg"
   "ih"    "| head"
   "ic"    "| pbcopy"
   "ij"    '| jq ".__CURSOR__"'

@@ -36,7 +36,17 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "T+J to grave accent",
+                                "type": "basic",
+                                "from": {"key_code": "right_shift"},
+                                "to": [
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["shift", "command"]
+                                    }
+                                ]
+                            },
+                            {
+                                "description": "T+J to backtick",
                                 "from": {
                                     "modifiers": {"optional": ["any"]},
                                     "simultaneous": [
