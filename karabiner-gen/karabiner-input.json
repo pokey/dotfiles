@@ -276,22 +276,6 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "disable left_shift",
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {"optional": ["any"]}
-                                },
-                                "type": "basic"
-                            },
-                            {
-                                "description": "disable right_shift",
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": {"optional": ["any"]}
-                                },
-                                "type": "basic"
-                            },
-                            {
                                 "type": "basic",
                                 "from": {"key_code": "right_command"},
                                 "to": [
