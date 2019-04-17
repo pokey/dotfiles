@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+DIR="$1"
+
+mkdir -p "$DIR"
+touch "$DIR/__init__.py"

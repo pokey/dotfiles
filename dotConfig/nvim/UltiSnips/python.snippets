@@ -89,8 +89,8 @@ raise NotImplementedError()
 endsnippet
 
 snippet cl "class" b
-class $1(${2:object}):
-	def __init__(self):
+class $1${2:($3)}:
+	def __init__(self${4:, $5}):
 		$0
 endsnippet
 
