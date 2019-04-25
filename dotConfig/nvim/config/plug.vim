@@ -76,5 +76,6 @@ Plug 'ruanyl/vim-sort-imports'
 Plug 'lepture/vim-velocity'
 
 Plug 'w0rp/ale'
+Plug 'neo4j-contrib/cypher-vim-syntax'
 
 call plug#end()
