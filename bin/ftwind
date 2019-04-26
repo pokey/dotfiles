@@ -3,6 +3,9 @@
 GREEN='\033[00;32m'
 RESTORE='\033[0m'
 
+# From https://stackoverflow.com/a/17841619
+function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
+
 display_all=false
 list_windows_options=''
 window_sort_format="#{session_last_attached} #{window_stack_index}"
@@ -37,8 +40,7 @@ windows_str=$(
 )
 
 # Process windows_str
-windows=''
-delim=''
+window_arr=()
 while read -r line; do
     line_array=($line)
 
@@ -73,34 +75,18 @@ while read -r line; do
         fi
     fi
 
-   # Create output line
-   out=$(echo -e "$target_window\t$dir_name\t$name")
-
-   # Add to windows string
-   windows=$(printf '%s%s%s' "$windows" "$delim" "$out")
-
-   # So that join works
-   delim=$'\n'
+    # Create output line
+    window_arr+=("$(echo -e "$target_window\t$dir_name\t$name")")
 done <<< "$windows_str"
 
-# Align on columns
-windows=$(column -s $'\t' -t <<< "$windows")
+windows=$(join_by $'\n' "${window_arr[@]}")
 
-# Split by newlines
-IFS=$'\n' read -rd '' -a window_arr <<<"$windows"
-
-# Add * and number at beginning, as these aren't handled correctly by column
-# command
-windows=''
-delim=''
-for (( i=0; i<${#window_arr[*]}; ++i))
-do
-   out=$(echo -e "${window_arr[$i]}")
-   windows=$(printf '%s%s%s%s' "$windows" "$delim" "$out")
-   delim=$'\n'
-done
-
-windows=$(echo "$windows" | sed "s/+\(.*\)+/$(printf "$GREEN")\1$(printf "$RESTORE")/g")
+# Align on columns and perform coloring
+windows=$(
+    echo "$windows" \
+    | column -s $'\t' -t \
+    | sed "s/+\(.*\)+/$(printf "$GREEN")\1$(printf "$RESTORE")/g"
+)
 
 # Run fzf and check result
 target=$(echo "$windows" | fzf-tmux +m --reverse --ansi)
