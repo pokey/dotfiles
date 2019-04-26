@@ -8,7 +8,7 @@ function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d
 
 display_all=false
 list_windows_options=''
-window_sort_format="#{session_last_attached} #{window_stack_index}"
+window_sort_format="#{session_last_attached} #S #{window_stack_index}"
 window_active_format="#{session_attached} #{window_active}"
 window_display_format="#{pane_current_path} #{window_name}"
 window_id_format='#S #I'
@@ -35,8 +35,8 @@ fi
 windows_str=$(
     tmux list-windows $list_windows_options -F \
     "$window_sort_format $window_active_format $window_id_format $window_display_format" \
-    | sort -k 1nr -k 2n \
-    | cut -d ' ' -f 3-
+    | sort -k 1nr -k 2 -k 3n \
+    | cut -d ' ' -f 4-
 )
 
 # Process windows_str
