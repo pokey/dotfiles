@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # ftsess - switch session (based on @george-b)
-sessions=$(tmux list-sessions -F '#S')
+sessions=$(
+    tmux list-sessions -F \
+    '#{session_last_attached} #S' \
+    | sort -nr \
+    | cut -d ' ' -f 2-
+)
 
 target=$(echo "$sessions" | fzf-tmux +m --reverse)
 res=$?

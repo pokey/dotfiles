@@ -109,7 +109,12 @@ nnoremap <C-p> :e<space>
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " Sorting imports
-autocmd FileType python nnoremap <silent> <buffer> <leader>i :Isort<cr>
+
+" This plugin is flaky, so we just run the isort command, even though it's a
+" bit slower
+" autocmd FileType python nnoremap <silent> <buffer> <leader>i :Isort<cr>
+autocmd FileType python nnoremap <silent> <buffer> <leader>i :%!isort -<cr>
+
 autocmd FileType javascript nnoremap <silent> <buffer> <leader>i :ALEFix<cr>
 autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>i :ALEFix<cr>
 

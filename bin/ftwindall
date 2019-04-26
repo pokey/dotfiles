@@ -3,36 +3,15 @@
 GREEN='\033[00;32m'
 RESTORE='\033[0m'
 
-display_all=false
-
-if [ "$#" -ge 2 ]; then
-  echo "Too many arguments"
-  exit -1
-fi
-
-if [ "$#" -eq 1 ]; then
-   if [ "$1" == "-a" ]; then
-      display_all=true
-   else
-      echo "Unexpected argument \"$1\""
-      exit -1
-   fi
-   shift
-fi
-
-window_sort_format="#{session_last_attached} #{window_stack_index}"
-window_display_format="#{pane_current_path} #{window_name}"
 # Get information about windows from tmux
-if [ "$display_all" = true ] ; then
-    window_id_format='#S:#I'
-    list_windows_options='-a'
-else
-    window_id_format='#I'
-    list_windows_options=''
-fi
+window_sort_format="#{session_last_attached} #{window_stack_index}"
+window_active_format="#{session_attached} #{window_active}"
+window_display_format="#{pane_current_path} #{window_name}"
+window_id_format='#S #I'
+list_windows_options='-a'
 windows_str=$(
     tmux list-windows $list_windows_options -F \
-    "$window_sort_format $window_id_format $window_display_format" \
+    "$window_sort_format $window_active_format $window_id_format $window_display_format" \
     | sort -k 1nr -k 2n \
     | cut -d ' ' -f 3-
 )
@@ -40,13 +19,26 @@ windows_str=$(
 # Process windows_str
 windows=''
 delim=''
-target_windows=()
 while read -r line; do
    line_array=($line)
 
-   target_window=${line_array[0]}
-   dir_name=$(basename ${line_array[1]})
-   name=${line_array[2]}
+   session_active=${line_array[0]}
+   window_active=${line_array[1]}
+   session_name=${line_array[2]}
+   window_num=${line_array[3]}
+   dir_name=$(basename ${line_array[4]})
+   name=${line_array[5]}
+
+   # Change color if active
+   if [ "$session_active" = "1" ]; then
+       if [ "$window_active" = "1" ]; then
+          target_window="+$session_name:$window_num+"
+       else
+          target_window="+$session_name+:$window_num"
+       fi
+   else
+      target_window="++$session_name:$window_num"
+   fi
 
    # Create output line
    out=$(echo -e "$target_window\t$dir_name\t$name")
@@ -74,6 +66,8 @@ do
    windows=$(printf '%s%s%s%s' "$windows" "$delim" "$out")
    delim=$'\n'
 done
+
+windows=$(echo "$windows" | sed "s/+\(.*\)+/$(printf "$GREEN")\1$(printf "$RESTORE")/g")
 
 # Run fzf and check result
 target=$(echo "$windows" | fzf-tmux +m --reverse --ansi)
