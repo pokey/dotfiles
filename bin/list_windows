@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# ftwind - switch window (based on @george-b)
+GREEN='\033[00;32m'
+RESTORE='\033[0m'
+
+# From https://stackoverflow.com/a/17841619
+function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
+
+display_all=false
+list_windows_options=''
+window_sort_format="#{session_last_attached} #S #{window_stack_index}"
+window_active_format="#{session_attached} #{window_active}"
+window_display_format="#{pane_current_path} #{window_name}"
+window_id_format='#S #I'
+switch_command="select-window"
+
+if [ "$#" -ge 2 ]; then
+    echo "Too many arguments"
+    exit -1
+fi
+
+if [ "$#" -eq 1 ]; then
+    if [ "$1" == "-a" ]; then
+        display_all=true
+        list_windows_options='-a'
+        switch_command="switch-client"
+    else
+        echo "Unexpected argument \"$1\""
+        exit -1
+    fi
+    shift
+fi
+
+# Get information about windows from tmux
+windows_str=$(
+    tmux list-windows $list_windows_options -F \
+    "$window_sort_format $window_active_format $window_id_format $window_display_format" \
+    | sort -k 1nr -k 2 -k 3n \
+    | cut -d ' ' -f 4-
+)
+
+# Process windows_str
+window_arr=()
+while read -r line; do
+    line_array=($line)
+
+    session_active=${line_array[0]}
+    window_active=${line_array[1]}
+    session_name=${line_array[2]}
+    window_num=${line_array[3]}
+    dir_name=$(basename ${line_array[4]})
+    name=${line_array[5]}
+
+    # Change color if active
+    # We surround what we want colored with a pair of '+' characters, so that
+    # the column command doesn't get confused.  Note that there will always be
+    # 2 '+' characters so width is always the same.
+    # Later on, we will use sed to replace the '+' characters with color escape
+    # sequences
+    if [ "$display_all" = true ] ; then
+        if [ "$session_active" = "1" ]; then
+            if [ "$window_active" = "1" ]; then
+                target_window="+$session_name:$window_num+"
+            else
+                target_window="+$session_name+:$window_num"
+            fi
+        else
+            target_window="++$session_name:$window_num"
+        fi
+    else
+        if [ "$window_active" = "1" ]; then
+            target_window="+$window_num+"
+        else
+            target_window="++$window_num"
+        fi
+    fi
+
+    # Create output line
+    # NB: We use 'echo -e' to handle the tab characters
+    window_arr+=("$(echo -e "$target_window\t$dir_name\t$name")")
+done <<< "$windows_str"
+
+windows=$(join_by $'\n' "${window_arr[@]}")
+
+# Align on columns and perform coloring
+windows=$(
+    echo "$windows" \
+    | column -s $'\t' -t \
+    | sed "s/+\(.*\)+/$(printf "$GREEN")\1$(printf "$RESTORE")/g"
+)
+
+echo "$windows"

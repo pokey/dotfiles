@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ftwind - switch window (based on @george-b)
-switch_command="select-window"
-list_source="$HOME/.windows/session"
+switch_command="switch-client"
+list_source="$HOME/.windows/all"
 
 # Run fzf and check result
 target=$(cat "$list_source" | fzf-tmux +m --reverse --ansi)
