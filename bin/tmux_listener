@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 mkdir -p ~/.windows
-list_windows -a > ~/.windows/all
-list_windows > ~/.windows/session
+list_windows -a > ~/.windows/all &
+list_windows > ~/.windows/session &
+wait
