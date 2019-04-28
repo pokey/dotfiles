@@ -51,6 +51,19 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 
+fzf-tmux-zoom_widget() {
+    FZF_TMUX_ZOOM_DIR="$TMPDIR/fzf-tmux-zoom"
+    IN_FIFO="$FZF_TMUX_ZOOM_DIR/in.fifo"
+    OUT_FIFO="$FZF_TMUX_ZOOM_DIR/out.fifo"
+    ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
+    EXIT_CODE_FILE="$FZF_TMUX_ZOOM_DIR/exit_code"
+
+    fzf-tmux $(cat "$ARGS_FILE") < "$IN_FIFO" > "$OUT_FIFO"
+    echo -n "$?" > "$EXIT_CODE_FILE"
+}
+zle -N fzf-tmux-zoom_widget
+bindkey '^V' fzf-tmux-zoom_widget
+
 bindkey '^Qa' fix-git-merge
 bindkey '^Qe' edit-command-line
 bindkey -s '^Qk' '**\t'

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# fzf-tmux: If not in tmux, run fzf.  If in tmux and pane is too short, run fzf
+# in the pane itself.  Otherwise start fzf in new tmux pane
+
+FZF_TMUX_ZOOM_DIR="$TMPDIR/fzf-tmux-zoom"
+IN_FIFO="$FZF_TMUX_ZOOM_DIR/in.fifo"
+OUT_FIFO="$FZF_TMUX_ZOOM_DIR/out.fifo"
+ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
+EXIT_CODE_FILE="$FZF_TMUX_ZOOM_DIR/exit_code"
+
+term_height="$(tmux display -p '#{pane_height}')"
+
+if [ "$term_height" -ge "15" ]; then
+    fzf-tmux $@
+    exit $?
+fi
+
+mkdir -p "$FZF_TMUX_ZOOM_DIR"
+rm -f "$IN_FIFO" "$OUT_FIFO"
+
+mkfifo "$IN_FIFO"
+mkfifo "$OUT_FIFO"
+
+echo $@ > "$ARGS_FILE"
+tmux send-keys C-v
+cat - > "$IN_FIFO"
+cat "$OUT_FIFO"
+EXIT_CODE=$(cat "$EXIT_CODE_FILE")
+exit "$EXIT_CODE"

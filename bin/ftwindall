@@ -4,7 +4,7 @@ switch_command="switch-client"
 list_source="$HOME/.windows/all"
 
 # Run fzf and check result
-target=$(cat "$list_source" | fzf-tmux +m --reverse --ansi)
+target=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi)
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
