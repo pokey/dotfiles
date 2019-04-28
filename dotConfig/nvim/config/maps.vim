@@ -135,7 +135,8 @@ nnoremap <silent> gh :noh<cr>
 
 " Various displays
 nnoremap <silent> gu :UndotreeToggle<cr>
-nnoremap <silent> gf :NERDTreeToggle<cr>
+" nnoremap <silent> gf :NERDTreeToggle<cr>
+nnoremap <silent> gf :Lines<cr>
 nnoremap <silent> gk :Goyo<cr>
 
 " Commenting things out
