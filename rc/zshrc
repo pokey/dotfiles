@@ -58,7 +58,7 @@ fzf-tmux-zoom_widget() {
     ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
     EXIT_CODE_FILE="$FZF_TMUX_ZOOM_DIR/exit_code"
 
-    fzf-tmux $(cat "$ARGS_FILE") < "$IN_FIFO" > "$OUT_FIFO"
+    fzf $(cat "$ARGS_FILE") < "$IN_FIFO" > "$OUT_FIFO"
     echo -n "$?" > "$EXIT_CODE_FILE"
 }
 zle -N fzf-tmux-zoom_widget
