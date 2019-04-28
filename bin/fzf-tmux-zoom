@@ -9,21 +9,22 @@ ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
 EXIT_CODE_FILE="$FZF_TMUX_ZOOM_DIR/exit_code"
 
 term_height="$(tmux display -p '#{pane_height}')"
+pane_current_command="$(tmux display -p '#{pane_current_command}')"
 
-if [ "$term_height" -ge "15" ]; then
+if [ "$term_height" -le "15" -a "$pane_current_command" == "zsh" ]; then
+    mkdir -p "$FZF_TMUX_ZOOM_DIR"
+    rm -f "$IN_FIFO" "$OUT_FIFO"
+
+    mkfifo "$IN_FIFO"
+    mkfifo "$OUT_FIFO"
+
+    echo $@ > "$ARGS_FILE"
+    tmux send-keys C-v
+    cat - > "$IN_FIFO"
+    cat "$OUT_FIFO"
+    EXIT_CODE=$(cat "$EXIT_CODE_FILE")
+    exit "$EXIT_CODE"
+else
     fzf-tmux $@
     exit $?
 fi
-
-mkdir -p "$FZF_TMUX_ZOOM_DIR"
-rm -f "$IN_FIFO" "$OUT_FIFO"
-
-mkfifo "$IN_FIFO"
-mkfifo "$OUT_FIFO"
-
-echo $@ > "$ARGS_FILE"
-tmux send-keys C-v
-cat - > "$IN_FIFO"
-cat "$OUT_FIFO"
-EXIT_CODE=$(cat "$EXIT_CODE_FILE")
-exit "$EXIT_CODE"
