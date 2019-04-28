@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # ftwind - switch window (based on @george-b)
+WINDOWS_DIR="$TMPDIR/tmux-windows"
+WINDOWS_SESSION="$WINDOWS_DIR/session"
+
 switch_command="select-window"
-list_source="$HOME/.windows/session"
+list_source="$WINDOWS_SESSION"
 
 # Run fzf and check result
 target=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi)

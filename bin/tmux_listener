@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+WINDOWS_DIR="$TMPDIR/tmux-windows"
+WINDOWS_ALL="$WINDOWS_DIR/all"
+WINDOWS_SESSION="$WINDOWS_DIR/session"
 
-mkdir -p ~/.windows
-list_windows -a > ~/.windows/all &
-list_windows > ~/.windows/session &
+mkdir -p "$WINDOWS_DIR"
+list_windows -a > "$WINDOWS_ALL" &
+list_windows > "$WINDOWS_SESSION" &
