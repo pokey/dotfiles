@@ -27,12 +27,6 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-nnoremap <silent> <c-h>h :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-h>j :TmuxNavigateDown<cr>
-nnoremap <silent> <c-h>k :TmuxNavigateUp<cr>
-nnoremap <silent> <c-h>l :TmuxNavigateRight<cr>
-" nnoremap <silent> <c-h>o :TmuxNavigatePrevious<cr>
-
 " Make visual mode yank / paste leave cursor at end, making it easier to
 " repeat the command
 vnoremap <silent> y y`]
