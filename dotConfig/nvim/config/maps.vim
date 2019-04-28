@@ -14,6 +14,8 @@ nnoremap <silent> gn :lnext<cr>
 nnoremap <silent> qp :cprev<cr>
 nnoremap <silent> qn :cnext<cr>
 
+nnoremap <silent> gd :GFiles?<cr>
+
 " s{char}{char} to move to {char}{char}
 nmap <leader>s <Plug>(easymotion-overwin-f2)
 
