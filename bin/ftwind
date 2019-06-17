@@ -7,7 +7,11 @@ switch_command="select-window"
 list_source="$WINDOWS_SESSION"
 
 # Run fzf and check result
-target=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi)
+target=$( \
+    cat "$list_source" | \
+    fzf-tmux-zoom +m --reverse --ansi --bind \
+    "ctrl-d:execute-silent:echo '{}' | cut -d' ' -f1 | xargs unlink-or-move" \
+)
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
