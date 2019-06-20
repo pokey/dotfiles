@@ -3,21 +3,27 @@
 WINDOWS_DIR="$TMPDIR/tmux-windows"
 WINDOWS_SESSION="$WINDOWS_DIR/session"
 
-switch_command="select-window"
 list_source="$WINDOWS_SESSION"
+switch_command="select-window"
 
 # Run fzf and check result
-target=$( \
-    cat "$list_source" | \
-    fzf-tmux-zoom +m --reverse --ansi --bind \
-    "ctrl-d:execute-silent:echo '{}' | cut -d' ' -f1 | xargs unlink-or-move" \
-)
+out=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi --expect=ctrl-d)
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
+
+key=$(head -1 <<< "$out")
+target=$(head -2 <<< "$out" | tail -1)
 
 # Extract window number
 target_window=$(echo "$target" | cut -d' ' -f1)
 
 # Select window
-tmux $switch_command -t "$target_window"
+case "$key" in
+    # ctrl-d unlinks the window from the current session, moving it somewhere
+    # if necessary
+    ctrl-d) unlink-or-move $target_window ;;
+
+    # Otherwise we switch to the chosen window
+         *) tmux $switch_command -t "$target_window" ;;
+esac

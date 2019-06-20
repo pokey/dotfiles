@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+target="$1"
+
+tmux unlink-window -t "$target" || \
+    tmux link-window -s "$target" -t globality && \
+    tmux unlink-window -t "$target" 

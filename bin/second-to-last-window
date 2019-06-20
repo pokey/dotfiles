@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+second_to_last=$(tmux display -p "#{session_stack}" | cut -d ',' -f3)
+tmux select-window -t ":$second_to_last"

@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 if [ $# -ne 4 ] ; then
-    printf "Usage: copyRenamePython from_lower from_upper to_lower to_upper\n" 1>&2
+    printf "Usage: copyRenamePython from_lower FromUpper to_lower ToUpper\n" 1>&2
     exit 1
 fi
 
@@ -17,7 +17,7 @@ intermediate="ghidosdygowiejcsd"
 
 # Create new files from files that contain the source name as lower, placing
 # them at intermediate paths that won't conflict with anything
-fd "$from_lower" | sed "s/\(.*\)$from_lower\(.*\)/cp -rf \0 \1$intermediate\2/" | sh
+fd "$from_lower" | sed "s/\(.*\)$from_lower\(.*\)/cp -rf & \1$intermediate\2/" | sh
 
 # Replace both forms in all new files
 fd -tf "$intermediate" -x sed -i "s/$from_upper/$to_upper/g"
@@ -31,4 +31,4 @@ fd -td "$intermediate" -x fd . {} -x sed -i "s/$from_lower/$to_lower/g"
 fd "$intermediate" | sed "s/\(.*\)$intermediate\(.*\)/mv \0 \1$to_lower\2/" | sh
 
 # Open editor to deal with other files in which the term appears
-vim $(rg -l "$from_lower" | rg -v "$from_lower")
+vim $(rg -l "$from_lower|$from_upper" | rg -v "$from_lower")

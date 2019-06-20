@@ -7,13 +7,22 @@ list_source="$WINDOWS_ALL"
 switch_command="switch-client"
 
 # Run fzf and check result
-target=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi)
-res=$?
+out=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi --expect=ctrl-l)
+res="$?"
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
+
+key=$(head -1 <<< "$out")
+target=$(head -2 <<< "$out" | tail -1)
 
 # Extract window number
 target_window=$(echo "$target" | cut -d' ' -f1)
 
 # Select window
-tmux $switch_command -t "$target_window"
+case "$key" in
+    # ctrl-l links the window into the current session
+    ctrl-l) tmux link-window -s $target_window ;;
+
+    # Otherwise we switch to the chosen window
+         *) tmux $switch_command -t "$target_window" ;;
+esac

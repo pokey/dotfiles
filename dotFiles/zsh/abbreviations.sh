@@ -14,15 +14,20 @@ abbreviations=(
   "gr"    'git rebase'
   "gri"   'git rebase -i'
   "grd"   'git rebase develop'
+  "grm"   'git rebase master'
   "grid"  'git rebase -i develop'
+  "grim"  'git rebase -i master'
   "grh"   'git reset --hard'
+  "grl"   'git reset --hard HEAD~'
   "grs"   'git reset --soft'
   "gpf"   'git push --force origin HEAD'
   "grc"   'git rebase --continue'
+  "gra"   'git rebase --abort'
   "gcp"   'git cherry-pick'
   "ghp"   'git subtree push --prefix dist origin master'
   "god"   'git checkout develop'
   "gom"   'git checkout master'
+  "gco"   'git checkout'
   "gt"    'git ctags'
   "gct"   'git ctags'
   "ix"    "| xargs"
@@ -32,8 +37,11 @@ abbreviations=(
   "ig"    "| rg"
   "ih"    "| head"
   "ic"    "| pbcopy"
-  "ij"    '| jq ".__CURSOR__"'
-  "ijr"   '| jq -r ".__CURSOR__"'
+  "iwc"   "| wc -l"
+  "ij"    "| jq '.__CURSOR__'"
+  "ijc"   "| jq '.count'"
+  "iji"   "| jq '.items[] | __CURSOR__'"
+  "ijr"   "| jq -r '.__CURSOR__'"
   "ip"    "faketty __LINE__ | zoom-run"
   "lp"    "faketty !! | zoom-run__EXPAND__"
   "pl"    "faketty !! | zoom-run__EXPAND__"
@@ -63,6 +71,7 @@ abbreviations=(
   "gpu"   "gpip -U"
   "gpit"  "gpip -e '.[test]'"
   "gpieu" "gpip -e . -U"
+  "pf"    'pip freeze -l > requirements.txt'
   "gst"   "git stash"
   "gstp"  "git stash pop"
   "gn"    "git checkout -b"
@@ -70,10 +79,11 @@ abbreviations=(
   "ga"    "git add"
   "gai"   "git add -i"
   "pr"    "git pull-request -b"
+  "prm"   "git pull-request -b master"
   "awd"   'eval $(awsdev)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'
-  "ppv"   "pip freeze -l | ag"
+  "ppv"   "pip list | rg"
   "cg"    'cd $(git rev-parse --show-toplevel)__EXPAND__'
   "lf"    '!$__EXPAND__'
   "lc"    '!!:0__EXPAND__'

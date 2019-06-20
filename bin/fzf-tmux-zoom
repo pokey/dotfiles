@@ -6,25 +6,26 @@ FZF_TMUX_ZOOM_DIR="$TMPDIR/fzf-tmux-zoom"
 IN_FIFO="$FZF_TMUX_ZOOM_DIR/in.fifo"
 OUT_FIFO="$FZF_TMUX_ZOOM_DIR/out.fifo"
 ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
-EXIT_CODE_FILE="$FZF_TMUX_ZOOM_DIR/exit_code"
+EXIT_CODE_FIFO="$FZF_TMUX_ZOOM_DIR/exit_code.fifo"
 
 term_height="$(tmux display -p '#{pane_height}')"
 pane_current_command="$(tmux display -p '#{pane_current_command}')"
 
 if [ "$term_height" -le "15" -a "$pane_current_command" == "zsh" ]; then
     mkdir -p "$FZF_TMUX_ZOOM_DIR"
-    rm -f "$IN_FIFO" "$OUT_FIFO"
+    rm -f "$IN_FIFO" "$OUT_FIFO" "$EXIT_CODE_FIFO"
 
     mkfifo "$IN_FIFO"
     mkfifo "$OUT_FIFO"
+    mkfifo "$EXIT_CODE_FIFO"
 
-    echo $@ > "$ARGS_FILE"
+    echo "$@" > "$ARGS_FILE"
     tmux send-keys C-v
     cat - > "$IN_FIFO"
     cat "$OUT_FIFO"
-    EXIT_CODE=$(cat "$EXIT_CODE_FILE")
+    EXIT_CODE=$(cat "$EXIT_CODE_FIFO")
     exit "$EXIT_CODE"
 else
-    fzf-tmux $@
+    fzf-tmux "$@"
     exit $?
 fi

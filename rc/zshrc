@@ -30,6 +30,12 @@ fix-git-merge() {
 }
 zle -N fix-git-merge
 
+add-jq-c() {
+   BUFFER=${BUFFER/jq /jq -c }
+   CURSOR=$(($CURSOR+3))
+}
+zle -N add-jq-c
+
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 
 [ -f /usr/local/bin/aws_zsh_completer.sh ] && \
@@ -37,6 +43,10 @@ source ~/sources/git-flow-completion/git-flow-completion.zsh
 
 source ~/.zsh/abbreviations.sh
 source ~/.zsh/fzf-completions.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 autoload edit-command-line; zle -N edit-command-line
 
@@ -56,15 +66,16 @@ fzf-tmux-zoom_widget() {
     IN_FIFO="$FZF_TMUX_ZOOM_DIR/in.fifo"
     OUT_FIFO="$FZF_TMUX_ZOOM_DIR/out.fifo"
     ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
-    EXIT_CODE_FILE="$FZF_TMUX_ZOOM_DIR/exit_code"
+    EXIT_CODE_FIFO="$FZF_TMUX_ZOOM_DIR/exit_code.fifo"
 
     fzf $(cat "$ARGS_FILE") < "$IN_FIFO" > "$OUT_FIFO"
-    echo -n "$?" > "$EXIT_CODE_FILE"
+    echo -n "$?" > "$EXIT_CODE_FIFO"
 }
 zle -N fzf-tmux-zoom_widget
 bindkey '^V' fzf-tmux-zoom_widget
 
 bindkey '^Qa' fix-git-merge
+bindkey '^Qi' add-jq-c
 bindkey '^Qe' edit-command-line
 bindkey -s '^Qk' '**\t'
 bindkey -s '^Qj' '^A^K'

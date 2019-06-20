@@ -21,11 +21,11 @@ if [ "$DRY_RUN" = true ] ; then
 
    # FixMe: [correctness] Only perform substitutions on new files, since
    # otherwise replacing with substring could cause issues
-   ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs echo sed -i "s/$from/$to/g"
+   ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs echo sed -e "s/$from/$to/g" -i ''
 else
    fd "$from" | sed "s/\(.*\)$from\(.*\)/mv \"\0\" \"\1$to\2\"/" | sh
 
    # FixMe: [correctness] Only perform substitutions on new files, since
    # otherwise replacing with substring could cause issues
-   ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs sed -i "s/$from/$to/g"
+   ag -sl "$from" | awk '{ print "\""$0"\""}' | xargs sed -e "s/$from/$to/g" -i ''
 fi

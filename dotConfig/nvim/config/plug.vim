@@ -55,8 +55,6 @@ Plug 'dcharbon/vim-flatbuffers'
 Plug 'rkitover/vimpager'
 Plug 'FooSoft/vim-argwrap/'
 
-Plug 'fisadev/vim-isort'
-
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'christoomey/vim-sort-motion'

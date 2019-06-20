@@ -68,6 +68,16 @@ snippet pdb "pdb.set_trace" b
 import pdb; pdb.set_trace()
 endsnippet
 
+snippet boe "break on exception" b
+try:
+	${VISUAL}
+except:
+	import sys, traceback, pdb
+	extype, value, tb = sys.exc_info()
+	traceback.print_exc()
+	pdb.post_mortem(tb)
+endsnippet
+
 snippet e "click.echo" b
 click.echo(${0:"$1"})
 endsnippet

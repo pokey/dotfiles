@@ -87,7 +87,7 @@ nnoremap <silent> Q :q<cr>
 " Reload current buffer
 nnoremap <silent> gr :e<cr>
 
-" Open file under cursor in new tab
+" Open file under cursor in new vertical split
 nnoremap <silent> <C-j> :vertical wincmd F<CR>
 
 " Save shortcuts

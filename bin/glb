@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Init pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+pyenv activate globality-build
+
+globality-build circle-gen local
+globality-build build-gen local

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+if [ $# -ne 4 ] ; then
+    printf "Usage: moveRenamePython from_lower FromUpper to_lower ToUpper\n" 1>&2
+    exit 1
+fi
+
+from_lower="$1"
+from_upper="$2"
+to_lower="$3"
+to_upper="$4"
+
+# Create new files from files that contain the source name as lower.
+# Sort in reverse so that child paths are handled before their parents
+fd "$from_lower" \
+    | sort -r \
+    | sed "s/\(.*\)$from_lower\(.*\)/mv & \1$to_lower\2/" \
+    | sh
+
+# Replace both forms in all files
+if rg -q "$from_upper" ; then
+    rg -l "$from_upper" \
+        | xargs -n1 sed -i '' -e "s/$from_upper/$to_upper/g"
+fi
+
+if rg -q "$from_lower" ; then
+    rg -l "$from_lower" \
+        | xargs -n1 sed -i '' -e "s/$from_lower/$to_lower/g"
+fi

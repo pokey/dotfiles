@@ -70,3 +70,5 @@ let g:user_emmet_settings = {
 \        },
 \    },
 \}
+
+let g:argwrap_tail_comma = 1
