@@ -5,15 +5,13 @@ RESTORE='\033[0m'
 
 delim=$'\t'
 
-# From https://stackoverflow.com/a/17841619
-function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
+window_sort_format="#{session_last_attached}$delim#S$delim#{window_stack_index}"
+window_active_format="#{session_attached}$delim#{window_active}"
+window_display_format="#{b:pane_current_path}$delim#{window_name}"
+window_id_format="#S$delim#I"
 
 display_all=false
 list_windows_options=''
-window_sort_format="#{session_last_attached}$delim#S$delim#{window_stack_index}"
-window_active_format="#{session_attached}$delim#{window_active}"
-window_display_format="#{pane_current_path}$delim#{window_name}"
-window_id_format="#S$delim#I"
 switch_command="select-window"
 
 if [ "$#" -ge 2 ]; then
@@ -34,9 +32,7 @@ if [ "$#" -eq 1 ]; then
 fi
 
 reformat_windows() {
-    while IFS=$delim read session_active window_active session_name window_num path name; do
-        dir_name=$(basename "$path")
-
+    while IFS=$delim read session_active window_active session_name window_num dir_name name; do
         # Change color if active
         # We surround what we want colored with a pair of '+' characters, so that
         # the column command doesn't get confused.  Note that there will always be
