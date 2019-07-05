@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Init pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+pyenv activate http-prompt
+http-prompt "$@"

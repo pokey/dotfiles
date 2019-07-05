@@ -17,3 +17,9 @@ _fzf_complete_gd_post() {
        target_branch=$(echo "$target" | cut -d' ' -f3)
     echo "$target_branch"
 }
+
+_fzf_complete_hp() {
+  _fzf_complete '--ansi +m -0 -1' "$@" < <(
+    all-api-paths
+  )
+}

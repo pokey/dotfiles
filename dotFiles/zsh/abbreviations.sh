@@ -89,6 +89,8 @@ abbreviations=(
   "lc"    '!!:0__EXPAND__'
   "lw"    '!!__EXPAND__'
   "k9"    'kill -9 __EXPAND__'
+  "hp"    'hp **__EXPAND__'
+  "hpw"   'hp ${PWD##*/}__EXPAND_STAR__'
   "ghc"   'git rev-parse HEAD'
   "rf"    'rm -rf'
   "cs"    'cd ~/src'
@@ -121,7 +123,7 @@ do
 done
 
 magic-abbrev-expand() {
-    local MATCH MBEGIN MEND expansion expand line
+    local MATCH MBEGIN MEND expansion expand expand_star line
     LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
     line="$LBUFFER"
     expansion=${abbreviations[$MATCH]}
@@ -132,6 +134,13 @@ magic-abbrev-expand() {
        expansion=${expansion%%__EXPAND__}
     fi
 
+    if [[ "${expansion}" == *__EXPAND_STAR__ ]]
+    then
+       expand=true
+       expand_star=true
+       expansion=${expansion%%__EXPAND_STAR__}
+    fi
+
     if [[ "${expansion}" =~ "__LINE__" ]] 
     then
         LBUFFER="${expansion[(ws:__LINE__:)1]}$line${expansion[(ws:__LINE__:)2]}"
@@ -140,6 +149,11 @@ magic-abbrev-expand() {
     fi
 
     [[ "$expand" ]] && zle fzf-completion
+
+    if [[ "$expand_star" ]] ; then
+        LBUFFER+="**"
+        zle fzf-completion
+    fi
 
     if [[ "${expansion}" =~ "__CURSOR__" ]]
     then
