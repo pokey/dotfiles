@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 # Releases a new version of a library using `git flow`
+# 
+# To run, make sure you're in the directory of your git repository, and run
+# something like the following:
+#
+# PART=minor NEXT_VERSION=1.92.0 release
 #
 # TODO: Loop checking status of PR using `hub api` instead of waiting for ENTER;
 # something like the following:
