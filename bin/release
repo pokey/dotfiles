@@ -10,8 +10,11 @@
 # something like the following:
 #
 # hub api -XGET /repos/pokey/dotfiles/pulls/2 | jq '.mergeable'
+#
+# NOTE above is actually not sufficient because it doesn't take into account
+# branch protections.  Not sure of an easy / robust way to check
 # 
-# TODO: Use -o on hub pr to open it automatically
+# TODO: Use -o on hub pr to open it automatically?
 # TODO: Add stages so that the command can safely be rerun when it fails in the
 # middle.  Would define `stage` command and do something like:
 #
@@ -28,8 +31,18 @@
 # is one less, and set stage to current stage if so.  If stage is greater, then
 # skip, if it is unexpected value, then fail.  Stage will be stored in a
 # .release-stage file and removed at the end
-# TODO: Remove dependence on rg
-# TODO: Add something to body of PR saying not to merge manually.
+# TODO: Remove dependence on rg (switch to grep)
+# TODO: Add something to body of PR saying not to merge manually?
+# TODO: Block release so that user doesn't accidentally merge it via web
+# interface. Something like:
+#
+# hub api -XPOST "/repos/$REPO/statuses/$(git rev-parse HEAD)" \
+#    -f state=error -f context="release-block/block-release"
+#
+# Then right before merging from CLI do:
+#
+# hub api -XPOST "/repos/$REPO/statuses/$(git rev-parse HEAD)" \
+#    -f state=success -f context="release-block/block-release"
 
 set -euo pipefail
 IFS=$'\n\t'
