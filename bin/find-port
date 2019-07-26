@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Find which process is listening on given port
+set -euo pipefail
+IFS=$'\n\t'
+
+lsof -i ":$1"

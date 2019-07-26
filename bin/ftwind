@@ -8,7 +8,7 @@ switch_command="select-window"
 
 # Run fzf and check result
 out=$(cat "$list_source" | fzf-tmux-zoom +m --reverse --ansi --expect=ctrl-d)
-res=$?
+res="$?"
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
 

@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+# Releases a new version of a library using `git flow`
+#
+# TODO: Loop checking status of PR using `hub api` instead of waiting for ENTER;
+# something like the following:
+#
+# hub api -XGET /repos/pokey/dotfiles/pulls/2 | jq '.mergeable'
+# 
+# TODO: Use -o on hub pr to open it automatically
+# TODO: Add stages so that the command can safely be rerun when it fails in the
+# middle.  Would define `stage` command and do something like:
+#
+# stage 1 && foo
+#
+# or
+#
+# if stage 1 ; then
+#     foo
+#     bar
+# fi
+#
+# And then `stage` would both check if current stage is equal to expected, or
+# is one less, and set stage to current stage if so.  If stage is greater, then
+# skip, if it is unexpected value, then fail.  Stage will be stored in a
+# .release-stage file and removed at the end
+# TODO: Remove dependence on rg
+# TODO: Add something to body of PR saying not to merge manually.
+
+set -euo pipefail
+IFS=$'\n\t'
+
+check_command() {
+    local COMMAND
+    COMMAND="$1"
+
+    if ! command -v "$COMMAND" >/dev/null 2>&1 ; then
+        echo "ERROR: Require command $COMMAND" 
+        exit -1
+    fi
+}
+
+PART="${PART?Need to set PART}"
+NEXT_VERSION="${NEXT_VERSION?Need to set NEXT_VERSION}"
+
+if ! [[ " major minor patch " =~ " $PART " ]] ; then
+    echo "ERROR: PART must be one of {major, minor, patch}" 
+    exit -1
+fi
+
+check_command rg
+check_command hub
+
+bump_version_next_version=$(
+    bumpversion --dry-run --verbose "$PART" 2>&1 \
+    | rg -r '$1' "New version will be '([^']+)'"
+)
+
+if [[ "$NEXT_VERSION" != "$bump_version_next_version" ]] ; then
+    echo "ERROR: $NEXT_VERSION != $bump_version_next_version" 
+    exit -1
+fi
+
+# Ensure both `master` and `develop` are up to date
+git checkout master
+git pull
+git checkout develop
+git pull
+
+# Start release
+git flow release start "$NEXT_VERSION"
+
+# Bump version and commit
+bumpversion --commit --no-tag "$PART"
+
+# Publish and file PR
+git flow release publish
+hub pull-request -m "Release $NEXT_VERSION" -b master
+echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
+read -p "Press ENTER once the PR is ready to merge..."
+
+# Finish and merge PR
+git flow release finish -k -m "Release $NEXT_VERSION" --noedit
+git checkout master && git push origin master
+
+# File PR from `master` against `develop`
+hub pull-request -m "Merge $NEXT_VERSION from master" -b develop
+echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
+read -p "Press ENTER once the PR is ready to merge..."
+git checkout develop && git push origin develop
+
+# Push tags
+git push --tags
+
+# Delete release branch
+git branch -d "release/$NEXT_VERSION" && git push origin ":release/$NEXT_VERSION"
