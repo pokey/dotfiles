@@ -5,14 +5,37 @@ RESTORE='\033[0m'
 
 delim=$'\t'
 
-window_sort_format="#{session_last_attached}$delim#S$delim#{window_stack_index}"
-window_active_format="#{session_attached}$delim#{window_active}"
-window_display_format="#{b:pane_current_path}$delim#{window_name}"
-window_id_format="#S$delim#I"
+construct_window_format_string() {
+    window_format_string=''
+
+    # window_sort_format
+    window_format_string+="#{session_last_attached}"
+    window_format_string+="$delim"
+    window_format_string+="#S"
+    window_format_string+="$delim"
+    window_format_string+="#{window_stack_index}"
+    window_format_string+="$delim"
+
+    # window_active_format
+    window_format_string+="#{session_attached}"
+    window_format_string+="$delim"
+    window_format_string+="#{window_active}"
+    window_format_string+="$delim"
+
+    # window_id_format
+    window_format_string+="#S"
+    window_format_string+="$delim"
+    window_format_string+="#I"
+    window_format_string+="$delim"
+
+    # window_display_format
+    window_format_string+="#{b:pane_current_path}"
+    window_format_string+="$delim"
+    window_format_string+="#{window_name}"
+}
 
 display_all=false
 list_windows_options=''
-switch_command="select-window"
 
 if [ "$#" -ge 2 ]; then
     echo "Too many arguments"
@@ -23,7 +46,6 @@ if [ "$#" -eq 1 ]; then
     if [ "$1" == "-a" ]; then
         display_all=true
         list_windows_options='-a'
-        switch_command="switch-client"
     else
         echo "Unexpected argument \"$1\""
         exit -1
@@ -62,15 +84,11 @@ reformat_windows() {
     done
 }
 
-# Align on columns and perform coloring
-windows=$(
-    tmux list-windows $list_windows_options -F \
-    "$window_sort_format$delim$window_active_format$delim$window_id_format$delim$window_display_format" \
+construct_window_format_string
+
+tmux list-windows $list_windows_options -F "$window_format_string" \
     | sort -t "$delim" -k 1,1nr -k 2,2 -k 3,3n \
     | cut -d "$delim" -f 4- \
     | reformat_windows \
     | column -s $'\t' -t \
     | sed "s/+\(.*\)+/$(printf "$GREEN")\1$(printf "$RESTORE")/g"
-)
-
-echo "$windows"

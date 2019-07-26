@@ -78,8 +78,9 @@ abbreviations=(
   "gp"    "git push"
   "ga"    "git add"
   "gai"   "git add -i"
-  "pr"    "git pull-request -b"
-  "prm"   "git pull-request -b master"
+  "pr"    "git pull-request -ocb"
+  "prd"   "git pull-request -ocb develop"
+  "prm"   "git pull-request -ocb master"
   "awd"   'eval $(awsdev)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'

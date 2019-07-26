@@ -26,7 +26,7 @@ export EDITOR="nvim --noplugin"
 export VIMPAGER_VIM="nvim"
 export PAGER="$HOME/.config/nvim/plugged/vimpager/vimpager -u $HOME/.config/nvim/vimpager_nopass.vim"
 export VIMCAT="$HOME/.config/nvim/plugged/vimpager/vimcat -u NONE"
-export CTAGS_FLAGS="--tag-relative=yes --fields=+l --extras=+q"
+export CTAGS_FLAGS='--tag-relative=yes --fields=+l --extras=+q --regex-python=/^@binding\("(.+)"\)$/\1/f/'
 # Hack around https://github.com/junegunn/fzf/issues/809
 export FZF_TMUX=1
 
