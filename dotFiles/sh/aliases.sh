@@ -3,7 +3,6 @@ alias   ll="exa $EXA_LA_OPTIONS"
 alias   la="exa -a"
 alias  lla="exa -a $EXA_LA_OPTIONS"
 alias  lal="exa -a $EXA_LA_OPTIONS"
-alias   lt="exa --tree --git-ignore -I __pycache__ $EXA_LA_OPTIONS --colour always"
 alias   gs='git status'
 alias   gd='zoom-run -p git diff'
 alias  gdp='zoom-run -p git diff head~'
