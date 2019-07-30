@@ -37,7 +37,8 @@
 # interface. Something like:
 #
 # hub api -XPOST "/repos/$REPO/statuses/$(git rev-parse HEAD)" \
-#    -f state=error -f context="release-block/block-release"
+#    -f state=error -f context="release-block/block-release" \
+#    -f description="Merging via web interface is blocked; please return to CLI to continue release."
 #
 # Then right before merging from CLI do:
 #
@@ -62,6 +63,11 @@ NEXT_VERSION="${NEXT_VERSION?Need to set NEXT_VERSION}"
 
 if ! [[ " major minor patch " =~ " $PART " ]] ; then
     echo "ERROR: PART must be one of {major, minor, patch}" 
+    exit -1
+fi
+
+if ! bumpversion --help 2>&1 > /dev/null ; then
+    echo "ERROR: Need to install bumpversion"
     exit -1
 fi
 
@@ -97,7 +103,7 @@ echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
 read -p "Press ENTER once the PR is ready to merge..."
 
 # Finish and merge PR
-git flow release finish -k -m "Release $NEXT_VERSION" --noedit
+git flow release finish -k -m "Release $NEXT_VERSION"
 git checkout master && git push origin master
 
 # File PR from `master` against `develop`
