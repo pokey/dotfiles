@@ -7,7 +7,7 @@ sessions=$(
     | cut -d ' ' -f 2-
 )
 
-target=$(echo "$sessions" | fzf-tmux-zoom +m --reverse)
+target=$(echo "$sessions" | fzf-tmux +m --reverse)
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
