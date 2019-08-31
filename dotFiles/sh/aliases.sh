@@ -30,9 +30,9 @@ alias  gai='git add -i'
 alias   gA='git add -A'
 alias   hs='sudo salt-call --local state.highstate'
 alias   vu='vim +PlugUpgrade +PlugUpdate +PlugClean +qall'
-alias  pis='pip install flake8 flake8-isort flake8-print'
+alias  pis='pip install flake8 flake8-isort flake8-print mypy'
 alias  pup='pip install --upgrade pip'
-alias pisj='pip install flake8 flake8-isort flake8-print jupyterlab'
+alias pisj='pip install flake8 flake8-isort flake8-print mypy jupyterlab'
 alias    k='cd ..'
 alias   kk='cd ../..'
 alias  kkk='cd ../../..'
@@ -76,6 +76,10 @@ alias uuid="python -c \"import uuid; print(uuid.uuid4())\" | tr -d '\n'"
 alias   np="mp"
 alias http="pyenv-http"
 alias csvcut="csvkit-run csvcut"
+alias yaml2json="ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))'"
+alias nose="python setup.py nosetests --failed"
+alias  aws="PYENV_VERSION=aws pyenv exec aws"
+alias botoenv="PYENV_VERSION=botoenv pyenv exec botoenv"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

@@ -37,7 +37,7 @@ abbreviations=(
   "ig"    "| rg"
   "ih"    "| head"
   "ic"    "| pbcopy"
-  "iwc"   "| wc -l"
+  "iw"    "| wc -l"
   "ij"    "| jq '.__CURSOR__'"
   "ijc"   "| jq '.count'"
   "iji"   "| jq '.items[] | __CURSOR__'"
@@ -105,6 +105,8 @@ abbreviations=(
   "nv"    'kill -9 %1 ; pyenv shell ${PWD##*/} ; nvim -S'
   "ya"    'yarn add'
   "idc"   'uuid | pbcopy'
+  "bd"    'eval $(botoenv -p development)'
+  "nose"  'python setup.py nosetests --failed'
 )
 
 for i in {1..9};

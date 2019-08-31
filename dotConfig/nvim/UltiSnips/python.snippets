@@ -104,6 +104,46 @@ class $1${2:($3)}:
 		$0
 endsnippet
 
+snippet i "init" b
+def __init__(self${4:, $5}):
+	$0
+endsnippet
+
+
 snippet s "self.foo = foo" b
 self.$1 = $1
+endsnippet
+
+snippet sg "self.foo = graph.foo" b
+self.$1 = graph.$1
+endsnippet
+
+snippet b "@binding" b
+from microcosm.api import binding
+
+
+@binding("$1")
+endsnippet
+
+snippet gc "graph class" b
+${1:@binding("$2")}
+class $3${4:($5)}:
+	def __init__(self, graph):
+		${0:pass}
+endsnippet
+
+snippet ig "init graph" b
+def __init__(self, graph):
+	${0:pass}
+endsnippet
+
+snippet exit "exit" b
+import sys; sys.exit(1)
+endsnippet
+
+snippet ds "docstring" bm
+"""
+$0
+
+"""
 endsnippet

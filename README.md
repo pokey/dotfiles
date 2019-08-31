@@ -10,10 +10,8 @@ Setup
 
 1. Install deps
    1. Install [Hammerspoon](http://www.hammerspoon.org/)
-   1. Install [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
-   1. Install [Alacritty](https://github.com/jwilm/alacritty). I actually
-      maintain a [fork](https://github.com/pokey/alacritty) that changes the
-      visual bell color, because I find the white flash really annoying.
+   1. Install [Karabiner Elements](https://pqrs.org/osx/karabiner/)
+   1. Install [Alacritty](https://github.com/jwilm/alacritty).
    1. Install [Homebrew](https://brew.sh)
 1. Setup github and clone this repo
    1. Generate ssh key

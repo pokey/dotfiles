@@ -82,6 +82,7 @@ esac
 # Make old vim still work (ish)
 backup "$HOME/.vim"
 backup "$HOME/.vimrc"
+backup "$HOME/.viminfo"
 ln -s $HOME/.config/nvim $HOME/.vim 
 ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc 
 
@@ -183,5 +184,7 @@ $SCRIPTPATH/template.sh hammerspoon "$BASEPATH/dotFiles/hammerspoon/ssid.lua"
 # Setup karabiner
 brew install libyaml
 python -m pip install --user pyyaml
-backup ~/.config/karabiner/karabiner.json
-(cd karabiner-gen ; ./generate_karabiner.py > ~/.config/karabiner/karabiner.json)
+karabiner_dir="$HOME/.config/karabiner"
+mkdir -p $karabiner_dir
+backup "$karabiner/karabiner.json"
+(cd karabiner-gen ; ./generate_karabiner.py > "$karabiner/karabiner.json")
