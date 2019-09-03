@@ -43,7 +43,7 @@ mc() {
 
 bk() {
    file="$1"
-   cp "$file" "$file.bak"
+   cp -rf "$file" "$file.bak"
 }
 
 bkm() {
