@@ -64,13 +64,14 @@ abbreviations=(
   "piu"   "pip install -U"
   "pu"    "pip uninstall"
   "pie"   "pip install -e ."
-  "pis"   "pip install flake8 flake8-isort flake8-print"
-  "pisj"  "pip install flake8 flake8-isort flake8-print jupyterlab"
+  "pis"   "pip install flake8 flake8-isort flake8-print mypy ipdb"
+  "pisj"  "pip install flake8 flake8-isort flake8-print mypy ipdb jupyterlab"
   "pieu"  "pip install -e . -U"
   "gpie"  "gpip -e ."
   "gpu"   "gpip -U"
   "gpit"  "gpip -e '.[test]'"
   "gpieu" "gpip -e . -U"
+  "gpir"  "gpip -r requirements.txt"
   "pf"    'pip freeze -l > requirements.txt'
   "gst"   "git stash"
   "gstp"  "git stash pop"
@@ -78,9 +79,10 @@ abbreviations=(
   "gp"    "git push"
   "ga"    "git add"
   "gai"   "git add -i"
-  "pr"    "git pull-request -ocb"
-  "prd"   "git pull-request -ocb develop"
-  "prm"   "git pull-request -ocb master"
+  "pr"    "git pull-request -ocpb"
+  "prd"   "git pull-request -ocpb develop"
+  "prm"   "git pull-request -ocpb master"
+  "prs"   "git pr show"
   "awd"   'eval $(awsdev)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'
@@ -107,6 +109,8 @@ abbreviations=(
   "idc"   'uuid | pbcopy'
   "bd"    'eval $(botoenv -p development)'
   "nose"  'python setup.py nosetests --failed'
+  "dpl"   'docker pull'
+  "db"    'docker run -it --entrypoint /bin/bash'
 )
 
 for i in {1..9};

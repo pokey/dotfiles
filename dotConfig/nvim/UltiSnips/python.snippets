@@ -16,12 +16,14 @@ snippet src
 endsnippet
 
 snippet nt "namedtuple" b
-$1 = namedtuple("$1", "$0")
+from typing import NamedTuple
+class $1(NamedTuple):
+	$2: $3
 endsnippet
 
 snippet co "click.option" b
 @click.option(
-	'--$1',
+	"--$1",
 )
 endsnippet
 
@@ -40,8 +42,8 @@ import click
 
 @click.command()
 @click.option(
-	'--$1',
-	'-$2',
+	"--$1",
+	"-$2",
 )
 def main($1):
 	$0
@@ -53,9 +55,9 @@ endsnippet
 
 snippet cf "click.file" b
 @click.option(
-	'--$1',
-	'-$2',
-	type=click.File('${3:r}'),
+	"--$1",
+	"-$2",
+	type=click.File("${3:r}"),
 )
 endsnippet
 
@@ -69,9 +71,11 @@ breakpoint()
 endsnippet
 
 snippet boe "break on exception" b
-import sys
-from IPython.core import ultratb
-sys.excepthook = ultratb.FormattedTB(mode='Verbose', color_scheme='Linux', call_pdb=1)
+try:
+	${VISUAL}
+except:
+	from IPython.core.ultratb import AutoFormattedTB
+	AutoFormattedTB(mode="Verbose", color_scheme="Linux", call_pdb=1)()
 endsnippet
 
 snippet e "click.echo" b

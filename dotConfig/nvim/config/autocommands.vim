@@ -66,6 +66,7 @@ augroup filetypes
   au BufRead,BufNewFile rc,.rc                 set ft=sh
   au BufRead,BufNewFile *.dox                  set ft=doxygen
   au BufRead,BufNewFile GHI_ISSUE              set ft=gitcommit
+  au BufRead,BufNewFile Dockerfile.template    set ft=dockerfile
 augroup end
 
 augroup something
