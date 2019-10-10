@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Simple server that listens on Unix domain socket and switches to window
+# received.  Intended to run as a "daemon".
+socket="$HOME/.tmux-switcher"
+
+[ -e "$socket" ] && exit 0
+
+function finish {
+    rm -f "$socket"
+}
+trap finish EXIT
+
+client="$1"
+
+while true; do
+    input=$(nc -lU "$socket")
+    rm -f "$socket"
+    tmux switch-client -c "$client" -t "$input"
+done

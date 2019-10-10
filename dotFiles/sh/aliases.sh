@@ -52,6 +52,7 @@ alias pieu='pip install -e . -U'
 alias   jl='jupyter lab'
 alias gpie='gpip -e .'
 alias gpit="gpip -e '.[test]'"
+alias  pir="pip install -r requirements.txt"
 alias gpir="gpip -r requirements.txt"
 alias  gst="git stash"
 alias gstp="git stash pop"
@@ -82,6 +83,7 @@ alias yaml2json="ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF
 alias nose="python setup.py nosetests --failed"
 alias  aws="PYENV_VERSION=aws pyenv exec aws"
 alias botoenv="PYENV_VERSION=botoenv pyenv exec botoenv"
+alias nd="notify-on-complete"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

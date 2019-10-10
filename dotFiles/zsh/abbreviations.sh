@@ -54,7 +54,7 @@ abbreviations=(
   "ffp"   "git flow feature publish"
   "frs"   "git flow release start"
   "frp"   "git flow release publish"
-  "nd"    "npm install -D"
+  "nid"   "npm install -D"
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
   "pyw"   'pyenv shell ${PWD##*/}__EXPAND__'
@@ -72,6 +72,7 @@ abbreviations=(
   "gpit"  "gpip -e '.[test]'"
   "gpieu" "gpip -e . -U"
   "gpir"  "gpip -r requirements.txt"
+  "pir"   "pip install -r requirements.txt"
   "pf"    'pip freeze -l > requirements.txt'
   "gst"   "git stash"
   "gstp"  "git stash pop"
@@ -84,6 +85,7 @@ abbreviations=(
   "prm"   "git pull-request -ocpb master"
   "prs"   "git pr show"
   "awd"   'eval $(awsdev)'
+  "dl"    'eval $(aws ecr get-login --no-include-email)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'
   "ppv"   "pip list | rg"
