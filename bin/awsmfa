@@ -5,24 +5,23 @@ IFS=$'\n\t'
 # Based on https://github.com/lokori/secretman/blob/580c2556ad54ec6f22da854f852f2de775a9e150/awsenv.sh
 # This script is designed so that the output is to be evaled, ie
 #
-# eval $(awsmfa <PROFILE>)
+# eval $(awsmfa <ROLE>)
 #
-# where <PROFILE> is the name of an aws profile.  It assumes that you have ykman
+# where <ROLE> is the name of an aws role.  It assumes that you have ykman
 # installed, and that you have configured it to have an oath code, ie
 #
-# ykman oath add -t aws-<PROFILE>
+# ykman oath add -t aws-<ACCOUNT_NUMBER>-<IAM_USERNAME>
 #
-# where <PROFILE> is the name of an aws profile.
+# Also assumes that your defaut user has privileges to assume the given role.
 
 if [[ $# -ge 1 ]]; then
-    AWS_PROFILE="$1"
+    ROLE="$1"
 else
     (>&2 echo "ERROR: Please provide aws profile as argument.")
     exit -1
 fi
 
-CALLER_IDENTITY=($(aws --profile "$AWS_PROFILE" sts get-caller-identity \
-                   --output text))
+CALLER_IDENTITY=($(aws sts get-caller-identity --output text))
 
 
 AWS_ACCOUNT_NUMBER="${CALLER_IDENTITY[0]}"
@@ -30,9 +29,11 @@ AWS_IAM_USER_ARN="${CALLER_IDENTITY[1]}"
 AWS_IAM_USERNAME="$(basename "$AWS_IAM_USER_ARN")"
 MFA_SERIAL="arn:aws:iam::$AWS_ACCOUNT_NUMBER:mfa/$AWS_IAM_USERNAME"
 
-TOKEN_CODE=$(ykman oath code -s "aws-${AWS_PROFILE}")
-PROFILE_INFO=($(aws sts get-session-token --serial-number "$MFA_SERIAL" \
-                --profile "$AWS_PROFILE" \
+TOKEN_CODE=$(ykman oath code -s "aws-$AWS_ACCOUNT_NUMBER-$AWS_IAM_USERNAME")
+PROFILE_INFO=($(aws sts assume-role \
+                --role-arn "arn:aws:iam::$AWS_ACCOUNT_NUMBER:role/$ROLE" \
+                --serial-number "$MFA_SERIAL" \
+                --role-session-name "$AWS_IAM_USERNAME" \
                 --token-code "$TOKEN_CODE" \
                 --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
                 --output text))

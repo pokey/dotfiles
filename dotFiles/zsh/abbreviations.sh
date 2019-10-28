@@ -106,6 +106,7 @@ abbreviations=(
   "ya"    'yarn add'
   "idc"   'uuid | pbcopy'
   "bd"    'eval $(botoenv -p development)'
+  "ba"    'eval $(awsmfa administrator)'
   "nose"  'python setup.py nosetests --failed'
 )
 
