@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+socket="$HOME/.tmux-switcher"
+
+# Current window
+window=$(tmux display-message -pt "${TMUX_PANE:?}" '#S:#I')
+
+# Just pick first client.  Assumes only one client exists
+client=$(tmux list-clients | head -1 | cut -d: -f1)
+
+# Run server that switches tmux window as daemon.  If already running it will
+# exit.
+nohup tmux-switcher "$client" &>/dev/null &
+
+# When message is clicked, switch to Alacritty and activate this tmux window
+terminal-notifier -message Done -activate io.alacritty -execute \
+    "echo $window | nc -U $socket"

@@ -65,9 +65,6 @@ brew install python
 pip install glances
 pip install pyyaml
 
-(cd karabiner-gen && \
- ./generate_karabiner.py > ~/.config/karabiner/karabiner.json)
-
 $INSTALL pyenv-virtualenv
 
 # Setup neovim python
@@ -187,4 +184,4 @@ python -m pip install --user pyyaml
 karabiner_dir="$HOME/.config/karabiner"
 mkdir -p $karabiner_dir
 backup "$karabiner/karabiner.json"
-(cd karabiner-gen ; ./generate_karabiner.py > "$karabiner/karabiner.json")
+(cd "$BASEPATH/karabiner-gen" ; ./generate_karabiner.py > "$karabiner/karabiner.json")

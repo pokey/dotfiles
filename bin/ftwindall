@@ -7,7 +7,7 @@ list_source="$WINDOWS_ALL"
 switch_command="switch-client"
 
 # Run fzf and check result
-out=$(cat "$list_source" | fzf-tmux-zoom +m -n2 --reverse --ansi --expect=ctrl-l)
+out=$(cat "$list_source" | fzf-tmux +m -n2 --reverse --ansi --expect=ctrl-l)
 res="$?"
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res

@@ -54,7 +54,7 @@ abbreviations=(
   "ffp"   "git flow feature publish"
   "frs"   "git flow release start"
   "frp"   "git flow release publish"
-  "nd"    "npm install -D"
+  "nid"   "npm install -D"
   "ns"    "npm install -d"
   "pys"   "pyenv shell"
   "pyw"   'pyenv shell ${PWD##*/}__EXPAND__'
@@ -64,13 +64,15 @@ abbreviations=(
   "piu"   "pip install -U"
   "pu"    "pip uninstall"
   "pie"   "pip install -e ."
-  "pis"   "pip install flake8 flake8-isort flake8-print"
-  "pisj"  "pip install flake8 flake8-isort flake8-print jupyterlab"
+  "pis"   "pip install flake8 flake8-isort flake8-print mypy ipdb"
+  "pisj"  "pip install flake8 flake8-isort flake8-print mypy ipdb jupyterlab"
   "pieu"  "pip install -e . -U"
   "gpie"  "gpip -e ."
   "gpu"   "gpip -U"
   "gpit"  "gpip -e '.[test]'"
   "gpieu" "gpip -e . -U"
+  "gpir"  "gpip -r requirements.txt"
+  "pir"   "pip install -r requirements.txt"
   "pf"    'pip freeze -l > requirements.txt'
   "gst"   "git stash"
   "gstp"  "git stash pop"
@@ -82,10 +84,12 @@ abbreviations=(
   "dvpl"  "dvc pull"
   "dc"    "dvc commit"
   "ds"    "dvc status"
-  "pr"    "git pull-request -ocb"
-  "prd"   "git pull-request -ocb develop"
-  "prm"   "git pull-request -ocb master"
+  "pr"    "git pull-request -ocpb"
+  "prd"   "git pull-request -ocpb develop"
+  "prm"   "git pull-request -ocpb master"
+  "prs"   "git pr show"
   "awd"   'eval $(awsdev)'
+  "dl"    'eval $(aws ecr get-login --no-include-email)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'
   "ppv"   "pip list | rg"
@@ -112,6 +116,8 @@ abbreviations=(
   "bd"    'eval $(botoenv -p development)'
   "ba"    'eval $(awsmfa administrator)'
   "nose"  'python setup.py nosetests --failed'
+  "dpl"   'docker pull'
+  "db"    'docker run -it --entrypoint /bin/bash'
 )
 
 for i in {1..9};

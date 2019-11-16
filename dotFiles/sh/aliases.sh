@@ -34,9 +34,9 @@ alias dvpl='dvc pull'
 alias   dp='dvc push'
 alias   hs='sudo salt-call --local state.highstate'
 alias   vu='vim +PlugUpgrade +PlugUpdate +PlugClean +qall'
-alias  pis='pip install flake8 flake8-isort flake8-print mypy'
+alias  pis='pip install flake8 flake8-isort flake8-print mypy ipdb'
 alias  pup='pip install --upgrade pip'
-alias pisj='pip install flake8 flake8-isort flake8-print mypy jupyterlab'
+alias pisj='pip install flake8 flake8-isort flake8-print mypy ipdb jupyterlab'
 alias    k='cd ..'
 alias   kk='cd ../..'
 alias  kkk='cd ../../..'
@@ -47,14 +47,17 @@ alias    c='cd'
 alias   c-='cd -'
 alias   vm='ssh vm'
 alias   tl='zoom-run -p tldr'
-alias  prd='git pull-request -ocb develop'
-alias  prm='git pull-request -ocb master'
+alias  prd='git pull-request -ocpb develop'
+alias  prm='git pull-request -ocpb master'
+alias  prs='git pr show'
 alias   sz='source ~/.zshrc'
 alias  pie='pip install -e .'
 alias pieu='pip install -e . -U'
 alias   jl='jupyter lab'
 alias gpie='gpip -e .'
 alias gpit="gpip -e '.[test]'"
+alias  pir="pip install -r requirements.txt"
+alias gpir="gpip -r requirements.txt"
 alias  gst="git stash"
 alias gstp="git stash pop"
 alias gpieu='gpip -e . -U'
@@ -84,6 +87,7 @@ alias yaml2json="ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF
 alias nose="python setup.py nosetests --failed"
 alias  aws="PYENV_VERSION=aws pyenv exec aws"
 alias botoenv="PYENV_VERSION=botoenv pyenv exec botoenv"
+alias nd="notify-on-complete"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'
