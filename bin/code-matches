@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+hub api -H Accept:application/vnd.github.v3.text-match+json -XGET search/code \
+    --field q="org:globality-corp language:Python $1" \
+    | jq '.items | map({repository: .repository.name, path, matches: .text_matches | map(.fragment)})'

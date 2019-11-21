@@ -30,7 +30,7 @@ export CTAGS_FLAGS='--tag-relative=yes --fields=+l --extras=+q --regex-python=/^
 # Hack around https://github.com/junegunn/fzf/issues/809
 export FZF_TMUX=1
 
-[ -d $HOME/.custom.rc ] && source $HOME/.custom.rc
+[ -f $HOME/.custom.rc ] && source $HOME/.custom.rc
 
 # Make vim tty stuff behave nicely
 stty ixany

@@ -49,6 +49,10 @@ launcher_mode:
     to:
       key_code: o
       modifiers: ["right_command", "right_shift", "right_control"]
+  - from: comma
+    to:
+      key_code: comma
+      modifiers: ["right_command", "right_shift", "right_control"]
   - from: w
     to:
       key_code: w

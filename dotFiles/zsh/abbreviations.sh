@@ -42,6 +42,7 @@ abbreviations=(
   "ijc"   "| jq '.count'"
   "iji"   "| jq '.items[] | __CURSOR__'"
   "ijr"   "| jq -r '.__CURSOR__'"
+  "ijf"   "| jq '[leaf_paths as \$path | {\"key\": \$path | join(\".\"), \"value\": getpath(\$path)}] | from_entries'"
   "ip"    "faketty __LINE__ | zoom-run"
   "lp"    "faketty !! | zoom-run__EXPAND__"
   "pl"    "faketty !! | zoom-run__EXPAND__"
@@ -115,6 +116,7 @@ abbreviations=(
   "idc"   'uuid | pbcopy'
   "bd"    'eval $(botoenv -p development)'
   "ba"    'eval $(awsmfa administrator)'
+  "bp"    'eval $(botoenv -p production-readonly)'
   "nose"  'python setup.py nosetests --failed'
   "dpl"   'docker pull'
   "db"    'docker run -it --entrypoint /bin/bash'

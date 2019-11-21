@@ -96,3 +96,7 @@ tags() {
   ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
 }
+
+tree-hash() {
+    git cat-file -p $(git rev-parse "$1") | head -1 | cut -d' ' -f2
+}
