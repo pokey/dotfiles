@@ -126,8 +126,11 @@ from microcosm.api import binding
 endsnippet
 
 snippet gc "graph class" b
-${1:@binding("$2")}
-class $3${4:($5)}:
+from microcosm.api import binding
+
+
+@binding("$1")
+class $2${3:($4)}:
 	def __init__(self, graph):
 		${0:pass}
 endsnippet

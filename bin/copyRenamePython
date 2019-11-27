@@ -12,23 +12,25 @@ from_upper="$2"
 to_lower="$3"
 to_upper="$4"
 
-# Should never appear in file names
-intermediate="ghidosdygowiejcsd"
+# Iterate over all files whose name or any of their parent directory's
+# names contain $from_lower
+while read path; do
+    from_path="$path"
 
-# Create new files from files that contain the source name as lower, placing
-# them at intermediate paths that won't conflict with anything
-fd "$from_lower" | sed "s/\(.*\)$from_lower\(.*\)/cp -rf & \1$intermediate\2/" | sh
+    # Replace all occurrences of $from_lower anywhere in path to file
+    to_path=$(echo "$path" | sed "s/$from_lower/$to_lower/g")
 
-# Replace both forms in all new files
-fd -tf "$intermediate" -x sed -i "s/$from_upper/$to_upper/g"
-fd -tf "$intermediate" -x sed -i "s/$from_lower/$to_lower/g"
+    # Make all parent directories
+    mkdir -p "$(dirname "$to_path")"
 
-# Replace both forms in all new directories
-fd -td "$intermediate" -x fd . {} -x sed -i "s/$from_upper/$to_upper/g"
-fd -td "$intermediate" -x fd . {} -x sed -i "s/$from_lower/$to_lower/g"
+    # Replace all lower or uppercase occurrences in the file and write to
+    # $to_path
+    cat "$from_path" \
+        | sed "s/$from_lower/$to_lower/g" \
+        | sed "s/$from_upper/$to_upper/g" \
+        > "$to_path"
 
-# Move intermediate files into place
-fd "$intermediate" | sed "s/\(.*\)$intermediate\(.*\)/mv \0 \1$to_lower\2/" | sh
+done < <(fd --full-path --type file "$from_lower")
 
 # Open editor to deal with other files in which the term appears
 vim $(rg -l "$from_lower|$from_upper" | rg -v "$from_lower")

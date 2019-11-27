@@ -120,6 +120,7 @@ abbreviations=(
   "nose"  'python setup.py nosetests --failed'
   "dpl"   'docker pull'
   "db"    'docker run -it --entrypoint /bin/bash'
+  "rp"    'rg --type py'
 )
 
 for i in {1..9};
