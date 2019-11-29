@@ -1,12 +1,8 @@
-# Extract necessary variables from the input json
-.info.title as $service_name |
-.basePath as $basePath |
+# Generate one line per environment
+. + {env: ["dev", "test", "demo", "prod"][]}
 
-# Then output one line per environment for the given input
-["dev", "test", "demo"] |
-.[] |
-. as $env |
+# Generate url
+| "https://\(.info.title).\(.env).globality.io\(.basePath)"
 
 # Output http-prompt args
-"https://\($service_name).\($env).globality.io\($basePath)" as $uri |
-"'\($uri)' --spec='\($uri)/swagger'"
+| "--env <(echo \"--verify no\") '\(.)' --spec=<(http --verify no '\(.)/swagger')"
