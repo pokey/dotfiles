@@ -19,15 +19,22 @@ def getShell():
 				return shell
 	return "sh"
 endglobal
+
 snippet c "case .. esac (case)" b
 case "${1:word}" in
 	${2:pattern}) $0;;
 esac
 endsnippet
+
 snippet e "element) ...;;" b
 ${1:pattern}) $0;;
 endsnippet
+
 snippet #! "#!/usr/bin/env (!env)" b
 #!/usr/bin/env bash
 set -euo pipefail
+endsnippet
+
+snippet sd "script dir" b
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 endsnippet
