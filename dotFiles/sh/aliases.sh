@@ -88,6 +88,7 @@ alias nose="python setup.py nosetests --failed"
 alias  aws="PYENV_VERSION=aws pyenv exec aws"
 alias botoenv="PYENV_VERSION=botoenv pyenv exec botoenv"
 alias nd="notify-on-complete"
+alias dr.="dvc repro -R ."
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

@@ -85,6 +85,8 @@ abbreviations=(
   "dvpl"  "dvc pull"
   "dc"    "dvc commit"
   "ds"    "dvc status"
+  "dr"    "dvc repro -R"
+  "dr."   "dvc repro -R ."
   "pr"    "git pull-request -ocpb"
   "prd"   "git pull-request -ocpb develop"
   "prm"   "git pull-request -ocpb master"
