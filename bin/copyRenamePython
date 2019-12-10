@@ -2,15 +2,26 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if [ $# -ne 4 ] ; then
-    printf "Usage: copyRenamePython from_lower FromUpper to_lower ToUpper\n" 1>&2
+uppercase() {
+    perl -pe 's/(^|_)([a-z])/uc($2)/ge'
+}
+
+all_caps() {
+    awk '{print toupper($0)}'
+}
+
+if [ $# -ne 2 ] ; then
+    printf "Usage: copyRenamePython from_lower to_lower\n" 1>&2
     exit 1
 fi
 
 from_lower="$1"
-from_upper="$2"
-to_lower="$3"
-to_upper="$4"
+to_lower="$2"
+
+from_upper="$(echo "$from_lower" | uppercase)"
+from_all_caps="$(echo "$from_lower" | all_caps)"
+to_upper="$(echo "$to_lower" | uppercase)"
+to_all_caps="$(echo "$to_lower" | all_caps)"
 
 # Iterate over all files whose name or any of their parent directory's
 # names contain $from_lower
@@ -28,9 +39,10 @@ while read path; do
     cat "$from_path" \
         | sed "s/$from_lower/$to_lower/g" \
         | sed "s/$from_upper/$to_upper/g" \
+        | sed "s/$from_all_caps/$to_all_caps/g" \
         > "$to_path"
 
 done < <(fd --full-path --type file "$from_lower")
 
 # Open editor to deal with other files in which the term appears
-vim $(rg -l "$from_lower|$from_upper" | rg -v "$from_lower")
+vim $(rg -l "$from_lower|$from_upper|$from_all_caps" | rg -v "$from_lower")
