@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Copy all files known to git on current branch into another directory
+set -euo pipefail
+
+src="$1"
+dst="$2"
+
+while read path; do
+    src_path="$src/$path"
+    dst_path="$dst/$path"
+    mkdir -p "$(dirname "$dst_path")"
+    cp "$src_path" "$dst_path"
+done < <(git --git-dir "$src/.git" ls-tree head --name-only)
