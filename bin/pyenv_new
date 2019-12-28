@@ -10,6 +10,8 @@ if [ "$#" -ge 2 ]; then
       MAJOR_VERSION=2
    elif [ "$1" == "-3" ]; then
       MAJOR_VERSION=3
+   elif [ "$1" == "-f" ]; then
+      FORCE=true
    else
       echo "Unexpected argument \"$2\""
       exit -1
@@ -19,10 +21,14 @@ fi
 
 NAME="$1"
 
-# Get latest Python version
-PYTHON_VERSION=$(pyenv install -l |
-                  grep -e "$MAJOR_VERSION.[0-9]\\+.[0-9]\\+$" | grep -v - |
-                  tail -1 | tr -d '[:space:]')
+if [ "$FORCE" = true ] ; then
+    PYTHON_VERSION=3.7.2
+else
+    # Get latest Python version
+    PYTHON_VERSION=$(pyenv install -l |
+                      grep -e "$MAJOR_VERSION.[0-9]\\+.[0-9]\\+$" | grep -v - |
+                      tail -1 | tr -d '[:space:]')
+fi
 
 pyenv virtualenv $PYTHON_VERSION $NAME
 pyenv shell $NAME

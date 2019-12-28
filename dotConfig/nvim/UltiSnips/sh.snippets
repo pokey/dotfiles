@@ -38,3 +38,9 @@ endsnippet
 snippet sd "script dir" b
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 endsnippet
+
+snippet w "while loop" b
+while read $2; do
+	$0
+done < <($1)
+endsnippet

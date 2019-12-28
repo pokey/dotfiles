@@ -87,8 +87,9 @@ alias yaml2json="ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF
 alias nose="python setup.py nosetests --failed"
 alias  aws="PYENV_VERSION=aws pyenv exec aws"
 alias botoenv="PYENV_VERSION=botoenv pyenv exec botoenv"
-alias nd="notify-on-complete"
-alias dr.="dvc repro -R ."
+alias   nd="notify-on-complete"
+alias  dr.="dvc repro -R ."
+alias   ua="unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

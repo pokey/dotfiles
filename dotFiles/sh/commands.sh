@@ -82,7 +82,7 @@ faketty() {
 pyn() {
    for last; do true; done
    name="$last"
-   pyenv_new "$@"
+   pyenv_new $@
    pyenv shell $name
 }
 

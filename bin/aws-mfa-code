@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# Init pyenv and activate awscli virtualenv
+# NB: These steps must occur before the pipefail step below due to a bug in pip
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+pyenv activate awscli
+
 set -euo pipefail
 IFS=$'\n\t'
 
