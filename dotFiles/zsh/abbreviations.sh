@@ -124,6 +124,7 @@ abbreviations=(
   "db"    'docker run -it --entrypoint /bin/bash'
   "rp"    'rg --type py'
   "ua"    'unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN'
+  "jti"   'jupytext --set-formats ipynb,py'
 )
 
 for i in {1..9};
