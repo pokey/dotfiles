@@ -104,16 +104,6 @@ nnoremap <C-p> :e<space>
 
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
-" Sorting imports
-
-" This plugin is flaky, so we just run the isort command, even though it's a
-" bit slower
-" autocmd FileType python nnoremap <silent> <buffer> <leader>i :Isort<cr>
-autocmd FileType python nnoremap <silent> <buffer> <leader>i :%!isort -<cr>
-
-autocmd FileType javascript nnoremap <silent> <buffer> <leader>i :ALEFix<cr>
-autocmd FileType javascript.jsx nnoremap <silent> <buffer> <leader>i :ALEFix<cr>
-
 nnoremap <leader>v :PyenvActivate<space>
 
 inoremap <leader>k <c-p>
@@ -146,6 +136,10 @@ nnoremap gm :!cp<space>%<space>%:h/
 " Ctags
 nnoremap <silent> gt :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
+augroup pythonmaps
+  au!
+  au FileType python nnoremap <buffer> <silent> <leader>f :ALEGoToDefinition<cr>
+augroup end
 nnoremap <silent> <leader>' <c-t>
 nnoremap <silent> go :TagbarToggle<cr>
 

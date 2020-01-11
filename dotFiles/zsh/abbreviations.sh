@@ -65,8 +65,8 @@ abbreviations=(
   "piu"   "pip install -U"
   "pu"    "pip uninstall"
   "pie"   "pip install -e ."
-  "pis"   "pip install flake8 flake8-isort flake8-print mypy ipdb"
-  "pisj"  "pip install flake8 flake8-isort flake8-print mypy ipdb jupyterlab"
+  "pis"   "pip install flake8 flake8-isort flake8-print mypy ipdb python-language-server"
+  "pisj"  "pip install flake8 flake8-isort flake8-print mypy ipdb python-language-server jupyterlab"
   "pieu"  "pip install -e . -U"
   "gpie"  "gpip -e ."
   "gpu"   "gpip -U"
@@ -162,7 +162,7 @@ magic-abbrev-expand() {
        expansion=${expansion%%__EXPAND_STAR__}
     fi
 
-    if [[ "${expansion}" =~ "__LINE__" ]] 
+    if [[ "${expansion}" =~ "__LINE__" ]]
     then
         LBUFFER="${expansion[(ws:__LINE__:)1]}$line${expansion[(ws:__LINE__:)2]}"
     else

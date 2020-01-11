@@ -46,7 +46,7 @@ Plug 'mattn/emmet-vim'
 Plug 'easymotion/vim-easymotion'
 
 Plug 'terryma/vim-multiple-cursors'
-Plug 'neomake/neomake'
+Plug 'dense-analysis/ale'
 
 Plug 'vito-c/jq.vim'
 
@@ -73,7 +73,6 @@ Plug 'ruanyl/vim-sort-imports'
 
 Plug 'lepture/vim-velocity'
 
-Plug 'w0rp/ale'
 Plug 'neo4j-contrib/cypher-vim-syntax'
 
 call plug#end()

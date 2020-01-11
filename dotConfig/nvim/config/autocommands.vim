@@ -3,12 +3,6 @@ augroup win
    au WinEnter * :AddExtraWidth
 augroup end
 
-augroup bufwrite
-   au!
-   au BufWritePost * Neomake
-   au BufReadPost * Neomake
-augroup end
-
 augroup termenter
    au!
    au BufEnter term://* MaybeEnterTerm
