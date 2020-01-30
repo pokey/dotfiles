@@ -44,6 +44,7 @@ abbreviations=(
   "ijr"   "| jq -r '.__CURSOR__'"
   "ijf"   "| jq '[leaf_paths as \$path | {\"key\": \$path | join(\".\"), \"value\": getpath(\$path)}] | from_entries'"
   "ip"    "faketty __LINE__ | zoom-run"
+  "cl"    "echo \"!!\" | pbcopy__EXPAND__"
   "lp"    "faketty !! | zoom-run__EXPAND__"
   "pl"    "faketty !! | zoom-run__EXPAND__"
   "tx"    "tar xzf"

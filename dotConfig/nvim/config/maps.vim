@@ -130,6 +130,9 @@ nmap <bslash><bslash> gcc
 nmap <bslash> gc
 vmap <bslash> gc
 
+" Copy file and line number to system clipboard
+nnoremap <silent> ql :let @+=join([expand('%'),  line(".")], ':')<cr>
+
 " Move file
 nnoremap gm :!cp<space>%<space>%:h/
 
