@@ -45,7 +45,7 @@ Plug 'mattn/emmet-vim'
 
 Plug 'easymotion/vim-easymotion'
 
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'dense-analysis/ale'
 
 Plug 'vito-c/jq.vim'

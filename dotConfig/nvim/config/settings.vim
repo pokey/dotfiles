@@ -15,8 +15,8 @@ endif
 " set the characters shown for special cases (must be turned on with set list)
 se listchars=extends:»,eol:¶,trail:·,tab:»­,precedes:«,nbsp:+
 
-" no mouse in xterm
-set mouse=
+" enable mouse
+set mouse=a
 
 " do not wrap lines
 set nowrap

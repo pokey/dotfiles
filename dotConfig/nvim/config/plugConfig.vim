@@ -4,8 +4,10 @@ autocmd! User GoyoLeave Limelight!
 
 let g:vim_markdown_new_list_item_indent = 2
 
-let g:multi_cursor_exit_from_visual_mode=0
-let g:multi_cursor_exit_from_insert_mode=0
+let g:VM_mouse_mappings = 1
+let g:VM_maps = {}
+let g:VM_maps["Add Cursor Down"] = '<c-j>'
+let g:VM_maps["Add Cursor Up"] = '<c-k>'
 
 let g:UltiSnipsJumpForwardTrigger="<leader>k"
 let g:UltiSnipsJumpBackwardTrigger="<leader>f"

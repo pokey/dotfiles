@@ -88,7 +88,7 @@ nnoremap <silent> Q :q<cr>
 nnoremap <silent> gr :e<cr>
 
 " Open file under cursor in new vertical split
-nnoremap <silent> <C-j> :vertical wincmd F<CR>
+nnoremap <silent> g<C-j> :vertical wincmd F<CR>
 
 " Save shortcuts
 nnoremap <C-s> :w<cr>
