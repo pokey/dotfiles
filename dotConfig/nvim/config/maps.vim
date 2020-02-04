@@ -139,10 +139,6 @@ nnoremap gm :!cp<space>%<space>%:h/
 " Ctags
 nnoremap <silent> gt :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
-augroup pythonmaps
-  au!
-  au FileType python nnoremap <buffer> <silent> <leader>f :ALEGoToDefinition<cr>
-augroup end
 nnoremap <silent> <leader>' <c-t>
 nnoremap <silent> go :TagbarToggle<cr>
 
