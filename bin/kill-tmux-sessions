@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Kill all tmux sessions piped into input
+set -euo pipefail
+
+while read session; do
+    tmux kill-session -t "$session"
+done

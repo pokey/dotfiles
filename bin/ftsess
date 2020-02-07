@@ -7,9 +7,19 @@ sessions=$(
     | cut -d ' ' -f 2-
 )
 
-target=$(echo "$sessions" | fzf-tmux +m --reverse)
+out=$(echo "$sessions" | fzf-tmux +m --reverse -m --expect=ctrl-d)
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
 
-tmux switch-client -t "$target"
+key=$(head -1 <<< "$out")
+target=$(tail '+2' <<< "$out")
+
+# Select window
+case "$key" in
+    # ctrl-d kills selected sessions
+    ctrl-d) echo "$target" | kill-tmux-sessions ;;
+
+    # Otherwise we switch to the chosen window
+         *) tmux switch-client -t "$target" ;;
+esac
