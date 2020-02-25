@@ -8,6 +8,13 @@ let g:VM_mouse_mappings = 1
 let g:VM_maps = {}
 let g:VM_maps["Add Cursor Down"] = '<c-j>'
 let g:VM_maps["Add Cursor Up"] = '<c-k>'
+let g:VM_custom_noremaps = {
+\   '_' : '_',
+\   ';' : ';',
+\   '==': '==',
+\   '<<': '<<',
+\   '>>': '>>',
+\}
 
 let g:UltiSnipsJumpForwardTrigger="<leader>k"
 let g:UltiSnipsJumpBackwardTrigger="<leader>f"
