@@ -2,6 +2,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+dasherize() {
+    tr _ -
+}
+
 uppercase() {
     perl -pe 's/(^|_)([a-z])/uc($2)/ge'
 }
@@ -18,8 +22,10 @@ fi
 from_lower="$1"
 to_lower="$2"
 
+from_dashes="$(echo "$from_lower" | dasherize)"
 from_upper="$(echo "$from_lower" | uppercase)"
 from_all_caps="$(echo "$from_lower" | all_caps)"
+to_dashes="$(echo "$to_lower" | dasherize)"
 to_upper="$(echo "$to_lower" | uppercase)"
 to_all_caps="$(echo "$to_lower" | all_caps)"
 
@@ -29,7 +35,11 @@ while read path; do
     from_path="$path"
 
     # Replace all occurrences of $from_lower anywhere in path to file
-    to_path=$(echo "$path" | sed "s/$from_lower/$to_lower/g")
+    to_path=$(
+        echo "$path" \
+        | sed "s/$from_lower/$to_lower/g" \
+        | sed "s/$from_dashes/$to_dashes/g"
+    )
 
     # Make all parent directories
     mkdir -p "$(dirname "$to_path")"
@@ -38,11 +48,12 @@ while read path; do
     # $to_path
     cat "$from_path" \
         | sed "s/$from_lower/$to_lower/g" \
+        | sed "s/$from_dashes/$to_dashes/g" \
         | sed "s/$from_upper/$to_upper/g" \
         | sed "s/$from_all_caps/$to_all_caps/g" \
         > "$to_path"
 
-done < <(fd --full-path --type file "$from_lower")
+done < <(fd --hidden --full-path --type file "$from_lower|$from_dashes")
 
 # Open editor to deal with other files in which the term appears
-vim $(rg -l "$from_lower|$from_upper|$from_all_caps" | rg -v "$from_lower")
+vim $(rg -l "$from_lower|$from_upper|$from_all_caps|$from_dashes" | rg -v "$from_lower|$from_dashes")
