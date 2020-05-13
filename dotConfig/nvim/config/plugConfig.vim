@@ -55,9 +55,11 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint', 'importjs'],
 \   'python': ['isort', 'autopep8'],
+\   'sh': ['shfmt'],
 \}
 let g:ale_linters = {
 \   'python': ['pyls', 'flake8', 'mypy', 'pylint'],
+\   'sh': ['shell', 'shellcheck'],
 \   'javascript': ['eslint', 'prettier'],
 \}
 let g:ale_fix_on_save = 1
