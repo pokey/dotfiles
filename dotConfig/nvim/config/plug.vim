@@ -75,4 +75,6 @@ Plug 'lepture/vim-velocity'
 
 Plug 'neo4j-contrib/cypher-vim-syntax'
 
+Plug 'lervag/vimtex'
+
 call plug#end()
