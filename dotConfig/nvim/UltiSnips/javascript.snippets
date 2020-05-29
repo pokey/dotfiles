@@ -5,24 +5,14 @@ def stripType(name):
    return name
 endglobal
 
-snippet rc "React class" b
-export default class `!p snip.rv = stripType(snip.basename)` extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+snippet rc "React component" b
+import React from 'react';
 
-	componentDidMount() {
-	}
+const `!p snip.rv = stripType(snip.basename)` = (${1:\{$2\}}) => (
+	$0
+);
 
-	componentWillUnmount() {
-	}
-
-	render() {
-		return (
-            $0
-		);
-	}
-}
+export default `!p snip.rv = stripType(snip.basename)`;
 endsnippet
 
 snippet c "constructor" b
@@ -47,28 +37,44 @@ snippet p "React component props" b
 const {$0} = this.props;
 endsnippet
 
-snippet s "React component state" b
-const {$0} = this.state;
-endsnippet
-
 snippet ed "Export" b
 export default ${1:`!p snip.rv = stripType(snip.basename)`};
 endsnippet
 
+snippet ue "useEffect"
+useEffect(() => {
+	$1
+}, [$2])
+endsnippet
+
 snippet i "Import" b
-import $1 from '${2:./$1}';
+import ${1:\{$2\}} from '$3';
 endsnippet
 
 snippet ir "Import react" b
-import React, {$0} from 'react-native';
+import React, {$0} from 'react';
 endsnippet
 
-snippet sty "Styles" b
-const styles = {
+snippet irn "Import react native" b
+import {${1:View${2:, $3}}} from 'react-native';
+endsnippet
+
+snippet s "Styles" b
+const styles = StyleSheet.create({
+${0:	container: {
+		flex: 1,
+	}
+}});
+endsnippet
+
+snippet se "Style entry" b
 	$1: {
 		$0
 	},
-};
+endsnippet
+
+snippet d "Debug" b
+console.log(\`$1: $\{JSON.stringify($1)\}\`);
 endsnippet
 
 snippet cl "Console log" b

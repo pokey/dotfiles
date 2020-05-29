@@ -86,6 +86,9 @@ let g:user_emmet_settings = {
 \            'se': 'section',
 \        },
 \    },
+\    'javascript' : {
+\        'extends' : 'jsx',
+\    },
 \}
 
 let g:argwrap_tail_comma = 1
