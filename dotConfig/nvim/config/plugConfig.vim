@@ -14,6 +14,8 @@ let g:VM_custom_noremaps = {
 \   '==': '==',
 \   '<<': '<<',
 \   '>>': '>>',
+\   'O': 'O',
+\   'o': 'o',
 \}
 
 let g:UltiSnipsJumpForwardTrigger="<leader>k"
