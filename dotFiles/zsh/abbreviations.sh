@@ -61,6 +61,7 @@ abbreviations=(
   "pys"   "pyenv shell"
   "pyw"   'pyenv shell ${PWD##*/}__EXPAND__'
   "pynw"  'pyn ${PWD##*/}__EXPAND__'
+  "pylw"  'pyenv local ${PWD##*/}__EXPAND__'
   "pyc"   'pyenv shell ${PWD##*/}__EXPAND__'
   "pi"    "pip install"
   "piu"   "pip install -U"
@@ -128,7 +129,7 @@ abbreviations=(
   "db"    'docker run -it --entrypoint /bin/bash'
   "rp"    'rg --type py'
   "ua"    'unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN'
-  "jti"   'jupytext --set-formats ipynb,py'
+  "jti"   'jupytext --set-formats ipynb,py:percent'
   "ptv"   "http --verify=no 'https://miranda.prod.globality.io/api/health'| jq -r '.checks.taxonomies_version.message'"
   "h1"    "head -1"
 )

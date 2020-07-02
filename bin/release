@@ -76,7 +76,7 @@ check_command hub
 
 bump_version_next_version=$(
     bumpversion --dry-run --verbose "$PART" 2>&1 \
-    | rg -r '$1' "New version will be '([^']+)'"
+    | rg -r '$1' "new_version=([^']+)"
 )
 
 if [[ "$NEXT_VERSION" != "$bump_version_next_version" ]] ; then
@@ -98,7 +98,7 @@ bumpversion --commit --no-tag "$PART"
 
 # Publish and file PR
 git flow release publish
-hub pull-request -m "Release $NEXT_VERSION" -b master
+hub pull-request -om "Release $NEXT_VERSION" -b master
 echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
 read -p "Press ENTER once the PR is ready to merge..."
 
@@ -107,7 +107,7 @@ git flow release finish -k -m "Release $NEXT_VERSION"
 git checkout master && git push origin master
 
 # File PR from `master` against `develop`
-hub pull-request -m "Merge $NEXT_VERSION from master" -b develop
+hub pull-request -om "Merge $NEXT_VERSION from master" -b develop
 echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
 read -p "Press ENTER once the PR is ready to merge..."
 git checkout develop && git push origin develop
