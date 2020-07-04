@@ -77,4 +77,6 @@ Plug 'neo4j-contrib/cypher-vim-syntax'
 
 Plug 'lervag/vimtex'
 
+Plug 'delphinus/vim-firestore'
+
 call plug#end()
