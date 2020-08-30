@@ -3,7 +3,7 @@ set -euo pipefail
 
 export PATH="~/.pyenv/shims:$PATH"
 
-export $(env -i /usr/local/bin/envdir ~/envs/beeminder env)
+export $(env -i ~/bin/envdir ~/envs/beeminder env)
 beeminder_base_url="https://www.beeminder.com/api/v1"
 
 PYENV_VERSION=things3-api things-cli next \
