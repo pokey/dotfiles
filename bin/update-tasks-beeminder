@@ -6,7 +6,7 @@ export PATH="~/.pyenv/shims:$PATH"
 export $(env -i ~/bin/envdir ~/envs/beeminder env)
 beeminder_base_url="https://www.beeminder.com/api/v1"
 
-PYENV_VERSION=things3-api things-cli next \
+cat <(PYENV_VERSION=things3-api things-cli inbox) <(PYENV_VERSION=things3-api things-cli today) <(PYENV_VERSION=things3-api things-cli next) \
     | wc -l \
     | /usr/local/bin/jq "{value: ., auth_token: \"$BEEMINDER_AUTH_TOKEN\"}" \
     | PYENV_VERSION=httpie http "$beeminder_base_url/users/$BEEMINDER_USER/goals/tasks/datapoints.json" \
