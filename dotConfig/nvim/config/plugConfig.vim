@@ -56,6 +56,8 @@ let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint', 'importjs'],
+\   'typescript': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
 \   'python': ['isort', 'autopep8'],
 \   'sh': ['shfmt'],
 \}
@@ -63,10 +65,14 @@ let g:ale_linters = {
 \   'python': ['pyls', 'flake8', 'mypy', 'pylint'],
 \   'sh': ['shell', 'shellcheck'],
 \   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_global = 0
 let g:ale_javascript_eslint_use_global = 0
+let g:ale_typescript_prettier_use_global = 0
+let g:ale_typescript_eslint_use_global = 0
 
 let g:syntastic_html_tidy_ignore_errors = [
     \  'plain text isn''t allowed in <head> elements',

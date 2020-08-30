@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+things-cli next \
+    | wc -l \
+    | jq "{value: ., auth_token: \"$BEEMINDER_AUTH_TOKEN\"}" \
+    | PYENV_VERSION=httpie pyenv exec http 'https://www.beeminder.com/api/v1/users/pokey/goals/tasks/datapoints.json'

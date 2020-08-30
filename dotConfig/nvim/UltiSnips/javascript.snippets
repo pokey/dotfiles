@@ -41,7 +41,7 @@ snippet ed "Export" b
 export default ${1:`!p snip.rv = stripType(snip.basename)`};
 endsnippet
 
-snippet us "useState" b
+snippet ust "useState" b
 const [$1, set${1/\w+\s*/\u$0/g}] = useState(${3:''})${0:;}
 endsnippet
 
