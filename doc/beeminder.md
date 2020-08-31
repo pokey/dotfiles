@@ -9,6 +9,13 @@ day.  It requires some manual setup:
         pip install things3-api
         pip install argcomplete
 
+1. Set up a pyenv virtualenv for `goals`
+
+        git clone git@github.com:pokey/goals.git
+        cd goals
+        pyn goals
+        pip install -e .
+
 1. Set up an envdir in `~/envs/beeminder` containing `BEEMINDER_AUTH_TOKEN`
    and `BEEMINDER_USER` from [here](https://www.beeminder.com/api/v1/auth_token.json).
 
