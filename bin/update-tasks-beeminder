@@ -6,8 +6,20 @@ export PATH="~/.pyenv/shims:$PATH"
 export $(env -i ~/bin/envdir ~/envs/beeminder env)
 beeminder_base_url="https://www.beeminder.com/api/v1"
 
-cat <(PYENV_VERSION=things3-api things-cli inbox) <(PYENV_VERSION=things3-api things-cli today) <(PYENV_VERSION=things3-api things-cli next) \
+report_to_beeminder() {
+    goal="$1"
+
+    /usr/local/bin/jq "{value: ., auth_token: \"$BEEMINDER_AUTH_TOKEN\"}" \
+        | PYENV_VERSION=httpie http "$beeminder_base_url/users/$BEEMINDER_USER/goals/$goal/datapoints.json" \
+        | /usr/local/bin/jq '{fulltext, value}'
+}
+
+inbox=$(PYENV_VERSION=things3-api things-cli inbox)
+today=$(PYENV_VERSION=things3-api things-cli today)
+next=$(PYENV_VERSION=things3-api things-cli next)
+
+cat <(echo "$inbox") <(echo "$today") <(echo "$next") \
     | wc -l \
-    | /usr/local/bin/jq "{value: ., auth_token: \"$BEEMINDER_AUTH_TOKEN\"}" \
-    | PYENV_VERSION=httpie http "$beeminder_base_url/users/$BEEMINDER_USER/goals/tasks/datapoints.json" \
-    | /usr/local/bin/jq '{fulltext, value}' 
+    | report_to_beeminder tasks 
+
+PYENV_VERSION=goals goals report-oldest -c anytime | report_to_beeminder old-tasks
