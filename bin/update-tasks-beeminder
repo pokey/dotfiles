@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
+# Updates task counts on beeminder, sleeping first to make sure network is
+# active
+
 set -euo pipefail
+
+do_sleep=true
+
+# Parse args
+while [[ $# -gt 0 ]] ; do
+    key="$1"
+
+    case $key in
+        --no-sleep)
+            do_sleep=false
+            shift # past argument
+            ;;
+        *)    # unknown option
+            echo "ERROR: Unknown option $key" >&2
+            exit -1
+            ;;
+    esac
+done
 
 export PATH="~/.pyenv/shims:$PATH"
 
@@ -13,6 +34,8 @@ report_to_beeminder() {
         | PYENV_VERSION=httpie http "$beeminder_base_url/users/$BEEMINDER_USER/goals/$goal/datapoints.json" \
         | /usr/local/bin/jq '{fulltext, value}'
 }
+
+"$do_sleep" = true && sleep 2m
 
 inbox=$(PYENV_VERSION=things3-api things-cli inbox)
 today=$(PYENV_VERSION=things3-api things-cli today)
