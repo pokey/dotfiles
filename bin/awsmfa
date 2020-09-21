@@ -19,6 +19,8 @@ IFS=$'\n\t'
 # ykman oath add -t aws-<ACCOUNT_NUMBER>-<IAM_USERNAME>
 #
 # Also assumes that your defaut user has privileges to assume the given role.
+#
+# XXX Disabled ykman because it isn't working on MacOS
 
 if [[ $# -ge 1 ]]; then
     ROLE="$1"
@@ -35,7 +37,8 @@ AWS_IAM_USER_ARN="${CALLER_IDENTITY[1]}"
 AWS_IAM_USERNAME="$(basename "$AWS_IAM_USER_ARN")"
 MFA_SERIAL="arn:aws:iam::$AWS_ACCOUNT_NUMBER:mfa/$AWS_IAM_USERNAME"
 
-TOKEN_CODE=$(ykman oath code -s "aws-$AWS_ACCOUNT_NUMBER-$AWS_IAM_USERNAME")
+# TOKEN_CODE=$(ykman oath code -s "aws-$AWS_ACCOUNT_NUMBER-$AWS_IAM_USERNAME")
+read -p 'Enter MFA code: ' TOKEN_CODE
 PROFILE_INFO=($(aws sts assume-role \
                 --role-arn "arn:aws:iam::$AWS_ACCOUNT_NUMBER:role/$ROLE" \
                 --serial-number "$MFA_SERIAL" \

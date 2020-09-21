@@ -79,4 +79,6 @@ Plug 'lervag/vimtex'
 
 Plug 'delphinus/vim-firestore'
 
+Plug 'raimon49/requirements.txt.vim'
+
 call plug#end()
