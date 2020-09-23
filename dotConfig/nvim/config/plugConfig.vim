@@ -65,8 +65,8 @@ let g:ale_linters = {
 \   'python': ['pyls', 'flake8', 'mypy', 'pylint'],
 \   'sh': ['shell', 'shellcheck'],
 \   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
-\   'typescriptreact': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier', 'standard'],
+\   'typescriptreact': ['eslint', 'prettier', 'standard'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_global = 0
@@ -100,3 +100,22 @@ let g:user_emmet_settings = {
 \}
 
 let g:argwrap_tail_comma = 1
+
+let g:tex_flavor = 'latex'
+
+highlight CocErrorSign ctermfg=196  ctermbg=234
+highlight Pmenu ctermfg=198  ctermbg=234
+
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ?
+            \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
