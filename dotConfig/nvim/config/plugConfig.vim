@@ -20,6 +20,7 @@ let g:VM_custom_noremaps = {
 
 let g:UltiSnipsJumpForwardTrigger="<leader>k"
 let g:UltiSnipsJumpBackwardTrigger="<leader>f"
+let g:UltiSnipsExpandTrigger="<c-tab>"
 
 let g:jsx_ext_required = 0
 let g:tmux_navigator_no_mappings = 1
@@ -106,6 +107,17 @@ let g:tex_flavor = 'latex'
 highlight CocErrorSign ctermfg=196  ctermbg=234
 highlight Pmenu ctermfg=198  ctermbg=234
 
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? coc#_select_confirm() :
             \ coc#expandableOrJumpable() ?
@@ -119,3 +131,7 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
