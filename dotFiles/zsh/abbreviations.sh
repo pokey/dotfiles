@@ -124,6 +124,8 @@ abbreviations=(
   "bmlp"  'eval $(botoenv -p machine-learning-prod)'
   "bds"   'eval $(botoenv -p datascience-full-access)'
   "bp"    'eval $(botoenv -p production-readonly)'
+  "bpad"  'eval $(botoenv -p prod-ai-developer)'
+  "bpaa"  'eval $(botoenv -p prod-ai-admin)'
   "nose"  'python setup.py nosetests --failed'
   "dpl"   'docker pull'
   "db"    'docker run -it --entrypoint /bin/bash'
