@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
+# Syncs notes, using timestamp as commit message, and uses MacOS notification
+# center to report results.
+#
+# Depends on `brew install terminal-notifier`
+
+LOG_FILE="/usr/local/var/log/notes.log"
 
 # Redirect output and stderr to log
-exec >> "/usr/local/var/log/notes.log"
+exec >> "$LOG_FILE"
 exec 2>&1
 
 NOTES_FOLDER="$HOME/notes"
