@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Redirect output and stderr to log
+exec >> "/usr/local/var/log/notes.log"
+exec 2>&1
+
+NOTES_FOLDER="$HOME/notes"
+cd "$NOTES_FOLDER"
+
+echo "---------------------------"
+
+notify() {
+    /usr/local/bin/terminal-notifier "$@"
+}
+
+error_and_quit() {
+    message="$1"
+    notify -group notes-sync-error -title "❌ Error" -message "$message"
+    exit -1
+}
+
+gstatus=$(git status --porcelain)
+
+if [ ${#gstatus} -ne 0 ] ; then
+    git add --all || error_and_quit "Failed git add --all"
+    git commit -m "$(date -u '+%F %T UTC')" \
+        || error_and_quit "Failed git commit"
+fi
+
+git fetch || error_and_quit "Failed git fetch"
+
+pull_diff="$(git diff --shortstat master...origin/master)"
+push_diff="$(git diff --shortstat origin/master...master)"
+
+if [ ${#pull_diff} -ne 0 ] ; then
+    git merge origin/master --no-edit || error_and_quit "Failed git merge"
+    notify -group notes-sync-pull -title "⬇️Pull" -message "$pull_diff"
+fi
+
+[ ${#push_diff} -ne 0 ] && \
+    notify -group notes-sync-push -title "⬆️Push" -message "$push_diff"
+
+git push origin master || error_and_quit "Failed push"
+
+echo "---------------------------"
+echo
