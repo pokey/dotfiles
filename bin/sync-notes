@@ -43,10 +43,10 @@ if [ ${#pull_diff} -ne 0 ] ; then
     notify -group notes-sync-pull -title "⬇️Pull" -message "$pull_diff"
 fi
 
-[ ${#push_diff} -ne 0 ] && \
+if [ ${#push_diff} -ne 0 ] ; then
+    git push origin master || error_and_quit "Failed push"
     notify -group notes-sync-push -title "⬆️Push" -message "$push_diff"
-
-git push origin master || error_and_quit "Failed push"
+fi
 
 echo "---------------------------"
 echo
