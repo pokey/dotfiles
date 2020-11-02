@@ -5,15 +5,11 @@
 # Depends on `brew install terminal-notifier`
 
 LOG_FILE="/usr/local/var/log/notes.log"
+NOTES_FOLDER="$HOME/notes"
 
 # Redirect output and stderr to log
 exec >> "$LOG_FILE"
 exec 2>&1
-
-NOTES_FOLDER="$HOME/notes"
-cd "$NOTES_FOLDER"
-
-echo "---------------------------"
 
 notify() {
     /usr/local/bin/terminal-notifier "$@"
@@ -24,6 +20,10 @@ error_and_quit() {
     notify -group notes-sync-error -title "❌ Error" -message "$message"
     exit -1
 }
+
+echo "---------------------------"
+
+cd "$NOTES_FOLDER"
 
 gstatus=$(git status --porcelain)
 
