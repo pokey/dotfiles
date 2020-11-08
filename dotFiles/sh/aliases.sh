@@ -98,6 +98,7 @@ alias  dr.="dvc repro -R ."
 alias   ua="unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
 alias random-task='PYENV_VERSION=things3-api things-cli --json next | jq -r ".[].uuid" | shuf -n1 | xargs -I{} open "things:///show?id={}"'
 alias fastlane="bundle exec fastlane"
+alias zd="/Applications/Zotero.app/Contents/MacOS/zotero -ZoteroDebugText -purgecaches -jsconsole"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

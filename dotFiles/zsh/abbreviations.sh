@@ -122,7 +122,7 @@ abbreviations=(
   "bd"    'eval $(botoenv -p development)'
   "bml"   'eval $(botoenv -p machine-learning)'
   "bmlp"  'eval $(botoenv -p machine-learning-prod)'
-  "bds"   'eval $(botoenv -p datascience-full-access)'
+  "bds"   'eval $(botoenv -p datascience)'
   "bp"    'eval $(botoenv -p production-readonly)'
   "bpad"  'eval $(botoenv -p prod-ai-developer)'
   "bpaa"  'eval $(botoenv -p prod-ai-admin)'
