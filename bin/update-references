@@ -8,9 +8,6 @@ NOTES_FOLDER="$HOME/notes"
 exec >> "$LOG_FILE"
 exec 2>&1
 
-tmpfile=$(mktemp /tmp/update-references.XXXXXX)
-echo "tmpfile: $tmpfile"
-
 notify() {
     /usr/local/bin/terminal-notifier "$@"
 }
@@ -34,8 +31,7 @@ git commit -m "[content] $(date -u '+%F %T UTC')" \
 git push origin master || error_and_quit "Failed git push"
 
 references_sha="$(git rev-parse --short HEAD)"
-references_prev_sha="$(git rev-parse --short HEAD~)"
-diff=$(git diff "$references_prev_sha" "$references_sha")
+diff=$(git format-patch -1 --stdout)
 
 
 # --------------------------------------------
@@ -51,8 +47,9 @@ if [ ${#gstatus} -ne 0 ] ; then
 fi
 
 # Apply patch from references repository
-echo "Applying $references_prev_sha..$references_sha..."
-echo "$diff" | git apply || error_and_quit "Failed git apply"
+echo "Applying $references_sha from references to notes..."
+echo "$diff" | git am -3 || error_and_quit "Failed git apply"
+git reset --soft head~ || error_and_quit "Failed git reset"
 
 # Commit patch
 gstatus=$(git status --porcelain)
