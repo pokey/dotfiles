@@ -1,44 +1,68 @@
 #!/usr/bin/env bash
 
+LOG_FILE="/usr/local/var/log/updare-references.log"
 REFERENCES_FOLDER="$HOME/src/zotero-notes-export"
 NOTES_FOLDER="$HOME/notes"
+
+# Redirect output and stderr to log
+exec >> "$LOG_FILE"
+exec 2>&1
 
 tmpfile=$(mktemp /tmp/update-references.XXXXXX)
 echo "tmpfile: $tmpfile"
 
+notify() {
+    /usr/local/bin/terminal-notifier "$@"
+}
+
 error_and_quit() {
     message="$1"
-    >&2 echo "$message"
+    notify -group notes-sync-error -title "❌ Error" -message "$message"
     exit -1
 }
 
+echo "---------------------------"
+
+# --------------------------------------------
+# Start by operating on the references repository
 cd "$REFERENCES_FOLDER"
 
 git add --all || error_and_quit "Failed git add --all"
 git commit -m "[content] $(date -u '+%F %T UTC')" \
     || error_and_quit "Failed git commit"
 
-git push origin master
+git push origin master || error_and_quit "Failed git push"
 
-git diff "head~" "head"> "$tmpfile"
+references_sha="$(git rev-parse --short HEAD)"
+references_prev_sha="$(git rev-parse --short HEAD~)"
+diff=$(git diff "$references_prev_sha" "$references_sha")
 
 
+# --------------------------------------------
+# Now we are operating on the notes repository
 cd "$NOTES_FOLDER"
 
+# Commit any changes that might currently be there
 gstatus=$(git status --porcelain)
-
 if [ ${#gstatus} -ne 0 ] ; then
     git add --all || error_and_quit "Failed git add --all"
     git commit -m "[content] $(date -u '+%F %T UTC')" \
         || error_and_quit "Failed git commit"
 fi
 
-git apply "$tmpfile" || error_and_quit "Failed git apply"
+# Apply patch from references repository
+echo "Applying $references_prev_sha..$references_sha..."
+echo "$diff" | git apply || error_and_quit "Failed git apply"
 
+# Commit patch
 gstatus=$(git status --porcelain)
-
 if [ ${#gstatus} -ne 0 ] ; then
     git add --all || error_and_quit "Failed git add --all"
-    git commit -m "[references] $(date -u '+%F %T UTC')" \
+    git commit -m "[references] $references_sha" \
         || error_and_quit "Failed git commit"
+    push_diff="$(git diff --shortstat head~..head)"
+    notify -group update-references -title "Update references" -message "$push_diff"
 fi
+
+echo "---------------------------"
+echo

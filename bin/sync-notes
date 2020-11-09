@@ -4,7 +4,7 @@
 #
 # Depends on `brew install terminal-notifier`
 
-LOG_FILE="/usr/local/var/log/notes.log"
+LOG_FILE="/usr/local/var/log/sync-notes.log"
 NOTES_FOLDER="$HOME/notes"
 
 # Redirect output and stderr to log
