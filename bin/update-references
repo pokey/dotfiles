@@ -48,8 +48,7 @@ fi
 
 # Apply patch from references repository
 echo "Applying $references_sha from references to notes..."
-echo "$diff" | git am -3 || error_and_quit "Failed git apply"
-git reset --soft head~ || error_and_quit "Failed git reset"
+echo "$diff" | git apply -3 || error_and_quit "Failed git apply"
 
 # Commit patch
 gstatus=$(git status --porcelain)
