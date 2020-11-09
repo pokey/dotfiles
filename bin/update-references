@@ -14,7 +14,9 @@ notify() {
 
 error_and_quit() {
     message="$1"
-    notify -group notes-sync-error -title "❌ Error" -message "$message"
+    >&2 echo "ERROR: $message"
+    >&2 echo "Bailing out"
+    notify -group notes-sync-error -sound Funk -title "❌ Error" -message "$message"
     exit -1
 }
 
