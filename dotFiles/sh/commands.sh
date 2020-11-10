@@ -26,9 +26,9 @@ go() {
 }
 
 # git commit browser
-gl() {
+glt() {
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      --format="%C(auto)%h%d %s %C(green)(%cr) %C(bold blue)<%an>%Creset" "$@" |
   fzf-tmux --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
       --bind "ctrl-m:execute:
                 echo '{}' | grep -o '[a-f0-9]\{7\}' | head -1 |

@@ -30,6 +30,7 @@ abbreviations=(
   "gco"   'git checkout'
   "gt"    'git ctags'
   "gct"   'git ctags'
+  "gla"   'gl --branches --tags --remotes'
   "ix"    "| xargs"
   "ixx"   "| xargs -n1 -I{}"
   "ia"    "| rg"
