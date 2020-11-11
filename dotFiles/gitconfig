@@ -6,30 +6,13 @@
 	br = branch
 	st = status
 	ctags = "!git-ctags"
-[push]
-	default = matching
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[pager]
-	diff = diff-so-fancy | less --tabs=3 -RX -+F
-	show = diff-so-fancy | less --tabs=3 -RX -+F
+[diff]
+    colorMoved = default
 [init]
 	templatedir = ~/.git_template
 [push]
-	default = tracking
+	default = upstream
 	followTags = true
-[core]
-	excludesfile = ~/.gitignore
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
 [color]
 	ui = true
 [filter "lfs"]
@@ -37,3 +20,21 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[core]
+    pager = delta
+	excludesfile = ~/.gitignore
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+	side-by-side = false
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+	plus-style = syntax 22
+	plus-emph-style = syntax 28

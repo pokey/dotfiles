@@ -135,7 +135,6 @@ abbreviations=(
   "jti"   'jupytext --set-formats ipynb,py:percent'
   "ptv"   "http --verify=no 'https://miranda.prod.globality.io/api/health'| jq -r '.checks.taxonomies_version.message'"
   "h1"    "head -1"
-  "pd"    'diff -u __CURSOR__ | diff-so-fancy | less --tabs=3 -RX -+F'
 )
 
 for i in {1..9};
