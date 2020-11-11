@@ -38,3 +38,4 @@
     file-decoration-style = none
 	plus-style = syntax 22
 	plus-emph-style = syntax 28
+	minus-emph-style = syntax 1
