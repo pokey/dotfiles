@@ -37,5 +37,6 @@
     file-style = bold yellow ul
     file-decoration-style = none
 	plus-style = syntax 22
-	plus-emph-style = syntax 28
+	plus-emph-style = syntax "#00a800"
+	minus-style = syntax "#700000"
 	minus-emph-style = syntax 1
