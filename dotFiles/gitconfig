@@ -31,6 +31,7 @@
     features = side-by-side line-numbers decorations
     whitespace-error-style = 22 reverse
 	side-by-side = false
+	max-line-length = 0
 
 [delta "decorations"]
     commit-decoration-style = bold yellow box ul

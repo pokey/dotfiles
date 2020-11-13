@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LOG_FILE="/usr/local/var/log/updare-references.log"
+LOG_FILE="/usr/local/var/log/update-references.log"
 REFERENCES_FOLDER="$HOME/src/zotero-notes-export"
 NOTES_FOLDER="$HOME/notes"
 
@@ -50,7 +50,7 @@ fi
 
 # Apply patch from references repository
 echo "Applying $references_sha from references to notes..."
-echo "$diff" | git apply -3 || error_and_quit "Failed git apply"
+echo "$diff" | git apply --reject || error_and_quit "Failed git apply"
 
 # Commit patch
 gstatus=$(git status --porcelain)
