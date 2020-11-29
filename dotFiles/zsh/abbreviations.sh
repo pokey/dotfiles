@@ -135,6 +135,7 @@ abbreviations=(
   "jti"   'jupytext --set-formats ipynb,py:percent'
   "ptv"   "http --verify=no 'https://miranda.prod.globality.io/api/health'| jq -r '.checks.taxonomies_version.message'"
   "h1"    "head -1"
+  "ede"   'export $(env -i ~/bin/envdir __CURSOR__ env)'
 )
 
 for i in {1..9};
