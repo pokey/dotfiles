@@ -104,8 +104,8 @@ let g:argwrap_tail_comma = 1
 
 let g:tex_flavor = 'latex'
 
-highlight CocErrorSign ctermfg=196  ctermbg=234
-highlight Pmenu ctermfg=198  ctermbg=234
+highlight CocErrorSign ctermfg=196  ctermbg=53
+highlight Pmenu ctermfg=198  ctermbg=53
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -130,7 +130,7 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = '<leader>k'
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
