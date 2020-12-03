@@ -15,6 +15,10 @@ launcher_mode:
     to:
       key_code: '2'
       modifiers: ["right_control"]
+  - from: '4'
+    to:
+      key_code: '4'
+      modifiers: ["left_command", "left_shift"]
   - from: a
     to:
       shell_command: open -a 'Postman.app'
@@ -41,7 +45,13 @@ launcher_mode:
       shell_command: open -a 'Preview.app'
   - from: o
     to:
-      shell_command: open -a 'Microsoft Outlook.app'
+      shell_command: open -a 'Obsidian.app'
+  - from: d
+    to:
+      shell_command: /bin/sh ~/src/dotfiles/bin/sync-notes
+  - from: u
+    to:
+      shell_command: /bin/sh ~/src/dotfiles/bin/update-references
   - from: z
     to:
       shell_command: open -a 'zoom.us.app'

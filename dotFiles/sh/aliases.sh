@@ -28,6 +28,7 @@ alias  gct='git ctags'
 alias   gt='git ctags'
 alias  gai='git add -i'
 alias   gA='git add -A'
+alias   gl='git log --graph --color=always --format="%C(auto)%h%d %s %C(green)(%cr) %C(bold blue)<%an>%Creset"'
 alias   ds='dvc status'
 alias   dc='dvc commit'
 alias dvpl='dvc pull'
@@ -98,6 +99,8 @@ alias  dr.="dvc repro -R ."
 alias   ua="unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
 alias random-task='PYENV_VERSION=things3-api things-cli --json next | jq -r ".[].uuid" | shuf -n1 | xargs -I{} open "things:///show?id={}"'
 alias fastlane="bundle exec fastlane"
+alias zd="/Applications/Zotero.app/Contents/MacOS/zotero -ZoteroDebugText -purgecaches -jsconsole"
+alias to-string="jq -Rs"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'

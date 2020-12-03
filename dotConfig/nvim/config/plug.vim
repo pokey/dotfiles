@@ -90,4 +90,6 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 
+Plug 'styled-components/vim-styled-components'
+
 call plug#end()

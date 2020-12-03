@@ -124,7 +124,6 @@ if test "$(uname)" = "Darwin"; then
   brew tap tldr-pages/tldr && brew install tldr
   brew install reattach-to-user-namespace
   brew install thefuck
-  brew install diff-so-fancy
   brew install fd
   brew tap universal-ctags/universal-ctags && \
      brew install --HEAD universal-ctags
@@ -185,3 +184,5 @@ karabiner_dir="$HOME/.config/karabiner"
 mkdir -p $karabiner_dir
 backup "$karabiner/karabiner.json"
 (cd "$BASEPATH/karabiner-gen" ; ./generate_karabiner.py > "$karabiner/karabiner.json")
+
+$INSTALL git-delta
