@@ -83,6 +83,8 @@ Plug 'raimon49/requirements.txt.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'AndrewRadev/splitjoin.vim'
+
 Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'

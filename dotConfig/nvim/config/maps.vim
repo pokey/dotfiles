@@ -14,10 +14,16 @@ nnoremap <silent> gn :lnext<cr>
 nnoremap <silent> qp :cprev<cr>
 nnoremap <silent> qn :cnext<cr>
 
-nnoremap <silent> gd :GFiles?<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gf <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+
+" nnoremap <silent> gd :GFiles?<cr>
 
 " s{char}{char} to move to {char}{char}
-nmap <leader>r <Plug>(easymotion-overwin-f2)
+" nmap <leader>r <Plug>(easymotion-overwin-f2)
 
 nnoremap <leader>s :Obsession<cr>
 
@@ -75,7 +81,7 @@ nnoremap <silent> g? :Helptags<cr>
 nnoremap <silent> gx :Commands<cr>
 
 " UltiSnips
-nnoremap <silent> gi :UltiSnipsEdit<cr>
+" nnoremap <silent> gi :UltiSnipsEdit<cr>
 
 " Window movement
 nnoremap <silent> <leader><space> <C-w><C-w>
@@ -122,7 +128,7 @@ nnoremap <silent> gh :noh<cr>
 " Various displays
 nnoremap <silent> gu :UndotreeToggle<cr>
 " nnoremap <silent> gf :NERDTreeToggle<cr>
-nnoremap <silent> gf :Lines<cr>
+" nnoremap <silent> gf :Lines<cr>
 nnoremap <silent> gk :Goyo<cr>
 
 " Commenting things out
@@ -137,7 +143,7 @@ nnoremap <silent> ql :let @+=join([expand('%'),  line(".")], ':')<cr>
 nnoremap gm :!cp<space>%<space>%:h/
 
 " Ctags
-nnoremap <silent> gt :Tags<cr>
+" nnoremap <silent> gt :Tags<cr>
 nnoremap <silent> <leader>f <c-]>
 nnoremap <silent> <leader>' <c-t>
 nnoremap <silent> go :TagbarToggle<cr>
