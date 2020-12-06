@@ -84,6 +84,7 @@ abbreviations=(
   "gp"    "git push"
   "ga"    "git add"
   "gai"   "git add -i"
+  "gap"   "git add -p"
   "dp"    "dvc push"
   "dvpl"  "dvc pull"
   "dc"    "dvc commit"
