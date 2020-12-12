@@ -1,0 +1,11 @@
+{
+	"mobx constructor": {
+		"prefix": "mc",
+		"body": [
+			"constructor() {",
+			"\tmakeAutoObservable(this);",
+			"}",
+		],
+		"description": "Constructor using makeAutoObservable"
+	}
+}

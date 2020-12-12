@@ -24,9 +24,6 @@ set nowrap
 "don't add two spaces after ., ?, !
 set nojoinspaces
 
-" define the viminfo file
-set viminfo='50,<1000,:50,n~/.viminfo
-
 " allow the cursor to wrap on anything
 set whichwrap=b,s,h,l,<,>,[,]
 

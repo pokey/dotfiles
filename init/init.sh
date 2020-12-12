@@ -14,6 +14,8 @@ popd > /dev/null
 
 DOTFILES="$BASEPATH/dotFiles"
 DOTCONFIG="$BASEPATH/dotConfig"
+VSCODE_TARGET="$HOME/Library/Application Support/Code/User"
+VSCODE_SRC="$BASEPATH/vscode"
 
 # Work in the home directory
 cd $HOME
@@ -23,12 +25,12 @@ function backup {
    dst="$1"
    bak="$dst.bak"
 
-   if [ -e $dst ]; then
-      if [ -e $bak ]; then
+   if [ -e "$dst" ]; then
+      if [ -e "$bak" ]; then
          echo "$bak exists; unable to backup $dst"
          exit 1
       fi
-      mv $dst $bak
+      mv "$dst" "$bak"
    fi
 }
 
@@ -44,19 +46,30 @@ for file in $DOTFILES/*; do
    ln -s "$src" "$dst"
 done
 
+function symlinkIntoDir {
+   src_base="$1"
+   dst_base="$2"
+   
+   for file in $src_base/*; do
+      src="$file"
+      dst="$dst_base/$(basename $src)"
+
+      # Backup old dot file
+      backup "$dst"
+
+      # Add symlink
+      ln -s "$src" "$dst"
+   done
+}
+
 # Set up symlinks to dotConfig
-mkdir -p $HOME/.config
-for file in $DOTCONFIG/*; do
-   src="$file"
-   dst="$HOME/.config/$(basename $src)"
+CONFIG_DIR="$HOME/.config"
+mkdir -p "$CONFIG_DIR"
+symlinkIntoDir "$DOTCONFIG" "$CONFIG_DIR"
 
-   if [ -e $dst ]; then
-      echo "$dst exists; unable to link $src"
-      exit 1
-   fi
-
-   ln -s "$src" "$dst"
-done
+# Set up vscode
+mkdir -p "$VSCODE_TARGET"
+symlinkIntoDir "$VSCODE_SRC" "$VSCODE_TARGET"
 
 $INSTALL tmux
 $INSTALL fasd

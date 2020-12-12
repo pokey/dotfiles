@@ -1,0 +1,264 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "command": "editor.action.showHover",
+        "key": "shift+k",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+s",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.exitAndSave"
+        },
+        "when": "neovim.mode == insert && editorTextFocus",
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.files.save",
+        "when": "neovim.mode != insert && editorTextFocus",
+    },
+    {
+        "key": "ctrl+q space",
+        "command": "workbench.action.navigateEditorGroups"
+    },
+    {
+        "key": "g backspace",
+        "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+q j",
+        "command": "workbench.action.quickOpen",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+    },
+    {
+        "key": "g d",
+        "command": "editor.action.revealDefinition",
+        "when": "neovim.mode == normal && editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "ctrl+q k",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "= =",
+        "command": "editor.action.formatDocument",
+        "when": "neovim.mode == normal && editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+;",
+        "command": "workbench.action.showCommands",
+        "when": "neovim.mode == normal && editorTextFocus"
+    },
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.showCommands",
+    },
+    {
+        "key": "shift+cmd+p",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "g g",
+        "command": "cursorTop",
+        "when": "neovim.mode == normal && editorTextFocus"
+    },
+    {
+        "key": "cmd+up",
+        "command": "-cursorTop",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBack",
+        "when": "neovim.mode == normal"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.navigateForward",
+        "when": "neovim.mode == normal"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "-workbench.action.navigateBack"
+    },
+    {
+        "key": "ctrl+h o",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+h d",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+q backspace",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+h backspace",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+h 0",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+q 0",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+h z",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "cmd+k alt+cmd+left",
+        "command": "-workbench.action.previousEditorInGroup"
+    },
+    {
+        "key": "g p",
+        "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "g n",
+        "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+q c",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+h c",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+shift+`",
+        "command": "-workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+q n",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "ctrl+h n",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "ctrl+q p",
+        "command": "workbench.action.terminal.focusPrevious"
+    },
+    {
+        "key": "ctrl+h p",
+        "command": "workbench.action.terminal.focusPrevious"
+    },
+    {
+        "key": "ctrl+h f",
+        "command": "workbench.action.quickOpenTerm"
+    },
+    {
+        "key": "ctrl+h i",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+h s",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+h o",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "g m",
+        "command": "editor.action.toggleMinimap",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+q a",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<C-q>a"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "g shift+;",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": ":"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "g h",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "gh"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "\\",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<bslash>"
+    },
+    {
+        "key": "g a",
+        "command": "workbench.action.findInFiles",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "g a",
+        "command": "workbench.view.search",
+        "when": "!searchViewletVisible && neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "q n",
+        "command": "editor.action.marker.next",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "alt+f8",
+        "command": "-editor.action.marker.next",
+        "when": "editorFocus"
+    },
+    {
+        "key": "q p",
+        "command": "editor.action.marker.prev",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "shift+alt+f8",
+        "command": "-editor.action.marker.prev",
+        "when": "editorFocus"
+    },
+    {
+        "key": "g e",
+        "command": "chmod.plusX",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+]

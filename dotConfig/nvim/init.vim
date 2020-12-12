@@ -1,6 +1,5 @@
 " Inspired by vimrc file used Claudio Fleiner <claudio@fleiner.com>
 " See http://www.fleiner.com/vim/
-
 let spell_auto_type = "noneatall"
 
 fun! FTCheck_m()

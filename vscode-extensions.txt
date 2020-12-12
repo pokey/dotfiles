@@ -1,0 +1,17 @@
+asvetliakov.vscode-neovim
+dbaeumer.vscode-eslint
+dlech.chmod
+donjayamanne.githistory
+dunstontc.viml
+eamodio.gitlens
+esbenp.prettier-vscode
+mads-hartmann.bash-ide-vscode
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+msjsdiag.vscode-react-native
+ritwickdey.LiveServer
+rohit-gohri.format-code-action
+ryuta46.multi-command
+sleistner.vscode-fileutils
+VisualStudioExptTeam.vscodeintellicode

@@ -184,6 +184,15 @@
                                 "type": "basic"
                             },
                             {
+                                "description": "Ctrl-[ to ESC",
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": {"mandatory": ["control"]}
+                                },
+                                "to": [{"key_code": "escape"}]
+                            },
+                            {
                                 "type": "basic",
                                 "from": {
                                     "key_code": "return_or_enter",

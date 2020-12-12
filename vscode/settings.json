@@ -1,0 +1,118 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "window.zoomLevel": 1,
+    "vscode-neovim.neovimExecutablePaths.darwin": "/Users/pokey/nvim-osx64/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/pokey/.config/nvim/vscode-init.vim",
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.exitAndSave",
+            "sequence": [
+                "vscode-neovim.escape",
+                "workbench.action.files.save",
+            ]
+        }
+    ],
+    "workbench.colorTheme": "Abyss",
+    "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontSize": 13,
+    "editor.fontSize": 13,
+    "editor.formatOnSave": true,
+    "editor.lineNumbers": "off",
+    "editor.minimap.enabled": false,
+    "editor.glyphMargin": false,
+    "workbench.editor.showTabs": false,
+    "workbench.activityBar.visible": false,
+    "editor.lineDecorationsWidth": 0, // undocumented
+    "editor.lineNumbersMinChars": 0,
+    "[typescript]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": [
+            "source.fixAll.format",
+            "source.fixAll.eslint"
+        ],
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": [
+            "source.fixAll.format",
+            "source.fixAll.eslint"
+        ],
+    },
+    "workbench.preferredDarkColorTheme": "Abyss",
+    "workbench.colorCustomizations": {
+        "[Abyss]": {
+            "editorError.foreground": "#b32222",
+            "editor.background": "#000a14",
+            "statusBar.foreground": "#767a7e",
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Abyss]": {
+            "keywords": "#be0000",
+            "variables": "#78a1f3",
+            "comments": "#5066be"
+        },
+        "textMateRules": [
+            {
+                "scope": "support.type",
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "keyword.operator",
+                "settings": {
+                    "foreground": "#bdbdbd"
+                }
+            },
+            {
+                "scope": "storage.type",
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "variable.parameter",
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "support.class",
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "python.languageServer": "Pylance",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "window.nativeFullScreen": false,
+    "window.newWindowDimensions": "fullscreen",
+    "window.restoreFullscreen": true,
+    "window.titleBarStyle": "native",
+    "gitlens.advanced.fileHistoryFollowsRenames": true,
+    "gitlens.codeLens.scopes": [
+        "document"
+    ],
+    "jupyter.alwaysTrustNotebooks": true,
+    "editor.minimap.scale": 3,
+    "files.associations": {
+        "rc": "shellscript"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+}
