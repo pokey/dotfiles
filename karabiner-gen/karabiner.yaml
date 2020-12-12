@@ -7,21 +7,24 @@ launcher_mode:
     to:
       key_code: left_arrow
       modifiers: ["right_control"]
-  - from: '1'
+  - from: "1"
     to:
-      key_code: '1'
+      key_code: "1"
       modifiers: ["right_control"]
-  - from: '2'
+  - from: "2"
     to:
-      key_code: '2'
+      key_code: "2"
       modifiers: ["right_control"]
-  - from: '4'
+  - from: "4"
     to:
-      key_code: '4'
+      key_code: "4"
       modifiers: ["left_command", "left_shift"]
   - from: a
     to:
       shell_command: open -a 'Postman.app'
+  - from: x
+    to:
+      shell_command: open -a 'Visual Studio Code.app'
   - from: s
     to:
       shell_command: open -a 'Alacritty.app'
