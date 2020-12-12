@@ -6,6 +6,6 @@ msgpack-python==0.4.8
 neovim==0.1.12
 pycodestyle==2.2.0
 pyflakes==1.3.0
-rope==0.10.3
+rope==0.11.0
 ropemode==0.4
 ropevim==0.7.0
