@@ -261,4 +261,9 @@
         "command": "chmod.plusX",
         "when": "neovim.mode == normal && editorTextFocus",
     },
+    {
+        "key": "g s",
+        "command": "workbench.scm.focus",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
 ]
