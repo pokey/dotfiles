@@ -115,4 +115,11 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    "workbench.iconTheme": "vscode-icons",
+    // Controls whether suggestions should automatically show up while typing.
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    }
 }
