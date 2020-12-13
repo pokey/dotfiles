@@ -121,5 +121,6 @@
         "other": true,
         "comments": true,
         "strings": true
-    }
+    },
+    "git.enableSmartCommit": true
 }
