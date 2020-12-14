@@ -140,13 +140,19 @@
     },
     {
         "key": "g p",
-        "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup",
+        "command": "git.push",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "g l",
+        "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
         "when": "neovim.mode == normal && editorTextFocus",
     },
     {
         "key": "g n",
-        "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
-        "when": "neovim.mode == normal && editorTextFocus",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "gn"
     },
     {
         "key": "ctrl+q c",
@@ -265,5 +271,20 @@
         "key": "g s",
         "command": "workbench.scm.focus",
         "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+q e",
+        "command": "fileutils.newFile",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "g r",
+        "command": "editor.action.rename",
+        "when": "neovim.mode == normal && editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "f2",
+        "command": "-editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
     },
 ]
