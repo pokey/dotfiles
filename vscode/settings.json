@@ -46,8 +46,9 @@
     "workbench.colorCustomizations": {
         "[Abyss]": {
             "editorError.foreground": "#b32222",
-            "editor.background": "#000a14",
+            "editor.background": "#000000",
             "statusBar.foreground": "#767a7e",
+            "editor.foreground": "#bec0c4"
         }
     },
     "editor.tokenColorCustomizations": {
@@ -122,5 +123,6 @@
         "comments": true,
         "strings": true
     },
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false
 }

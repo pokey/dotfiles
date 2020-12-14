@@ -47,6 +47,6 @@ cat <(echo "$inbox") <(echo "$today") <(echo "$next") \
 
 PYENV_VERSION=goals goals report-oldest -c anytime | report_to_beeminder old-tasks
 PYENV_VERSION=goals goals update-goal -g tasks
-PYENV_VERSION=goals goals update-goal -g old-tasks
+# PYENV_VERSION=goals goals update-goal -g old-tasks
 # PYENV_VERSION=goals goals update-goal -g cardio-workouts --goal-type cardio
 PYENV_VERSION=goals goals make-lists
