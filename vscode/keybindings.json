@@ -48,7 +48,44 @@
     },
     {
         "key": "ctrl+q k",
-        "command": "workbench.action.quickOpen"
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u0011k"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+h 1",
+        "command": "workbench.action.terminal.focusAtIndex1",
+    },
+    {
+        "key": "ctrl+h 2",
+        "command": "workbench.action.terminal.focusAtIndex2",
+    },
+    {
+        "key": "ctrl+h 3",
+        "command": "workbench.action.terminal.focusAtIndex3",
+    },
+    {
+        "key": "ctrl+h 4",
+        "command": "workbench.action.terminal.focusAtIndex4",
+    },
+    {
+        "key": "ctrl+h 5",
+        "command": "workbench.action.terminal.focusAtIndex5",
+    },
+    {
+        "key": "ctrl+h 6",
+        "command": "workbench.action.terminal.focusAtIndex6",
+    },
+    {
+        "key": "ctrl+h 7",
+        "command": "workbench.action.terminal.focusAtIndex7",
+    },
+    {
+        "key": "ctrl+q k",
+        "command": "workbench.action.quickOpen",
+        "when": "neovim.mode == normal && editorTextFocus"
     },
     {
         "key": "cmd+p",
@@ -79,8 +116,21 @@
     },
     {
         "key": "g g",
-        "command": "cursorTop",
-        "when": "neovim.mode == normal && editorTextFocus"
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "gg"
+    },
+    {
+        "key": "r g",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "rg"
+    },
+    {
+        "key": "r i",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "ri"
     },
     {
         "key": "cmd+up",
@@ -89,13 +139,15 @@
     },
     {
         "key": "ctrl+o",
-        "command": "workbench.action.navigateBack",
-        "when": "neovim.mode == normal"
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<c-o>"
     },
     {
         "key": "ctrl+i",
-        "command": "workbench.action.navigateForward",
-        "when": "neovim.mode == normal"
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<c-i>"
     },
     {
         "key": "ctrl+-",
@@ -153,6 +205,12 @@
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode != insert",
         "args": "gn"
+    },
+    {
+        "key": "g s",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "gs"
     },
     {
         "key": "ctrl+q c",
@@ -268,7 +326,7 @@
         "when": "neovim.mode == normal && editorTextFocus",
     },
     {
-        "key": "g s",
+        "key": "g k",
         "command": "workbench.scm.focus",
         "when": "neovim.mode == normal && editorTextFocus",
     },
@@ -286,5 +344,15 @@
         "key": "f2",
         "command": "-editor.action.rename",
         "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "g y",
+        "command": "references-view.findReferences",
+        "when": "neovim.mode == normal && editorTextFocus && editorHasReferenceProvider",
+    },
+    {
+        "key": "shift+alt+f12",
+        "command": "-references-view.findReferences",
+        "when": "editorHasReferenceProvider"
     },
 ]

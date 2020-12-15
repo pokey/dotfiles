@@ -7,5 +7,12 @@
 			"}"
 		],
 		"description": "Constructor using makeAutoObservable"
+	},
+	"bind class function": {
+		"prefix": "bf",
+		"body": [
+			"this.$1 = this.$1.bind(this)",
+		],
+		"description": "Bind function to this"
 	}
 }

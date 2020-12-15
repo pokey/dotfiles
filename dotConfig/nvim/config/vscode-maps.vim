@@ -7,10 +7,6 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 nnoremap <silent> <BS> ;
 
-" Skip over folds
-nmap j gj
-nmap k gk
-
 " Argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
 

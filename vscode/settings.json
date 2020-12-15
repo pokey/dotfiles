@@ -124,5 +124,6 @@
         "strings": true
     },
     "git.enableSmartCommit": true,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
