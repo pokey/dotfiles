@@ -111,10 +111,6 @@
         "command": "workbench.action.showCommands",
     },
     {
-        "key": "shift+cmd+p",
-        "command": "-workbench.action.showCommands"
-    },
-    {
         "key": "g g",
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode != insert",
@@ -131,6 +127,24 @@
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode != insert",
         "args": "ri"
+    },
+    {
+        "key": "r w",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "rw"
+    },
+    {
+        "key": "r q",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "rq"
+    },
+    {
+        "key": "g w",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "gw"
     },
     {
         "key": "cmd+up",
@@ -316,6 +330,30 @@
         "when": "neovim.mode == normal && editorTextFocus",
     },
     {
+        "key": "shift+2 w",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "@w"
+    },
+    {
+        "key": "shift+2 shift+2",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "@@"
+    },
+    {
+        "key": "q w",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "qw"
+    },
+    {
+        "key": "q q",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "q"
+    },
+    {
         "key": "shift+alt+f8",
         "command": "-editor.action.marker.prev",
         "when": "editorFocus"
@@ -354,5 +392,14 @@
         "key": "shift+alt+f12",
         "command": "-references-view.findReferences",
         "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "g t",
+        "command": "workbench.action.showAllSymbols",
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "cmd+t",
+        "command": "-workbench.action.showAllSymbols"
     },
 ]

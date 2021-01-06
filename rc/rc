@@ -25,6 +25,7 @@ export LESS_OPTIONS="--tabs=3 -RXF"
 # Other envvars
 export VISUAL="nvim --noplugin"
 export EDITOR="nvim --noplugin"
+export REACT_EDITOR="code"
 export VIMPAGER_VIM="nvim"
 export PAGER="less $LESS_OPTIONS"
 export VIMCAT="$HOME/.config/nvim/plugged/vimpager/vimcat -u NONE"
@@ -97,3 +98,10 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 export PYTHONBREAKPOINT=ipdb.set_trace
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+eval "$(rbenv init -)"

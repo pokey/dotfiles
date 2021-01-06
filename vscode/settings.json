@@ -103,6 +103,7 @@
     "window.nativeFullScreen": false,
     "window.newWindowDimensions": "fullscreen",
     "window.restoreFullscreen": true,
+    "editor.scrollbar.vertical": "visible", // undocumented
     "window.titleBarStyle": "native",
     "gitlens.advanced.fileHistoryFollowsRenames": true,
     "gitlens.codeLens.scopes": [
@@ -111,7 +112,11 @@
     "jupyter.alwaysTrustNotebooks": true,
     "editor.minimap.scale": 3,
     "files.associations": {
-        "rc": "shellscript"
+        "rc": "shellscript",
+        "Fastfile": "ruby"
+    },
+    "[handlebars]": {
+        "editor.formatOnSave": false
     },
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -125,5 +130,12 @@
     },
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "cSpell.userWords": [
+        "deserialization"
+    ],
+    "terminal.integrated.scrollback": 100000,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
