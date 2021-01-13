@@ -1,11 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "command": "editor.action.showHover",
-        "key": "shift+k",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
         "key": "ctrl+s",
         "command": "extension.multiCommand.execute",
         "args": {
@@ -23,11 +18,6 @@
         "command": "workbench.action.navigateEditorGroups"
     },
     {
-        "key": "g backspace",
-        "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
         "key": "ctrl+q j",
         "command": "workbench.action.quickOpen",
         "when": "neovim.mode == normal && editorTextFocus",
@@ -35,11 +25,6 @@
     {
         "key": "ctrl+tab",
         "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
-    },
-    {
-        "key": "g d",
-        "command": "editor.action.revealDefinition",
-        "when": "neovim.mode == normal && editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
     {
         "key": "f12",
@@ -102,19 +87,8 @@
         "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     },
     {
-        "key": "shift+;",
-        "command": "workbench.action.showCommands",
-        "when": "neovim.mode == normal && editorTextFocus"
-    },
-    {
         "key": "cmd+p",
         "command": "workbench.action.showCommands",
-    },
-    {
-        "key": "g g",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "gg"
     },
     {
         "key": "ctrl+q ctrl+q",
@@ -123,34 +97,10 @@
         "args": "<c-q><c-q>"
     },
     {
-        "key": "r g",
+        "key": "ctrl+q s",
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode != insert",
-        "args": "rg"
-    },
-    {
-        "key": "r i",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "ri"
-    },
-    {
-        "key": "r w",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "rw"
-    },
-    {
-        "key": "r q",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "rq"
-    },
-    {
-        "key": "g w",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "gw"
+        "args": "<c-q>s"
     },
     {
         "key": "cmd+up",
@@ -211,28 +161,6 @@
         "command": "-workbench.action.previousEditorInGroup"
     },
     {
-        "key": "g p",
-        "command": "git.push",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "g l",
-        "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "g n",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "gn"
-    },
-    {
-        "key": "g s",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "gs"
-    },
-    {
         "key": "ctrl+q c",
         "command": "workbench.action.terminal.new"
     },
@@ -282,27 +210,10 @@
         "when": "terminalFocus"
     },
     {
-        "key": "g m",
-        "command": "editor.action.toggleMinimap",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
         "command": "vscode-neovim.send",
         "key": "ctrl+q a",
         "when": "editorTextFocus && neovim.mode != insert",
         "args": "<C-q>a"
-    },
-    {
-        "command": "vscode-neovim.send",
-        "key": "g shift+;",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": ":"
-    },
-    {
-        "command": "vscode-neovim.send",
-        "key": "g h",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "gh"
     },
     {
         "command": "vscode-neovim.send",
@@ -311,53 +222,9 @@
         "args": "<bslash>"
     },
     {
-        "key": "g a",
-        "command": "workbench.action.findInFiles",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "g a",
-        "command": "workbench.view.search",
-        "when": "!searchViewletVisible && neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "q n",
-        "command": "editor.action.marker.next",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
         "key": "alt+f8",
         "command": "-editor.action.marker.next",
         "when": "editorFocus"
-    },
-    {
-        "key": "q p",
-        "command": "editor.action.marker.prev",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "shift+2 w",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "@w"
-    },
-    {
-        "key": "shift+2 shift+2",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "@@"
-    },
-    {
-        "key": "q w",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "qw"
-    },
-    {
-        "key": "q q",
-        "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
-        "args": "q"
     },
     {
         "key": "shift+alt+f8",
@@ -365,24 +232,9 @@
         "when": "editorFocus"
     },
     {
-        "key": "g e",
-        "command": "chmod.plusX",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "g k",
-        "command": "workbench.scm.focus",
-        "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
         "key": "ctrl+q e",
         "command": "fileutils.newFile",
         "when": "neovim.mode == normal && editorTextFocus",
-    },
-    {
-        "key": "g r",
-        "command": "editor.action.rename",
-        "when": "neovim.mode == normal && editorHasRenameProvider && editorTextFocus && !editorReadonly"
     },
     {
         "key": "f2",
@@ -390,19 +242,9 @@
         "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "g y",
-        "command": "references-view.findReferences",
-        "when": "neovim.mode == normal && editorTextFocus && editorHasReferenceProvider",
-    },
-    {
         "key": "shift+alt+f12",
         "command": "-references-view.findReferences",
         "when": "editorHasReferenceProvider"
-    },
-    {
-        "key": "g t",
-        "command": "workbench.action.showAllSymbols",
-        "when": "neovim.mode == normal && editorTextFocus",
     },
     {
         "key": "cmd+t",
