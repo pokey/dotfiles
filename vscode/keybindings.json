@@ -117,6 +117,12 @@
         "args": "gg"
     },
     {
+        "key": "ctrl+q ctrl+q",
+        "command": "vscode-neovim.send",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<c-q><c-q>"
+    },
+    {
         "key": "r g",
         "command": "vscode-neovim.send",
         "when": "editorTextFocus && neovim.mode != insert",

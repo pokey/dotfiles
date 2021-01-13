@@ -43,7 +43,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'mattn/emmet-vim'
 
-Plug 'easymotion/vim-easymotion'
+Plug 'asvetliakov/vim-easymotion'
 
 Plug 'mg979/vim-visual-multi'
 Plug 'dense-analysis/ale'

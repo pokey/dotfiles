@@ -30,3 +30,10 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vnoremap <silent> <expr> p <sid>Repl()
+
+map <Leader><Leader> <Plug>(easymotion-prefix)
+map <Leader><Leader>a <Plug>(easymotion-jumptoanywhere)
+map <Leader>s <Plug>(easymotion-s)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
