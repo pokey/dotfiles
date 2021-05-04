@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Disabled</key>
+    <false/>
+    <key>Label</key>
+    <string>com.pokeyrule.update-tasks-beeminder</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/pokey/pokey-home-files/bin/update-tasks-beeminder</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/Users/pokey/.logs/update-tasks-beeminder.error.txt</string>
+    <key>StandardOutPath</key>
+    <string>/Users/pokey/.logs/update-tasks-beeminder.log.txt</string>
+    <key>StartCalendarInterval</key>
+    <array>
+      <dict>
+          <key>Hour</key>
+          <integer>7</integer>
+          <key>Minute</key>
+          <integer>0</integer>
+      </dict>
+    </array>
+</dict>
+</plist>

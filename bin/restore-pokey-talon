@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm ~/.talon/user/knausj_talon
+ln -s "$HOME/src/pokey_talon" ~/.talon/user

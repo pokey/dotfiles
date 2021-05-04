@@ -9,6 +9,19 @@
         "when": "neovim.mode == insert && editorTextFocus",
     },
     {
+        "key": "ctrl+c",
+        "command": "-vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.commandMode"
+        },
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
         "key": "ctrl+s",
         "command": "workbench.action.files.save",
         "when": "neovim.mode != insert && editorTextFocus",
@@ -99,13 +112,8 @@
     {
         "key": "ctrl+q s",
         "command": "vscode-neovim.send",
-        "when": "editorTextFocus && neovim.mode != insert",
+        "when": "editorTextFocus",
         "args": "<c-q>s"
-    },
-    {
-        "key": "cmd+up",
-        "command": "-cursorTop",
-        "when": "textInputFocus"
     },
     {
         "key": "ctrl+o",
@@ -249,5 +257,31 @@
     {
         "key": "cmd+t",
         "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "ctrl+q b",
+        "command": "openInGithub.openInGitHubFile"
+    },
+    {
+        "key": "escape",
+        "command": "vscode-neovim.escape",
+        "when": "neovim.mode == visual && editorTextFocus && neovim.init && !markersNavigationVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "cmd+k",
+        "command": "-editsHistory.moveCursorToNextEdit"
+    },
+    {
+        "key": "cmd+k cmd+e",
+        "command": "editsHistory.moveCursorToNextEdit"
+    },
+    {
+        "key": "cmd+u",
+        "command": "-editsHistory.createEditAtCursor"
     },
 ]
