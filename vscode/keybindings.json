@@ -1,4 +1,4 @@
-// Place your key bindings in this file to override the defaultsauto[]
+// Place your key bindings in this file to override the defaults
 [
     {
         "key": "ctrl+s",
@@ -88,11 +88,6 @@
     {
         "key": "cmd+p",
         "command": "-workbench.action.quickOpen"
-    },
-    {
-        "key": "= =",
-        "command": "editor.action.formatDocument",
-        "when": "neovim.mode == normal && editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     },
     {
         "key": "shift+alt+f",
@@ -264,11 +259,6 @@
     },
     {
         "key": "escape",
-        "command": "vscode-neovim.escape",
-        "when": "neovim.mode == visual && editorTextFocus && neovim.init && !markersNavigationVisible"
-    },
-    {
-        "key": "escape",
         "command": "-vscode-neovim.escape",
         "when": "editorTextFocus && neovim.init"
     },
@@ -283,5 +273,10 @@
     {
         "key": "cmd+u",
         "command": "-editsHistory.createEditAtCursor"
+    },
+    {
+        "key": "escape",
+        "command": "-vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.init && !markersNavigationVisible && !parameterHintsVisible && !referenceSearchVisible"
     },
 ]

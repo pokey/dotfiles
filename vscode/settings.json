@@ -1,7 +1,7 @@
 {
+    "files.defaultLanguage": "markdown",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "window.zoomLevel": 1,
     "vscode-neovim.neovimExecutablePaths.darwin": "/Users/pokey/nvim-osx64/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "/Users/pokey/.config/nvim/vscode-init.vim",
     "multiCommand.commands": [
@@ -21,13 +21,10 @@
         }
     ],
     "workbench.colorTheme": "Abyss",
-    "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.fontSize": 13,
-    "editor.fontSize": 13,
     "editor.formatOnSave": true,
     "editor.lineNumbers": "off",
-    "editor.minimap.enabled": false,
     "editor.glyphMargin": false,
     "workbench.editor.showTabs": false,
     "workbench.activityBar.visible": false,
@@ -62,56 +59,10 @@
             "editor.rangeHighlightBackground": "#ffffff2b",
             "editor.selectionHighlightBackground": "#ffffff2b",
             "cursorless.pendingDeleteBackground": "#ff00008a",
+            "cursorless.referencedBackground": "#00a2ff4d",
             "cursorless.justAddedBackground": "#09ff005b",
-            // Seven colors
-            // "decorativeNavigation.defaultBorder": "#cecece66",
-            // "decorativeNavigation.greenBorder": "#FF0A0066",
-            // "decorativeNavigation.redBorder": "#9100FF66",
-            // "decorativeNavigation.grayBorder": "#0077FF66",
-            // "decorativeNavigation.brownBorder": "#00FF7B66",
-            // "decorativeNavigation.tealBorder": "#BFFF0066",
-            // "decorativeNavigation.mauveBorder": "#FFA50066",
-            // "decorativeNavigation.defaultBackground": "#cecece33",
-            // "decorativeNavigation.greenBackground": "#FF0A0033",
-            // "decorativeNavigation.redBackground": "#9100FF33",
-            // "decorativeNavigation.grayBackground": "#0077FF33",
-            // "decorativeNavigation.brownBackground": "#00FF7B33",
-            // "decorativeNavigation.tealBackground": "#BFFF0033",
-            // "decorativeNavigation.mauveBackground": "#FFA50033",
-            // Top border only
-            // "decorativeNavigation.defaultBorder": "#cdc7f0",
-            // "decorativeNavigation.greenBorder": "#22d618",
-            // "decorativeNavigation.redBorder": "#ff7300",
-            // "decorativeNavigation.yellowBorder": "#f1cd00",
-            // "decorativeNavigation.mauveBorder": "#ff00f2",
-            // "decorativeNavigation.blueBorder": "#00b7ff",
-            // Light background
-            // "decorativeNavigation.defaultBorder": "#000000",
-            // "decorativeNavigation.greenBorder": "#2ec426",
-            // "decorativeNavigation.redBorder": "#ff3300",
-            // "decorativeNavigation.yellowBorder": "#f0b800",
-            // "decorativeNavigation.mauveBorder": "#ff00f2",
-            // "decorativeNavigation.blueBorder": "#19a1d6",
-            // Text color
-            // "decorativeNavigation.defaultBackground": "#a8a8a8",
-            // "decorativeNavigation.redBackground": "#08a500",
-            // "decorativeNavigation.mauveBackground": "#b14100",
-            // "decorativeNavigation.blueBackground": "#b4007e",
-            // "decorativeNavigation.greenBackground": "#0080b3",
-            // "decorativeNavigation.brownBackground": "#c5a800",
-            // Background and border
-            // "decorativeNavigation.defaultBorder": "#cecece66",
-            // "decorativeNavigation.redBorder": "#FF360066",
-            // "decorativeNavigation.mauveBorder": "#AA0DFF66",
-            // "decorativeNavigation.blueBorder": "#00A2FF66",
-            // "decorativeNavigation.greenBorder": "#00FF5966",
-            // "decorativeNavigation.brownBorder": "#FFE90066",
-            // "decorativeNavigation.defaultBackground": "#cecece2b",
-            // "decorativeNavigation.redBackground": "#FF36002b",
-            // "decorativeNavigation.mauveBackground": "#AA0DFF2b",
-            // "decorativeNavigation.blueBackground": "#00A2FF2b",
-            // "decorativeNavigation.greenBackground": "#00FF592b",
-            // "decorativeNavigation.brownBackground": "#FFE9002b",
+            "cursorless.pendingModification0Background": "#8c00ff86",
+            "cursorless.pendingModification1Background": "#ff009d7e",
         }
     },
     "editor.tokenColorCustomizations": {
@@ -157,17 +108,14 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "python.languageServer": "Pylance",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
     "window.nativeFullScreen": false,
     "window.newWindowDimensions": "fullscreen",
     "window.restoreFullscreen": true,
     "editor.scrollbar.vertical": "visible", // undocumented
-    "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
     "gitlens.advanced.fileHistoryFollowsRenames": true,
     "gitlens.codeLens.scopes": [
         "document"
@@ -195,6 +143,7 @@
     "git.confirmSync": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "cSpell.userWords": [
+        "Subtokens",
         "cursorless",
         "deserialization",
         "esbuild",
@@ -204,6 +153,7 @@
         "outfile",
         "subpiece",
         "subtoken",
+        "subwords",
         "unmount"
     ],
     "terminal.integrated.scrollback": 100000,
@@ -228,7 +178,20 @@
     "references.preferredLocation": "view",
     "window.openFoldersInNewWindow": "on",
     "cursorless.showOnStart": true,
+    "cursorless.showAdditionalHighlightBeforeScroll": false,
     "cursorless.pendingEditDecorationTime": 100,
+    "cursorless.colors.red": {
+        "dark": "#db3e00",
+    },
+    "cursorless.colors.purple": {
+        "dark": "#fa76ff",
+    },
+    "cursorless.hatStyles.curve.enabled": true,
+    "cursorless.hatStyles.threePointStar.enabled": true,
+    "cursorless.hatStyles.hole.enabled": true,
+    "cursorless.hatStyles.frame.enabled": true,
+    "cursorless.hatStyles.eye.enabled": true,
+    "cursorless.hatStyles.yellow.penalty": 2,
     "editor.accessibilitySupport": "off",
     "tabnine.experimentalAutoImports": true,
     "editor.acceptSuggestionOnEnter": "off",
@@ -236,5 +199,33 @@
     "editor.autoClosingQuotes": "beforeWhitespace",
     "vscode-neovim.logOutputToConsole": true,
     "vscode-neovim.logLevel": "debug",
-    "debug.onTaskErrors": "debugAnyway"
+    "debug.onTaskErrors": "debugAnyway",
+    "jupyter.askForKernelRestart": false,
+    "markdown.extension.toc.levels": "2..6",
+    "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "jupyter.enableNativeInteractiveWindow": true,
+    "window.zoomLevel": 1,
+    "vsicons.dontShowNewVersionMessage": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "githubPullRequests.fileListLayout": "tree",
+    "ruby.useBundler": true, //run non-lint commands with bundle exec
+    "ruby.useLanguageServer": true, // use the internal language server (see below)
+    "ruby.lint": {
+        "rubocop": {
+            "useBundler": true // enable rubocop via bundler
+        },
+        "reek": {
+            "useBundler": true // enable reek via bundler
+        }
+    },
+    "ruby.format": "rubocop",
+    "explorer.confirmDragAndDrop": false,
+    "editor.minimap.enabled": false, // use rubocop for formatting
 }
