@@ -186,12 +186,16 @@
     "cursorless.colors.purple": {
         "dark": "#fa76ff",
     },
-    "cursorless.hatStyles.curve.enabled": true,
-    "cursorless.hatStyles.threePointStar.enabled": true,
-    "cursorless.hatStyles.hole.enabled": true,
-    "cursorless.hatStyles.frame.enabled": true,
-    "cursorless.hatStyles.eye.enabled": true,
-    "cursorless.hatStyles.yellow.penalty": 2,
+    "cursorless.hatEnablement.shapes": {
+        "threePointStar": true,
+        "hole": true,
+        "frame": true,
+        "curve": true,
+        "eye": true
+    },
+    "cursorless.hatPenalties.colors": {
+        "yellow": 1.5
+    },
     "editor.accessibilitySupport": "off",
     "tabnine.experimentalAutoImports": true,
     "editor.acceptSuggestionOnEnter": "off",
@@ -225,7 +229,7 @@
             "useBundler": true // enable reek via bundler
         }
     },
-    "ruby.format": "rubocop",
+    "ruby.format": "rubocop", // use rubocop for formatting
     "explorer.confirmDragAndDrop": false,
-    "editor.minimap.enabled": false, // use rubocop for formatting
+    "editor.minimap.enabled": false,
 }
