@@ -14,9 +14,9 @@ abbreviations=(
   "gr"    'git rebase'
   "gri"   'git rebase -i'
   "grd"   'git rebase develop'
-  "grm"   'git rebase master'
+  "grm"   'git rebase main'
   "grid"  'git rebase -i develop'
-  "grim"  'git rebase -i master'
+  "grim"  'git rebase -i main'
   "grh"   'git reset --hard'
   "grl"   'git reset --hard HEAD~'
   "grs"   'git reset --soft'
@@ -24,9 +24,9 @@ abbreviations=(
   "grc"   'git rebase --continue'
   "gra"   'git rebase --abort'
   "gcp"   'git cherry-pick'
-  "ghp"   'git subtree push --prefix dist origin master'
+  "ghp"   'git subtree push --prefix dist origin main'
   "god"   'git checkout develop'
-  "gom"   'git checkout master'
+  "gom"   'git checkout main'
   "gco"   'git checkout'
   "gt"    'git ctags'
   "gct"   'git ctags'
@@ -93,7 +93,7 @@ abbreviations=(
   "dr."   "dvc repro -R ."
   "pr"    "git pull-request -ocpb"
   "prd"   "git pull-request -ocpb develop"
-  "prm"   "git pull-request -ocpb master"
+  "prm"   "git pull-request -ocpb main"
   "prs"   "git pr show"
   "awd"   'eval $(awsdev)'
   "dl"    'eval $(aws ecr get-login --no-include-email)'

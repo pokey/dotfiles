@@ -84,8 +84,8 @@ if [[ "$NEXT_VERSION" != "$bump_version_next_version" ]] ; then
     exit -1
 fi
 
-# Ensure both `master` and `develop` are up to date
-git checkout master
+# Ensure both `main` and `develop` are up to date
+git checkout main
 git pull
 git checkout develop
 git pull
@@ -98,16 +98,16 @@ bumpversion --commit --no-tag "$PART"
 
 # Publish and file PR
 git flow release publish
-hub pull-request -om "Release $NEXT_VERSION" -b master
+hub pull-request -om "Release $NEXT_VERSION" -b main
 echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
 read -p "Press ENTER once the PR is ready to merge..."
 
 # Finish and merge PR
 git flow release finish -k -m "Release $NEXT_VERSION"
-git checkout master && git push origin master
+git checkout main && git push origin main
 
-# File PR from `master` against `develop`
-hub pull-request -om "Merge $NEXT_VERSION from master" -b develop
+# File PR from `main` against `develop`
+hub pull-request -om "Merge $NEXT_VERSION from main" -b develop
 echo "Get approval and wait for CI to pass on your PR, but DON'T MERGE!!"
 read -p "Press ENTER once the PR is ready to merge..."
 git checkout develop && git push origin develop

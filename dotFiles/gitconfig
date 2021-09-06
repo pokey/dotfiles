@@ -10,6 +10,7 @@
     colorMoved = default
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
 [push]
 	default = upstream
 	followTags = true

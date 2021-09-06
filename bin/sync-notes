@@ -37,16 +37,16 @@ fi
 
 git fetch || error_and_quit "Failed git fetch"
 
-pull_diff="$(git diff --shortstat master...origin/master)"
-push_diff="$(git diff --shortstat origin/master...master)"
+pull_diff="$(git diff --shortstat main...origin/main)"
+push_diff="$(git diff --shortstat origin/main...main)"
 
 if [ ${#pull_diff} -ne 0 ] ; then
-    git merge origin/master --no-edit || error_and_quit "Failed git merge"
+    git merge origin/main --no-edit || error_and_quit "Failed git merge"
     notify -group notes-sync-pull -title "⬇️Pull" -message "$pull_diff"
 fi
 
 if [ ${#push_diff} -ne 0 ] ; then
-    git push origin master || error_and_quit "Failed push"
+    git push origin main || error_and_quit "Failed push"
     notify -group notes-sync-push -title "⬆️Push" -message "$push_diff"
 fi
 

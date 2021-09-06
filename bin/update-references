@@ -30,7 +30,7 @@ git add --all || error_and_quit "Failed git add --all"
 git commit -m "[content] $(date -u '+%F %T UTC')" \
     || error_and_quit "Failed git commit"
 
-git push origin master || error_and_quit "Failed git push"
+git push origin main || error_and_quit "Failed git push"
 
 references_sha="$(git rev-parse --short HEAD)"
 diff=$(git format-patch -1 --stdout)

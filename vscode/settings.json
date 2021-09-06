@@ -181,10 +181,10 @@
     "cursorless.showAdditionalHighlightBeforeScroll": false,
     "cursorless.pendingEditDecorationTime": 100,
     "cursorless.colors.red": {
-        "dark": "#db3e00",
+        "dark": "#db3e00"
     },
     "cursorless.colors.purple": {
-        "dark": "#fa76ff",
+        "dark": "#fa76ff"
     },
     "cursorless.hatEnablement.shapes": {
         "threePointStar": true,
@@ -232,4 +232,6 @@
     "ruby.format": "rubocop", // use rubocop for formatting
     "explorer.confirmDragAndDrop": false,
     "editor.minimap.enabled": false,
+    "javascript.inlayHints.parameterNames.enabled": "literals",
+    "editor.inlayHints.fontSize": 10,
 }
