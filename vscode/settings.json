@@ -231,20 +231,16 @@
         // "yellow": "#E5C02C"
     },
     "cursorless.individualHatAdjustments": {
-        "curve": {
-            "sizeAdjustment": 3,
-            "verticalOffset": -2,
-        },
-        "frame": {
-            "sizeAdjustment": -15,
-            "verticalOffset": -0.5,
-        },
         "default": {
             "sizeAdjustment": -7,
             "verticalOffset": -0.35,
         },
         "ex": {
             "sizeAdjustment": -10,
+            "verticalOffset": 0,
+        },
+        "fox": {
+            "sizeAdjustment": 20,
             "verticalOffset": 0,
         },
         "wing": {
@@ -255,16 +251,20 @@
             "sizeAdjustment": 15,
             "verticalOffset": -2.5,
         },
-        "play": {
-            "sizeAdjustment": -12,
-            "verticalOffset": 0,
+        "frame": {
+            "sizeAdjustment": -15,
+            "verticalOffset": -0.5,
+        },
+        "curve": {
+            "sizeAdjustment": 3,
+            "verticalOffset": -2,
         },
         "eye": {
             "sizeAdjustment": -3,
             "verticalOffset": -1,
         },
-        "fox": {
-            "sizeAdjustment": 20,
+        "play": {
+            "sizeAdjustment": -12,
             "verticalOffset": 0,
         },
         "star": {
