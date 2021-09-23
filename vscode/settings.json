@@ -241,7 +241,7 @@
         },
         "default": {
             "sizeAdjustment": -7,
-            "verticalOffset": -1,
+            "verticalOffset": -0.35,
         },
         "ex": {
             "sizeAdjustment": -10,
