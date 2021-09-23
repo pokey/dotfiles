@@ -67,9 +67,10 @@
     },
     "editor.tokenColorCustomizations": {
         "[Abyss]": {
+            "strings": "#15cc24",
             "keywords": "#be0000",
-            "variables": "#78a1f3",
-            "comments": "#5066be"
+            "variables": "#587fcc",
+            "comments": "#00950c"
         },
         "textMateRules": [
             {
@@ -93,6 +94,7 @@
             {
                 "scope": "variable.parameter",
                 "settings": {
+                    "foreground": "#7465ff",
                     "fontStyle": ""
                 }
             },
@@ -100,6 +102,18 @@
                 "scope": "support.class",
                 "settings": {
                     "fontStyle": ""
+                }
+            },
+            {
+                "scope": "entity.name.tag",
+                "settings": {
+                    "foreground": "#33bed6"
+                }
+            },
+            {
+                "scope": "variable.language.this",
+                "settings": {
+                    "foreground": "#65b3e0"
                 }
             }
         ]
@@ -178,16 +192,16 @@
     "references.preferredLocation": "view",
     "window.openFoldersInNewWindow": "on",
     "cursorless.showOnStart": true,
+    // "cursorless.hatSizeAdjustment": 50,
+    // "cursorless.hatVerticalOffset": -15,
     "cursorless.showAdditionalHighlightBeforeScroll": false,
     "cursorless.pendingEditDecorationTime": 100,
-    "cursorless.colors.red": {
-        "dark": "#db3e00"
-    },
-    "cursorless.colors.purple": {
-        "dark": "#fa76ff"
-    },
     "cursorless.hatEnablement.shapes": {
-        "threePointStar": true,
+        "wing": true,
+        "ex": true,
+        "fox": true,
+        "star": true,
+        "play": true,
         "hole": true,
         "frame": true,
         "curve": true,
@@ -195,6 +209,68 @@
     },
     "cursorless.hatPenalties.colors": {
         "yellow": 1.5
+    },
+    "cursorless.hatSizeAdjustment": 20,
+    "cursorless.hatVerticalOffset": 5,
+    "cursorless.colors.dark": {
+        "default": "#aaa7bb",
+        "blue": "#089ad3",
+        "green": "#36B33F",
+        "red": "#E02D28",
+        "pink": "#e0679f",
+        // "yellow": "#E2C32C",
+        "yellow": "#E5C02C"
+    },
+    "cursorless.colors.light": {
+        "default": "#757180",
+        "blue": "#089ad3",
+        "green": "#36B33F",
+        "red": "#E02D28",
+        "pink": "#e0679f",
+        "yellow": "#edb62b",
+        // "yellow": "#E5C02C"
+    },
+    "cursorless.individualHatAdjustments": {
+        "curve": {
+            "sizeAdjustment": 3,
+            "verticalOffset": -2,
+        },
+        "frame": {
+            "sizeAdjustment": -15,
+            "verticalOffset": -0.5,
+        },
+        "default": {
+            "sizeAdjustment": -7,
+            "verticalOffset": -3,
+        },
+        "ex": {
+            "sizeAdjustment": -10,
+            "verticalOffset": 0,
+        },
+        "wing": {
+            "sizeAdjustment": 5,
+            "verticalOffset": -2.1,
+        },
+        "hole": {
+            "sizeAdjustment": 15,
+            "verticalOffset": -2.5,
+        },
+        "play": {
+            "sizeAdjustment": -12,
+            "verticalOffset": 0,
+        },
+        "eye": {
+            "sizeAdjustment": 0,
+            "verticalOffset": 0,
+        },
+        "fox": {
+            "sizeAdjustment": 20,
+            "verticalOffset": 0,
+        },
+        "star": {
+            "sizeAdjustment": 30,
+            "verticalOffset": -1,
+        }
     },
     "editor.accessibilitySupport": "off",
     "tabnine.experimentalAutoImports": true,
@@ -213,7 +289,6 @@
         "jupyter-notebook": "left"
     },
     "jupyter.enableNativeInteractiveWindow": true,
-    "window.zoomLevel": 1,
     "vsicons.dontShowNewVersionMessage": true,
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -234,4 +309,5 @@
     "editor.minimap.enabled": false,
     "javascript.inlayHints.parameterNames.enabled": "literals",
     "editor.inlayHints.fontSize": 10,
+    "window.zoomLevel": 1,
 }
