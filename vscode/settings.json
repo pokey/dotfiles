@@ -217,7 +217,7 @@
         "blue": "#089ad3",
         "green": "#36B33F",
         "red": "#E02D28",
-        "pink": "#e0679f",
+        "pink": "#E06CAA",
         // "yellow": "#E2C32C",
         "yellow": "#E5C02C"
     },
@@ -241,7 +241,7 @@
         },
         "default": {
             "sizeAdjustment": -7,
-            "verticalOffset": -3,
+            "verticalOffset": -1,
         },
         "ex": {
             "sizeAdjustment": -10,
@@ -260,16 +260,16 @@
             "verticalOffset": 0,
         },
         "eye": {
-            "sizeAdjustment": 0,
-            "verticalOffset": 0,
+            "sizeAdjustment": -3,
+            "verticalOffset": -1,
         },
         "fox": {
             "sizeAdjustment": 20,
             "verticalOffset": 0,
         },
         "star": {
-            "sizeAdjustment": 30,
-            "verticalOffset": -1,
+            "sizeAdjustment": 42,
+            "verticalOffset": -2,
         }
     },
     "editor.accessibilitySupport": "off",
