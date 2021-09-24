@@ -212,66 +212,6 @@
     },
     "cursorless.hatSizeAdjustment": 20,
     "cursorless.hatVerticalOffset": 5,
-    "cursorless.colors.dark": {
-        "default": "#aaa7bb",
-        "blue": "#089ad3",
-        "green": "#36B33F",
-        "red": "#E02D28",
-        "pink": "#E06CAA",
-        // "yellow": "#E2C32C",
-        "yellow": "#E5C02C"
-    },
-    "cursorless.colors.light": {
-        "default": "#757180",
-        "blue": "#089ad3",
-        "green": "#36B33F",
-        "red": "#E02D28",
-        "pink": "#e0679f",
-        "yellow": "#edb62b",
-        // "yellow": "#E5C02C"
-    },
-    "cursorless.individualHatAdjustments": {
-        "default": {
-            "sizeAdjustment": -7,
-            "verticalOffset": -0.35,
-        },
-        "ex": {
-            "sizeAdjustment": -10,
-            "verticalOffset": 0,
-        },
-        "fox": {
-            "sizeAdjustment": 20,
-            "verticalOffset": 0,
-        },
-        "wing": {
-            "sizeAdjustment": 5,
-            "verticalOffset": -2.1,
-        },
-        "hole": {
-            "sizeAdjustment": 15,
-            "verticalOffset": -2.5,
-        },
-        "frame": {
-            "sizeAdjustment": -15,
-            "verticalOffset": -0.5,
-        },
-        "curve": {
-            "sizeAdjustment": 3,
-            "verticalOffset": -2,
-        },
-        "eye": {
-            "sizeAdjustment": -3,
-            "verticalOffset": -1,
-        },
-        "play": {
-            "sizeAdjustment": -12,
-            "verticalOffset": 0,
-        },
-        "star": {
-            "sizeAdjustment": 42,
-            "verticalOffset": -2,
-        }
-    },
     "editor.accessibilitySupport": "off",
     "tabnine.experimentalAutoImports": true,
     "editor.acceptSuggestionOnEnter": "off",
