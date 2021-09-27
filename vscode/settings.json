@@ -205,13 +205,57 @@
         "hole": true,
         "frame": true,
         "curve": true,
-        "eye": true
+        "eye": true,
+        "bolt": true,
+    },
+    "cursorless.individualHatAdjustments": {
+        "default": {
+            "sizeAdjustment": -7,
+            "verticalOffset": -0.175
+        },
+        "ex": {
+            "sizeAdjustment": 5
+        },
+        "fox": {
+            "sizeAdjustment": 5
+        },
+        "wing": {
+            "sizeAdjustment": 11.5,
+            "verticalOffset": 2.05
+        },
+        "hole": {
+            "sizeAdjustment": 35,
+            "verticalOffset": -1
+        },
+        "frame": {
+            "sizeAdjustment": -15,
+            "verticalOffset": -4.5
+        },
+        "curve": {
+            "sizeAdjustment": -19.5,
+            "verticalOffset": -3
+        },
+        "eye": {
+            "sizeAdjustment": 0.5,
+            "verticalOffset": -0.5
+        },
+        "play": {
+            "sizeAdjustment": -4,
+            "verticalOffset": -0.25
+        },
+        "bolt": {
+            "sizeAdjustment": 22.5
+        },
+        "star": {
+            "sizeAdjustment": 33.5,
+            "verticalOffset": -2
+        }
     },
     "cursorless.hatPenalties.colors": {
         "yellow": 1.5
     },
     "cursorless.hatSizeAdjustment": 20,
-    "cursorless.hatVerticalOffset": 5,
+    "cursorless.hatVerticalOffset": 4.2,
     "editor.accessibilitySupport": "off",
     "tabnine.experimentalAutoImports": true,
     "editor.acceptSuggestionOnEnter": "off",
