@@ -9,6 +9,7 @@
             "command": "multiCommand.exitAndSave",
             "sequence": [
                 "vscode-neovim.escape",
+                "vscode-neovim.enable",
                 "workbench.action.files.save",
             ]
         },
@@ -19,6 +20,11 @@
                 "vscode-neovim.enable",
             ]
         }
+    ],
+    "terminal.integrated.commandsToSkipShell": [
+        // Ensure the toggle sidebar visibility keybinding skips the shell
+        "command-server.runCommand",
+        "command-server.saveState",
     ],
     "workbench.colorTheme": "Abyss",
     "terminal.integrated.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
@@ -196,59 +202,35 @@
     // "cursorless.hatVerticalOffset": -15,
     "cursorless.showAdditionalHighlightBeforeScroll": false,
     "cursorless.pendingEditDecorationTime": 100,
-    "cursorless.hatEnablement.shapes": {
-        "wing": true,
-        "ex": true,
-        "fox": true,
-        "star": true,
-        "play": true,
-        "hole": true,
-        "frame": true,
-        "curve": true,
-        "eye": true,
-        "bolt": true,
-    },
     "cursorless.individualHatAdjustments": {
-        "default": {
-            "sizeAdjustment": -7,
-            "verticalOffset": -0.175
-        },
-        "ex": {
-            "sizeAdjustment": 5
-        },
-        "fox": {
-            "sizeAdjustment": 5
-        },
+        "default": {},
+        "ex": {},
+        "fox": {},
         "wing": {
-            "sizeAdjustment": 11.5,
-            "verticalOffset": 2.05
+            "sizeAdjustment": 2.5,
+            "verticalOffset": 1
         },
         "hole": {
-            "sizeAdjustment": 35,
-            "verticalOffset": -1
+            "sizeAdjustment": 12.5
         },
         "frame": {
-            "sizeAdjustment": -15,
-            "verticalOffset": -4.5
+            "sizeAdjustment": -5,
+            "verticalOffset": -2.25
         },
         "curve": {
-            "sizeAdjustment": -19.5,
-            "verticalOffset": -3
+            "sizeAdjustment": -6,
+            "verticalOffset": -0.95
         },
         "eye": {
-            "sizeAdjustment": 0.5,
-            "verticalOffset": -0.5
+            "sizeAdjustment": 2.5
         },
-        "play": {
-            "sizeAdjustment": -4,
-            "verticalOffset": -0.25
-        },
+        "play": {},
         "bolt": {
-            "sizeAdjustment": 22.5
+            "sizeAdjustment": 7.5
         },
         "star": {
-            "sizeAdjustment": 33.5,
-            "verticalOffset": -2
+            "sizeAdjustment": 12.5,
+            "verticalOffset": -1
         }
     },
     "cursorless.hatPenalties.colors": {
@@ -294,4 +276,16 @@
     "javascript.inlayHints.parameterNames.enabled": "literals",
     "editor.inlayHints.fontSize": 10,
     "window.zoomLevel": 1,
+    "cursorless.hatEnablement.shapes": {
+        "ex": true,
+        "fox": true,
+        "wing": true,
+        "hole": true,
+        "frame": true,
+        "curve": true,
+        "eye": true,
+        "play": true,
+        "bolt": true,
+        "star": true
+    },
 }
