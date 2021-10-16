@@ -19,7 +19,7 @@ else:
     pokey_config = dict()
 
 with open('karabiner.yaml') as f:
-    complex_modifications_input = yaml.load(f)
+    complex_modifications_input = yaml.safe_load(f)
 
 with open('karabiner-input.json') as f:
     config = json.load(f)
