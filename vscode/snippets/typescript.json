@@ -14,5 +14,17 @@
 			"this.$1 = this.$1.bind(this)",
 		],
 		"description": "Bind function to this"
+	},
+	"interface": {
+		"body": [
+			"interface $1 {\n\t$0\n}"
+		],
+		"description": "Interface declaration"
+	},
+	"const declaration": {
+		"body": [
+			"const $1 = $0;"
+		],
+		"description": "Constant variable declaration"
 	}
 }

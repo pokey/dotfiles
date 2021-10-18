@@ -1,0 +1,16 @@
+{
+	"with": {
+		"body": [
+			"with $1:",
+			"\t"
+		],
+		"description": "With statement"
+	},
+	"class": {
+		"body": [
+			"class $1:",
+			"\t"
+		],
+		"description": "Class declaration"
+	}
+}
