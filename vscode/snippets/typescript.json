@@ -26,5 +26,11 @@
 			"const $1 = $0;"
 		],
 		"description": "Constant variable declaration"
+	},
+	"let declaration": {
+		"body": [
+			"let $1 = $0;"
+		],
+		"description": "Let variable declaration"
 	}
 }
