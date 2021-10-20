@@ -21,6 +21,22 @@
 		],
 		"description": "Interface declaration"
 	},
+	"function declaration": {
+		"body": [
+			"function $1($2) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Function declaration"
+	},
+	"constructor": {
+		"body": [
+			"constructor($1) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Class initializer"
+	},
 	"if statement": {
 		"body": [
 			"if ($1) {\n\t$0\n}"
