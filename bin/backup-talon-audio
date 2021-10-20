@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Backup talon audio files to s3 bucket
+# Needs to be run after `awm administrator`
+
+cd "$HOME/.talon"
+
+DATE=$(date "+%Y-%m-%d")
+archive_name="recordings-$DATE.tar.gz"
+
+tar czf "$archive_name" recordings
+aws s3 cp --storage-class DEEP_ARCHIVE "$archive_name" 's3://pokey-talon-audio/'
+
+echo When confirmed, run:
+echo rm "\"$(realpath $archive_name)\""
+echo rm -rf "\"$(realpath recordings)\""

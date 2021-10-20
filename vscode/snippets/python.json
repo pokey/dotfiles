@@ -1,16 +1,28 @@
 {
-	"with": {
+	"with statement": {
 		"body": [
 			"with $1:",
 			"\t"
 		],
 		"description": "With statement"
 	},
-	"class": {
+	"class declaration": {
 		"body": [
 			"class $1:",
 			"\t"
 		],
 		"description": "Class declaration"
+	},
+	"if statement": {
+		"body": [
+			"if $1:\n\t$0"
+		],
+		"description": "If statement"
+	},
+	"if else statement": {
+		"body": [
+			"if $1:\n\t$2\nelse:\n\t$0"
+		],
+		"description": "If statement"
 	}
 }

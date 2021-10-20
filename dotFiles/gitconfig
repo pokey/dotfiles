@@ -22,8 +22,17 @@
 	process = git-lfs filter-process
 	required = true
 [core]
-    pager = delta
-	excludesfile = ~/.gitignore
+  pager = delta
+  excludesfile = ~/.gitignore
+  editor = code --wait
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
 
 [interactive]
     diffFilter = delta --color-only

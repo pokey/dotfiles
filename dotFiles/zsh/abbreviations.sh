@@ -15,8 +15,10 @@ abbreviations=(
   "gri"   'git rebase -i'
   "grd"   'git rebase develop'
   "grm"   'git rebase main'
+  "grmr"   'git rebase master'
   "grid"  'git rebase -i develop'
   "grim"  'git rebase -i main'
+  "grimr"  'git rebase -i master'
   "grh"   'git reset --hard'
   "grl"   'git reset --hard HEAD~'
   "grs"   'git reset --soft'
@@ -27,6 +29,7 @@ abbreviations=(
   "ghp"   'git subtree push --prefix dist origin main'
   "god"   'git checkout develop'
   "gom"   'git checkout main'
+  "gomr"   'git checkout master'
   "gco"   'git checkout'
   "gt"    'git ctags'
   "gct"   'git ctags'
@@ -94,6 +97,7 @@ abbreviations=(
   "pr"    "git pull-request -ocpb"
   "prd"   "git pull-request -ocpb develop"
   "prm"   "git pull-request -ocpb main"
+  "prmr"   "git pull-request -ocpb master"
   "prs"   "git pr show"
   "awd"   'eval $(awsdev)'
   "dl"    'eval $(aws ecr get-login --no-include-email)'

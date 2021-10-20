@@ -24,7 +24,7 @@
     "terminal.integrated.commandsToSkipShell": [
         // Ensure the toggle sidebar visibility keybinding skips the shell
         "command-server.runCommand",
-        "command-server.saveState",
+        "command-server.updateCoreState",
     ],
     "workbench.colorTheme": "Abyss",
     "terminal.integrated.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
@@ -201,7 +201,6 @@
     // "cursorless.hatSizeAdjustment": 50,
     // "cursorless.hatVerticalOffset": -15,
     "cursorless.showAdditionalHighlightBeforeScroll": false,
-    "cursorless.pendingEditDecorationTime": 100,
     "cursorless.individualHatAdjustments": {
         "default": {},
         "ex": {},
@@ -275,17 +274,19 @@
     "editor.minimap.enabled": false,
     "javascript.inlayHints.parameterNames.enabled": "literals",
     "editor.inlayHints.fontSize": 10,
-    "window.zoomLevel": 1,
     "cursorless.hatEnablement.shapes": {
         "ex": true,
         "fox": true,
         "wing": true,
-        "hole": true,
         "frame": true,
         "curve": true,
         "eye": true,
         "play": true,
         "bolt": true,
-        "star": true
+        "crosshairs": true
+    },
+    "window.zoomLevel": 1,
+    "cursorless.hatEnablement.colors": {
+        "blue": false
     },
 }
