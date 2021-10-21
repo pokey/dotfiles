@@ -289,10 +289,94 @@
     "cursorless.hatEnablement.colors": {
         "blue": false
     },
-    "cursorless.wrapperSnippetPreferences": {
-        "map wrapper": {},
-        "nest wrapper": {
-            "scopeType": "collectionItem"
+    "cursorless.experimental.snippets": {
+        "nestMap": {
+            "definitions": [
+                {
+                    "scope": {
+                        "langIds": [
+                            "javascript",
+                            "typescript",
+                            "typescriptreact",
+                            "javascriptreact"
+                        ]
+                    },
+                    "body": [
+                        "$key: {",
+                        "\t$items",
+                        "}"
+                    ],
+                },
+                {
+                    "scope": {
+                        "langIds": [
+                            "json",
+                            "jsonc",
+                            "python",
+                        ]
+                    },
+                    "body": [
+                        "\"$key\": {",
+                        "\t$items",
+                        "}"
+                    ],
+                }
+            ],
+            "description": "Wrapper: nest",
+            "defaultScopeTypes": {
+                "items": "collectionItem"
+            }
+        },
+        "link": {
+            "definitions": [
+                {
+                    "scope": {
+                        "langIds": [
+                            "markdown",
+                        ]
+                    },
+                    "body": [
+                        "[$text](${url:$CLIPBOARD})",
+                    ],
+                }
+            ],
+            "description": "Link",
+            "defaultScopeTypes": {}
+        },
+        "map": {
+            "definitions": [
+                {
+                    "scope": {
+                        "langIds": [
+                            "javascript",
+                            "typescript",
+                            "typescriptreact",
+                            "javascriptreact"
+                        ]
+                    },
+                    "body": [
+                        "{",
+                        "\t$key: $value",
+                        "}"
+                    ],
+                },
+                {
+                    "scope": {
+                        "langIds": [
+                            "json",
+                            "jsonc",
+                            "python",
+                        ]
+                    },
+                    "body": [
+                        "{",
+                        "\t\"$key\": $value",
+                        "}"
+                    ],
+                }
+            ],
+            "description": "Map",
+            "defaultScopeTypes": {}
         }
     }
 }
