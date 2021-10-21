@@ -289,4 +289,10 @@
     "cursorless.hatEnablement.colors": {
         "blue": false
     },
+    "cursorless.wrapperSnippetPreferences": {
+        "map wrapper": {},
+        "nest wrapper": {
+            "scopeType": "collectionItem"
+        }
+    }
 }

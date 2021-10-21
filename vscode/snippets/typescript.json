@@ -49,6 +49,22 @@
 		],
 		"description": "If statement"
 	},
+	"map wrapper": {
+		"body": [
+			"{",
+			"\t$1: $TM_SELECTED_TEXT",
+			"}"
+		],
+		"description": "Wrapper: map"
+	},
+	"nest wrapper": {
+		"body": [
+			"$1: {",
+			"\t$TM_SELECTED_TEXT",
+			"}"
+		],
+		"description": "Wrapper: nest"
+	},
 	"const declaration": {
 		"body": [
 			"const $1 = $0;"
