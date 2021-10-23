@@ -277,7 +277,6 @@
     "cursorless.hatEnablement.shapes": {
         "ex": true,
         "fox": true,
-        "wing": true,
         "frame": true,
         "curve": true,
         "eye": true,
@@ -287,113 +286,8 @@
     },
     "window.zoomLevel": 1,
     "cursorless.hatEnablement.colors": {
-        "blue": false
+        "blue": false,
+        "pink": false
     },
-    "cursorless.experimental.snippets": {
-        "tryCatchStatement": {
-            "definitions": [
-                {
-                    "scope": {
-                        "langIds": [
-                            "typescript",
-                            "typescriptreact",
-                            "javascript",
-                            "javascriptreact",
-                        ]
-                    },
-                    "body": [
-                        "try {\n\t$body\n} catch (err) {\n\t$exceptBody\n}"
-                    ],
-                }
-            ]
-        },
-        "nestMap": {
-            "definitions": [
-                {
-                    "scope": {
-                        "langIds": [
-                            "javascript",
-                            "typescript",
-                            "typescriptreact",
-                            "javascriptreact"
-                        ]
-                    },
-                    "body": [
-                        "$key: {",
-                        "\t$items",
-                        "}"
-                    ],
-                },
-                {
-                    "scope": {
-                        "langIds": [
-                            "json",
-                            "jsonc",
-                            "python",
-                        ]
-                    },
-                    "body": [
-                        "\"$key\": {",
-                        "\t$items",
-                        "}"
-                    ],
-                }
-            ],
-            "description": "Wrapper: nest",
-            "defaultScopeTypes": {
-                "items": "collectionItem"
-            }
-        },
-        "link": {
-            "definitions": [
-                {
-                    "scope": {
-                        "langIds": [
-                            "markdown",
-                        ]
-                    },
-                    "body": [
-                        "[$text](${url:$CLIPBOARD})",
-                    ],
-                }
-            ],
-            "description": "Link",
-            "defaultScopeTypes": {}
-        },
-        "map": {
-            "definitions": [
-                {
-                    "scope": {
-                        "langIds": [
-                            "javascript",
-                            "typescript",
-                            "typescriptreact",
-                            "javascriptreact"
-                        ]
-                    },
-                    "body": [
-                        "{",
-                        "\t$key: $value",
-                        "}"
-                    ],
-                },
-                {
-                    "scope": {
-                        "langIds": [
-                            "json",
-                            "jsonc",
-                            "python",
-                        ]
-                    },
-                    "body": [
-                        "{",
-                        "\t\"$key\": $value",
-                        "}"
-                    ],
-                }
-            ],
-            "description": "Map",
-            "defaultScopeTypes": {}
-        }
-    }
+    "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets"
 }

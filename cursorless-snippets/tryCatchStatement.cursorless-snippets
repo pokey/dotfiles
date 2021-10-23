@@ -1,0 +1,19 @@
+{
+    "tryCatchStatement": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "typescript",
+                        "typescriptreact",
+                        "javascript",
+                        "javascriptreact"
+                    ]
+                },
+                "body": [
+                    "try {\n\t$body\n} catch (err) {\n\t$exceptBody\n}"
+                ]
+            }
+        ]
+    }
+}

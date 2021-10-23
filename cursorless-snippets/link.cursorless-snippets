@@ -1,0 +1,18 @@
+{
+    "link": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "markdown"
+                    ]
+                },
+                "body": [
+                    "[$text](${url:$CLIPBOARD})"
+                ]
+            }
+        ],
+        "description": "Link",
+        "defaultScopeTypes": {}
+    }
+}

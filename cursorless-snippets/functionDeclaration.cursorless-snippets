@@ -1,0 +1,36 @@
+{
+    "functionDeclaration": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "typescript",
+                        "typescriptreact",
+                        "javascript",
+                        "javascriptreact"
+                    ]
+                },
+                "body": [
+                    "function $name($parameterList) {",
+                    "\t$body",
+                    "}"
+                ]
+            },
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "def $name($parameterList):",
+                    "\t$body"
+                ]
+            }
+        ],
+        "defaultScopeTypes": {
+            "body": "statement"
+        },
+        "description": "Function declaration"
+    }
+}

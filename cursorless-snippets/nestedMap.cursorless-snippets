@@ -1,0 +1,39 @@
+{
+    "nestedMap": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "javascript",
+                        "typescript",
+                        "typescriptreact",
+                        "javascriptreact"
+                    ]
+                },
+                "body": [
+                    "$key: {",
+                    "\t$items",
+                    "}"
+                ]
+            },
+            {
+                "scope": {
+                    "langIds": [
+                        "json",
+                        "jsonc",
+                        "python"
+                    ]
+                },
+                "body": [
+                    "\"$key\": {",
+                    "\t$items",
+                    "}"
+                ]
+            }
+        ],
+        "description": "Nested map",
+        "defaultScopeTypes": {
+            "items": "collectionItem"
+        }
+    }
+}
