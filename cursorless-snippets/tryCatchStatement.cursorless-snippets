@@ -11,7 +11,11 @@
                     ]
                 },
                 "body": [
-                    "try {\n\t$body\n} catch (err) {\n\t$exceptBody\n}"
+                    "try {",
+                    "\t$body",
+                    "} catch (err) {",
+                    "\t$exceptBody",
+                    "}"
                 ]
             }
         ]
