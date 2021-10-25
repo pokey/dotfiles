@@ -31,7 +31,6 @@
                 ]
             }
         ],
-        "description": "Map",
-        "defaultScopeTypes": {}
+        "description": "Map"
     }
 }
