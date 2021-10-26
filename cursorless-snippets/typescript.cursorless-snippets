@@ -11,7 +11,7 @@
           ]
         },
         "body": [
-          "constructor() {",
+          "constructor($parameters) {",
           "\tmakeAutoObservable(this);",
           "}"
         ]
