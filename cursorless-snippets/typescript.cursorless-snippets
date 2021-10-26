@@ -1,0 +1,90 @@
+{
+  "mobxConstructor": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "constructor() {",
+          "\tmakeAutoObservable(this);",
+          "}"
+        ]
+      }
+    ],
+    "description": "Constructor using makeAutoObservable",
+    "insertionScopeType": "namedFunction"
+  },
+  "bindClassFunction": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "this.$name = this.$name.bind(this)"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      }
+    ],
+    "description": "Bind function to this",
+    "insertionScopeType": "statement"
+  },
+  "constDeclaration": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "const $name = $value;"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      }
+    ],
+    "description": "Constant variable declaration",
+    "insertionScopeType": "statement"
+  },
+  "letDeclaration": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "let $name = $value;"
+        ]
+      }
+    ],
+    "description": "Let variable declaration",
+    "insertionScopeType": "statement"
+  }
+}

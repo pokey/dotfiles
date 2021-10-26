@@ -1,0 +1,34 @@
+{
+    "constructor": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "typescript",
+                        "javascript",
+                        "typescriptreact",
+                        "javascriptreact"
+                    ]
+                },
+                "body": [
+                    "constructor($parameters) {",
+                    "\t$body",
+                    "}"
+                ]
+            },
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "def __init__(self${parameters:, $firstParameter}):",
+                    "\t$body"
+                ]
+            }
+        ],
+        "description": "Class initializer",
+        "insertionScopeType": "namedFunction"
+    }
+}

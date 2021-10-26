@@ -1,0 +1,28 @@
+{
+    "interface": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "typescript",
+                        "javascript",
+                        "typescriptreact",
+                        "javascriptreact"
+                    ]
+                },
+                "body": [
+                    "interface $name {",
+                    "\t$body",
+                    "}"
+                ],
+                "variables": {
+                    "name": {
+                        "formatter": "pascalCase"
+                    }
+                }
+            }
+        ],
+        "description": "Interface declaration",
+        "insertionScopeType": "statement"
+    }
+}
