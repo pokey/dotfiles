@@ -44,7 +44,7 @@
     "description": "Bind function to this",
     "insertionScopeType": "statement"
   },
-  "constDeclaration": {
+  "constantDeclaration": {
     "definitions": [
       {
         "scope": {
