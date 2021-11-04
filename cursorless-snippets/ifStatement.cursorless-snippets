@@ -1,0 +1,30 @@
+{
+  "ifStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact",
+            "cpp",
+            "c",
+            "java",
+            "csharp"
+          ]
+        },
+        "body": [
+          "if (${condition/^([^;]*);?$/$1/}) {",
+          "\t$consequence",
+          "}"
+        ]
+      }
+    ],
+    "variables": {
+      "condition": {
+        "wrapperScopeType": "statement"
+      }
+    }
+  }
+}

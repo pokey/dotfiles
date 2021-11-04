@@ -1,0 +1,38 @@
+{
+  "elseIfStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact",
+            "cpp",
+            "c",
+            "java",
+            "csharp"
+          ]
+        },
+        "body": [
+          "else if ($condition) {",
+          "\t$alternative",
+          "}"
+        ]
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "elif $condition:",
+          "\t$alternative"
+        ]
+      }
+    ],
+    "description": "Else if statement",
+    "insertionScopeType": "ifStatement"
+  }
+}

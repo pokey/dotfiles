@@ -1,0 +1,1 @@
+map_values({definitions: [{scope: {langIds: ["json", "jsonc"]}, body}], description})

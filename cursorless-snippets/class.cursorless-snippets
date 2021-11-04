@@ -20,7 +20,10 @@
             {
                 "scope": {
                     "langIds": [
-                        "python"
+                        "typescript",
+                        "typescriptreact",
+                        "javascript",
+                        "javascriptreact"
                     ]
                 },
                 "body": [

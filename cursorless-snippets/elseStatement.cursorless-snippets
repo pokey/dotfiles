@@ -1,0 +1,38 @@
+{
+  "elseStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact",
+            "cpp",
+            "c",
+            "java",
+            "csharp"
+          ]
+        },
+        "body": [
+          "else {",
+          "\t$alternative",
+          "}"
+        ]
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "else:",
+          "\t$alternative"
+        ]
+      }
+    ],
+    "description": "Else statement",
+    "insertionScopeType": "ifStatement"
+  }
+}

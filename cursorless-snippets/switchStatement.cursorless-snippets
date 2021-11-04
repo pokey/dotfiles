@@ -1,0 +1,34 @@
+{
+  "switchStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact",
+            "cpp",
+            "c",
+            "java",
+            "csharp"
+          ]
+        },
+        "body": [
+          "switch ($value) {",
+          "\tcase $caseValue:",
+          "\t\t$caseBody",
+          "\t\tbreak;",
+          "}"
+        ]
+      }
+    ],
+    "description": "Switch statement",
+    "variables": {
+      "caseBody": {
+        "wrapperScopeType": "statement"
+      }
+    },
+    "insertionScopeType": "statement"
+  }
+}

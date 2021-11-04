@@ -235,6 +235,9 @@
     "cursorless.hatPenalties.colors": {
         "yellow": 1.5
     },
+    "cursorless.hatPenalties.shapes": {
+        "eye": 2
+    },
     "cursorless.hatSizeAdjustment": 20,
     "cursorless.hatVerticalOffset": 4.2,
     "editor.accessibilitySupport": "off",
