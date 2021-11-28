@@ -1,0 +1,48 @@
+{
+  "forEachStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "for (const $name of $iterable) {",
+          "\t$body",
+          "}"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "for $name in $iterable:",
+          "\t$body"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "snakeCase"
+          }
+        }
+      }
+    ],
+    "variables": {
+      "body": {
+        "wrapperScopeType": "statement"
+      }
+    },
+    "insertionScopeType": "statement"
+  }
+}

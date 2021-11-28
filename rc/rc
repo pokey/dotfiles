@@ -72,7 +72,10 @@ source "$HOME/.sh/commands.sh"
 eval "$(hub alias -s)"
 
 # Init pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then
+   eval "$(pyenv init --path)"
+   eval "$(pyenv init -)"
+fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # http://marianposaceanu.com/articles/macos-sierra-upgrade-from-a-developers-perspective

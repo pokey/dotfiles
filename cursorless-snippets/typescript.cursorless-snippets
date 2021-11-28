@@ -32,7 +32,7 @@
           ]
         },
         "body": [
-          "this.$name = this.$name.bind(this)"
+          "this.${name/^(this.)?(.+)$/$2/} = this.${name/^(this.)?(.+)$/$2/}.bind(this)"
         ],
         "variables": {
           "name": {

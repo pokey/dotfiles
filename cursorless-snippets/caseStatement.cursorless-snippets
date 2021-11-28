@@ -1,0 +1,32 @@
+{
+  "caseStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact",
+            "cpp",
+            "c",
+            "java",
+            "csharp"
+          ]
+        },
+        "body": [
+          "case $caseValue:",
+          "\t$caseBody",
+          "\tbreak;"
+        ]
+      }
+    ],
+    "description": "Case statement",
+    "variables": {
+      "caseBody": {
+        "wrapperScopeType": "statement"
+      }
+    },
+    "insertionScopeType": "statement"
+  }
+}

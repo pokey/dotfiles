@@ -1,0 +1,40 @@
+{
+  "whileStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "while ($condition) {",
+          "\t$body",
+          "}"
+        ],
+        "variables": {}
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "while $condition:",
+          "\t$body"
+        ],
+        "variables": {}
+      }
+    ],
+    "variables": {
+      "body": {
+        "wrapperScopeType": "statement"
+      }
+    },
+    "insertionScopeType": "statement"
+  }
+}

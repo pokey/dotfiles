@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm ~/.talon/user/cursorless-talon
+ln -s "$HOME/src/cursorless-talon-development" ~/.talon/user

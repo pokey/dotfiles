@@ -1,0 +1,32 @@
+{
+  "lambdaBlock": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "($parameters) => {",
+          "\t$body",
+          "}"
+        ],
+        "variables": {
+          "parameters": {
+            "formatter": "camelCase"
+          }
+        }
+      }
+    ],
+    "description": "Lambda block",
+    "variables": {
+      "body": {
+        "wrapperScopeType": "statement"
+      }
+    }
+  }
+}

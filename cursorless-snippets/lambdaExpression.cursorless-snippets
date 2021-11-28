@@ -1,0 +1,43 @@
+{
+  "lambdaExpression": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "($parameters) => ($expression)"
+        ],
+        "variables": {
+          "parameters": {
+            "formatter": "camelCase"
+          }
+        }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "lambda $parameters: $expression"
+        ],
+        "variables": {
+          "parameters": {
+            "formatter": "snakeCase"
+          }
+        }
+      }
+    ],
+    "description": "Lambda expression",
+    "variables": {
+      "expression": {}
+    }
+  }
+}

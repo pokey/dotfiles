@@ -117,6 +117,12 @@
                 }
             },
             {
+                "scope": "entity.name.type",
+                "settings": {
+                    "foreground": "#e7e29e",
+                }
+            },
+            {
                 "scope": "variable.language.this",
                 "settings": {
                     "foreground": "#65b3e0"
