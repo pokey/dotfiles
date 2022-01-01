@@ -1,4 +1,5 @@
 {
+    "editor.padding.top": 2,
     "files.defaultLanguage": "markdown",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -248,7 +249,7 @@
     "cursorless.hatVerticalOffset": 4.2,
     "editor.accessibilitySupport": "off",
     "tabnine.experimentalAutoImports": true,
-    "editor.acceptSuggestionOnEnter": "off",
+    "editor.acceptSuggestionOnEnter": "smart",
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "vscode-neovim.logOutputToConsole": true,
@@ -293,10 +294,18 @@
         "bolt": true,
         "crosshairs": true
     },
-    "window.zoomLevel": 1,
+    "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
     "cursorless.hatEnablement.colors": {
         "blue": false,
         "pink": false
     },
-    "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets"
+    "cursorless.pendingEditDecorationTime": 200,
+    "cursorless.debug": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "window.zoomLevel": 1,
+    "notebook.globalToolbar": false,
+    "notebook.showCellStatusBar": "visibleAfterExecute",
+    "notebook.undoRedoPerCell": false
 }
