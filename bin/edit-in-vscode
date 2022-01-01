@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+input="$1"
+tmp_file=$(mktemp .visual-XXXXXX)
+
+cat "$input" > "$tmp_file"
+
+code --wait "$tmp_file"
+
+mv "$tmp_file" "$input"

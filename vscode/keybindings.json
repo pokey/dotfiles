@@ -53,6 +53,14 @@
         "when": "terminalFocus"
     },
     {
+        "key": "ctrl+q e",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u0011e"
+        },
+        "when": "terminalFocus"
+    },
+    {
         "key": "ctrl+h 1",
         "command": "workbench.action.terminal.focusAtIndex1",
     },

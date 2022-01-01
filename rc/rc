@@ -23,8 +23,8 @@ export EXA_LA_OPTIONS="-l --git --color-scale --classify --group-directories-fir
 export LESS_OPTIONS="--tabs=3 -RXF"
 
 # Other envvars
-export VISUAL="nvim --noplugin"
-export EDITOR="nvim --noplugin"
+export VISUAL="edit-in-vscode"
+export EDITOR="edit-in-vscode"
 export REACT_EDITOR="code"
 export VIMPAGER_VIM="nvim"
 export PAGER="less $LESS_OPTIONS"
