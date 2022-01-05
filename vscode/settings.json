@@ -295,11 +295,7 @@
         "crosshairs": true
     },
     "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
-    "cursorless.hatEnablement.colors": {
-        "blue": false,
-        "pink": false
-    },
-    "cursorless.pendingEditDecorationTime": 200,
+    "cursorless.pendingEditDecorationTime": 100,
     "cursorless.debug": true,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"

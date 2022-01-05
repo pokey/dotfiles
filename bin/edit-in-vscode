@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# This script allows us to open a temporary document in the vscode window that
+# contains the current working directory without vscode reporting about
+# workspace trust issues
 
 input="$1"
 tmp_file=$(mktemp .visual-XXXXXX)
