@@ -24,7 +24,7 @@
             "type": "shell",
             "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
             "presentation": {}
-        }
+        },
         {
             "label": "Git amend",
             "type": "shell",
@@ -32,6 +32,12 @@
             "presentation": {
                 "reveal": "never"
             }
+        },
+        {
+            "label": "Git push force",
+            "type": "shell",
+            "command": "git push --force-with-lease origin HEAD",
+            "presentation": {}
         }
     ]
 }

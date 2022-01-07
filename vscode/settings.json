@@ -27,7 +27,6 @@
         "command-server.runCommand",
         "command-server.updateCoreState",
     ],
-    "workbench.colorTheme": "Abyss",
     "terminal.integrated.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.fontSize": 13,
     "editor.formatOnSave": true,
@@ -221,7 +220,7 @@
         },
         "frame": {
             "sizeAdjustment": -5,
-            "verticalOffset": -2.25
+            "verticalOffset": 0
         },
         "curve": {
             "sizeAdjustment": -6,
@@ -244,6 +243,10 @@
     },
     "cursorless.hatPenalties.shapes": {
         "eye": 2
+    },
+    "cursorless.colors.dark": {
+        // "green": "#439932", // T
+        // "green": "#43BA17", // pokey
     },
     "cursorless.hatSizeAdjustment": 20,
     "cursorless.hatVerticalOffset": 4.2,
@@ -300,8 +303,9 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.zoomLevel": 1,
     "notebook.globalToolbar": false,
     "notebook.showCellStatusBar": "visibleAfterExecute",
-    "notebook.undoRedoPerCell": false
+    "notebook.undoRedoPerCell": false,
+    "workbench.colorTheme": "Abyss",
+    "window.zoomLevel": 1
 }
