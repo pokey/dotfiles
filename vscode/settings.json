@@ -134,6 +134,7 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
@@ -160,11 +161,11 @@
     },
     "workbench.iconTheme": "vscode-icons",
     // Controls whether suggestions should automatically show up while typing.
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
-    },
+    // "editor.quickSuggestions": {
+    //     "other": true,
+    //     "comments": true,
+    //     "strings": true
+    // },
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
@@ -307,5 +308,9 @@
     "notebook.showCellStatusBar": "visibleAfterExecute",
     "notebook.undoRedoPerCell": false,
     "workbench.colorTheme": "Abyss",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "cursorless.hatEnablement.colors": {
+        "blue": false,
+        "pink": false
+    },
 }

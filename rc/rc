@@ -108,3 +108,5 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 eval "$(rbenv init -)"
+
+source "$HOME/src/git-subrepo/.rc"

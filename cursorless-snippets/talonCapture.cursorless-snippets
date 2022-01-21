@@ -1,0 +1,34 @@
+{
+    "talonCapture": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "@mod.capture(",
+                    "\trule=$rule",
+                    ")",
+                    "def $name(m):",
+                    "\t$body"
+                ],
+                "variables": {
+                    "name": {
+                        "formatter": "snakeCase"
+                    }
+                }
+            }
+        ],
+        "description": "A talon capture",
+        "variables": {
+            "rule": {},
+            "name": {},
+            "body": {
+                "wrapperScopeType": "statement"
+            }
+        },
+        "insertionScopeType": "namedFunction"
+    }
+}
