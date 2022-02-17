@@ -1,0 +1,30 @@
+{
+    "talonList": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "mod.list(\"$name\", \"$description\")",
+                    "",
+                    "ctx.lists[\"user.$name\"] = {",
+                    "\t$items",
+                    "}"
+                ],
+                "variables": {
+                    "name": {
+                        "formatter": "snakeCase"
+                    }
+                }
+            }
+        ],
+        "description": "A talon list",
+        "variables": {
+            "description": {},
+            "items": {}
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "elseIf": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "elif $condition:",
+                    "\t$body"
+                ]
+            }
+        ],
+        "description": "Else-if statement ",
+        "variables": {
+            "condition": {},
+            "body": {
+                "wrapperScopeType": "statement"
+            }
+        },
+        "insertionScopeType": "ifStatement"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "gitClone": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "shellscript"
+                    ]
+                },
+                "body": [
+                    "git clone '${repository:$CLIPBOARD}' "
+                ]
+            }
+        ],
+        "description": "",
+        "variables": {
+            "repository": {}
+        }
+    }
+}

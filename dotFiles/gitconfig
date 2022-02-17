@@ -51,3 +51,5 @@
 	plus-emph-style = syntax "#00a800"
 	minus-style = syntax "#700000"
 	minus-emph-style = syntax 1
+[user]
+	email = 755842+pokey@users.noreply.github.com

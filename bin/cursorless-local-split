@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+branch=frankenbranch-2022-02-13
+
+cd ~/src/cursorless-vscode
+
+git switch ${branch}
+git br -D ${branch}-talon
+git subtree split --prefix=cursorless-talon --branch=${branch}-talon
+git push --force-with-lease cursorless-talon-local ${branch}-talon:${branch}

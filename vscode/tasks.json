@@ -38,6 +38,26 @@
             "type": "shell",
             "command": "git push --force-with-lease origin HEAD",
             "presentation": {}
+        },
+        {
+            "label": "Test clean talon",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
+            "presentation": {}
+        },
+        {
+            "label": "Restore all talon",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/restore-all-talon",
+            "presentation": {},
+            "problemMatcher": []
+        },
+        {
+            "label": "Cursorless local split",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/cursorless-local-split",
+            "presentation": {},
+            "problemMatcher": []
         }
     ]
 }

@@ -119,3 +119,5 @@ alias egrep='egrep --color=auto'
 alias install-local='vsce package -o bundle.vsix && code --install-extension bundle.vsix'
 alias tag-version="cat package.json | jq -r '.version' | xargs -I{} git tag -am {} {}"
 alias publish-extension="vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)"
+
+alias patch-from-talon="git -C ../cursorless-talon format-patch -k main --stdout | git am -3k --directory=cursorless-talon"

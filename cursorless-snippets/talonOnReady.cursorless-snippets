@@ -1,0 +1,26 @@
+{
+    "talonOnReady": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "def on_ready():",
+                    "\t$body",
+                    "",
+                    "",
+                    "app.register(\"ready\", on_ready)"
+                ]
+            }
+        ],
+        "description": "",
+        "variables": {
+            "body": {
+                "wrapperScopeType": "statement"
+            }
+        }
+    }
+}

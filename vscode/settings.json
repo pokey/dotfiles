@@ -1,4 +1,5 @@
 {
+    "command-server.backgroundWindowProtection": true,
     "editor.padding.top": 2,
     "files.defaultLanguage": "markdown",
     "editor.suggestSelection": "first",
@@ -69,6 +70,7 @@
             "cursorless.justAddedBackground": "#09ff005b",
             "cursorless.pendingModification0Background": "#8c00ff86",
             "cursorless.pendingModification1Background": "#ff009d7e",
+            "cursorless.highlight1Background": "#4bd5ff48",
         }
     },
     "editor.tokenColorCustomizations": {
@@ -89,6 +91,18 @@
                 "scope": "keyword.operator",
                 "settings": {
                     "foreground": "#bdbdbd"
+                }
+            },
+            {
+                "scope": "keyword.operator.logical.python",
+                "settings": {
+                    "foreground": "#BE0000"
+                }
+            },
+            {
+                "scope": "keyword.operator.new",
+                "settings": {
+                    "foreground": "#BE0000"
                 }
             },
             {
@@ -264,7 +278,6 @@
     "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 13,
     "notebook.cellToolbarLocation": {
-        "default": "right",
         "jupyter-notebook": "left"
     },
     "jupyter.enableNativeInteractiveWindow": true,
@@ -308,9 +321,11 @@
     "notebook.showCellStatusBar": "visibleAfterExecute",
     "notebook.undoRedoPerCell": false,
     "workbench.colorTheme": "Abyss",
-    "window.zoomLevel": 1,
     "cursorless.hatEnablement.colors": {
         "blue": false,
         "pink": false
     },
+    "window.zoomLevel": 1,
+    "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
+    "editor.renderWhitespace": "none",
 }

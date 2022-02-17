@@ -1,0 +1,30 @@
+{
+    "talonContextFile": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "from talon import Context",
+                    "",
+                    "ctx = Context()",
+                    "ctx.matches = r\"\"\"",
+                    "$matches",
+                    "\"\"\"",
+                    "",
+                    "@ctx.action_class(\"$action_type\")",
+                    "class ${action_type/^./${1:/upcase}/}Actions:",
+                    "\tdef $action_name():",
+                    "\t\t$body"
+                ]
+            }
+        ],
+        "description": "A file implementing a talon action in a particular context",
+        "variables": {
+            "body": {}
+        }
+    }
+}
