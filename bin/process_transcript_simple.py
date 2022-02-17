@@ -16,10 +16,11 @@ offset = 78 - 80.06904987200323
 with open("/Users/pokey/Movies/Cursorless/Completed/Two Sum/raw-transcript.jsonl") as f:
     raw_transcript = [json.loads(line) for line in f]
 
+
 def format_time_stamp(total_seconds: float):
     hours, remainder = divmod(total_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-    milliseconds = floor((seconds * 1000)%1000)
+    milliseconds = floor((seconds * 1000) % 1000)
     return f"{int(hours):02}:{int(minutes):02}:{floor(seconds):02},{milliseconds:03}"
 
 
