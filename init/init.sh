@@ -199,3 +199,7 @@ backup "$karabiner/karabiner.json"
 (cd "$BASEPATH/karabiner-gen" ; ./generate_karabiner.py > "$karabiner/karabiner.json")
 
 $INSTALL git-delta
+
+curl -sSL https://install.python-poetry.org | python3 -
+mkdir -p "$HOME/.zfunc"
+"$HOME/.local/bin/poetry" completions zsh > ~/.zfunc/_poetry

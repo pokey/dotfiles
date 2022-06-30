@@ -27,6 +27,7 @@ abbreviations=(
   "gra"   'git rebase --abort'
   "gcp"   'git cherry-pick'
   "ghp"   'git subtree push --prefix dist origin main'
+  "ghr"   'git hide -r'
   "god"   'git checkout develop'
   "gom"   'git checkout main'
   "gomr"   'git checkout master'

@@ -18,7 +18,9 @@
       }
     ],
     "description": "Constructor using makeAutoObservable",
-    "insertionScopeType": "namedFunction"
+    "insertionScopeTypes": [
+      "namedFunction"
+    ]
   },
   "bindClassFunction": {
     "definitions": [
@@ -42,7 +44,9 @@
       }
     ],
     "description": "Bind function to this",
-    "insertionScopeType": "statement"
+    "insertionScopeTypes": [
+      "statement"
+    ]
   },
   "constantDeclaration": {
     "definitions": [
@@ -66,7 +70,9 @@
       }
     ],
     "description": "Constant variable declaration",
-    "insertionScopeType": "statement",
+    "insertionScopeTypes": [
+      "statement"
+    ],
     "variables": {
       "value": {
         "wrapperScopeType": "statement"
@@ -95,7 +101,9 @@
       }
     ],
     "description": "Let variable declaration",
-    "insertionScopeType": "statement",
+    "insertionScopeTypes": [
+      "statement"
+    ],
     "variables": {
       "value": {
         "wrapperScopeType": "statement"

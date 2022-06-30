@@ -20,6 +20,12 @@
             "presentation": {}
         },
         {
+            "label": "Install into cursorless sandbox",
+            "type": "shell",
+            "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix --extensions-dir ~/src/cursorless/.vscode-sandbox/extensions",
+            "presentation": {}
+        },
+        {
             "label": "Publish extension",
             "type": "shell",
             "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
@@ -28,10 +34,20 @@
         {
             "label": "Git amend",
             "type": "shell",
-            "command": "git commit --amend",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "git amend",
+            "presentation": {}
+        },
+        {
+            "label": "Git reword",
+            "type": "shell",
+            "command": "git reword",
+            "presentation": {}
+        },
+        {
+            "label": "Git imerge continue",
+            "type": "shell",
+            "command": "git-imerge continue",
+            "presentation": {}
         },
         {
             "label": "Git push force",
@@ -40,17 +56,64 @@
             "presentation": {}
         },
         {
-            "label": "Test clean talon",
+            "label": "Git update main",
+            "type": "shell",
+            "command": "git fetch && git update-ref refs/heads/main origin/main",
+            "presentation": {}
+        },
+        {
+            "label": "Run pre commit",
+            "type": "shell",
+            "command": "pre-commit run",
+            "presentation": {}
+        },
+        {
+            "label": "Test core talon",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/test-knausj",
+            "presentation": {
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "Test cursorless talon",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/test-cursorless-talon",
+            "presentation": {
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "Test all talon",
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
-            "presentation": {}
+            "presentation": {
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "Restore core talon",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/restore-pokey-talon",
+            "presentation": {
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "Restore cursorless talon",
+            "type": "shell",
+            "command": "/Users/pokey/pokey-home-files/bin/restore-cursorless-talon",
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
             "label": "Restore all talon",
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/restore-all-talon",
-            "presentation": {},
-            "problemMatcher": []
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
             "label": "Cursorless local split",

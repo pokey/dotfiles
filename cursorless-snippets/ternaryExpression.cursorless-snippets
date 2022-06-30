@@ -1,0 +1,33 @@
+{
+    "ternaryExpression": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "$value if $condition else $alternative"
+                ]
+            },
+            {
+                "scope": {
+                    "langIds": [
+                        "typescript",
+                        "typescriptreact"
+                    ]
+                },
+                "body": [
+                    "$condition ? $value : $alternative"
+                ]
+            }
+        ],
+        "description": "Ternary expression",
+        "variables": {
+            "value": {},
+            "condition": {},
+            "alternative": {}
+        }
+    }
+}

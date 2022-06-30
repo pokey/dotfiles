@@ -23,6 +23,8 @@
             }
         ],
         "description": "Interface declaration",
-        "insertionScopeType": "statement"
+        "insertionScopeTypes": [
+            "statement"
+        ]
     }
 }

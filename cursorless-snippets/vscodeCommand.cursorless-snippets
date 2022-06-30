@@ -1,0 +1,21 @@
+{
+    "vscodeCommand": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "talon"
+                    ]
+                },
+                "body": [
+                    "$spokenForm: user.vscode(\"${command:$CLIPBOARD}\")"
+                ]
+            }
+        ],
+        "description": "talon vscode spoke in form",
+        "variables": {
+            "spokenForm": {},
+            "command": {}
+        }
+    }
+}

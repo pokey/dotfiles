@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-branch=frankenbranch-2022-02-13
+branch=pokey/mine
+talon_branch="${branch}-talon"
 
-cd ~/src/cursorless-vscode
+cd ~/src/cursorless
 
 git switch ${branch}
-git br -D ${branch}-talon
+git show-ref --verify --quiet "refs/heads/${talon_branch}" && git br -D ${talon_branch}
 git subtree split --prefix=cursorless-talon --branch=${branch}-talon
 git push --force-with-lease cursorless-talon-local ${branch}-talon:${branch}
+git br -D ${talon_branch}

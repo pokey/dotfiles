@@ -1,5 +1,5 @@
 {
-    "elseIf": {
+    "dataclass": {
         "definitions": [
             {
                 "scope": {
@@ -8,20 +8,19 @@
                     ]
                 },
                 "body": [
-                    "elif $condition:",
+                    "from dataclasses import dataclass",
+                    "@dataclass",
+                    "class $name:",
                     "\t$body"
                 ]
             }
         ],
-        "description": "Else-if statement ",
+        "description": "Python data class",
         "variables": {
-            "condition": {},
-            "body": {
-                "wrapperScopeType": "statement"
-            }
-        },
-        "insertionScopeTypes": [
-            "ifStatement"
-        ]
+            "name": {
+                "formatter": "pascalCase"
+            },
+            "body": {}
+        }
     }
 }

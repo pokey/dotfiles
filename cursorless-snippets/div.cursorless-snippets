@@ -1,0 +1,25 @@
+{
+    "div": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "typescriptreact",
+                        "html"
+                    ]
+                },
+                "body": [
+                    "<div $attributes>",
+                    "\t$body",
+                    "</div>"
+                ]
+            }
+        ],
+        "description": "div",
+        "variables": {
+            "body": {
+                "wrapperScopeType": "xmlElement"
+            }
+        }
+    }
+}

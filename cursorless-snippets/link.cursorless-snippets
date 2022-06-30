@@ -10,6 +10,19 @@
         "body": [
           "[$text](${url:$CLIPBOARD})"
         ]
+      },
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "{@link $url} "
+        ]
       }
     ],
     "description": "Link"

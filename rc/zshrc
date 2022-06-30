@@ -8,6 +8,8 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
 
+fpath+=~/.zfunc
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall

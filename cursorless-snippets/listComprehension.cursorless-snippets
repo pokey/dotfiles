@@ -1,0 +1,29 @@
+{
+    "listComprehension": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "[",
+                    "\t$value",
+                    "\tfor $element in $list",
+                    "]"
+                ]
+            }
+        ],
+        "description": "Python list comprehension",
+        "variables": {
+            "value": {
+                "wrapperScopeType": "statement"
+            },
+            "element": {
+                "formatter": "snakeCase"
+            },
+            "list": {}
+        }
+    }
+}

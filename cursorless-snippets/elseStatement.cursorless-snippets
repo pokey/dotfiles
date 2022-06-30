@@ -33,6 +33,8 @@
       }
     ],
     "description": "Else statement",
-    "insertionScopeType": "ifStatement"
+    "insertionScopeTypes": [
+      "ifStatement"
+    ]
   }
 }

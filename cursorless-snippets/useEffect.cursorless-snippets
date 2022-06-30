@@ -1,27 +1,25 @@
 {
-    "elseIf": {
+    "useEffect": {
         "definitions": [
             {
                 "scope": {
                     "langIds": [
-                        "python"
+                        "typescriptreact"
                     ]
                 },
                 "body": [
-                    "elif $condition:",
-                    "\t$body"
+                    "useEffect(() => {",
+                    "\t$body",
+                    "}, [$conditionVariable]);"
                 ]
             }
         ],
-        "description": "Else-if statement ",
+        "description": "React useEffect hook",
         "variables": {
-            "condition": {},
             "body": {
                 "wrapperScopeType": "statement"
-            }
-        },
-        "insertionScopeTypes": [
-            "ifStatement"
-        ]
+            },
+            "conditionVariable": {}
+        }
     }
 }

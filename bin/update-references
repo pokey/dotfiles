@@ -62,5 +62,13 @@ if [ ${#gstatus} -ne 0 ] ; then
     notify -group update-references -title "Update references" -message "$push_diff"
 fi
 
+# --------------------------------------------
+# Finish by pushing
+cd "$REFERENCES_FOLDER"
+git push origin main || error_and_quit "Failed git push"
+
+cd "$NOTES_FOLDER"
+git push origin main || error_and_quit "Failed git push"
+
 echo "---------------------------"
 echo

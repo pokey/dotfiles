@@ -29,6 +29,8 @@
         "wrapperScopeType": "statement"
       }
     },
-    "insertionScopeType": "statement"
+    "insertionScopeTypes": [
+      "statement"
+    ]
   }
 }

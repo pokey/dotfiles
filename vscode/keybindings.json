@@ -287,4 +287,20 @@
         "command": "-vscode-neovim.escape",
         "when": "editorTextFocus && neovim.init && !markersNavigationVisible && !parameterHintsVisible && !referenceSearchVisible"
     },
+    {
+        "command": "command-server.runCommand",
+        "key": "ctrl+shift+f17",
+        "mac": "cmd+shift+f17",
+        "when": "quickFixWidgetVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.init && !dirtyDiffVisible && !findWidgetVisible && !inReferenceSearchEditor && !markersNavigationVisible && !notebookCellFocused && !notificationCenterVisible && !parameterHintsVisible && !referenceSearchVisible && neovim.mode == 'normal'"
+    },
+    {
+        "key": "escape",
+        "command": "-vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.init && neovim.mode != 'normal'"
+    }
 ]

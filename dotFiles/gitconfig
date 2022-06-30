@@ -1,7 +1,6 @@
 [include]
    path = .gitconfig.personal
 [alias]
-	co = checkout
 	ci = commit
 	br = branch
 	st = status
@@ -53,3 +52,7 @@
 	minus-emph-style = syntax 1
 [user]
 	email = 755842+pokey@users.noreply.github.com
+[branchless "core"]
+	mainBranch = main
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs

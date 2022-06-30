@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-rm ~/.talon/user/knausj_talon
+rm -f ~/.talon/user/knausj_talon
+rm -f ~/.talon/user/pokey_talon
 ln -s "$HOME/src/pokey_talon" ~/.talon/user

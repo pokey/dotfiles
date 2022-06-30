@@ -1,0 +1,25 @@
+{
+    "className": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "typescriptreact"
+                    ]
+                },
+                "body": [
+                    " className=\"$classes\""
+                ],
+                "variables": {
+                    "classes": {
+                        "formatter": "camelCase"
+                    }
+                }
+            }
+        ],
+        "description": "Html class attribute",
+        "variables": {
+            "classes": {}
+        }
+    }
+}

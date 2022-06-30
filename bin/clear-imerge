@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+git hide $(git log --all --since="30 minutes ago" '--grep=^Merge' '--grep=^imerge' --format=format:%H)
