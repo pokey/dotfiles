@@ -72,7 +72,7 @@
             "cursorless.justAddedBackground": "#09ff005b",
             "cursorless.pendingModification0Background": "#8c00ff86",
             "cursorless.pendingModification1Background": "#ff009d7e",
-            "cursorless.highlight0Background": "#ffffff",
+            "cursorless.highlight1Background": "#d449ff42"
             // "cursorless.highlight0Outline": "#c919ffb2",
         }
     },
@@ -366,4 +366,5 @@
     "githubPullRequests.defaultMergeMethod": "squash",
     "editor.inlineSuggest.enabled": true,
     "search.mode": "reuseEditor",
+    "nxConsole.enableTelemetry": false
 }
