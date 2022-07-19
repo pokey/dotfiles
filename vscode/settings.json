@@ -366,5 +366,6 @@
     "githubPullRequests.defaultMergeMethod": "squash",
     "editor.inlineSuggest.enabled": true,
     "search.mode": "reuseEditor",
-    "nxConsole.enableTelemetry": false
+    "nxConsole.enableTelemetry": false,
+    "terminal.integrated.shellIntegration.enabled": true
 }

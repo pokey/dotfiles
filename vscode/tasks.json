@@ -62,6 +62,12 @@
             "presentation": {}
         },
         {
+            "label": "Git commit empty",
+            "type": "shell",
+            "command": "git diff --exit-code && git commit --allow-empty -m \"Kick CI\"",
+            "presentation": {}
+        },
+        {
             "label": "Run pre commit",
             "type": "shell",
             "command": "pre-commit run",
