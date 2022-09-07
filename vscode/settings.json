@@ -1,5 +1,6 @@
 {
     "command-server.backgroundWindowProtection": true,
+    "git.mergeEditor": false,
     "files.refactoring.autoSave": true,
     "editor.padding.top": 2,
     "files.defaultLanguage": "markdown",
@@ -54,6 +55,9 @@
             "source.fixAll.format",
             "source.fixAll.eslint"
         ],
+    },
+    "[talon]": {
+        "editor.formatOnSave": false
     },
     "workbench.preferredDarkColorTheme": "Abyss",
     "workbench.colorCustomizations": {
@@ -306,16 +310,6 @@
     "editor.minimap.enabled": false,
     "javascript.inlayHints.parameterNames.enabled": "all",
     "editor.inlayHints.fontSize": 10,
-    "cursorless.hatEnablement.shapes": {
-        "ex": true,
-        "fox": true,
-        "frame": true,
-        "curve": true,
-        "eye": true,
-        "play": true,
-        "bolt": true,
-        "crosshairs": true
-    },
     "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
     "cursorless.pendingEditDecorationTime": 100,
     "cursorless.debug": true,
@@ -326,10 +320,6 @@
     "notebook.showCellStatusBar": "visibleAfterExecute",
     "notebook.undoRedoPerCell": false,
     "workbench.colorTheme": "Abyss",
-    "cursorless.hatEnablement.colors": {
-        "green": false,
-        "pink": false
-    },
     "window.zoomLevel": 1,
     "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
     "editor.renderWhitespace": "none",
@@ -367,5 +357,20 @@
     "editor.inlineSuggest.enabled": true,
     "search.mode": "reuseEditor",
     "nxConsole.enableTelemetry": false,
-    "terminal.integrated.shellIntegration.enabled": true
+    "terminal.integrated.shellIntegration.enabled": true,
+    "cursorless.hatEnablement.colors": {
+        "green": false,
+        "pink": false
+    },
+    "cursorless.hatEnablement.shapes": {
+        "ex": true,
+        "fox": true,
+        "frame": true,
+        "curve": true,
+        "eye": true,
+        "play": true,
+        "bolt": true,
+        "crosshairs": true
+    },
+    "githubPullRequests.pullBranch": "never",
 }

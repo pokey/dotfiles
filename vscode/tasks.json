@@ -58,7 +58,7 @@
         {
             "label": "Git update main",
             "type": "shell",
-            "command": "git fetch && git update-ref refs/heads/main origin/main",
+            "command": "git fetch origin main:main",
             "presentation": {}
         },
         {
@@ -71,6 +71,12 @@
             "label": "Run pre commit",
             "type": "shell",
             "command": "pre-commit run",
+            "presentation": {}
+        },
+        {
+            "label": "Start tunnel",
+            "type": "shell",
+            "command": "/Users/pokey/n/bin/localtunnel --port 4200 | tee >(head -1 | cut -c13- | xargs echo -n | pbcopy)",
             "presentation": {}
         },
         {
