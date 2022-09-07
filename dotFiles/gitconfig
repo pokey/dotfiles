@@ -56,3 +56,5 @@
 	mainBranch = main
 [blame]
 	ignoreRevsFile = .git-blame-ignore-revs
+[pull]
+	rebase = true
