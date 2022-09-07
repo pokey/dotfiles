@@ -1,0 +1,26 @@
+{
+    "talonTag": {
+        "definitions": [
+            {
+                "scope": {
+                    "langIds": [
+                        "python"
+                    ]
+                },
+                "body": [
+                    "mod.tag(",
+                    "\t\"$name\",",
+                    "\t\"$description\",",
+                    ")"
+                ]
+            }
+        ],
+        "description": "A talon tag",
+        "variables": {
+            "name": {
+                "formatter": "snakeCase"
+            },
+            "description": {}
+        }
+    }
+}

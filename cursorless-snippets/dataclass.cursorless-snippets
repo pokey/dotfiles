@@ -21,6 +21,12 @@
                 "formatter": "pascalCase"
             },
             "body": {}
-        }
+        },
+        "insertionScopeTypes": [
+            "class",
+            "namedFunction",
+            "statement",
+            "line"
+        ]
     }
 }
