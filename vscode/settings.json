@@ -5,6 +5,8 @@
     "editor.padding.top": 2,
     "files.defaultLanguage": "markdown",
     "editor.suggestSelection": "first",
+    "modalkeys.startInNormalMode": false,
+    "modalkeys.normalCursorStyle": "line-thin",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vscode-neovim.neovimExecutablePaths.darwin": "/Users/pokey/nvim-osx64/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "/Users/pokey/.config/nvim/vscode-init.vim",
@@ -373,4 +375,79 @@
         "crosshairs": true
     },
     "githubPullRequests.pullBranch": "never",
+    "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
+    "modalkeys.keybindings": {
+        "d": {
+            "modalkeys.captureChar": {
+                "acceptAfter": 1,
+                "executeAfter": {
+                    "cursorless.command": {
+                        "version": 2,
+                        "action": {
+                            "name": "setSelection",
+                            "args": []
+                        },
+                        "targets": [
+                            {
+                                "type": "primitive",
+                                "mark": {
+                                    "type": "decoratedSymbol",
+                                    "symbolColor": "default",
+                                    "character": "__captured"
+                                }
+                            }
+                        ],
+                        "usePrePhraseSnapshot": false
+                    }
+                }
+            }
+        },
+        "i": "modalkeys.enterInsert",
+        "f": {
+            "cursorless.command": {
+                "version": 2,
+                "action": {
+                    "name": "setSelection",
+                    "args": []
+                },
+                "targets": [
+                    {
+                        "type": "primitive",
+                        "modifiers": [
+                            {
+                                "type": "containingScope",
+                                "scopeType": {
+                                    "type": "namedFunction"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "usePrePhraseSnapshot": false
+            }
+        },
+        "l": {
+            "cursorless.command": {
+                "version": 2,
+                "action": {
+                    "name": "setSelection",
+                    "args": []
+                },
+                "targets": [
+                    {
+                        "type": "primitive",
+                        "modifiers": [
+                            {
+                                "type": "containingScope",
+                                "scopeType": {
+                                    "type": "line"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "usePrePhraseSnapshot": false
+            }
+        }
+    },
 }

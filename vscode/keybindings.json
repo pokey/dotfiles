@@ -302,5 +302,15 @@
         "key": "escape",
         "command": "-vscode-neovim.escape",
         "when": "editorTextFocus && neovim.init && neovim.mode != 'normal'"
+    },
+    {
+        "key": "escape",
+        "command": "-modalkeys.enterNormal",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "modalkeys.enterNormal",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
     }
 ]
