@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+commit="${1:-.}"
+base="$(git config branchless.core.mainBranch)"
+
+branches="$(git-branchless query -b "stack($commit) & branches()")"
+
+while read -r branch; do
+    ancestor_branches="$(git-branchless query -b "ancestors(\"$branch\") & branches() & draft()")"
+    ancestor_branches="$(printf "$ancestor_branches\n$base")"
+    parent_branch="$(echo "$ancestor_branches" | sed -n 2p)"
+
+    gh pr create \
+        --draft \
+        --base "$parent_branch" \
+        --head "$branch"
+done <<<"$branches"
