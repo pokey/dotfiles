@@ -19,6 +19,18 @@
           "\t$consequence",
           "}"
         ]
+      },
+      {
+        "scope": {
+          "langIds": [
+            "shellscript"
+          ]
+        },
+        "body": [
+          "if $condition; then",
+          "\t$consequence",
+          "fi"
+        ]
       }
     ],
     "variables": {

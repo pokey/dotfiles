@@ -1,0 +1,20 @@
+{
+  "ifElseStatement": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "shellscript"
+          ]
+        },
+        "body": [
+          "if $condition; then",
+          "\t$consequence",
+          "else",
+          "\t$alternative",
+          "fi"
+        ]
+      }
+    ]
+  }
+}
