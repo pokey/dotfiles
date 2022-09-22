@@ -95,10 +95,10 @@ abbreviations=(
   "ds"    "dvc status"
   "dr"    "dvc repro -R"
   "dr."   "dvc repro -R ."
-  "pr"    "git pull-request -ocpb"
+  "prc"   "git pull-request -ocpb"
   "prd"   "git pull-request -ocpb develop"
   "prm"   "git pull-request -ocpb main"
-  "prmr"   "git pull-request -ocpb master"
+  "prmr"  "git pull-request -ocpb master"
   "prs"   "git pr show"
   "awd"   'eval $(awsdev)'
   "dl"    'eval $(aws ecr get-login --no-include-email)'
