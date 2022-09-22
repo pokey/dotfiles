@@ -64,10 +64,8 @@
         {
             "label": "Git detach head",
             "type": "shell",
-            "command": "git checkout --detach head",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "git checkout --detach head && git branchless smartlog",
+            "presentation": {}
         },
         {
             "label": "Git smartlog",
@@ -86,14 +84,14 @@
         {
             "label": "Git push commit stack",
             "type": "shell",
-            "command": "git push --force-with-lease origin $(git branchless query -b 'stack(${input:commitish}) & branches()')",
+            "command": "git-branchless submit --create 'stack(${input:commitish})')",
             "presentation": {},
             "problemMatcher": []
         },
         {
             "label": "Git push current stack",
             "type": "shell",
-            "command": "git push --force-with-lease origin $(git branchless query -b 'stack() & branches()')",
+            "command": "git-branchless submit --create",
             "presentation": {},
             "problemMatcher": []
         },
@@ -147,10 +145,53 @@
             "problemMatcher": []
         },
         {
+            "label": "Git commit insert",
+            "type": "shell",
+            "command": "git commit -a && git-branchless move -x 'descendants(parents(.)) - ancestors(.)' && git branchless smartlog",
+            "presentation": {},
+            "problemMatcher": []
+        },
+        {
+            "label": "Git previous",
+            "type": "shell",
+            "command": "git-branchless prev -i '${input:stepCount}'",
+            "presentation": {},
+            "problemMatcher": []
+        },
+        {
+            "label": "Git previous branch",
+            "type": "shell",
+            "command": "git-branchless prev -ib '${input:stepCount}'",
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Git next",
+            "type": "shell",
+            "command": "git-branchless next -i '${input:stepCount}'",
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Git next branch",
+            "type": "shell",
+            "command": "git-branchless next -ib '${input:stepCount}'",
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Git commit empty",
             "type": "shell",
-            "command": "git diff --exit-code && git commit --allow-empty -m \"Kick CI\"",
-            "presentation": {},
+            "command": "git diff --exit-code && git commit --allow-empty -m \"Empty commit\" && git branchless smartlog",
+            "presentation": {
+                "focus": true
+            },
             "problemMatcher": []
         },
         {
@@ -171,7 +212,7 @@
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/test-knausj",
             "presentation": {
-                "reveal": "never"
+                "reveal": "silent"
             }
         },
         {
@@ -179,7 +220,7 @@
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/test-cursorless-talon",
             "presentation": {
-                "reveal": "never"
+                "reveal": "silent"
             }
         },
         {
@@ -187,7 +228,7 @@
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
             "presentation": {
-                "reveal": "never"
+                "reveal": "silent"
             }
         },
         {
@@ -195,7 +236,7 @@
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/restore-pokey-talon",
             "presentation": {
-                "reveal": "never"
+                "reveal": "silent"
             }
         },
         {
@@ -203,7 +244,7 @@
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/restore-cursorless-talon",
             "presentation": {
-                "reveal": "never"
+                "reveal": "silent"
             }
         },
         {
@@ -211,7 +252,7 @@
             "type": "shell",
             "command": "/Users/pokey/pokey-home-files/bin/restore-all-talon",
             "presentation": {
-                "reveal": "never"
+                "reveal": "silent"
             }
         },
         {
@@ -232,6 +273,12 @@
             "type": "promptString",
             "id": "newBranchName",
             "description": "Branch to create",
+        },
+        {
+            "type": "promptString",
+            "id": "stepCount",
+            "description": "How many steps?",
+            "default": "1",
         },
         {
             "type": "promptString",
