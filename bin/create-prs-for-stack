@@ -3,16 +3,37 @@ set -euo pipefail
 
 commit="${1:-.}"
 base="$(git config branchless.core.mainBranch)"
+remote="origin"
 
-branches="$(git-branchless query -b "stack($commit) & branches()")"
+# Broken: see https://github.com/arxanas/git-branchless/issues/557
+# git-branchless submit --create "stack($commit)"
 
-while read -r branch; do
-    ancestor_branches="$(git-branchless query -b "ancestors(\"$branch\") & branches() & draft()")"
-    ancestor_branches="$(printf "$ancestor_branches\n$base")"
-    parent_branch="$(echo "$ancestor_branches" | sed -n 2p)"
+# FIXME: Remove `| tac` once
+# https://github.com/arxanas/git-branchless/issues/554 is fixed
+branches="$(git-branchless query -b "stack($commit) & branches()" | tac)"
+
+while read -r branch <&3; do
+    # FIXME: Remove this line once we add back submit above
+    git push --force-with-lease --set-upstream "$remote" "$branch"
+
+    existing_pr="$(gh pr view "$branch" --json url -t "{{.url}}" || echo -n "")"
+
+    if [ -n "$existing_pr" ]; then
+        echo "PR $existing_pr already exists for branch $branch"
+        continue
+    fi
+
+    ancestor_query="ancestors(parents(\"$branch\")) & branches() & draft()"
+    parent_branch=$(git-branchless query -b "$ancestor_query - ancestors(parents($ancestor_query))")
+    if [ -z "$parent_branch" ]; then
+        parent_branch="$base"
+    else
+        gh pr view "$parent_branch" --json url -t "Depends on {{.url}}" | pbcopy
+        echo "Copied dependency message to clipboard for use in PR body"
+    fi
 
     gh pr create \
         --draft \
         --base "$parent_branch" \
         --head "$branch"
-done <<<"$branches"
+done 3<<<"$branches"
