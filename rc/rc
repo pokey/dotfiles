@@ -41,13 +41,12 @@ stty ixany
 stty ixoff -ixon
 stty stop undef
 stty start undef
-vim()
-{
-    # No ttyctl, so we need to save and then restore terminal settings
-    local STTYOPTS="$(stty -g)"
-    stty stop '' -ixoff
-    command nvim "$@"
-    stty "$STTYOPTS"
+vim() {
+   # No ttyctl, so we need to save and then restore terminal settings
+   local STTYOPTS="$(stty -g)"
+   stty stop '' -ixoff
+   command nvim "$@"
+   stty "$STTYOPTS"
 }
 
 source "$HOME/.sh/aliases.sh"
@@ -57,7 +56,7 @@ source "$HOME/.sh/aliases.sh"
 # fasd
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-   fasd --init auto >| "$fasd_cache"
+   fasd --init auto >|"$fasd_cache"
 fi
 source "$fasd_cache"
 unset fasd_cache
@@ -69,15 +68,12 @@ export FZF_DEFAULT_OPTS="--exact"
 
 source "$HOME/.sh/commands.sh"
 
-# Init hub
-eval "$(hub alias -s)"
-
 # Init pyenv
-if which pyenv > /dev/null; then
+if which pyenv >/dev/null; then
    eval "$(pyenv init --path)"
    eval "$(pyenv init -)"
 fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # http://marianposaceanu.com/articles/macos-sierra-upgrade-from-a-developers-perspective
 # https://discussions.apple.com/thread/7682417?start=0&tstart=0
