@@ -5,17 +5,13 @@ commit="${1:-.}"
 base="$(git config branchless.core.mainBranch)"
 remote="origin"
 
-# Broken: see https://github.com/arxanas/git-branchless/issues/557
-# git-branchless submit --create "stack($commit)"
+git-branchless submit --create "stack(\"$commit\")"
 
 # FIXME: Remove `| tac` once
 # https://github.com/arxanas/git-branchless/issues/554 is fixed
-branches="$(git-branchless query -b "stack($commit) & branches()" | tac)"
+branches="$(git-branchless query -b "stack(\"$commit\")" | tac)"
 
 while read -r branch <&3; do
-    # FIXME: Remove this line once we add back submit above
-    git push --force-with-lease --set-upstream "$remote" "$branch"
-
     existing_pr="$(gh pr view "$branch" --json url -t "{{.url}}" || echo -n "")"
 
     if [ -n "$existing_pr" ]; then
@@ -28,6 +24,11 @@ while read -r branch <&3; do
     if [ -z "$parent_branch" ]; then
         parent_branch="$base"
     else
+        if [[ $parent_branch =~ $'\n' ]]; then
+            echo "ERROR: Branch $branch has more than one parent branch: $parent_branch"
+            exit 1
+        fi
+
         gh pr view "$parent_branch" --json url -t "Depends on {{.url}}" | pbcopy
         echo "Copied dependency message to clipboard for use in PR body"
     fi

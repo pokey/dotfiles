@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Gets the main branch for this repository, as configured for branchless
+set -euo pipefail
+
+git config branchless.core.mainBranch

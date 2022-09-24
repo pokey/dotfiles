@@ -58,7 +58,7 @@
         {
             "label": "Git update main",
             "type": "shell",
-            "command": "git fetch origin main:main --update-head-ok && git branchless smartlog",
+            "command": "main=$(get-main-branch) && git fetch origin \"$main:$main\" --update-head-ok && git branchless smartlog",
             "presentation": {}
         },
         {
@@ -77,7 +77,7 @@
         {
             "label": "Git move to main",
             "type": "shell",
-            "command": "git branchless move -s ${input:commitish} -d main",
+            "command": "main=$(get-main-branch) && git branchless move -s ${input:commitish} -d \"$main\"",
             "presentation": {},
             "problemMatcher": []
         },
