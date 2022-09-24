@@ -117,6 +117,20 @@
             "problemMatcher": []
         },
         {
+            "label": "Git auto-branch commit",
+            "type": "shell",
+            "command": "auto-branch '${input:commitish}' && git branchless smartlog",
+            "presentation": {},
+            "problemMatcher": []
+        },
+        {
+            "label": "Git auto-branch head",
+            "type": "shell",
+            "command": "auto-branch && git branchless smartlog",
+            "presentation": {},
+            "problemMatcher": []
+        },
+        {
             "label": "Git move branch to commit",
             "type": "shell",
             "command": "git branch -f '${input:existingBranchName}' '${input:commitish}' && git branchless smartlog",
