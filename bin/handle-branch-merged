@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Given a commit-ish, does the following:
+#
+# 1. Moves all its children to the main branch
+# 2. Hides the commit and all its ancestors that are not also ancestors of other
+#    commits.
+#
+# This script is designed to be used after a branch has been merged into main;
+# this script will move its descendant branches to be based off of main, and
+# hide the merged branch.
+set -euo pipefail
+
+if [[ $# -eq 0 ]]; then
+    echo 'ERROR: Expected commit as sole argument'
+    exit 1
+fi
+
+commit="${1}"
+base="$(git config branchless.core.mainBranch)"
+
+git move -x "children(\"$commit\"):" -d "$base"
+git hide --delete-branches "draft() & ancestors(\"$commit\") - ancestors(all() - ancestors(\"$commit\"))"
