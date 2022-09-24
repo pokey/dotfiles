@@ -77,7 +77,7 @@
         {
             "label": "Git move to main",
             "type": "shell",
-            "command": "main=$(get-main-branch) && git branchless move -s ${input:commitish} -d \"$main\"",
+            "command": "main=$(get-main-branch) && git branchless move -s '${input:commitish}' -d \"$main\"",
             "presentation": {},
             "problemMatcher": []
         },
@@ -155,7 +155,9 @@
             "label": "Git previous",
             "type": "shell",
             "command": "git-branchless prev -i '${input:stepCount}'",
-            "presentation": {},
+            "presentation": {
+                "focus": true
+            },
             "problemMatcher": []
         },
         {
@@ -189,9 +191,7 @@
             "label": "Git commit empty",
             "type": "shell",
             "command": "git diff --exit-code && git commit --allow-empty -m \"Empty commit\" && git branchless smartlog",
-            "presentation": {
-                "focus": true
-            },
+            "presentation": {},
             "problemMatcher": []
         },
         {
