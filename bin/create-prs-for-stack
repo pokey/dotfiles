@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Given a commit sha (defaults to current commit), creates PRs for every
+# branch on the stack of the given commit.  Each PR is created with its base
+# as the nearest ancestor of the given branch that is also a branch.
 set -euo pipefail
 
 commit="${1:-.}"
