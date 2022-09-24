@@ -84,7 +84,7 @@
         {
             "label": "Git push commit stack",
             "type": "shell",
-            "command": "git-branchless submit --create 'stack(${input:commitish})')",
+            "command": "git-branchless submit --create 'stack(${input:commitish})'",
             "presentation": {},
             "problemMatcher": []
         },
