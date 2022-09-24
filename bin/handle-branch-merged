@@ -11,7 +11,7 @@
 set -euo pipefail
 
 if [[ $# -eq 0 ]]; then
-    echo 'ERROR: Expected commit as sole argument'
+    echo 'ERROR: Expected commit-ish as sole argument'
     exit 1
 fi
 
