@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Automatically create branches for each commit in the query based on the commit
+# subject
+# Depends on slugify https://www.npmjs.com/package/slugify-cli
+set -euo pipefail
+
+prefix="pokey/"
+query="${1:-.}"
+
+# FIXME: Remove `| tac` once
+# https://github.com/arxanas/git-branchless/issues/554 is fixed
+commits="$(git-branchless query -r "$query" | tac)"
+
+while read -r commit <&3; do
+    subject="$(git show -s --format='%s' "$commit")"
+    branch_name="$prefix$(slugify "$subject")"
+    git branch "$branch_name" "$commit"
+done 3<<<"$commits"
