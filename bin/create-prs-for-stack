@@ -10,9 +10,7 @@ remote="origin"
 
 git-branchless submit --create "stack(\"$commit\")"
 
-# FIXME: Remove `| tac` once
-# https://github.com/arxanas/git-branchless/issues/554 is fixed
-branches="$(git-branchless query -b "stack(\"$commit\")" | tac)"
+branches="$(git-branchless query -b "stack(\"$commit\")")"
 
 while read -r branch <&3; do
     existing_pr="$(gh pr view "$branch" --json url -t "{{.url}}" || echo -n "")"

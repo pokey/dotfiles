@@ -7,9 +7,7 @@ set -euo pipefail
 prefix="pokey/"
 query="${1:-.}"
 
-# FIXME: Remove `| tac` once
-# https://github.com/arxanas/git-branchless/issues/554 is fixed
-commits="$(git-branchless query -r "$query - branches()" | tac)"
+commits="$(git-branchless query -r "$query - branches()")"
 
 while read -r commit <&3; do
     subject="$(git show -s --format='%s' "$commit")"
