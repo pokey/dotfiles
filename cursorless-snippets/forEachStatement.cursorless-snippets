@@ -36,6 +36,23 @@
             "formatter": "snakeCase"
           }
         }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "shellscript"
+          ]
+        },
+        "body": [
+          "for $name in $iterable; do",
+          "\t$body",
+          "done"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "snakeCase"
+          }
+        }
       }
     ],
     "variables": {
