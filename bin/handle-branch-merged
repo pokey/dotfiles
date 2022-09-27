@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Given a commit-ish, does the following:
+# Given one or more commit-ishes, does the following:
 #
 # 1. Moves all its children to the main branch
 # 2. Hides the commit and all its ancestors that are not also ancestors of other
@@ -10,13 +10,9 @@
 # hide the merged branch.
 set -euo pipefail
 
-if [[ $# -eq 0 ]]; then
-    echo 'ERROR: Expected commit-ish as sole argument'
-    exit 1
-fi
-
-commit="${1}"
 base="$(git config branchless.core.mainBranch)"
 
-git move -x "children(\"$commit\"):" -d "$base"
-git hide --delete-branches "draft() & ancestors(\"$commit\") - ancestors(all() - ancestors(\"$commit\"))"
+for commitish in "$@"; do
+    git move -x "children(\"$commitish\"):" -d "$base"
+    git hide --delete-branches "draft() & only(\"$commitish\", all() - ancestors(\"$commitish\"))"
+done
