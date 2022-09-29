@@ -313,7 +313,7 @@
     "javascript.inlayHints.parameterNames.enabled": "all",
     "editor.inlayHints.fontSize": 10,
     "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
-    "cursorless.pendingEditDecorationTime": 100,
+    "cursorless.pendingEditDecorationTime": 200,
     "cursorless.debug": true,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -376,77 +376,52 @@
     },
     "githubPullRequests.pullBranch": "never",
     "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
+    "cursorless.keyboard.modal.keybindings.scopes": {
+        "f": "namedFunction",
+    },
+    "cursorless.keyboard.modal.keybindings.actions": {
+        "d": "remove"
+    },
+    "cursorless.keyboard.modal.keybindings.colors": {
+        "g": "default"
+    },
     "modalkeys.keybindings": {
+        "c": {
+            "cursorless.modal.performActionOnTarget": [
+                "remove"
+            ]
+        },
+        "f": {
+            "cursorless.modal.targetScopeType": {
+                "scopeType": "namedFunction"
+            }
+        },
         "d": {
             "modalkeys.captureChar": {
                 "acceptAfter": 1,
                 "executeAfter": {
-                    "cursorless.command": {
-                        "version": 2,
-                        "action": {
-                            "name": "setSelection",
-                            "args": []
-                        },
-                        "targets": [
-                            {
-                                "type": "primitive",
-                                "mark": {
-                                    "type": "decoratedSymbol",
-                                    "symbolColor": "default",
-                                    "character": "__captured"
-                                }
-                            }
-                        ],
-                        "usePrePhraseSnapshot": false
+                    "cursorless.modal.targetDecoratedMarkWithColor": {
+                        "color": "default",
+                        "character": "__captured"
                     }
                 }
             }
         },
         "i": "modalkeys.enterInsert",
-        "f": {
-            "cursorless.command": {
-                "version": 2,
-                "action": {
-                    "name": "setSelection",
-                    "args": []
-                },
-                "targets": [
-                    {
-                        "type": "primitive",
-                        "modifiers": [
-                            {
-                                "type": "containingScope",
-                                "scopeType": {
-                                    "type": "namedFunction"
-                                }
-                            }
-                        ]
-                    }
-                ],
-                "usePrePhraseSnapshot": false
+        "l": {
+            "cursorless.modal.targetScopeType": {
+                "scopeType": "line"
             }
         },
-        "l": {
-            "cursorless.command": {
-                "version": 2,
-                "action": {
-                    "name": "setSelection",
-                    "args": []
-                },
-                "targets": [
-                    {
-                        "type": "primitive",
-                        "modifiers": [
-                            {
-                                "type": "containingScope",
-                                "scopeType": {
-                                    "type": "line"
-                                }
-                            }
-                        ]
+        "r": {
+            "modalkeys.captureChar": {
+                "acceptAfter": 1,
+                "executeAfter": {
+                    "cursorless.modal.targetDecoratedMarkWithColor": {
+                        "color": "red",
+                        "character": "__captured"
                     }
-                ],
-                "usePrePhraseSnapshot": false
+                }
             }
         }
     },

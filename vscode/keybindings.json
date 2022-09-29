@@ -309,8 +309,35 @@
         "when": "editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
     },
     {
-        "key": "ctrl+a",
-        "command": "modalkeys.enterNormal",
+        "key": "ctrl+h j",
+        "command": "cursorless.keyboard.modal.modeOn",
         "when": "editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "escape",
+        "command": "cursorless.keyboard.modal.modeOff",
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "f",
+        "command": "cursorless.keyboard.targeted.targetScope",
+        "args": {
+            "scopeType": "namedFunction"
+        },
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "c",
+        "command": "cursorless.keyboard.targeted.runActionOnTarget",
+        "args": [
+            "remove"
+        ],
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "d",
+        "command": "cursorless.keyboard.targeted.targetHat",
+        "args": {},
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
     }
 ]

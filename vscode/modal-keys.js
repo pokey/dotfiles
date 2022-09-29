@@ -1,52 +1,32 @@
-function selectTarget(target) {
+function targetContainingScope(scopeType) {
   return {
-    "cursorless.command": {
-      version: 2,
-      action: {
-        name: "setSelection",
-        args: [],
-      },
-      targets: [target],
-      usePrePhraseSnapshot: false,
+    "cursorless.modal.targetScopeType": {
+      scopeType,
     },
   };
 }
 
-function selectContainingScope(scopeType) {
-  return selectTarget({
-    type: "primitive",
-    modifiers: [
-      {
-        type: "containingScope",
-        scopeType: {
-          type: scopeType,
-        },
-      },
-    ],
-  });
-}
-
-function selectDecoratedMarkWithColor(color) {
+function targetDecoratedMarkWithColor(color) {
   return {
     "modalkeys.captureChar": {
       acceptAfter: 1,
-      executeAfter: selectTarget({
-        type: "primitive",
-        mark: {
-          type: "decoratedSymbol",
-          symbolColor: color,
+      executeAfter: {
+        "cursorless.modal.targetDecoratedMarkWithColor": {
+          color,
           character: "__captured",
         },
-      }),
+      },
     },
   };
 }
 
 module.exports = {
   keybindings: {
-    d: selectDecoratedMarkWithColor("default"),
+    c: { "cursorless.modal.performActionOnTarget": "remove" },
+    f: targetContainingScope("namedFunction"),
+    d: targetDecoratedMarkWithColor("default"),
     i: "modalkeys.enterInsert",
-    f: selectContainingScope("namedFunction"),
-    l: selectContainingScope("line"),
+    l: targetContainingScope("line"),
+    r: targetDecoratedMarkWithColor("red"),
   },
 };
