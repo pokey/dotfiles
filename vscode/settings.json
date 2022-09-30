@@ -445,7 +445,7 @@
         "e": "eye",
         "y": "play",
         "z": "bolt",
-        "ss": "crosshairs",
+        "s": "crosshairs"
     },
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 1
 }
