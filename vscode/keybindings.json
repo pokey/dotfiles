@@ -248,6 +248,10 @@
         "when": "neovim.mode == normal && editorTextFocus",
     },
     {
+        "key": "ctrl+q o",
+        "command": "workbench.action.tasks.runTask"
+    },
+    {
         "key": "f2",
         "command": "-editor.action.rename",
         "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"

@@ -17,7 +17,10 @@
             "label": "Install local",
             "type": "shell",
             "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix",
-            "presentation": {}
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": []
         },
         {
             "label": "Install into cursorless sandbox",
@@ -35,7 +38,8 @@
             "label": "Git amend",
             "type": "shell",
             "command": "git amend",
-            "presentation": {}
+            "presentation": {},
+            "problemMatcher": []
         },
         {
             "label": "Git reword",
@@ -53,7 +57,8 @@
             "label": "Git push force",
             "type": "shell",
             "command": "git push --force-with-lease origin HEAD",
-            "presentation": {}
+            "presentation": {},
+            "problemMatcher": []
         },
         {
             "label": "Git update main",
@@ -159,9 +164,9 @@
             "problemMatcher": []
         },
         {
-            "label": "Git commit insert",
+            "label": "Git shadow parent",
             "type": "shell",
-            "command": "git commit -a && git-branchless move -x 'descendants(parents(.)) - ancestors(.)' && git branchless smartlog",
+            "command": "git-branchless move -x 'descendants(parents(.)) - ancestors(.)' && git branchless smartlog",
             "presentation": {},
             "problemMatcher": []
         },
