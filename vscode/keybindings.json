@@ -304,40 +304,48 @@
         "when": "editorTextFocus && neovim.init && neovim.mode != 'normal'"
     },
     {
-        "key": "escape",
-        "command": "-modalkeys.enterNormal",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+        "key": "ctrl+h j",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.neovim-to-cursorless"
+        },
+        "when": "neovim.mode == normal && editorTextFocus",
+    },
+    {
+        "key": "ctrl+c",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.cursorless-to-neovim"
+        },
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus",
     },
     {
         "key": "ctrl+h j",
         "command": "cursorless.keyboard.modal.modeOn",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+        "when": "neovim.mode != normal && editorTextFocus"
     },
     {
         "key": "escape",
-        "command": "cursorless.keyboard.modal.modeOff",
-        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+        "command": "cursorless.keyboard.escape",
+        "when": "cursorless.keyboard.listening && !cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
     },
     {
-        "key": "f",
-        "command": "cursorless.keyboard.targeted.targetScope",
+        "key": "escape",
+        "command": "extension.multiCommand.execute",
         "args": {
-            "scopeType": "namedFunction"
+            "command": "multiCommand.cursorless-to-neovim"
         },
         "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
     },
     {
-        "key": "c",
-        "command": "cursorless.keyboard.targeted.runActionOnTarget",
-        "args": [
-            "remove"
-        ],
-        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+        "key": "ctrl+h j",
+        "command": "cursorless.keyboard.modal.modeOff",
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus"
     },
     {
-        "key": "d",
-        "command": "cursorless.keyboard.targeted.targetHat",
-        "args": {},
-        "when": "cursorless.keyboard.modal.mode && editorTextFocus && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+        "key": "backspace",
+        "command": "cursorless.keyboard.targeted.runActionOnTarget",
+        "args": "remove",
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus"
     }
 ]

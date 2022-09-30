@@ -26,6 +26,29 @@
                 "vscode-neovim.escape",
                 "vscode-neovim.enable",
             ]
+        },
+        {
+            "command": "multiCommand.neovim-to-cursorless",
+            "interval": 30,
+            "sequence": [
+                {
+                    "command": "type",
+                    "args": {
+                        "text": "i"
+                    }
+                },
+                "vscode-neovim.disable",
+                "cursorless.keyboard.modal.modeOn"
+            ]
+        },
+        {
+            "command": "multiCommand.cursorless-to-neovim",
+            "interval": 30,
+            "sequence": [
+                "cursorless.keyboard.modal.modeOff",
+                "vscode-neovim.escape",
+                "vscode-neovim.enable",
+            ]
         }
     ],
     "terminal.integrated.commandsToSkipShell": [
@@ -376,53 +399,35 @@
     },
     "githubPullRequests.pullBranch": "never",
     "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
+    "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
     "cursorless.keyboard.modal.keybindings.scopes": {
-        "f": "namedFunction",
+        "L": "line",
+        "ss": "string",
+        "st": "statement",
+        "sf": "namedFunction",
     },
     "cursorless.keyboard.modal.keybindings.actions": {
-        "d": "remove"
+        "t": "setSelection",
+        "h": "setSelectionBefore",
+        "l": "setSelectionAfter",
+        "k": "editNewLineBefore",
+        "K": "insertCopyBefore",
+        "j": "editNewLineAfter",
+        "J": "insertCopyAfter",
+        "u": "replaceWithTarget",
+        "c": "clearAndSetSelection",
+        "as": "swapTargets",
+        "af": "fold",
     },
     "cursorless.keyboard.modal.keybindings.colors": {
-        "g": "default"
+        "m": "default",
+        "b": "blue",
+        "g": "green",
+        "r": "red"
     },
-    "modalkeys.keybindings": {
-        "c": {
-            "cursorless.modal.performActionOnTarget": [
-                "remove"
-            ]
-        },
-        "f": {
-            "cursorless.modal.targetScopeType": {
-                "scopeType": "namedFunction"
-            }
-        },
-        "d": {
-            "modalkeys.captureChar": {
-                "acceptAfter": 1,
-                "executeAfter": {
-                    "cursorless.modal.targetDecoratedMarkWithColor": {
-                        "color": "default",
-                        "character": "__captured"
-                    }
-                }
-            }
-        },
-        "i": "modalkeys.enterInsert",
-        "l": {
-            "cursorless.modal.targetScopeType": {
-                "scopeType": "line"
-            }
-        },
-        "r": {
-            "modalkeys.captureChar": {
-                "acceptAfter": 1,
-                "executeAfter": {
-                    "cursorless.modal.targetDecoratedMarkWithColor": {
-                        "color": "red",
-                        "character": "__captured"
-                    }
-                }
-            }
-        }
+    "cursorless.keyboard.modal.keybindings.shapes": {
+        "df": "fox",
+        "db": "frame",
+        "dx": "ex",
     },
 }
