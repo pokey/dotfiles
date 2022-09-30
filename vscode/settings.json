@@ -345,7 +345,6 @@
     "notebook.showCellStatusBar": "visibleAfterExecute",
     "notebook.undoRedoPerCell": false,
     "workbench.colorTheme": "Abyss",
-    "window.zoomLevel": 1,
     "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
     "editor.renderWhitespace": "none",
     "[python]": {
@@ -401,10 +400,10 @@
     "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
     "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
     "cursorless.keyboard.modal.keybindings.scopes": {
+        "f": "namedFunction",
         "L": "line",
         "ss": "string",
         "st": "statement",
-        "sf": "namedFunction",
     },
     "cursorless.keyboard.modal.keybindings.actions": {
         "t": "setSelection",
@@ -430,4 +429,5 @@
         "db": "frame",
         "dx": "ex",
     },
+    "window.zoomLevel": 1,
 }

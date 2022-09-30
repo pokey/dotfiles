@@ -70,7 +70,8 @@
             "label": "Git detach head",
             "type": "shell",
             "command": "git checkout --detach head && git branchless smartlog",
-            "presentation": {}
+            "presentation": {},
+            "problemMatcher": []
         },
         {
             "label": "Git smartlog",
