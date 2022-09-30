@@ -324,6 +324,14 @@
         "when": "cursorless.keyboard.modal.mode && editorTextFocus",
     },
     {
+        "key": "ctrl+s",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "command": "multiCommand.cursorless-to-neovim-and-save"
+        },
+        "when": "cursorless.keyboard.modal.mode && editorTextFocus",
+    },
+    {
         "key": "ctrl+h j",
         "command": "cursorless.keyboard.modal.modeOn",
         "when": "neovim.mode != normal && editorTextFocus"

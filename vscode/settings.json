@@ -49,6 +49,16 @@
                 "vscode-neovim.escape",
                 "vscode-neovim.enable",
             ]
+        },
+        {
+            "command": "multiCommand.cursorless-to-neovim-and-save",
+            "interval": 30,
+            "sequence": [
+                "cursorless.keyboard.modal.modeOff",
+                "vscode-neovim.escape",
+                "vscode-neovim.enable",
+                "workbench.action.files.save",
+            ]
         }
     ],
     "terminal.integrated.commandsToSkipShell": [
@@ -400,34 +410,42 @@
     "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
     "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
     "cursorless.keyboard.modal.keybindings.scopes": {
-        "f": "namedFunction",
+        "p": "paragraph",
+        "i": "collectionItem",
+        "S": "string",
+        "T": "statement",
+        "F": "namedFunction",
         "L": "line",
-        "ss": "string",
-        "st": "statement",
     },
     "cursorless.keyboard.modal.keybindings.actions": {
         "t": "setSelection",
         "h": "setSelectionBefore",
         "l": "setSelectionAfter",
-        "k": "editNewLineBefore",
-        "K": "insertCopyBefore",
-        "j": "editNewLineAfter",
-        "J": "insertCopyAfter",
+        "O": "editNewLineBefore",
+        "o": "editNewLineAfter",
+        "k": "insertCopyBefore",
+        "j": "insertCopyAfter",
         "u": "replaceWithTarget",
+        "m": "moveToTarget",
         "c": "clearAndSetSelection",
         "as": "swapTargets",
         "af": "fold",
     },
     "cursorless.keyboard.modal.keybindings.colors": {
-        "m": "default",
+        "d": "default",
         "b": "blue",
         "g": "green",
         "r": "red"
     },
     "cursorless.keyboard.modal.keybindings.shapes": {
-        "df": "fox",
-        "db": "frame",
-        "dx": "ex",
+        "x": "ex",
+        "f": "fox",
+        "q": "frame",
+        "v": "curve",
+        "e": "eye",
+        "y": "play",
+        "z": "bolt",
+        "ss": "crosshairs",
     },
     "window.zoomLevel": 1,
 }
