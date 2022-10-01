@@ -413,9 +413,12 @@
         "p": "paragraph",
         "i": "collectionItem",
         "S": "string",
-        "T": "statement",
+        "A": "statement",
         "F": "namedFunction",
+        "C": "class",
         "L": "line",
+        "T": "token",
+        "U": "functionCall",
     },
     "cursorless.keyboard.modal.keybindings.actions": {
         "t": "setSelection",
@@ -430,6 +433,9 @@
         "c": "clearAndSetSelection",
         "as": "swapTargets",
         "af": "fold",
+        "ak": "insertEmptyLinesBefore",
+        "aj": "insertEmptyLineAfter",
+        "ap": "insertEmptyLinesAround",
     },
     "cursorless.keyboard.modal.keybindings.colors": {
         "d": "default",
