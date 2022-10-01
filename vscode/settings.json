@@ -419,6 +419,7 @@
         "L": "line",
         "T": "token",
         "U": "functionCall",
+        "V": "value",
     },
     "cursorless.keyboard.modal.keybindings.actions": {
         "t": "setSelection",
@@ -435,7 +436,10 @@
         "af": "fold",
         "ak": "insertEmptyLinesBefore",
         "aj": "insertEmptyLineAfter",
-        "ap": "insertEmptyLinesAround",
+        "ai": "insertEmptyLinesAround",
+        "ac": "copyToClipboard",
+        "ax": "cutToClipboard",
+        "ap": "pasteFromClipboard",
     },
     "cursorless.keyboard.modal.keybindings.colors": {
         "d": "default",
