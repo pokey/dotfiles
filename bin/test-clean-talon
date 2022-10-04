@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 rm -rf ~/.talon/user/cursorless-settings
-"$SCRIPT_DIR/test-cursorless-talon"
 "$SCRIPT_DIR/test-knausj"
+"$SCRIPT_DIR/test-cursorless-talon"
