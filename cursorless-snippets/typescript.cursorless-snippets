@@ -22,32 +22,6 @@
       "namedFunction"
     ]
   },
-  "bindClassFunction": {
-    "definitions": [
-      {
-        "scope": {
-          "langIds": [
-            "typescript",
-            "javascript",
-            "typescriptreact",
-            "javascriptreact"
-          ]
-        },
-        "body": [
-          "this.${name/^(this.)?(.+)$/$2/} = this.${name/^(this.)?(.+)$/$2/}.bind(this)"
-        ],
-        "variables": {
-          "name": {
-            "formatter": "camelCase"
-          }
-        }
-      }
-    ],
-    "description": "Bind function to this",
-    "insertionScopeTypes": [
-      "statement"
-    ]
-  },
   "constantDeclaration": {
     "definitions": [
       {

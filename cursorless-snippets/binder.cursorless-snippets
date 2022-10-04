@@ -1,0 +1,43 @@
+{
+  "bindClassFunction": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "this.${name/^(this.)?(.+)$/$2/} = this.${name/^(this.)?(.+)$/$2/}.bind(this)"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "self.$name = $name"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "snakeCase"
+          }
+        }
+      }
+    ],
+    "description": "Bind function or arg",
+    "insertionScopeTypes": [
+      "statement"
+    ]
+  }
+}
