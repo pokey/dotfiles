@@ -410,16 +410,18 @@
     "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
     "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
     "cursorless.keyboard.modal.keybindings.scopes": {
+        "i": "line",
         "p": "paragraph",
-        "i": "collectionItem",
-        "S": "string",
-        "A": "statement",
-        "F": "namedFunction",
-        "C": "class",
-        "L": "line",
-        "T": "token",
-        "U": "functionCall",
-        "V": "value",
+        "n": "statement",
+        ",": "collectionItem",
+        ".": "functionCall",
+        "'": "string",
+        "sf": "namedFunction",
+        "sc": "class",
+        "st": "token",
+        "sv": "value",
+        "sk": "collectionKey",
+        "sp": "nonWhitespaceSequence",
     },
     "cursorless.keyboard.modal.keybindings.actions": {
         "t": "setSelection",
@@ -455,7 +457,7 @@
         "e": "eye",
         "y": "play",
         "z": "bolt",
-        "s": "crosshairs"
+        "w": "crosshairs"
     },
     "window.zoomLevel": 1
 }
