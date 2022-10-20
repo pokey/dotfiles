@@ -45,7 +45,8 @@
             "label": "Git reword",
             "type": "shell",
             "command": "git reword",
-            "presentation": {}
+            "presentation": {},
+            "problemMatcher": []
         },
         {
             "label": "Git imerge continue",
@@ -64,7 +65,8 @@
             "label": "Git update main",
             "type": "shell",
             "command": "main=$(get-main-branch) && git fetch origin \"$main:$main\" --update-head-ok && git branchless smartlog",
-            "presentation": {}
+            "presentation": {},
+            "problemMatcher": []
         },
         {
             "label": "Git detach head",
@@ -218,7 +220,8 @@
             "label": "Run pre commit",
             "type": "shell",
             "command": "pre-commit run",
-            "presentation": {}
+            "presentation": {},
+            "problemMatcher": []
         },
         {
             "label": "Start tunnel",

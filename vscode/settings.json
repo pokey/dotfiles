@@ -462,5 +462,6 @@
         "z": "bolt",
         "w": "crosshairs"
     },
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "git-branchless.branchPrefix": "pokey/"
 }
