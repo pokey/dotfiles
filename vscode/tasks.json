@@ -1,312 +1,326 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "echo",
-            "type": "shell",
-            "command": "echo ${env:HOME}",
-            "problemMatcher": []
-        },
-        {
-            "label": "Tag version",
-            "type": "shell",
-            "command": "cat package.json | jq -r '.version' | xargs -I{} git tag -am {} {}",
-            "presentation": {}
-        },
-        {
-            "label": "Install local",
-            "type": "shell",
-            "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix",
-            "presentation": {
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Install into cursorless sandbox",
-            "type": "shell",
-            "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix --extensions-dir ~/src/cursorless/.vscode-sandbox/extensions",
-            "presentation": {}
-        },
-        {
-            "label": "Publish extension",
-            "type": "shell",
-            "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
-            "presentation": {}
-        },
-        {
-            "label": "Git amend",
-            "type": "shell",
-            "command": "git amend",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git reword",
-            "type": "shell",
-            "command": "git reword",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git imerge continue",
-            "type": "shell",
-            "command": "git-imerge continue",
-            "presentation": {}
-        },
-        {
-            "label": "Git push force",
-            "type": "shell",
-            "command": "git push --force-with-lease origin HEAD",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git update main",
-            "type": "shell",
-            "command": "main=$(get-main-branch) && git fetch origin \"$main:$main\" --update-head-ok && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git detach head",
-            "type": "shell",
-            "command": "git checkout --detach head && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git smartlog",
-            "type": "shell",
-            "command": "git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git move to main",
-            "type": "shell",
-            "command": "main=$(get-main-branch) && git branchless move -s '${input:commitish}' -d \"$main\"",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git push commit stack",
-            "type": "shell",
-            "command": "git-branchless submit --create 'stack(${input:commitish})'",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git push current stack",
-            "type": "shell",
-            "command": "git-branchless submit --create",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git sync commit",
-            "type": "shell",
-            "command": "git sync 'stack(${input:commitish})' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git discard commit tree",
-            "type": "shell",
-            "command": "git hide -rD '${input:commitish}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git branch commit",
-            "type": "shell",
-            "command": "git branch '${input:newBranchName}' '${input:commitish}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git auto-branch commit",
-            "type": "shell",
-            "command": "auto-branch '${input:commitish}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git auto-branch head",
-            "type": "shell",
-            "command": "auto-branch && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git move branch to commit",
-            "type": "shell",
-            "command": "git branch -f '${input:existingBranchName}' '${input:commitish}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git delete branch",
-            "type": "shell",
-            "command": "git branch -d '${input:existingBranchName}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git delete branch force",
-            "type": "shell",
-            "command": "git branch -D '${input:existingBranchName}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git switch to commit",
-            "type": "shell",
-            "command": "git checkout '${input:commitish}' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git shadow parent",
-            "type": "shell",
-            "command": "git-branchless move -x 'descendants(parents(.)) - ancestors(.)' && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Git previous",
-            "type": "shell",
-            "command": "git-branchless prev -i '${input:stepCount}'",
-            "presentation": {
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Git previous branch",
-            "type": "shell",
-            "command": "git-branchless prev -ib '${input:stepCount}'",
-            "presentation": {
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Git next",
-            "type": "shell",
-            "command": "git-branchless next -i '${input:stepCount}'",
-            "presentation": {
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Git next branch",
-            "type": "shell",
-            "command": "git-branchless next -ib '${input:stepCount}'",
-            "presentation": {
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Git commit empty",
-            "type": "shell",
-            "command": "git diff --exit-code && git commit --allow-empty -m \"Empty commit\" && git branchless smartlog",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Run pre commit",
-            "type": "shell",
-            "command": "pre-commit run",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Start tunnel",
-            "type": "shell",
-            "command": "/Users/pokey/n/bin/localtunnel --port 4200 | tee >(head -1 | cut -c13- | xargs echo -n | pbcopy)",
-            "presentation": {},
-            "problemMatcher": []
-        },
-        {
-            "label": "Test core talon",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/test-knausj",
-            "presentation": {
-                "reveal": "silent"
-            }
-        },
-        {
-            "label": "Test cursorless talon",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/test-cursorless-talon",
-            "presentation": {
-                "reveal": "silent"
-            }
-        },
-        {
-            "label": "Test all talon",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
-            "presentation": {
-                "reveal": "silent"
-            }
-        },
-        {
-            "label": "Restore core talon",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/restore-pokey-talon",
-            "presentation": {
-                "reveal": "silent"
-            }
-        },
-        {
-            "label": "Restore cursorless talon",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/restore-cursorless-talon",
-            "presentation": {
-                "reveal": "silent"
-            }
-        },
-        {
-            "label": "Restore all talon",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/restore-all-talon",
-            "presentation": {
-                "reveal": "silent"
-            }
-        },
-        {
-            "label": "Cursorless local split",
-            "type": "shell",
-            "command": "/Users/pokey/pokey-home-files/bin/cursorless-local-split",
-            "presentation": {},
-            "problemMatcher": []
-        }
-    ],
-    "inputs": [
-        {
-            "type": "promptString",
-            "id": "commitish",
-            "description": "Commit-ish to use",
-        },
-        {
-            "type": "promptString",
-            "id": "newBranchName",
-            "description": "Branch to create",
-        },
-        {
-            "type": "promptString",
-            "id": "stepCount",
-            "description": "How many steps?",
-            "default": "1",
-        },
-        {
-            "type": "promptString",
-            "id": "existingBranchName",
-            "description": "Existing branch",
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo ${env:HOME}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Tag version",
+      "type": "shell",
+      "command": "cat package.json | jq -r '.version' | xargs -I{} git tag -am {} {}",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Install local",
+      "type": "shell",
+      "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix",
+      "presentation": {
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install into cursorless sandbox",
+      "type": "shell",
+      "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix --extensions-dir ~/src/cursorless/.vscode-sandbox/extensions",
+      "presentation": {}
+    },
+    {
+      "label": "Publish extension",
+      "type": "shell",
+      "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git amend",
+      "type": "shell",
+      "command": "git amend",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git reword",
+      "type": "shell",
+      "command": "git reword",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git imerge continue",
+      "type": "shell",
+      "command": "git-imerge continue",
+      "presentation": {}
+    },
+    {
+      "label": "Git push force",
+      "type": "shell",
+      "command": "git push --force-with-lease origin HEAD",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git update main",
+      "type": "shell",
+      "command": "main=$(get-main-branch) && git fetch origin \"$main:$main\" --update-head-ok && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git detach head",
+      "type": "shell",
+      "command": "git checkout --detach head && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git smartlog",
+      "type": "shell",
+      "command": "git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git move to main",
+      "type": "shell",
+      "command": "main=$(get-main-branch) && git branchless move -s '${input:commitish}' -d \"$main\"",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git push commit stack",
+      "type": "shell",
+      "command": "git-branchless submit --create 'stack(${input:commitish})'",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git push current stack",
+      "type": "shell",
+      "command": "git-branchless submit --create",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git sync commit",
+      "type": "shell",
+      "command": "git sync 'stack(${input:commitish})' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git discard commit tree",
+      "type": "shell",
+      "command": "git hide -rD '${input:commitish}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git branch commit",
+      "type": "shell",
+      "command": "git branch '${input:newBranchName}' '${input:commitish}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git auto-branch commit",
+      "type": "shell",
+      "command": "auto-branch '${input:commitish}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git auto-branch head",
+      "type": "shell",
+      "command": "auto-branch && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git move branch to commit",
+      "type": "shell",
+      "command": "git branch -f '${input:existingBranchName}' '${input:commitish}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git delete branch",
+      "type": "shell",
+      "command": "git branch -d '${input:existingBranchName}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git delete branch force",
+      "type": "shell",
+      "command": "git branch -D '${input:existingBranchName}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git switch to commit",
+      "type": "shell",
+      "command": "git checkout '${input:commitish}' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git shadow parent",
+      "type": "shell",
+      "command": "git-branchless move -x 'descendants(parents(.)) - ancestors(.)' && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Git previous",
+      "type": "shell",
+      "command": "git-branchless prev -i '${input:stepCount}'",
+      "presentation": {
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Git previous branch",
+      "type": "shell",
+      "command": "git-branchless prev -ib '${input:stepCount}'",
+      "presentation": {
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Git next",
+      "type": "shell",
+      "command": "git-branchless next -i '${input:stepCount}'",
+      "presentation": {
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Git next branch",
+      "type": "shell",
+      "command": "git-branchless next -ib '${input:stepCount}'",
+      "presentation": {
+        "focus": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Git commit empty",
+      "type": "shell",
+      "command": "git diff --exit-code && git commit --allow-empty -m \"Empty commit\" && git branchless smartlog",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Run pre commit",
+      "type": "shell",
+      "command": "pre-commit run",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Start tunnel",
+      "type": "shell",
+      "command": "/Users/pokey/n/bin/localtunnel --port 4200 | tee >(head -1 | cut -c13- | xargs echo -n | pbcopy)",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Test core talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/test-knausj",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Test cursorless talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/test-cursorless-talon",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Test all talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Restore core talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/restore-pokey-talon",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Restore cursorless talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/restore-cursorless-talon",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Restore all talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/restore-all-talon",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Cursorless local split",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/cursorless-local-split",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "Move recorded video",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/move-recorded-video '${input:videoName}'",
+      "presentation": {},
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "commitish",
+      "description": "Commit-ish to use"
+    },
+    {
+      "type": "promptString",
+      "id": "newBranchName",
+      "description": "Branch to create"
+    },
+    {
+      "type": "promptString",
+      "id": "stepCount",
+      "description": "How many steps?",
+      "default": "1"
+    },
+    {
+      "type": "promptString",
+      "id": "existingBranchName",
+      "description": "Existing branch"
+    },
+    {
+      "type": "promptString",
+      "id": "videoName",
+      "description": "Name to give the recorded video"
+    }
+  ]
 }

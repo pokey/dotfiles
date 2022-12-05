@@ -2,15 +2,15 @@
 
 # Select package manager based on OS
 case "$(uname)" in
-   Darwin) INSTALL='brew install' ;;
-        *) INSTALL='sudo apt-get install' ;;
+Darwin) INSTALL='brew install' ;;
+*) INSTALL='sudo apt-get install' ;;
 esac
 
 # Get paths
-pushd `dirname $0` > /dev/null
-SCRIPTPATH=`pwd`
+pushd $(dirname $0) >/dev/null
+SCRIPTPATH=$(pwd)
 BASEPATH=$(git rev-parse --show-toplevel)
-popd > /dev/null
+popd >/dev/null
 
 DOTFILES="$BASEPATH/dotFiles"
 DOTCONFIG="$BASEPATH/dotConfig"
@@ -49,7 +49,7 @@ done
 function symlinkIntoDir {
    src_base="$1"
    dst_base="$2"
-   
+
    for file in $src_base/*; do
       src="$file"
       dst="$dst_base/$(basename $src)"
@@ -85,16 +85,16 @@ $SCRIPTPATH/neovim_python.sh
 
 # Install neovim
 case "$(uname)" in
-   Darwin) brew install neovim/neovim/neovim ;;
-   *) sudo apt-get install neovim ;;
+Darwin) brew install neovim/neovim/neovim ;;
+*) sudo apt-get install neovim ;;
 esac
 
 # Make old vim still work (ish)
 backup "$HOME/.vim"
 backup "$HOME/.vimrc"
 backup "$HOME/.viminfo"
-ln -s $HOME/.config/nvim $HOME/.vim 
-ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc 
+ln -s $HOME/.config/nvim $HOME/.vim
+ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
 
 # Install vim plugins
 vim +PlugUpgrade +PlugUpdate +PlugClean +qall
@@ -107,14 +107,14 @@ sudo chsh -s "$(command -v zsh)" "${USER}"
 
 # Install ag
 case "$(uname)" in
-   Darwin) brew install the_silver_searcher ;;
-   *) sudo apt-get install silversearcher-ag ;;
+Darwin) brew install the_silver_searcher ;;
+*) sudo apt-get install silversearcher-ag ;;
 esac
 
 # Install ripgrep
 case "$(uname)" in
-   Darwin) brew install ripgrep ;;
-   *) sudo apt-get install ripgrep ;;
+Darwin) brew install ripgrep ;;
+*) sudo apt-get install ripgrep ;;
 esac
 
 mkdir -p $HOME/sources
@@ -134,20 +134,20 @@ git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
 # Install useful MacOS stuff
 if test "$(uname)" = "Darwin"; then
-  brew tap tldr-pages/tldr && brew install tldr
-  brew install reattach-to-user-namespace
-  brew install thefuck
-  brew install fd
-  brew tap universal-ctags/universal-ctags && \
-     brew install --HEAD universal-ctags
+   brew tap tldr-pages/tldr && brew install tldr
+   brew install reattach-to-user-namespace
+   brew install thefuck
+   brew install fd
+   brew tap universal-ctags/universal-ctags &&
+      brew install --HEAD universal-ctags
 fi
 
 $INSTALL hub
 
 # Install git-flow
 case "$(uname)" in
-   Darwin) brew install git-flow-avh ;;
-   *) sudo apt-get install git-flow ;;
+Darwin) brew install git-flow-avh ;;
+*) sudo apt-get install git-flow ;;
 esac
 
 # Install git-flow completions
@@ -196,10 +196,11 @@ python -m pip install --user pyyaml
 karabiner_dir="$HOME/.config/karabiner"
 mkdir -p $karabiner_dir
 backup "$karabiner/karabiner.json"
-(cd "$BASEPATH/karabiner-gen" ; ./generate_karabiner.py > "$karabiner/karabiner.json")
+(
+   cd "$BASEPATH/karabiner-gen"
+   ./generate_karabiner.py >"$karabiner/karabiner.json"
+)
 
 $INSTALL git-delta
 
-curl -sSL https://install.python-poetry.org | python3 -
 mkdir -p "$HOME/.zfunc"
-"$HOME/.local/bin/poetry" completions zsh > ~/.zfunc/_poetry

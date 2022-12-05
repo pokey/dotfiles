@@ -52,6 +52,7 @@
 	minus-emph-style = syntax 1
 [user]
 	email = 755842+pokey@users.noreply.github.com
+	name = Pokey Rule
 [branchless "core"]
 	mainBranch = main
 [blame]

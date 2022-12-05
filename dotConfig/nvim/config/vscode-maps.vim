@@ -53,6 +53,7 @@ nnoremap <silent> K <Cmd>call VSCodeNotify('editor.action.showHover')<CR>
 nnoremap <silent> qn <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
 nnoremap <silent> qp <Cmd>call VSCodeNotify('editor.action.marker.prev')<CR>
 nnoremap <silent> == <Cmd>call VSCodeNotify('editor.action.formatDocument')<CR>
+nnoremap <silent> gww <Cmd>call VSCodeNotify('rewrap.rewrapComment')<CR>
 
 nnoremap <silent> : <Cmd>call VSCodeNotify('workbench.action.showCommands')<CR>
 nnoremap g: :

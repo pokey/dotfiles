@@ -27,29 +27,30 @@ source ~/.zsh/prompt/index.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fix-git-merge() {
-   BUFFER=${BUFFER/-m/-am}
-   CURSOR=$(($CURSOR+1))
+  BUFFER=${BUFFER/-m/-am}
+  CURSOR=$(($CURSOR + 1))
 }
 zle -N fix-git-merge
 
 add-jq-c() {
-   BUFFER=${BUFFER/jq /jq -c }
-   CURSOR=$(($CURSOR+3))
+  BUFFER=${BUFFER/jq /jq -c }
+  CURSOR=$(($CURSOR + 3))
 }
 zle -N add-jq-c
 
 source ~/sources/git-flow-completion/git-flow-completion.zsh
 
-[ -f /usr/local/bin/aws_zsh_completer.sh ] && \
-    source /usr/local/bin/aws_zsh_completer.sh
+[ -f /usr/local/bin/aws_zsh_completer.sh ] &&
+  source /usr/local/bin/aws_zsh_completer.sh
 
 source ~/.zsh/abbreviations.sh
 source ~/.zsh/fzf-completions.sh
 
-autoload edit-command-line; zle -N edit-command-line
+autoload edit-command-line
+zle -N edit-command-line
 
 # From http://superuser.com/a/378045
-fancy-ctrl-z () {
+fancy-ctrl-z() {
   if [[ $#BUFFER -eq 0 ]]; then
     bg
     zle redisplay
@@ -60,14 +61,14 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 
 fzf-tmux-zoom_widget() {
-    FZF_TMUX_ZOOM_DIR="$TMPDIR/fzf-tmux-zoom"
-    IN_FIFO="$FZF_TMUX_ZOOM_DIR/in.fifo"
-    OUT_FIFO="$FZF_TMUX_ZOOM_DIR/out.fifo"
-    ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
-    EXIT_CODE_FIFO="$FZF_TMUX_ZOOM_DIR/exit_code.fifo"
+  FZF_TMUX_ZOOM_DIR="$TMPDIR/fzf-tmux-zoom"
+  IN_FIFO="$FZF_TMUX_ZOOM_DIR/in.fifo"
+  OUT_FIFO="$FZF_TMUX_ZOOM_DIR/out.fifo"
+  ARGS_FILE="$FZF_TMUX_ZOOM_DIR/args"
+  EXIT_CODE_FIFO="$FZF_TMUX_ZOOM_DIR/exit_code.fifo"
 
-    fzf $(cat "$ARGS_FILE") < "$IN_FIFO" > "$OUT_FIFO"
-    echo -n "$?" > "$EXIT_CODE_FIFO"
+  fzf $(cat "$ARGS_FILE") <"$IN_FIFO" >"$OUT_FIFO"
+  echo -n "$?" >"$EXIT_CODE_FIFO"
 }
 zle -N fzf-tmux-zoom_widget
 bindkey '^V' fzf-tmux-zoom_widget
@@ -79,10 +80,15 @@ bindkey -s '^Qk' '**\t'
 bindkey -s '^Qj' '^A^K'
 bindkey '^Z' fancy-ctrl-z
 
-
 # [ -d $HOME/torch ] && . $HOME/torch/install/bin/torch-activate
-
 
 [ -d $HOME/torch-cl ] && . $HOME/torch-cl/install/bin/torch-activate
 
 source "$HOME/.zsh.plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# bun completions
+[ -s "/Users/pokey/.bun/_bun" ] && source "/Users/pokey/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
