@@ -1,0 +1,20 @@
+{
+  "bold": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "markdown"
+          ]
+        },
+        "body": [
+          "**$text**"
+        ]
+      }
+    ],
+    "description": "",
+    "variables": {
+      "text": {}
+    }
+  }
+}
