@@ -398,7 +398,7 @@
   "githubPullRequests.pullBranch": "never",
   "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
-  "cursorless.keyboard.modal.keybindings.scopes": {
+  "cursorless.experimental.keyboard.modal.keybindings.scopes": {
     "i": "line",
     "p": "paragraph",
     "n": "statement",
@@ -414,7 +414,7 @@
     "sp": "nonWhitespaceSequence",
     "sa": "argumentOrParameter"
   },
-  "cursorless.keyboard.modal.keybindings.actions": {
+  "cursorless.experimental.keyboard.modal.keybindings.actions": {
     "t": "setSelection",
     "h": "setSelectionBefore",
     "l": "setSelectionAfter",
@@ -426,8 +426,8 @@
     "m": "moveToTarget",
     "c": "clearAndSetSelection",
     "as": "swapTargets",
-    "af": "fold",
-    "ak": "insertEmptyLinesBefore",
+    "af": "foldRegion",
+    "ak": "insertEmptyLineBefore",
     "aj": "insertEmptyLineAfter",
     "ai": "insertEmptyLinesAround",
     "ac": "copyToClipboard",
@@ -435,13 +435,13 @@
     "ap": "pasteFromClipboard",
     "ad": "followLink"
   },
-  "cursorless.keyboard.modal.keybindings.colors": {
+  "cursorless.experimental.keyboard.modal.keybindings.colors": {
     "d": "default",
     "b": "blue",
     "g": "yellow",
     "r": "red"
   },
-  "cursorless.keyboard.modal.keybindings.shapes": {
+  "cursorless.experimental.keyboard.modal.keybindings.shapes": {
     "x": "ex",
     "f": "fox",
     "q": "frame",
@@ -460,5 +460,11 @@
   "python.analysis.autoImportCompletions": true,
   "editor.tabSize": 2,
   "workbench.editor.untitled.hint": "hidden",
-  "python.analysis.indexing": true
+  "python.analysis.indexing": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": false,
+    "markdown": false
+  }
 }
