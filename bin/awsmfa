@@ -2,7 +2,7 @@
 
 # Init pyenv and activate awscli virtualenv
 # NB: These steps must occur before the pipefail step below due to a bug in pip
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv >/dev/null; then eval "$(pyenv init -)"; fi
 pyenv activate awscli
 
 set -euo pipefail
@@ -25,12 +25,11 @@ IFS=$'\n\t'
 if [[ $# -ge 1 ]]; then
     ROLE="$1"
 else
-    (>&2 echo "ERROR: Please provide aws profile as argument.")
+    (echo >&2 "ERROR: Please provide aws profile as argument.")
     exit -1
 fi
 
 CALLER_IDENTITY=($(aws sts get-caller-identity --output text))
-
 
 AWS_ACCOUNT_NUMBER="${CALLER_IDENTITY[0]}"
 AWS_IAM_USER_ARN="${CALLER_IDENTITY[1]}"
@@ -40,12 +39,12 @@ MFA_SERIAL="arn:aws:iam::$AWS_ACCOUNT_NUMBER:mfa/$AWS_IAM_USERNAME"
 # TOKEN_CODE=$(ykman oath code -s "aws-$AWS_ACCOUNT_NUMBER-$AWS_IAM_USERNAME")
 read -p 'Enter MFA code: ' TOKEN_CODE
 PROFILE_INFO=($(aws sts assume-role \
-                --role-arn "arn:aws:iam::$AWS_ACCOUNT_NUMBER:role/$ROLE" \
-                --serial-number "$MFA_SERIAL" \
-                --role-session-name "$AWS_IAM_USERNAME" \
-                --token-code "$TOKEN_CODE" \
-                --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
-                --output text))
+    --role-arn "arn:aws:iam::$AWS_ACCOUNT_NUMBER:role/$ROLE" \
+    --serial-number "$MFA_SERIAL" \
+    --role-session-name "$AWS_IAM_USERNAME" \
+    --token-code "$TOKEN_CODE" \
+    --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+    --output text))
 
 echo export AWS_ACCESS_KEY_ID="${PROFILE_INFO[0]}" \
     AWS_SECRET_ACCESS_KEY="${PROFILE_INFO[1]}" \

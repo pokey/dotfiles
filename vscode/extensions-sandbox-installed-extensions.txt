@@ -1,0 +1,17 @@
+elmTooling.elm-ls-vscode
+fwcd.kotlin
+hbenl.vscode-test-explorer
+JakeBecker.elixir-ls
+jrieken.vscode-tree-sitter-query
+mrob95.vscode-talonscript
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-vscode.test-adapter-converter
+pokey.command-server
+pokey.parse-tree
+pokey.talon
+scala-lang.scala
+scalameta.metals
+sleistner.vscode-fileutils
+usernamehw.commands

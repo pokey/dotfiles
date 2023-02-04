@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# 1. Pushes to dvc remote
+# 2. Deletes videos from local dvc cache
+# 3. Deletes videos from working tree
+set -euo pipefail
+
+dvc push
+fd . -t f .dvc/cache | xargs file | rg ISO | cut -d: -f1 | xargs rm
+dvc list -R --dvc-only . | tr '\n' '\0' | xargs -0 file | rg ISO | cut -d: -f1 | tr '\n' '\0' | xargs -0 rm

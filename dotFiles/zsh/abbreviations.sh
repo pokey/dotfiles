@@ -25,9 +25,11 @@ abbreviations=(
   "gpf"   'git push --force-with-lease origin HEAD'
   "grc"   'git rebase --continue'
   "gra"   'git rebase --abort'
+  "gma"   'git merge --abort'
   "gcp"   'git cherry-pick'
   "ghp"   'git subtree push --prefix dist origin main'
-  "ghr"   'git hide -r'
+  "ghr"   'git hide -r --delete-branches'
+  "gls"   "git-branchless smartlog 'stack(__CURSOR__)'"
   "god"   'git checkout develop'
   "gom"   'git checkout main'
   "gomr"   'git checkout master'

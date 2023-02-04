@@ -26,7 +26,7 @@
     {
       "label": "Install into cursorless sandbox",
       "type": "shell",
-      "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix --extensions-dir ~/src/cursorless/.vscode-sandbox/extensions",
+      "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix --profile=cursorlessDevelopment",
       "presentation": {}
     },
     {

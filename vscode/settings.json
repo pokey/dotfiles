@@ -83,7 +83,14 @@
     "editor.codeActionsOnSave": ["source.fixAll.format", "source.fixAll.eslint"]
   },
   "[talon]": {
+    // "editor.defaultFormatter": "wenkokke.talonfmt-vscode",
     "editor.formatOnSave": false
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "workbench.preferredDarkColorTheme": "Abyss",
   "workbench.colorCustomizations": {
@@ -381,20 +388,6 @@
   "search.mode": "reuseEditor",
   "nxConsole.enableTelemetry": false,
   "terminal.integrated.shellIntegration.enabled": true,
-  "cursorless.hatEnablement.colors": {
-    "green": false,
-    "pink": false
-  },
-  "cursorless.hatEnablement.shapes": {
-    "ex": true,
-    "fox": true,
-    "frame": true,
-    "curve": true,
-    "eye": true,
-    "play": true,
-    "bolt": true,
-    "crosshairs": true
-  },
   "githubPullRequests.pullBranch": "never",
   "typeChallenges.workspaceFolder": "/Users/pokey/.typeChallenges",
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
@@ -452,7 +445,6 @@
     "w": "crosshairs"
   },
   "git-branchless.branchPrefix": "pokey/",
-  "window.zoomLevel": 1,
   "editor.suggest.localityBonus": true,
   "editor.guides.bracketPairsHorizontal": false,
   "javascript.preferences.importModuleSpecifier": "non-relative",
@@ -465,6 +457,21 @@
     "*": true,
     "yaml": true,
     "plaintext": false,
-    "markdown": false
+    "markdown": true
+  },
+  "window.zoomLevel": 1,
+  "cursorless.hatEnablement.colors": {
+    "green": false,
+    "pink": false
+  },
+  "cursorless.hatEnablement.shapes": {
+    "ex": true,
+    "fox": true,
+    "frame": true,
+    "curve": true,
+    "eye": true,
+    "play": true,
+    "bolt": true,
+    "crosshairs": true
   }
 }

@@ -58,6 +58,7 @@ aw() {
 
 awm() {
    profile_name="$1"
+   unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
    eval $(awsmfa "$profile_name")
 }
 
