@@ -1,5 +1,4 @@
 {
-  "command-server.backgroundWindowProtection": true,
   "git.mergeEditor": false,
   "files.refactoring.autoSave": true,
   "editor.padding.top": 2,
@@ -68,7 +67,6 @@
   "editor.formatOnSave": true,
   "editor.lineNumbers": "off",
   "editor.glyphMargin": false,
-  "workbench.editor.showTabs": false,
   "workbench.activityBar.visible": false,
   "editor.lineDecorationsWidth": 0, // undocumented
   "editor.lineNumbersMinChars": 0,
@@ -83,7 +81,7 @@
     "editor.codeActionsOnSave": ["source.fixAll.format", "source.fixAll.eslint"]
   },
   "[talon]": {
-    // "editor.defaultFormatter": "wenkokke.talonfmt-vscode",
+    "editor.defaultFormatter": "wenkokke.talonfmt-vscode",
     "editor.formatOnSave": false
   },
   "[ignore]": {
@@ -190,11 +188,9 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "window.nativeFullScreen": false,
   "window.newWindowDimensions": "fullscreen",
   "window.restoreFullscreen": true,
-  "editor.scrollbar.vertical": "visible", // undocumented
-  "window.titleBarStyle": "custom",
+  "editor.scrollbar.vertical": "visible",
   "gitlens.advanced.fileHistoryFollowsRenames": true,
   "gitlens.codeLens.scopes": ["document"],
   "jupyter.alwaysTrustNotebooks": true,
@@ -339,7 +335,6 @@
   },
   "ruby.format": "rubocop", // use rubocop for formatting
   "explorer.confirmDragAndDrop": false,
-  "editor.minimap.enabled": false,
   "javascript.inlayHints.parameterNames.enabled": "all",
   "editor.inlayHints.fontSize": 10,
   "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
@@ -447,7 +442,6 @@
   "git-branchless.branchPrefix": "pokey/",
   "editor.suggest.localityBonus": true,
   "editor.guides.bracketPairsHorizontal": false,
-  "javascript.preferences.importModuleSpecifier": "non-relative",
   "markdown.updateLinksOnFileMove.enabled": "always",
   "python.analysis.autoImportCompletions": true,
   "editor.tabSize": 2,
@@ -459,7 +453,6 @@
     "plaintext": false,
     "markdown": true
   },
-  "window.zoomLevel": 1,
   "cursorless.hatEnablement.colors": {
     "green": false,
     "pink": false
@@ -473,5 +466,10 @@
     "play": true,
     "bolt": true,
     "crosshairs": true
-  }
+  },
+  "window.nativeFullScreen": false,
+  "breadcrumbs.enabled": false,
+  "cursorless.debug": true,
+  "editor.minimap.enabled": false,
+  "window.zoomLevel": 1
 }
