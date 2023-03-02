@@ -353,7 +353,8 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
-    }
+    },
+    "editor.formatOnType": true
   },
   "[java]": {
     "editor.defaultFormatter": "mwpb.java-prettier-formatter"
