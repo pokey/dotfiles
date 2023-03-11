@@ -46,7 +46,7 @@
     {
       "label": "Git reword",
       "type": "shell",
-      "command": "git reword",
+      "command": "git reword .",
       "presentation": {},
       "problemMatcher": []
     },
