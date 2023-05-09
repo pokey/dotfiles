@@ -228,7 +228,7 @@
     {
       "label": "Start tunnel",
       "type": "shell",
-      "command": "/Users/pokey/n/bin/localtunnel --port 4200 | tee >(head -1 | cut -c13- | xargs echo -n | pbcopy)",
+      "command": "/Users/pokey/n/bin/localtunnel --port 3000 | tee >(head -1 | cut -c13- | xargs echo -n | pbcopy)",
       "presentation": {},
       "problemMatcher": []
     },

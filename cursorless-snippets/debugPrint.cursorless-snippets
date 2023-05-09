@@ -1,35 +1,38 @@
 {
-    "debugPrint": {
-        "definitions": [
-            {
-                "scope": {
-                    "langIds": [
-                        "typescript",
-                        "javascript",
-                        "typescriptreact",
-                        "javascriptreact"
-                    ]
-                },
-                "body": [
-                    "console.log(`$expression: \\${$expression}`)"
-                ]
-            },
-            {
-                "scope": {
-                    "langIds": [
-                        "python"
-                    ]
-                },
-                "body": [
-                    "print(f\"$expression: {$expression}\")"
-                ]
-            }
-        ],
-        "description": "Insert a print statement for debugging which prints the value of an expression",
-        "variables": {
-            "expression": {
-                "description": "The expression to print"
-            }
-        }
-    }
+  "debugPrint": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "console.log(`$expression: \\${$expression}`)"
+        ]
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "print(f\"$expression: {$expression}\")"
+        ]
+      }
+    ],
+    "description": "Insert a print statement for debugging which prints the value of an expression",
+    "variables": {
+      "expression": {
+        "description": "The expression to print"
+      }
+    },
+    "insertionScopeTypes": [
+      "statement"
+    ]
+  }
 }

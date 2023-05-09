@@ -20,6 +20,11 @@ while read -r branch <&3; do
         continue
     fi
 
+    # If branch name starts with "bases/", don't make a PR for it
+    if [[ $branch =~ ^bases/ ]]; then
+        continue
+    fi
+
     ancestor_query="ancestors(parents(\"$branch\")) & branches() & draft()"
     parent_branch=$(git-branchless query -b "$ancestor_query - ancestors(parents($ancestor_query))")
     if [ -z "$parent_branch" ]; then
@@ -30,8 +35,11 @@ while read -r branch <&3; do
             exit 1
         fi
 
-        gh pr view "$parent_branch" --json url -t "Depends on {{.url}}" | pbcopy
-        echo "Copied dependency message to clipboard for use in PR body"
+        existing_parent_pr="$(gh pr view "$parent_branch" --json url -t "{{.url}}" || echo -n "")"
+        if [ -n "$existing_parent_pr" ]; then
+            echo "Depends on $existing_parent_pr" | pbcopy
+            echo "Copied dependency message to clipboard for use in PR body"
+        fi
     fi
 
     gh pr create \

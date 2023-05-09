@@ -1,20 +1,26 @@
 {
-    "debugJson": {
-        "definitions": [
-            {
-                "scope": {
-                    "langIds": [
-                        "typescript"
-                    ]
-                },
-                "body": [
-                    "console.log(`$variable: ${JSON.stringify($variable, undefined, 2)}`);"
-                ]
-            }
-        ],
-        "description": "Print debug output for variable",
-        "variables": {
-            "variable": {}
-        }
-    }
+  "debugJson": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "console.log(`$variable: ${JSON.stringify($variable, undefined, 2)}`);"
+        ]
+      }
+    ],
+    "description": "Print debug output for variable",
+    "variables": {
+      "variable": {}
+    },
+    "insertionScopeTypes": [
+      "statement"
+    ]
+  }
 }

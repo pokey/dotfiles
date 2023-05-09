@@ -23,6 +23,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
@@ -143,7 +146,8 @@
     "yellow": 1.5
   },
   "cursorless.hatPenalties.shapes": {
-    "eye": 2
+    "eye": 2,
+    "curve": 1.5
   },
   "cursorless.hatSizeAdjustment": 20,
   "cursorless.hatVerticalOffset": 4.2,
@@ -310,7 +314,8 @@
     "*": true,
     "yaml": true,
     "plaintext": false,
-    "markdown": true
+    "markdown": true,
+    "scminput": false
   },
   "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
   "githubPullRequests.defaultMergeMethod": "squash",
@@ -405,7 +410,7 @@
     }
   },
   "ruby.format": "rubocop", // use rubocop for formatting
-  "search.mode": "reuseEditor",
+  // "search.mode": "reuseEditor",
   "tabnine.experimentalAutoImports": true,
   "tailwindCSS.emmetCompletions": true,
   "terminal.integrated.commandsToSkipShell": [
@@ -426,7 +431,7 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.suggest.completeFunctionCalls": true,
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vscode-neovim.logLevel": "debug",
   "vscode-neovim.logOutputToConsole": true,
@@ -440,7 +445,6 @@
   "window.newWindowDimensions": "fullscreen",
   "window.openFoldersInNewWindow": "on",
   "window.restoreFullscreen": true,
-  "window.zoomLevel": 1,
   "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "[Abyss]": {
@@ -470,5 +474,12 @@
     "*.ipynb": "jupyter-notebook"
   },
   "workbench.iconTheme": "vscode-icons",
-  "workbench.preferredDarkColorTheme": "Abyss"
+  "workbench.preferredDarkColorTheme": "Abyss",
+  "redhat.telemetry.enabled": false,
+  "latex-workshop.mathpreviewpanel.editorGroup": "right",
+  "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#000000",
+  "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#AEAEAE",
+  "latex-workshop.view.pdf.color.dark.backgroundColor": "#000000",
+  "application.shellEnvironmentResolutionTimeout": 20,
+  "window.zoomLevel": 1
 }

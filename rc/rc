@@ -8,8 +8,7 @@ export GEM_HOME=$HOME/.gem
 export N_PREFIX=$HOME/n
 
 # Setup PATH
-export PATH=$PATH:/usr/local/texlive/2011/bin/x86_64-linux:~/bin:/usr/local/ssl/bin:~/bin:~/packer
-export PATH=$PATH:/Library/TeX/Root/bin/x86_64-darwin
+export PATH=$PATH:~/bin:/usr/local/ssl/bin:~/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/usr/local/Cellar/qt@5.5/5.5.1_1/bin
@@ -17,8 +16,6 @@ export PATH=$GEM_HOME/bin:$PATH
 export PATH=$N_PREFIX/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export MANPATH=$MANPATH:/usr/local/texlive/2011/texmf/doc/man
-export INFOPATH=$INFOPATH:/usr/local/texlive/2011/texmf/doc/info
 
 export EXA_LA_OPTIONS="-l --git --color-scale --classify --group-directories-first"
 export LESS_OPTIONS="--tabs=3 -RXF"
@@ -107,3 +104,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 eval "$(rbenv init -)"
 
 source "$HOME/src/git-subrepo/.rc"
+
+launchctl setenv PATH $PATH
+
+eval "$(github-copilot-cli alias -- "$0")"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
