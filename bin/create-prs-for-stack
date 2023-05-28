@@ -37,7 +37,7 @@ while read -r branch <&3; do
 
         existing_parent_pr="$(gh pr view "$parent_branch" --json url -t "{{.url}}" || echo -n "")"
         if [ -n "$existing_parent_pr" ]; then
-            echo "Depends on $existing_parent_pr" | pbcopy
+            echo "- Depends on $existing_parent_pr" | pbcopy
             echo "Copied dependency message to clipboard for use in PR body"
         fi
     fi

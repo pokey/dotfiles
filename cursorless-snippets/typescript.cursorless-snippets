@@ -53,6 +53,37 @@
       }
     }
   },
+  "constantDeclarationWithType": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "const $name: $type = ${value/^([^;]*);?$/$1/};"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      }
+    ],
+    "description": "Constant variable declaration with type",
+    "insertionScopeTypes": [
+      "statement"
+    ],
+    "variables": {
+      "value": {
+        "wrapperScopeType": "statement"
+      }
+    }
+  },
   "letDeclaration": {
     "definitions": [
       {
@@ -75,6 +106,37 @@
       }
     ],
     "description": "Let variable declaration",
+    "insertionScopeTypes": [
+      "statement"
+    ],
+    "variables": {
+      "value": {
+        "wrapperScopeType": "statement"
+      }
+    }
+  },
+  "letDeclarationWithType": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "javascript",
+            "typescriptreact",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "let $name: $type = ${value/^([^;]*);?$/$1/};"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      }
+    ],
+    "description": "Let variable declaration with type",
     "insertionScopeTypes": [
       "statement"
     ],

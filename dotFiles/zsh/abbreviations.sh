@@ -35,7 +35,6 @@ abbreviations=(
   "gomr"   'git checkout master'
   "gco"   'git checkout'
   "gdh"   'git checkout --detach head'
-  "gt"    'git ctags'
   "gct"   'git ctags'
   "gla"   'gl --branches --tags --remotes'
   "ix"    "| xargs"

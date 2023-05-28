@@ -28,7 +28,7 @@
       }
     },
     "insertionScopeTypes": [
-      "statement"
+      "branch"
     ]
   }
 }

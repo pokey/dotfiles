@@ -312,10 +312,10 @@
   "git.mergeEditor": false,
   "github.copilot.enable": {
     "*": true,
-    "yaml": true,
     "plaintext": false,
     "markdown": true,
-    "scminput": false
+    "scminput": false,
+    "yaml": true
   },
   "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
   "githubPullRequests.defaultMergeMethod": "squash",
@@ -398,6 +398,9 @@
   "python.analysis.indexing": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.languageServer": "Pylance",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none"
+  },
   "references.preferredLocation": "view",
   "ruby.useBundler": true, //run non-lint commands with bundle exec
   "ruby.useLanguageServer": true, // use the internal language server (see below)
@@ -481,5 +484,7 @@
   "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#AEAEAE",
   "latex-workshop.view.pdf.color.dark.backgroundColor": "#000000",
   "application.shellEnvironmentResolutionTimeout": 20,
+  "editor.defaultColorDecorators": true,
+  "terminal.integrated.shellIntegration.history": 1000,
   "window.zoomLevel": 1
 }

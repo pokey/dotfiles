@@ -1,0 +1,102 @@
+{
+  "functionDeclarationWithType": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact"
+          ]
+        },
+        "body": [
+          "function $name($parameterList): $type {",
+          "\t$body",
+          "}"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact",
+            "javascript",
+            "javascriptreact"
+          ],
+          "scopeTypes": [
+            "class",
+            "map"
+          ],
+          "excludeDescendantScopeTypes": [
+            "namedFunction"
+          ]
+        },
+        "body": [
+          "$name($parameterList): $type {",
+          "\t$body",
+          "}"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "camelCase"
+          }
+        }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ]
+        },
+        "body": [
+          "def $name($parameterList) => $type:",
+          "\t$body"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "snakeCase"
+          }
+        }
+      },
+      {
+        "scope": {
+          "langIds": [
+            "python"
+          ],
+          "scopeTypes": [
+            "class"
+          ],
+          "excludeDescendantScopeTypes": [
+            "namedFunction"
+          ]
+        },
+        "body": [
+          "def $name(self${parameterList:, }) => $type:",
+          "\t$body"
+        ],
+        "variables": {
+          "name": {
+            "formatter": "snakeCase"
+          }
+        }
+      }
+    ],
+    "description": "Function declaration",
+    "variables": {
+      "body": {
+        "wrapperScopeType": "statement"
+      }
+    },
+    "insertionScopeTypes": [
+      "namedFunction",
+      "statement",
+      "line"
+    ]
+  }
+}
