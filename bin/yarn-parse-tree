@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source ../emsdk/emsdk_env.sh
+NODE_GYP_FORCE_PYTHON=/Users/pokey/.pyenv/shims/python yarn
+NODE_GYP_FORCE_PYTHON=/Users/pokey/.pyenv/shims/python yarn compile
