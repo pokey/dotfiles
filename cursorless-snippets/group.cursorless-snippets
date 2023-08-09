@@ -1,0 +1,29 @@
+{
+  "group": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "scm"
+          ]
+        },
+        "body": [
+          "(",
+          "\t$pattern",
+          "\t$extra",
+          ")"
+        ]
+      }
+    ],
+    "description": "Group",
+    "variables": {
+      "pattern": {
+        "wrapperScopeType": "statement"
+      },
+      "extra": {}
+    },
+    "insertionScopeTypes": [
+      "statement"
+    ]
+  }
+}

@@ -5,6 +5,7 @@ abbreviations=(
   "gc"    "git commit -m \"__CURSOR__\""
   "gca"   "git commit -am \"__CURSOR__\""
   "gcm"   'git commit --amend'
+  "gcf"   'git commit --fixup'
   "gcam"  'git commit -a --amend'
   "gcl"   'pbpaste | xargs git clone'
   "gm"    'git merge'
@@ -18,6 +19,8 @@ abbreviations=(
   "grmr"   'git rebase master'
   "grid"  'git rebase -i develop'
   "grim"  'git rebase -i main'
+  "grqm"  'git rebase -i --autosquash main'
+  "grq"  'git rebase -i --autosquash'
   "grimr"  'git rebase -i master'
   "grh"   'git reset --hard'
   "grl"   'git reset --hard HEAD~'

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Show help if incorrect arguments are passed
+if [ $# -ne 2 ]; then
+  echo "git diff search"
+  echo "Searches for a string in the diff of a branch"
+  echo "Usage: $0 <branch> <target>"
+  exit 1
+fi
+
+branch="$1"
+target="$2"
+
+for file in $(git diff --name-only "$branch"); do
+  if git diff "$branch" -- "$file" | rg "$target" -q; then
+    echo -e "\033[0;32m$file\033[0m"
+    git diff "$branch" -- "$file" | rg "$target"
+  fi
+done

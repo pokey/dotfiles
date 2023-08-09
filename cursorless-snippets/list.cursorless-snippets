@@ -1,0 +1,29 @@
+{
+  "list": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "scm"
+          ]
+        },
+        "body": [
+          "[",
+          "\t$elem1",
+          "\t$elem2",
+          "]"
+        ]
+      }
+    ],
+    "description": "List",
+    "variables": {
+      "elem1": {
+        "wrapperScopeType": "statement"
+      },
+      "elem2": {}
+    },
+    "insertionScopeTypes": [
+      "statement"
+    ]
+  }
+}

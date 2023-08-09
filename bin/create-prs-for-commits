@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Given a commit sha (defaults to current commit), creates PRs for every
-# branch on the stack of the given commit.  Each PR is created with its base
-# as the nearest ancestor of the given branch that is also a branch.
+# Given a branchless query (defaults to `stack(.)`), creates PRs for every
+# branch matched by the query.  Each PR is created with its base as the nearest
+# ancestor of the given branch that is also a branch.
 set -euo pipefail
 
-commit="${1:-.}"
-base="$(git config branchless.core.mainBranch)"
+query="${1:-stack(.)}"
+main="$(git config branchless.core.mainBranch)"
 remote="origin"
 
-git-branchless submit --create "stack(\"$commit\")"
+git-branchless submit --create "$query"
 
-branches="$(git-branchless query -b "stack(\"$commit\")")"
+branches="$(git-branchless query -b "$query")"
 
 while read -r branch <&3; do
     existing_pr="$(gh pr view "$branch" --json url -t "{{.url}}" || echo -n "")"
@@ -20,15 +20,15 @@ while read -r branch <&3; do
         continue
     fi
 
-    # If branch name starts with "bases/", don't make a PR for it
-    if [[ $branch =~ ^bases/ ]]; then
+    # If branch name starts with "bases/" or "base/", don't make a PR for it
+    if [[ "$branch" =~ ^base(s)?/ ]]; then
         continue
     fi
 
     ancestor_query="ancestors(parents(\"$branch\")) & branches() & draft()"
     parent_branch=$(git-branchless query -b "$ancestor_query - ancestors(parents($ancestor_query))")
     if [ -z "$parent_branch" ]; then
-        parent_branch="$base"
+        parent_branch="$main"
     else
         if [[ $parent_branch =~ $'\n' ]]; then
             echo "ERROR: Branch $branch has more than one parent branch: $parent_branch"

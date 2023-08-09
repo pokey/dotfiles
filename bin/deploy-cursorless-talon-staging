@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PR_NUMBER="$1"
+
+git subtree split --prefix=cursorless-talon --branch=cursorless-talon-staging-pr-$PR_NUMBER
+git push --force-with-lease cursorless-talon-staging cursorless-talon-staging-pr-$PR_NUMBER:pr/$PR_NUMBER

@@ -1,0 +1,30 @@
+{
+  "named_node": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "scm"
+          ]
+        },
+        "body": [
+          "($type",
+          "\t$body",
+          ")"
+        ]
+      }
+    ],
+    "description": "named_node",
+    "variables": {
+      "type": {
+        "formatter": "snakeCase"
+      },
+      "body": {
+        "wrapperScopeType": "statement"
+      }
+    },
+    "insertionScopeTypes": [
+      "statement"
+    ]
+  }
+}

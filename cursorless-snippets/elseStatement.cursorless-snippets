@@ -34,7 +34,7 @@
     ],
     "description": "Else statement",
     "insertionScopeTypes": [
-      "ifStatement"
+      "branch"
     ]
   }
 }
