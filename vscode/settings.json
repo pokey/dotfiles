@@ -73,6 +73,16 @@
     // "green": "#439932", // T
     // "green": "#43BA17", // pokey
   },
+  "cursorless.colors.light": {
+    "default": "#757180",
+    "blue": "#095ded",
+    "green": "#36B33F",
+    "red": "#E02D28",
+    "pink": "#e0679f",
+    "yellow": "#edb62b",
+    "userColor1": "#6a00ff",
+    "userColor2": "#ffd8b1"
+  },
   "cursorless.debug": true,
   "cursorless.experimental.keyboard.modal.keybindings.actions": {
     "t": "setSelection",
@@ -149,10 +159,11 @@
     "eye": 2,
     "curve": 1.5
   },
-  "cursorless.hatSizeAdjustment": 20,
-  "cursorless.hatVerticalOffset": 4.2,
+  "cursorless.hatVerticalOffset": 10,
   "cursorless.individualHatAdjustments": {
-    "default": {},
+    "default": {
+      "sizeAdjustment": -30
+    },
     "ex": {},
     "fox": {},
     "wing": {
@@ -183,7 +194,6 @@
     }
   },
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
-  "cursorless.pendingEditDecorationTime": 100,
   "cursorless.showAdditionalHighlightBeforeScroll": false,
   "cursorless.showOnStart": true,
   "customizeUI.activityBar": "regular",
@@ -218,7 +228,6 @@
     "comments": true,
     "strings": true
   },
-  "editor.renderWhitespace": "none",
   "editor.scrollbar.vertical": "visible",
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "first",
@@ -312,7 +321,7 @@
   "git.mergeEditor": false,
   "github.copilot.enable": {
     "*": true,
-    "plaintext": false,
+    "plaintext": true,
     "markdown": true,
     "scminput": false,
     "yaml": true
@@ -320,7 +329,6 @@
   "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.fileListLayout": "tree",
-  "githubPullRequests.pullBranch": "never",
   "gitlens.advanced.fileHistoryFollowsRenames": true,
   "gitlens.codeLens.scopes": ["document"],
   "isort.args": ["--profile", "black"],
@@ -466,6 +474,7 @@
       "cursorless.pendingModification0Background": "#8c00ff86",
       "cursorless.pendingModification1Background": "#ff009d7e",
       "cursorless.highlight0Background": "#ca1bff61"
+      // "cursorless.scopeDomainBackground": "#00e1ff18"
       //   "cursorless.highlight1Background": "#d449ff42"
       // "cursorless.highlight0Outline": "#c919ffb2",
     }
@@ -484,7 +493,13 @@
   "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#AEAEAE",
   "latex-workshop.view.pdf.color.dark.backgroundColor": "#000000",
   "application.shellEnvironmentResolutionTimeout": 20,
-  "editor.defaultColorDecorators": true,
   "terminal.integrated.shellIntegration.history": 1000,
+  "editor.renderWhitespace": "boundary",
+  "editor.defaultColorDecorators": true,
+  "talon-filetree.letterStyling": "uppercase",
+  "workbench.editor.pinnedTabSizing": "shrink",
+  "editor.lineHeight": 1.6,
+  "cursorless.hatSizeAdjustment": 70,
+  "githubPullRequests.pullBranch": "never",
   "window.zoomLevel": 1
 }
