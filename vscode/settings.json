@@ -34,6 +34,10 @@
     },
     "editor.formatOnType": true
   },
+  "[scm]": {
+    "editor.defaultFormatter": "AndreasArvidsson.andreas-talon",
+    "editor.colorDecorators": false
+  },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -156,8 +160,7 @@
     "yellow": 1.5
   },
   "cursorless.hatPenalties.shapes": {
-    "eye": 2,
-    "curve": 1.5
+    "eye": 2
   },
   "cursorless.hatVerticalOffset": 10,
   "cursorless.individualHatAdjustments": {
@@ -201,7 +204,6 @@
     ".title-actions:hover .actions-container": "display: flex !important;",
     ".title-actions .actions-container": "display: none !important;"
   },
-  "debug.onTaskErrors": "debugAnyway",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.accessibilitySupport": "off",
@@ -475,7 +477,7 @@
       "cursorless.pendingModification1Background": "#ff009d7e",
       "cursorless.highlight0Background": "#ca1bff61"
       // "cursorless.scopeDomainBackground": "#00e1ff18"
-      //   "cursorless.highlight1Background": "#d449ff42"
+      // "cursorless.highlight1Background": "#49c8ff83"
       // "cursorless.highlight0Outline": "#c919ffb2",
     }
   },
@@ -501,5 +503,6 @@
   "editor.lineHeight": 1.6,
   "cursorless.hatSizeAdjustment": 70,
   "githubPullRequests.pullBranch": "never",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart"
 }
