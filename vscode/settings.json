@@ -504,5 +504,5 @@
   "cursorless.hatSizeAdjustment": 70,
   "githubPullRequests.pullBranch": "never",
   "window.zoomLevel": 1,
-  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart"
+  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]"
 }
