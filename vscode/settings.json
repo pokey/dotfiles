@@ -487,7 +487,6 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "workbench.iconTheme": "vscode-icons",
   "workbench.preferredDarkColorTheme": "Abyss",
   "redhat.telemetry.enabled": false,
   "latex-workshop.mathpreviewpanel.editorGroup": "right",
@@ -503,6 +502,7 @@
   "editor.lineHeight": 1.6,
   "cursorless.hatSizeAdjustment": 70,
   "githubPullRequests.pullBranch": "never",
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "window.zoomLevel": 1,
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]"
 }
