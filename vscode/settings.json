@@ -149,6 +149,8 @@
   "cursorless.hatEnablement.shapes": {
     "ex": true,
     "fox": true,
+    "wing": true,
+    "hole": true,
     "frame": true,
     "curve": true,
     "eye": true,
@@ -165,40 +167,51 @@
   "cursorless.hatVerticalOffset": 10,
   "cursorless.individualHatAdjustments": {
     "default": {
-      "sizeAdjustment": -30
+      "sizeAdjustment": 14,
+      "verticalOffset": 0.35
     },
-    "ex": {},
-    "fox": {},
+    "ex": {
+      "sizeAdjustment": -10
+    },
+    "fox": {
+      "sizeAdjustment": -10
+    },
     "wing": {
-      "sizeAdjustment": 2.5,
-      "verticalOffset": 1
+      "sizeAdjustment": -15.5,
+      "verticalOffset": -1.1
     },
     "hole": {
-      "sizeAdjustment": 12.5
+      "sizeAdjustment": -32.5,
+      "verticalOffset": 2
     },
     "frame": {
-      "sizeAdjustment": -5,
-      "verticalOffset": 0
+      "sizeAdjustment": 15,
+      "verticalOffset": 2.25
     },
     "curve": {
-      "sizeAdjustment": -6,
-      "verticalOffset": -0.95
+      "sizeAdjustment": 21,
+      "verticalOffset": 3.15
     },
     "eye": {
-      "sizeAdjustment": 2.5
+      "sizeAdjustment": 6.5,
+      "verticalOffset": 1
     },
-    "play": {},
+    "play": {
+      "sizeAdjustment": 8,
+      "verticalOffset": 0.5
+    },
     "bolt": {
-      "sizeAdjustment": 7.5
+      "sizeAdjustment": -22.5
     },
-    "star": {
-      "sizeAdjustment": 12.5,
-      "verticalOffset": -1
+    "crosshairs": {
+      "sizeAdjustment": -29.5,
+      "verticalOffset": 1
     }
   },
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
   "cursorless.showAdditionalHighlightBeforeScroll": false,
   "cursorless.showOnStart": true,
+  "cursorless.private.hatShapesDir": "/Users/pokey/pokey-home-files/cursorless-hat-shapes",
   "customizeUI.activityBar": "regular",
   "customizeUI.stylesheet": {
     ".title-actions:hover .actions-container": "display: flex !important;",
