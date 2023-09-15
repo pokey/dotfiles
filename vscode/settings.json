@@ -211,6 +211,7 @@
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
   "cursorless.showAdditionalHighlightBeforeScroll": false,
   "cursorless.showOnStart": true,
+  // WARNING: The following setting is undocumented and may disappear at any time.
   "cursorless.private.hatShapesDir": "/Users/pokey/pokey-home-files/cursorless-hat-shapes",
   "customizeUI.activityBar": "regular",
   "customizeUI.stylesheet": {
