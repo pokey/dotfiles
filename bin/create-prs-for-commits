@@ -6,7 +6,6 @@ set -euo pipefail
 
 query="${1:-stack(.)}"
 main="$(git config branchless.core.mainBranch)"
-remote="origin"
 
 git-branchless submit --create "$query"
 

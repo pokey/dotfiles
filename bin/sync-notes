@@ -8,7 +8,7 @@ LOG_FILE="/usr/local/var/log/sync-notes.log"
 NOTES_FOLDER="$HOME/notes"
 
 # Redirect output and stderr to log
-exec >> "$LOG_FILE"
+exec >>"$LOG_FILE"
 exec 2>&1
 
 notify() {
@@ -17,22 +17,22 @@ notify() {
 
 error_and_quit() {
     message="$1"
-    >&2 echo "ERROR: $message"
-    >&2 echo "Bailing out"
+    echo >&2 "ERROR: $message"
+    echo >&2 "Bailing out"
     notify -group notes-sync-error -sound Funk -title "❌ Error" -message "$message"
-    exit -1
+    exit 1
 }
 
 echo "---------------------------"
 
-cd "$NOTES_FOLDER"
+cd "$NOTES_FOLDER" || exit 1
 
 gstatus=$(git status --porcelain)
 
-if [ ${#gstatus} -ne 0 ] ; then
+if [ ${#gstatus} -ne 0 ]; then
     git add --all || error_and_quit "Failed git add --all"
-    git commit -m "[content] $(date -u '+%F %T UTC')" \
-        || error_and_quit "Failed git commit"
+    git commit -m "[content] $(date -u '+%F %T UTC')" ||
+        error_and_quit "Failed git commit"
 fi
 
 git fetch || error_and_quit "Failed git fetch"
@@ -40,12 +40,12 @@ git fetch || error_and_quit "Failed git fetch"
 pull_diff="$(git diff --shortstat main...origin/main)"
 push_diff="$(git diff --shortstat origin/main...main)"
 
-if [ ${#pull_diff} -ne 0 ] ; then
+if [ ${#pull_diff} -ne 0 ]; then
     git merge origin/main --no-edit || error_and_quit "Failed git merge"
     notify -group notes-sync-pull -title "⬇️Pull" -message "$pull_diff"
 fi
 
-if [ ${#push_diff} -ne 0 ] ; then
+if [ ${#push_diff} -ne 0 ]; then
     git push origin main || error_and_quit "Failed push"
     notify -group notes-sync-push -title "⬆️Push" -message "$push_diff"
 fi
