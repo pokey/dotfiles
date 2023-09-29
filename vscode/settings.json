@@ -142,10 +142,6 @@
     "w": "crosshairs"
   },
   "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
-  "cursorless.hatEnablement.colors": {
-    "green": false,
-    "pink": false
-  },
   "cursorless.hatEnablement.shapes": {
     "ex": true,
     "fox": true,
