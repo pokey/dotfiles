@@ -517,5 +517,6 @@
   "githubPullRequests.pullBranch": "never",
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "haskell.manageHLS": "PATH"
 }
