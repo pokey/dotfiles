@@ -180,7 +180,7 @@
     },
     "wing": {
       "sizeAdjustment": -12,
-      "verticalOffset": 0
+      "verticalOffset": 1.5
     },
     "hole": {
       "sizeAdjustment": -32,
