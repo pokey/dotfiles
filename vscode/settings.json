@@ -163,31 +163,31 @@
   "cursorless.hatVerticalOffset": 10,
   "cursorless.individualHatAdjustments": {
     "default": {
-      "sizeAdjustment": -8,
+      "sizeAdjustment": -12,
       "verticalOffset": 0.35
     },
     "ex": {
-      "sizeAdjustment": -26,
+      "sizeAdjustment": -30,
       "verticalOffset": 0.5
     },
     "fox": {
-      "sizeAdjustment": -20,
+      "sizeAdjustment": -25,
       "verticalOffset": 1.5
     },
     "wing": {
-      "sizeAdjustment": -12,
-      "verticalOffset": 1.5
+      "sizeAdjustment": -28,
+      "verticalOffset": -0.5
     },
     "hole": {
       "sizeAdjustment": -32,
-      "verticalOffset": 1
+      "verticalOffset": 2
     },
     "frame": {
-      "sizeAdjustment": 0,
+      "sizeAdjustment": -10,
       "verticalOffset": 1
     },
     "curve": {
-      "sizeAdjustment": 5,
+      "sizeAdjustment": 15,
       "verticalOffset": 0.5
     },
     "eye": {
@@ -196,15 +196,15 @@
     },
     "play": {
       "sizeAdjustment": 8,
-      "verticalOffset": 2
+      "verticalOffset": 0.5
     },
     "bolt": {
-      "sizeAdjustment": -24,
-      "verticalOffset": 0
+      "sizeAdjustment": -28,
+      "verticalOffset": -0.5
     },
     "crosshairs": {
       "sizeAdjustment": -15,
-      "verticalOffset": 2
+      "verticalOffset": 1
     }
   },
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
