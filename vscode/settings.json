@@ -76,6 +76,7 @@
   "cursorless.colors.dark": {
     // "green": "#439932", // T
     // "green": "#43BA17", // pokey
+    "default": "#B9B6CD"
   },
   "cursorless.colors.light": {
     "default": "#757180",
@@ -163,7 +164,7 @@
   "cursorless.hatVerticalOffset": 10,
   "cursorless.individualHatAdjustments": {
     "default": {
-      "sizeAdjustment": -12,
+      "sizeAdjustment": -14,
       "verticalOffset": 0.35
     },
     "ex": {
@@ -172,18 +173,18 @@
     },
     "fox": {
       "sizeAdjustment": -25,
-      "verticalOffset": 1.5
+      "verticalOffset": 0
     },
     "wing": {
-      "sizeAdjustment": -28,
-      "verticalOffset": -0.5
+      "sizeAdjustment": -16,
+      "verticalOffset": 0.5
     },
     "hole": {
-      "sizeAdjustment": -32,
+      "sizeAdjustment": -38,
       "verticalOffset": 2
     },
     "frame": {
-      "sizeAdjustment": -10,
+      "sizeAdjustment": 0,
       "verticalOffset": 1
     },
     "curve": {
@@ -191,7 +192,7 @@
       "verticalOffset": 0.5
     },
     "eye": {
-      "sizeAdjustment": 6.5,
+      "sizeAdjustment": 2,
       "verticalOffset": 0.5
     },
     "play": {
