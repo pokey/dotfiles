@@ -76,7 +76,6 @@
   "cursorless.colors.dark": {
     // "green": "#439932", // T
     // "green": "#43BA17", // pokey
-    "default": "#B9B6CD"
   },
   "cursorless.colors.light": {
     "default": "#757180",
@@ -161,58 +160,11 @@
   "cursorless.hatPenalties.shapes": {
     "eye": 2
   },
-  "cursorless.hatVerticalOffset": 10,
-  "cursorless.individualHatAdjustments": {
-    "default": {
-      "sizeAdjustment": -16,
-      "verticalOffset": 0.35
-    },
-    "ex": {
-      "sizeAdjustment": -30,
-      "verticalOffset": 0.5
-    },
-    "fox": {
-      "sizeAdjustment": -25,
-      "verticalOffset": 0
-    },
-    "wing": {
-      "sizeAdjustment": -18,
-      "verticalOffset": -1
-    },
-    "hole": {
-      "sizeAdjustment": -38,
-      "verticalOffset": 2
-    },
-    "frame": {
-      "sizeAdjustment": -5,
-      "verticalOffset": 1
-    },
-    "curve": {
-      "sizeAdjustment": 15,
-      "verticalOffset": 0
-    },
-    "eye": {
-      "sizeAdjustment": 2,
-      "verticalOffset": 0.5
-    },
-    "play": {
-      "sizeAdjustment": 8,
-      "verticalOffset": 0.5
-    },
-    "bolt": {
-      "sizeAdjustment": -28,
-      "verticalOffset": -0.5
-    },
-    "crosshairs": {
-      "sizeAdjustment": -20,
-      "verticalOffset": 0.75
-    }
-  },
+  "cursorless.hatVerticalOffset": 12,
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
   "cursorless.showAdditionalHighlightBeforeScroll": false,
   "cursorless.showOnStart": true,
   // WARNING: The following setting is undocumented and may disappear at any time.
-  "cursorless.private.hatShapesDir": "/Users/pokey/pokey-home-files/cursorless-hat-shapes",
   "customizeUI.activityBar": "regular",
   "customizeUI.stylesheet": {
     ".title-actions:hover .actions-container": "display: flex !important;",
@@ -514,10 +466,11 @@
   "talon-filetree.letterStyling": "uppercase",
   "workbench.editor.pinnedTabSizing": "shrink",
   "editor.lineHeight": 1.6,
-  "cursorless.hatSizeAdjustment": 70,
+  "cursorless.hatSizeAdjustment": 30,
   "githubPullRequests.pullBranch": "never",
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]",
   "window.zoomLevel": 1,
-  "haskell.manageHLS": "PATH"
+  "haskell.manageHLS": "PATH",
+  "workbench.editor.empty.hint": "hidden"
 }
