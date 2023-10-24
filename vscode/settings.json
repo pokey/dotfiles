@@ -160,7 +160,7 @@
   "cursorless.hatPenalties.shapes": {
     "eye": 2
   },
-  "cursorless.hatVerticalOffset": 12,
+  "cursorless.hatVerticalOffset": 10,
   "cursorless.keyboard.relinquishCursorControlOnDeactivate": true,
   "cursorless.showAdditionalHighlightBeforeScroll": false,
   "cursorless.showOnStart": true,
