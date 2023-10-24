@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Backup talon audio files to s3 bucket
 # Needs to be run after `awm administrator`
 
