@@ -424,7 +424,6 @@
   "window.newWindowDimensions": "fullscreen",
   "window.openFoldersInNewWindow": "on",
   "window.restoreFullscreen": true,
-  "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "[Abyss]": {
       "editorError.foreground": "#b32222",
@@ -449,7 +448,6 @@
   },
   "workbench.colorTheme": "Abyss",
   "workbench.editor.enablePreview": true,
-  "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
@@ -472,5 +470,7 @@
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]",
   "window.zoomLevel": 1,
   "haskell.manageHLS": "PATH",
-  "workbench.editor.empty.hint": "hidden"
+  "workbench.editor.empty.hint": "hidden",
+  "window.autoDetectColorScheme": true,
+  "workbench.activityBar.location": "hidden"
 }
