@@ -1,0 +1,24 @@
+{
+  "typeAlias": {
+    "definitions": [
+      {
+        "scope": {
+          "langIds": [
+            "typescript",
+            "typescriptreact"
+          ]
+        },
+        "body": [
+          "type $name = $value;"
+        ]
+      }
+    ],
+    "description": "A type alias",
+    "variables": {
+      "name": {
+        "formatter": "pascalCase"
+      },
+      "value": {}
+    }
+  }
+}

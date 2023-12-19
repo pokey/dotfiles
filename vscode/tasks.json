@@ -228,7 +228,7 @@
     {
       "label": "Start tunnel",
       "type": "shell",
-      "command": "/Users/pokey/n/bin/localtunnel --port 3000 | tee >(head -1 | cut -c13- | xargs echo -n | pbcopy)",
+      "command": "curl -s icanhazip.com | pbcopy && /Users/pokey/n/bin/localtunnel --port 3000",
       "presentation": {},
       "problemMatcher": []
     },
@@ -292,6 +292,17 @@
       "type": "shell",
       "command": "/Users/pokey/pokey-home-files/bin/move-recorded-video '${input:videoName}'",
       "presentation": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "bun run",
+      "type": "shell",
+      "command": "bun run ${file}",
+      "presentation": {
+        "reveal": "always",
+        "showReuseMessage": false,
+        "echo": false
+      },
       "problemMatcher": []
     }
   ],

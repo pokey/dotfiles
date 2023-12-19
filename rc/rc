@@ -107,6 +107,4 @@ source "$HOME/src/git-subrepo/.rc"
 
 launchctl setenv PATH $PATH
 
-eval "$(github-copilot-cli alias -- "$0")"
-
 eval "$(/opt/homebrew/bin/brew shellenv)"

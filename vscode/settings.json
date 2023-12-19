@@ -30,7 +30,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.formatOnType": true
   },
@@ -88,7 +88,7 @@
     "userColor2": "#ffd8b1"
   },
   "cursorless.debug": true,
-  "cursorless.experimental.keyboard.modal.keybindings.actions": {
+  "cursorless.experimental.keyboard.modal.keybindings.action": {
     "t": "setSelection",
     "h": "setSelectionBefore",
     "l": "setSelectionAfter",
@@ -109,13 +109,13 @@
     "ap": "pasteFromClipboard",
     "ad": "followLink"
   },
-  "cursorless.experimental.keyboard.modal.keybindings.colors": {
+  "cursorless.experimental.keyboard.modal.keybindings.color": {
     "d": "default",
     "b": "blue",
     "g": "yellow",
     "r": "red"
   },
-  "cursorless.experimental.keyboard.modal.keybindings.scopes": {
+  "cursorless.experimental.keyboard.modal.keybindings.scope": {
     "i": "line",
     "p": "paragraph",
     "n": "statement",
@@ -131,7 +131,14 @@
     "sp": "nonWhitespaceSequence",
     "sa": "argumentOrParameter"
   },
-  "cursorless.experimental.keyboard.modal.keybindings.shapes": {
+  // "cursorless.experimental.keyboard.modal.keybindings.misc": {
+  //   "x": "combineColorAndShape",
+  //   "r": "makeRange"
+  // },
+  // "cursorless.experimental.keyboard.modal.keybindings.modifier": {
+  //   "n": "next"
+  // },
+  "cursorless.experimental.keyboard.modal.keybindings.shape": {
     "x": "ex",
     "f": "fox",
     "q": "frame",
@@ -170,7 +177,6 @@
     ".title-actions:hover .actions-container": "display: flex !important;",
     ".title-actions .actions-container": "display: none !important;"
   },
-  "diffEditor.ignoreTrimWhitespace": false,
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.accessibilitySupport": "off",
   "editor.autoClosingBrackets": "beforeWhitespace",
@@ -459,7 +465,7 @@
   "latex-workshop.view.pdf.color.dark.backgroundColor": "#000000",
   "application.shellEnvironmentResolutionTimeout": 20,
   "terminal.integrated.shellIntegration.history": 1000,
-  "editor.renderWhitespace": "boundary",
+  "editor.renderWhitespace": "all",
   "editor.defaultColorDecorators": true,
   "talon-filetree.letterStyling": "uppercase",
   "workbench.editor.pinnedTabSizing": "shrink",
@@ -468,9 +474,17 @@
   "githubPullRequests.pullBranch": "never",
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]",
-  "window.zoomLevel": 1,
   "haskell.manageHLS": "PATH",
   "workbench.editor.empty.hint": "hidden",
   "window.autoDetectColorScheme": true,
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+  "window.zoomLevel": 1,
+  "gitlens.advanced.messages": {
+    "suppressBlameInvalidIgnoreRevsFileWarning": true
+  },
+  "gitlens.ai.experimental.provider": "openai",
+  "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview"
 }
