@@ -290,6 +290,7 @@
     "**/.ammonite": true
   },
   "git-branchless.branchPrefix": "pokey/",
+  // "git-branchless.logCallsToPath": "/Users/pokey/branchless-log.jsonl",
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.mergeEditor": false,
@@ -486,5 +487,7 @@
     "suppressBlameInvalidIgnoreRevsFileWarning": true
   },
   "gitlens.ai.experimental.provider": "openai",
-  "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview"
+  "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
+  "gitlens.views.commitDetails.files.layout": "tree",
+  "cursorless.commandHistory": true
 }

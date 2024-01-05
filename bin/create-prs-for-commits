@@ -4,7 +4,7 @@
 # ancestor of the given branch that is also a branch.
 set -euo pipefail
 
-query="${1:-stack(.)}"
+query="((${1:-stack(.)}) & draft())"
 main="$(git config branchless.core.mainBranch)"
 
 git-branchless submit --create "$query"
