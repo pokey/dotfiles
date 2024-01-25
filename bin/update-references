@@ -1,74 +1,167 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bun
 
-LOG_FILE="/usr/local/var/log/update-references.log"
-REFERENCES_FOLDER="$HOME/src/zotero-notes-export"
-NOTES_FOLDER="$HOME/notes"
+import assert from "assert";
+import { execSync } from "child_process";
+import { existsSync, appendFileSync } from "fs";
+import { homedir } from "os";
+import * as path from "path";
 
-# Redirect output and stderr to log
-exec >> "$LOG_FILE"
-exec 2>&1
+const LOG_FILE = "/usr/local/var/log/update-references.log";
+const REFERENCES_FOLDER = path.join(homedir(), "src/zotero-notes-export");
+const NOTES_FOLDER = path.join(homedir(), "notes");
 
-notify() {
-    /usr/local/bin/terminal-notifier "$@"
+/**
+ * Commits in the references repository that are known to be missing in the
+ * notes repository. These were applied in an older way, so don't match the
+ * proper commit message format.
+ */
+const KNOWN_MISSING = [
+  "7739007",
+  "b11b7eb",
+  "ff4ce8d",
+  "73e3770",
+  "1ccdbb6",
+  "d887c5a",
+  "741f81a",
+  "ac91e75",
+  "8df7381",
+  "d15d0d5",
+  "59a8fd5",
+  "d399c7c",
+  "4f1500d",
+  "a509f76",
+];
+
+// Append to log file
+function log(message: string) {
+  if (message.length === 0) {
+    return;
+  }
+  appendFileSync(LOG_FILE, message + "\n");
 }
 
-error_and_quit() {
-    message="$1"
-    >&2 echo "ERROR: $message"
-    >&2 echo "Bailing out"
-    notify -group notes-sync-error -sound Funk -title "❌ Error" -message "$message"
-    exit -1
+// Execute shell command and log output
+function execAndLog(command: string, cwd: string): string {
+  const output = exec(command, cwd);
+  log(output);
+  return output;
 }
 
-echo "---------------------------"
+// Execute shell command
+function exec(command: string, cwd: string): string {
+  try {
+    return execSync(command, { cwd }).toString().trim();
+  } catch (error) {
+    errorAndQuit(`Failed to execute command: ${command}`);
+    throw error; // This line will never be reached, but it's here for clarity.
+  }
+}
 
-# --------------------------------------------
-# Start by operating on the references repository
-cd "$REFERENCES_FOLDER"
+function notify(
+  title: string,
+  message: string,
+  group: string = "update-references",
+  sound: string = "default"
+) {
+  execSync(
+    `/usr/local/bin/terminal-notifier -group ${group} -sound ${sound} -title "${title}" -message "${message}"`
+  );
+}
 
-git add --all || error_and_quit "Failed git add --all"
-git commit -m "[content] $(date -u '+%F %T UTC')" \
-    || error_and_quit "Failed git commit"
+function errorAndQuit(message: string) {
+  log(`ERROR: ${message}`);
+  log("Bailing out");
+  notify("❌ Error", message, "notes-sync-error", "Funk");
+  process.exit(-1);
+}
 
-git push origin main || error_and_quit "Failed git push"
+log("---------------------------");
 
-references_sha="$(git rev-parse --short HEAD)"
-diff=$(git format-patch -1 --stdout)
+try {
+  execAndLog("git add --all", REFERENCES_FOLDER);
+  // Commit if there are changes
+  const toCommit: string[] = [];
+  if (execAndLog("git status --porcelain", REFERENCES_FOLDER)) {
+    execAndLog(
+      `git commit -m "[content] ${new Date().toISOString()}"`,
+      REFERENCES_FOLDER
+    );
+    toCommit.push(exec("git rev-parse --short HEAD", REFERENCES_FOLDER));
+  }
 
+  // Find all commits in references repository that are not in notes repository,
+  // as identified by looking for a commit in notes repository with name
+  // "[references] <sha>". Note that we don't consider commits before 2023-12-31
+  // because older commits can be problematic.
+  const referencesCommits = exec(
+    "git log --pretty=format:'%h' --reverse",
+    REFERENCES_FOLDER
+  );
+  // Get subject of all commits in notes repository
+  const notesCommits = exec(
+    "git log --pretty=format:'%s' --reverse",
+    NOTES_FOLDER
+  );
+  const missingReferenceCommits = referencesCommits
+    .split("\n")
+    .filter((sha) => !notesCommits.includes(`[references] ${sha}`))
+    .filter((sha) => !KNOWN_MISSING.includes(sha));
 
-# --------------------------------------------
-# Now we are operating on the notes repository
-cd "$NOTES_FOLDER"
+  // Ensure that the only missing commits are expected
+  assert.deepStrictEqual(missingReferenceCommits, toCommit);
 
-# Commit any changes that might currently be there
-gstatus=$(git status --porcelain)
-if [ ${#gstatus} -ne 0 ] ; then
-    git add --all || error_and_quit "Failed git add --all"
-    git commit -m "[content] $(date -u '+%F %T UTC')" \
-        || error_and_quit "Failed git commit"
-fi
+  if (toCommit.length === 0) {
+    log("No new commits to apply");
+    log("---------------------------");
+    log("");
+    process.exit(0);
+  }
 
-# Apply patch from references repository
-echo "Applying $references_sha from references to notes..."
-echo "$diff" | git apply --reject || error_and_quit "Failed git apply"
+  if (!existsSync(`${NOTES_FOLDER}/.git`)) {
+    errorAndQuit("No .git directory in NOTES_FOLDER");
+  }
 
-# Commit patch
-gstatus=$(git status --porcelain)
-if [ ${#gstatus} -ne 0 ] ; then
-    git add --all || error_and_quit "Failed git add --all"
-    git commit -m "[references] $references_sha" \
-        || error_and_quit "Failed git commit"
-    push_diff="$(git diff --shortstat head~..head)"
-    notify -group update-references -title "Update references" -message "$push_diff"
-fi
+  if (execAndLog("git status --porcelain", NOTES_FOLDER)) {
+    execAndLog("git add --all", NOTES_FOLDER);
+    execAndLog(
+      `git commit -m "[content] ${new Date().toISOString()}"`,
+      NOTES_FOLDER
+    );
+  }
 
-# --------------------------------------------
-# Finish by pushing
-cd "$REFERENCES_FOLDER"
-git push origin main || error_and_quit "Failed git push"
+  for (const commit of toCommit) {
+    const diff = execAndLog(
+      `git format-patch -1 --stdout ${commit}`,
+      REFERENCES_FOLDER
+    );
 
-cd "$NOTES_FOLDER"
-git push origin main || error_and_quit "Failed git push"
+    log(`Applying ${commit} from references to notes...`);
+    try {
+      execSync(`echo "${diff}" | git apply --reject`, { cwd: NOTES_FOLDER });
+    } catch (error) {
+      errorAndQuit("Failed git apply");
+    }
 
-echo "---------------------------"
-echo
+    const postPatchStatus = execAndLog("git status --porcelain", NOTES_FOLDER);
+    if (postPatchStatus) {
+      execAndLog("git add --all", NOTES_FOLDER);
+      execAndLog(`git commit -m "[references] ${commit}"`, NOTES_FOLDER);
+      const pushDiff = execAndLog(
+        "git diff --shortstat head~..head",
+        NOTES_FOLDER
+      );
+      notify("Update references", pushDiff);
+    }
+  }
+
+  // Push changes
+  process.chdir(REFERENCES_FOLDER);
+  execAndLog("git push origin main", REFERENCES_FOLDER);
+  process.chdir(NOTES_FOLDER);
+  execAndLog("git push origin main", NOTES_FOLDER);
+
+  log("---------------------------");
+  log("");
+} catch (error) {
+  errorAndQuit(`An unexpected error occurred: ${error.message}`);
+}

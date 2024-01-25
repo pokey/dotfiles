@@ -55,7 +55,7 @@ launcher_mode:
       shell_command: /bin/sh ~/pokey-home-files/bin/sync-notes
   - from: u
     to:
-      shell_command: /bin/sh ~/pokey-home-files/bin/update-references
+      shell_command: /Users/pokey/.bun/bin/bun ~/pokey-home-files/bin/update-references
   - from: z
     to:
       key_code: z

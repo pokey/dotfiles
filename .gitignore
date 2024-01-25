@@ -11,3 +11,5 @@ dotConfig/nvim/.netrwhist
 
 # Personalized stuff
 dotFiles/hammerspoon/ssid.lua
+
+node_modules
