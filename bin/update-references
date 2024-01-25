@@ -114,6 +114,7 @@ try {
     log("No new commits to apply");
     log("---------------------------");
     log("");
+    notify("Update references", "No new commits to apply");
     process.exit(0);
   }
 
