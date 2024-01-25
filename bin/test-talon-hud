@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rm -f ~/.talon/user/talon_hud
+rm -f ~/.talon/user/talon_hud_dev
+ln -s "$HOME/src/talon_hud_dev" ~/.talon/user

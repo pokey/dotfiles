@@ -249,6 +249,14 @@
       }
     },
     {
+      "label": "Test hud talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/test-talon-hud",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
       "label": "Test all talon",
       "type": "shell",
       "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
@@ -268,6 +276,14 @@
       "label": "Restore cursorless talon",
       "type": "shell",
       "command": "/Users/pokey/pokey-home-files/bin/restore-cursorless-talon",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Restore hud talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/restore-talon-hud",
       "presentation": {
         "reveal": "silent"
       }
