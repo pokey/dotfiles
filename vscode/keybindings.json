@@ -355,12 +355,6 @@
     "when": "cursorless.keyboard.modal.mode && editorTextFocus"
   },
   {
-    "key": "backspace",
-    "command": "cursorless.keyboard.targeted.runActionOnTarget",
-    "args": "remove",
-    "when": "cursorless.keyboard.modal.mode && editorTextFocus"
-  },
-  {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditorInGroup",
     "when": "!inEditorsPicker || !inQuickOpen"

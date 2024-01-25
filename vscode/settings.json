@@ -88,65 +88,109 @@
     "userColor2": "#ffd8b1"
   },
   "cursorless.debug": true,
-  "cursorless.experimental.keyboard.modal.keybindings.action": {
-    "t": "setSelection",
-    "h": "setSelectionBefore",
-    "l": "setSelectionAfter",
-    "O": "editNewLineBefore",
-    "o": "editNewLineAfter",
-    "k": "insertCopyBefore",
-    "j": "insertCopyAfter",
-    "u": "replaceWithTarget",
-    "m": "moveToTarget",
-    "c": "clearAndSetSelection",
-    "as": "swapTargets",
-    "af": "foldRegion",
-    "ak": "insertEmptyLineBefore",
-    "aj": "insertEmptyLineAfter",
-    "ai": "insertEmptyLinesAround",
-    "ac": "copyToClipboard",
-    "ax": "cutToClipboard",
-    "ap": "pasteFromClipboard",
-    "ad": "followLink"
-  },
-  "cursorless.experimental.keyboard.modal.keybindings.color": {
-    "d": "default",
-    "b": "blue",
-    "g": "yellow",
-    "r": "red"
-  },
   "cursorless.experimental.keyboard.modal.keybindings.scope": {
     "i": "line",
-    "p": "paragraph",
-    "n": "statement",
+    "sb": "paragraph",
+    ";": "statement",
     ",": "collectionItem",
     ".": "functionCall",
     "'": "string",
     "sf": "namedFunction",
     "sc": "class",
-    "st": "token",
+    "t": "token",
     "sy": "type",
     "sv": "value",
     "sk": "collectionKey",
     "sp": "nonWhitespaceSequence",
-    "sa": "argumentOrParameter"
+    "ss": "boundedNonWhitespaceSequence",
+    "sa": "argumentOrParameter",
+    "sl": "url",
+    "so": "identifier",
+    "sd": "word"
   },
-  // "cursorless.experimental.keyboard.modal.keybindings.misc": {
-  //   "x": "combineColorAndShape",
-  //   "r": "makeRange"
-  // },
-  // "cursorless.experimental.keyboard.modal.keybindings.modifier": {
-  //   "n": "next"
-  // },
+  "cursorless.experimental.keyboard.modal.keybindings.action": {
+    "at": "setSelection",
+    "ah": "setSelectionBefore",
+    "al": "setSelectionAfter",
+    "ai": { "actionId": "editNewLineBefore", "exitCursorlessMode": true },
+    "ao": { "actionId": "editNewLineAfter", "exitCursorlessMode": true },
+    "ak": "insertCopyBefore",
+    "aj": "insertCopyAfter",
+    "au": "replaceWithTarget",
+    "am": "moveToTarget",
+    "c": { "actionId": "clearAndSetSelection", "exitCursorlessMode": true },
+    "as": "swapTargets",
+    "af": "foldRegion",
+    "aI": "insertEmptyLineBefore",
+    "aO": "insertEmptyLineAfter",
+    "aU": "insertEmptyLinesAround",
+    "ac": "copyToClipboard",
+    "ax": "cutToClipboard",
+    "ap": "pasteFromClipboard",
+    "ad": "followLink",
+    "x": "remove",
+    "aw": "wrap"
+  },
+  "cursorless.experimental.keyboard.modal.keybindings.color": {
+    "d": "default",
+    "b": "blue",
+    "y": "yellow",
+    "r": "red",
+    "g": "green",
+    "p": "pink"
+  },
   "cursorless.experimental.keyboard.modal.keybindings.shape": {
-    "x": "ex",
-    "f": "fox",
-    "q": "frame",
-    "v": "curve",
-    "e": "eye",
-    "y": "play",
-    "z": "bolt",
-    "w": "crosshairs"
+    "mx": "ex",
+    "mf": "fox",
+    "ma": "frame",
+    "mv": "curve",
+    "me": "eye",
+    "md": "play",
+    "mz": "bolt",
+    "mw": "crosshairs"
+  },
+  "cursorless.experimental.keyboard.modal.keybindings.misc": {
+    "fx": "combineColorAndShape",
+    "fk": "makeRange",
+    "fa": "makeList",
+    "-": "backward"
+  },
+  "cursorless.experimental.keyboard.modal.keybindings.modifier": {
+    "n": "nextPrev",
+    "*": "every"
+  },
+  "cursorless.experimental.keyboard.modal.keybindings.vscodeCommand": {
+    " ": "cursorless.keyboard.targeted.targetSelection",
+    "k": "cursorUp",
+    "j": "cursorDown",
+    "h": "cursorLeft",
+    "l": "cursorRight",
+    "va": "editor.action.addCommentLine",
+    "vb": {
+      "commandId": "editor.action.addCommentLine",
+      "executeAtTarget": true
+    },
+    "vc": {
+      "commandId": "editor.action.addCommentLine",
+      "executeAtTarget": true,
+      "keepChangedSelection": true,
+      "exitCursorlessMode": true
+    }
+  },
+  "cursorless.experimental.keyboard.modal.keybindings.pairedDelimiter": {
+    "w ": "any",
+    "wj": "parentheses",
+    "wk": "string",
+    "wl": "curlyBrackets",
+    "wh": "squareBrackets",
+    "wn": "angleBrackets",
+    "w`": "backtickQuotes",
+    "w'": "singleQuotes",
+    "w\"": "doubleQuotes",
+    "ww\"": "escapedDoubleQuotes",
+    "wwj": "escapedParentheses",
+    "wwh": "escapedSquareBrackets",
+    "ww'": "escapedSingleQuotes"
   },
   "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
   "cursorless.hatEnablement.shapes": {
