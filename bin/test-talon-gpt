@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rm -f ~/.talon/user/talon-gpt
+rm -f ~/.talon/user/talon-ai-tools-dev
+ln -s "$HOME/src/talon-ai-tools-dev" ~/.talon/user

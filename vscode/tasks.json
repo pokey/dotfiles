@@ -257,6 +257,14 @@
       }
     },
     {
+      "label": "Test gpt talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/test-talon-gpt",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
       "label": "Test all talon",
       "type": "shell",
       "command": "/Users/pokey/pokey-home-files/bin/test-clean-talon",
@@ -284,6 +292,14 @@
       "label": "Restore hud talon",
       "type": "shell",
       "command": "/Users/pokey/pokey-home-files/bin/restore-talon-hud",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Restore gptk talon",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/restore-talon-gptk",
       "presentation": {
         "reveal": "silent"
       }
