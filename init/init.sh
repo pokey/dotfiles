@@ -120,9 +120,8 @@ esac
 mkdir -p $HOME/sources
 mkdir -p $HOME/bin
 
-# Install exa (replacement for ls)
-# github.com/ogham/exa
-brew install exa
+# Install eza (replacement for ls)
+cargo install eza
 
 # Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"

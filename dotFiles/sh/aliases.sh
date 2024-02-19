@@ -1,8 +1,8 @@
-alias l='exa --classify --group-directories-first'
-alias ll="exa $EXA_LA_OPTIONS"
-alias la="exa -a"
-alias lla="exa -a $EXA_LA_OPTIONS"
-alias lal="exa -a $EXA_LA_OPTIONS"
+alias l='eza --classify --group-directories-first'
+alias ll="eza $EXA_LA_OPTIONS"
+alias la="eza -a"
+alias lla="eza -a $EXA_LA_OPTIONS"
+alias lal="eza -a $EXA_LA_OPTIONS"
 alias gs='git status'
 alias gd='zoom-run -p git diff'
 alias gdp='zoom-run -p git diff head~'

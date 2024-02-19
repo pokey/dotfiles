@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-exa --tree --git-ignore -I __pycache__ $EXA_LA_OPTIONS --colour always "$@" | \
+eza --tree --git-ignore -I __pycache__ $EXA_LA_OPTIONS --colour always "$@" |
     zoom-run
