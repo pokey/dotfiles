@@ -17,7 +17,7 @@
 # @raycast.authorURL https://github.com/kastnerorz
 
 epoch=${1}
-human=$(echo `date -r $epoch "+%F %T"`)
+human=$(date -r "${epoch:0:10}" "+%F %T")
 echo -n "$human" | pbcopy
 
-echo "Converted $epoch to $human" 
+echo "Converted $epoch to $human"
