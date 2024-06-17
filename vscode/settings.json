@@ -159,7 +159,9 @@
   },
   "cursorless.experimental.keyboard.modal.keybindings.modifier": {
     "n": "nextPrev",
-    "*": "every"
+    "*": "every",
+    "mi": "interiorOnly",
+    "mb": "excludeInterior"
   },
   "cursorless.experimental.keyboard.modal.keybindings.vscodeCommand": {
     "v ": "cursorless.keyboard.targeted.targetSelection",
@@ -168,6 +170,7 @@
     "h": "cursorLeft",
     "l": "cursorRight",
     "va": "editor.action.addCommentLine",
+    " ": "cursorless.repeatPreviousCommand",
     "vb": {
       "commandId": "editor.action.addCommentLine",
       "executeAtTarget": true

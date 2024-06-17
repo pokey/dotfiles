@@ -351,6 +351,11 @@
     "when": "cursorless.keyboard.modal.mode && editorTextFocus"
   },
   {
+    "key": "backspace",
+    "command": "cursorless.keyboard.undoTarget",
+    "when": "cursorless.keyboard.listening && editorTextFocus"
+  },
+  {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditorInGroup",
     "when": "!inEditorsPicker || !inQuickOpen"
