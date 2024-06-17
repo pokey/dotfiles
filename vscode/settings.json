@@ -107,6 +107,7 @@
     "sl": "url",
     "so": "identifier",
     "sd": "word",
+    "si": "instance",
     "s/": "comment"
   },
   "cursorless.experimental.keyboard.modal.keybindings.action": {
@@ -161,7 +162,7 @@
     "*": "every"
   },
   "cursorless.experimental.keyboard.modal.keybindings.vscodeCommand": {
-    " ": "cursorless.keyboard.targeted.targetSelection",
+    "v ": "cursorless.keyboard.targeted.targetSelection",
     "k": "cursorUp",
     "j": "cursorDown",
     "h": "cursorLeft",
@@ -238,7 +239,6 @@
   "editor.lineDecorationsWidth": 0, // undocumented
   "editor.lineNumbers": "off",
   "editor.lineNumbersMinChars": 0,
-  "editor.minimap.enabled": false,
   "editor.minimap.scale": 3,
   "editor.padding.top": 2,
   "editor.quickSuggestions": {
@@ -423,6 +423,7 @@
   "notebook.undoRedoPerCell": false,
   "nxConsole.enableTelemetry": false,
   "python.analysis.autoImportCompletions": true,
+  "python.analysis.addImport.heuristics": true,
   "python.analysis.indexing": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.languageServer": "Pylance",
@@ -523,7 +524,7 @@
   "haskell.manageHLS": "PATH",
   "workbench.editor.empty.hint": "hidden",
   "window.autoDetectColorScheme": true,
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "bottom",
   "diffEditor.experimental.showMoves": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
@@ -535,5 +536,8 @@
   "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
   "gitlens.views.commitDetails.files.layout": "tree",
   "cursorless.commandHistory": true,
-  "window.customTitleBarVisibility": "windowed"
+  "window.customTitleBarVisibility": "windowed",
+  "python.analysis.diagnosticMode": "workspace",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "editor.minimap.enabled": false
 }
