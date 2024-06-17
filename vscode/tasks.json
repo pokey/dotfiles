@@ -15,6 +15,13 @@
       "problemMatcher": []
     },
     {
+      "label": "pnpm install",
+      "type": "shell",
+      "command": "pnpm install",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "Install local",
       "type": "shell",
       "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix",
