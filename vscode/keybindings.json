@@ -279,10 +279,6 @@
     "command": "-editsHistory.moveCursorToNextEdit"
   },
   {
-    "key": "cmd+k cmd+e",
-    "command": "editsHistory.moveCursorToNextEdit"
-  },
-  {
     "key": "cmd+u",
     "command": "-editsHistory.createEditAtCursor"
   },
@@ -388,5 +384,9 @@
     "key": "ctrl+alt+r",
     "command": "-workbench.action.terminal.runRecentCommand",
     "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled"
+  },
+  {
+    "key": "cmd+k x",
+    "command": "-mdx-preview.commands.openPreview"
   }
 ]
