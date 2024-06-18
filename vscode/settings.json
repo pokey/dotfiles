@@ -105,7 +105,7 @@
     "sa": "argumentOrParameter",
     "sl": "url",
     "so": "identifier",
-    "sd": "word",
+    "sw": "word",
     "si": "instance",
     "s/": "comment"
   },
@@ -130,7 +130,8 @@
     "ap": "pasteFromClipboard",
     "ad": "followLink",
     "x": "remove",
-    "aw": "wrap"
+    "aw": "wrap",
+    "ar": "rename"
   },
   "cursorless.experimental.keyboard.modal.keybindings.color": {
     "d": "default",
@@ -156,11 +157,16 @@
     "fa": "makeList",
     "-": "backward"
   },
+  "cursorless.experimental.keyboard.modal.keybindings.specialMark": {
+    "mc": "cursor"
+  },
   "cursorless.experimental.keyboard.modal.keybindings.modifier": {
     "n": "nextPrev",
     "*": "every",
     "mi": "interiorOnly",
-    "mb": "excludeInterior"
+    "mb": "excludeInterior",
+    "mh": "extendThroughStartOf",
+    "mt": "extendThroughEndOf"
   },
   "cursorless.experimental.keyboard.modal.keybindings.vscodeCommand": {
     "v ": "cursorless.keyboard.targeted.targetSelection",
