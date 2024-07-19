@@ -393,5 +393,15 @@
   {
     "key": "cmd+k x",
     "command": "-mdx-preview.commands.openPreview"
+  },
+  {
+    "key": "shift+cmd+ctrl+f12",
+    "command": "gitlens.openWorkingFileInDiffRight",
+    "when": "gitlens:enabled && isInDiffRightEditor && resourceScheme =~ /^(gitlens|pr)$/"
+  },
+  {
+    "key": "shift+cmd+ctrl+f12",
+    "command": "git.openFile",
+    "when": "config.git.enabled && isInDiffEditor && !git.missing && gitOpenRepositoryCount != '0' && resourceScheme =~ /^git$|^file$/"
   }
 ]
