@@ -103,11 +103,11 @@
     "sp": "nonWhitespaceSequence",
     "ss": "boundedNonWhitespaceSequence",
     "sa": "argumentOrParameter",
-    "sl": "url",
     "so": "identifier",
     "sw": "word",
     "si": "instance",
-    "s/": "comment"
+    "s/": "comment",
+    "sl": "anonymousFunction"
   },
   "cursorless.experimental.keyboard.modal.keybindings.action": {
     "at": "setSelection",
@@ -202,6 +202,7 @@
     "w[": "escapedSquareBrackets",
     "w'": "escapedSingleQuotes"
   },
+  "cursorless.experimental.keyboardTargetFollowsSelection": false,
   "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
   "cursorless.hatEnablement.shapes": {
     "ex": true,
@@ -352,7 +353,8 @@
     "plaintext": true,
     "markdown": true,
     "scminput": false,
-    "yaml": true
+    "yaml": true,
+    "go": false
   },
   "githubIssues.issueBranchTitle": "${user}/issue${issueNumber}-${sanitizedIssueTitle}",
   "githubPullRequests.defaultMergeMethod": "squash",

@@ -233,6 +233,13 @@
       "problemMatcher": []
     },
     {
+      "label": "Run pre commit all",
+      "type": "shell",
+      "command": "pre-commit run --all",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "Start tunnel",
       "type": "shell",
       "command": "curl -s icanhazip.com | pbcopy && /Users/pokey/n/bin/localtunnel --port 3000",
