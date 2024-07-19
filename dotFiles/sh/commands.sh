@@ -11,7 +11,7 @@ v() {
 }
 
 # list git branches
-go() {
+g() {
   local branches branch out key
   branches=$(git branch -vv --color --sort=-committerdate)
   out=$(echo "$branches" | fzf-tmux --ansi -n 1 +m -0 -1 -q "$1" --expect=ctrl-d)
