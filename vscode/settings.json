@@ -208,7 +208,6 @@
     "w'": "escapedSingleQuotes"
   },
   "cursorless.experimental.keyboardTargetFollowsSelection": false,
-  "cursorless.experimental.snippetsDir": "/Users/pokey/pokey-home-files/cursorless-snippets",
   "cursorless.hatEnablement.shapes": {
     "ex": true,
     "fox": true,
