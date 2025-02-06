@@ -27,10 +27,11 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
     },
     "editor.formatOnType": true
   },
@@ -44,6 +45,10 @@
   "[talon]": {
     "editor.defaultFormatter": "wenkokke.talonfmt-vscode",
     "editor.formatOnSave": false
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
   },
   "[typescript]": {
     "editor.formatOnSave": false,
@@ -523,13 +528,12 @@
   "application.shellEnvironmentResolutionTimeout": 20,
   "terminal.integrated.shellIntegration.history": 1000,
   "editor.renderWhitespace": "all",
-  "editor.defaultColorDecorators": true,
+  "editor.defaultColorDecorators": "auto",
   "talon-filetree.letterStyling": "uppercase",
   "workbench.editor.pinnedTabSizing": "shrink",
   "editor.lineHeight": 1.6,
   "cursorless.hatSizeAdjustment": 30,
   "githubPullRequests.pullBranch": "never",
-  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}focus:[${focusedView}]",
   "haskell.manageHLS": "PATH",
   "workbench.editor.empty.hint": "hidden",
@@ -549,5 +553,13 @@
   "window.customTitleBarVisibility": "windowed",
   "python.analysis.diagnosticMode": "workspace",
   "github.copilot.editor.enableAutoCompletions": true,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "debug.onTaskErrors": "debugAnyway",
+  "dvc.doNotShowSetupAfterInstall": true,
+  // "go.alternateTools": {
+  //   "gopls": "/Users/pokey/.vscode/extensions/bold.bold-dev-0.0.1/bin/goplsproxy-darwin-arm64"
+  // },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  }
 }

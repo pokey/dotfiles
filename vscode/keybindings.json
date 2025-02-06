@@ -382,8 +382,9 @@
   },
   {
     "key": "ctrl+r",
-    "command": "workbench.action.terminal.runRecentCommand",
-    "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled"
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u0012" },
+    "when": "terminalFocus"
   },
   {
     "key": "ctrl+alt+r",
@@ -403,5 +404,10 @@
     "key": "shift+cmd+ctrl+f12",
     "command": "git.openFile",
     "when": "config.git.enabled && isInDiffEditor && !git.missing && gitOpenRepositoryCount != '0' && resourceScheme =~ /^git$|^file$/"
+  },
+  {
+    "key": "ctrl+shift+cmd+f12",
+    "command": "review.openLocalFile",
+    "when": "!isInDiffEditor && resourceScheme =~ /^review$/"
   }
 ]

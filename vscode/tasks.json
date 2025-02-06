@@ -34,7 +34,8 @@
       "label": "Install into cursorless sandbox",
       "type": "shell",
       "command": "vsce package -o bundle.vsix && code --install-extension bundle.vsix --profile=cursorlessDevelopment",
-      "presentation": {}
+      "presentation": {},
+      "problemMatcher": []
     },
     {
       "label": "Publish extension",
@@ -311,9 +312,9 @@
       }
     },
     {
-      "label": "Restore gptk talon",
+      "label": "Restore gpt talon",
       "type": "shell",
-      "command": "/Users/pokey/pokey-home-files/bin/restore-talon-gptk",
+      "command": "/Users/pokey/pokey-home-files/bin/restore-talon-gpt",
       "presentation": {
         "reveal": "silent"
       }

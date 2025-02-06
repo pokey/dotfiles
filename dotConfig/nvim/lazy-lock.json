@@ -1,5 +1,5 @@
 {
-  "BufOnly.vim": { "branch": "master", "commit": "43dd92303979bdb234a3cb2f5662847f7a3affe7" },
+  "cursorless.nvim": { "branch": "main", "commit": "8374e1e86a9c27e5bf29e5885bb006e65f709f20" },
   "lazy.nvim": { "branch": "main", "commit": "0fc34a0cf5f5f6f998a0897119a7d846b47eaa9d" },
   "talon.nvim": { "branch": "main", "commit": "7a9adf41071a450d28cd8333f5ed4d0a631c2bc1" }
 }
