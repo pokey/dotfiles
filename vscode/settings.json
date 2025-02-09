@@ -539,7 +539,7 @@
   "window.autoDetectColorScheme": true,
   "workbench.activityBar.location": "bottom",
   "diffEditor.experimental.showMoves": true,
-  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
   "window.zoomLevel": 1,
   "gitlens.advanced.messages": {
@@ -560,5 +560,6 @@
   // },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  }
+  },
+  "github.copilot.nextEditSuggestions.enabled": true
 }
