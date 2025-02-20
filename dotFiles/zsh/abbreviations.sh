@@ -147,6 +147,9 @@ abbreviations=(
   "ptv"   "http --verify=no 'https://miranda.prod.globality.io/api/health'| jq -r '.checks.taxonomies_version.message'"
   "h1"    "head -1"
   "ede"   'export $(env -i ~/bin/envdir __CURSOR__ env)'
+  "il"    '| envdir ~/envs/openai llm -s "__CURSOR__"'
+  "ilm"   '| envdir ~/envs/openai llm -s "__CURSOR__"'
+  "lm"    'envdir ~/envs/openai llm'
 )
 
 for i in {1..9};

@@ -5,5 +5,5 @@
 set -euo pipefail
 
 dvc push
-fd . -t f .dvc/cache | xargs file | rg ISO | cut -d: -f1 | xargs rm
-dvc list -R --dvc-only . | tr '\n' '\0' | xargs -0 file | rg ISO | cut -d: -f1 | tr '\n' '\0' | xargs -0 rm
+fd . -t f .dvc/cache | xargs file | rg -e "Matroska data" -e ISO | cut -d: -f1 | xargs rm
+dvc list -R --dvc-only . | tr '\n' '\0' | xargs -0 file | rg -e "Matroska data" -e ISO | cut -d: -f1 | tr '\n' '\0' | xargs -0 rm

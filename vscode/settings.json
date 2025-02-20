@@ -561,5 +561,27 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "go.alternateTools": {
+    "gopls": "/Users/pokey/.vscode/extensions/bold.bold-dev-0.0.1/bin/goplsproxy-darwin-arm64"
+  },
+  "githubIssues.queries": [
+    {
+      "label": "My Issues",
+      "query": "is:open assignee:${user} repo:${owner}/${repository}",
+      "groupBy": ["milestone"]
+    },
+    {
+      "label": "Created Issues",
+      "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+    },
+    {
+      "label": "Recent Issues",
+      "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+    },
+    {
+      "label": "Sketch ux",
+      "query": "is:open label:sketch-ux repo:${owner}/${repository}"
+    }
+  ]
 }
