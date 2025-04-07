@@ -40,14 +40,14 @@
     {
       "label": "sketch",
       "type": "shell",
-      "command": "/Users/pokey/pokey-home-files/bin/sketch '${input:prompt}'",
+      "command": "sketch '${input:prompt}'",
       "presentation": {},
       "problemMatcher": []
     },
     {
       "label": "sketch start",
       "type": "shell",
-      "command": "/Users/pokey/pokey-home-files/bin/sketch",
+      "command": "sketch",
       "presentation": {},
       "problemMatcher": []
     },
@@ -406,10 +406,5 @@
       "id": "prompt",
       "description": "Sketch prompt"
     }
-  ],
-  "options": {
-    "env": {
-      "PATH": "/opt/homebrew/bin:/Users/pokey/.local/bin:${env:PATH}"
-    }
-  }
+  ]
 }
