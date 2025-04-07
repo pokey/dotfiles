@@ -2,10 +2,10 @@
 
 import json
 import sys
+import urllib.request
+import urllib.error
 from base64 import b64encode
 from pathlib import Path
-
-import requests
 
 # Read API token from the same place as the Talon plugin
 API_TOKEN_PATH = Path("~/envs/toggl/TOGGL_API_TOKEN").expanduser()
@@ -24,16 +24,21 @@ headers = {
 def get_current_time_entry():
     """Get the current time entry or None if not tracking time"""
     url = "https://api.track.toggl.com/api/v9/me/time_entries/current"
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    return response.json()
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req) as response:
+            return json.loads(response.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        if e.code == 404:  # No current time entry
+            return None
+        raise
 
 def get_project(project_id):
     """Get project details including client ID"""
     url = f"https://api.track.toggl.com/api/v9/workspaces/{WORKSPACE_ID}/projects/{project_id}"
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    return response.json()
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req) as response:
+        return json.loads(response.read().decode('utf-8'))
 
 def main():
     try:
