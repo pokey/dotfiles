@@ -52,6 +52,13 @@
       "problemMatcher": []
     },
     {
+      "label": "Git amend force",
+      "type": "shell",
+      "command": "git amend -f",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "Git reword",
       "type": "shell",
       "command": "git reword .",

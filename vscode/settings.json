@@ -580,8 +580,20 @@
       "query": "state:open repo:${owner}/${repository} sort:updated-desc"
     },
     {
-      "label": "Sketch ux",
-      "query": "is:open label:sketch-ux repo:${owner}/${repository}"
+      "label": "Sketch web",
+      "query": "is:open label:sketch/web repo:${owner}/${repository} milestone:\"sketch: Launch\" "
     }
-  ]
+  ],
+  "chat.renderRelatedFiles": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  // "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.suggest.quickSuggestions": {
+    "commands": "on",
+    "arguments": "off",
+    "unknown": "off"
+  },
+  "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "chat.agent.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true
 }

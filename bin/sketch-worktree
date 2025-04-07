@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+#   Name of work tree is the first arg
+#   The rest of the args are passed to sketch
+worktree="$1"
+shift
+
+p=$(pwd)
+cd ~/src/sketch-worktrees/"$worktree" || exit
+go generate 'sketch.dev/loop/...'
+envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -unsafe -open "$@"

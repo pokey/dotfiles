@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+p=$(pwd)
+cd ~/src/sketch-clean || exit
+go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"

@@ -409,5 +409,13 @@
     "key": "ctrl+shift+cmd+f12",
     "command": "review.openLocalFile",
     "when": "!isInDiffEditor && resourceScheme =~ /^review$/"
-  }
+},
+{
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
+}
 ]
