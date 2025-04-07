@@ -406,5 +406,10 @@
       "id": "prompt",
       "description": "Sketch prompt"
     }
-  ]
+  ],
+  "options": {
+    "env": {
+      "PATH": "/opt/homebrew/bin:/Users/pokey/.local/bin:${env:PATH}"
+    }
+  }
 }

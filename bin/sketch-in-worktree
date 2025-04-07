@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+  echo "Usage: sketch-in-worktree <worktree-directory> [additional sketch arguments...]"
+  exit 1
+fi
+
+# Get the worktree directory from the first argument
+worktree_dir="$1"
+shift
+
+# Make sure the worktree directory exists
+if [ ! -d "$worktree_dir" ]; then
+  echo "Error: Worktree directory '$worktree_dir' does not exist"
+  exit 1
+fi
+
+# Store the current directory to return to after sketch
+p=$(pwd)
+
+# Change to the worktree directory
+cd "$worktree_dir" || exit 1
+echo "Working in worktree: $(pwd)"
+
+# Run go generate similar to sketch-dev
+go generate 'sketch.dev/loop/...' 2>/dev/null || echo "Warning: go generate failed or package not found"
+
+# Check if we're on the clock for client using Toggl API (copied from sketch script)
+if ~/pokey-home-files/bin/toggl_check_client.py; then
+  echo "On the clock - use Bold client environment"
+  envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
+else
+  echo "Not on the clock - use personal environment"
+  envdir ~/envs/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
+fi

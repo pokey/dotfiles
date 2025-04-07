@@ -1,12 +1,66 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-#   Name of work tree is the first arg
-#   The rest of the args are passed to sketch
-worktree="$1"
+if [ $# -lt 1 ]; then
+  echo "Usage: sketch-worktree "prompt" [additional sketch arguments...]"
+  exit 1
+fi
+
+# Capture the prompt (first argument)
+prompt="$1"
 shift
 
+# Get current directory name for worktree subdirectory
+current_dir=$(basename "$(pwd)")
+
+# Generate branch name using LLM
+echo "Generating branch name from prompt..."
+branch_name=$(echo "$prompt" | envdir ~/envs/anthropic/ llm -m claude-3.7-sonnet -s 'Please generate a concise branch name using only [a-z-] chars. Please output only the branch name and nothing else')
+
+# Sanitize branch name further to ensure it only contains allowed chars
+branch_name=$(echo "$branch_name" | tr -cd 'a-z-')
+
+# In case branch name is empty or invalid, set a default
+if [ -z "$branch_name" ]; then
+  branch_name="sketch-$(date +%Y%m%d-%H%M%S)"
+fi
+
+# Create worktrees directory if it doesn't exist
+worktree_root=~/src/worktrees
+if [ ! -d "$worktree_root" ]; then
+  mkdir -p "$worktree_root"
+fi
+
+# Create project-specific worktree directory
+project_worktree_dir="$worktree_root/$current_dir"
+if [ ! -d "$project_worktree_dir" ]; then
+  mkdir -p "$project_worktree_dir"
+fi
+
+# Full path to this specific worktree
+worktree_path="$project_worktree_dir/$branch_name"
+
+# Check if worktree already exists
+if [ -d "$worktree_path" ]; then
+  echo "Worktree for branch '$branch_name' already exists at $worktree_path"
+else
+  echo "Creating worktree for branch '$branch_name' at $worktree_path"
+  # Create the git worktree
+  git worktree add -b "$branch_name" "$worktree_path"
+fi
+
+# Store the current directory to return to after sketch
 p=$(pwd)
-cd ~/src/sketch-worktrees/"$worktree" || exit
-go generate 'sketch.dev/loop/...'
-envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -unsafe -open "$@"
+
+# Change to the worktree directory and run sketch
+cd "$worktree_path" || exit 1
+echo "Working in worktree: $(pwd)"
+
+# Check if we're on the clock for client using Toggl API (copied from sketch script)
+if ~/pokey-home-files/bin/toggl_check_client.py; then
+  echo "On the clock - use Bold client environment"
+  envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$prompt" "$@"
+else
+  echo "Not on the clock - use personal environment"
+  envdir ~/envs/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$prompt" "$@"
+fi
