@@ -59,8 +59,8 @@ echo "Working in worktree: $(pwd)"
 # Check if we're on the clock for client using Toggl API (copied from sketch script)
 if ~/pokey-home-files/bin/toggl_check_client.py; then
   echo "On the clock - use Bold client environment"
-  envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$prompt" "$@"
+  envdir ~/envs/bold/anthropic go run ~/src/sketch-clean/cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$prompt" "$@"
 else
   echo "Not on the clock - use personal environment"
-  envdir ~/envs/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$prompt" "$@"
+  envdir ~/envs/anthropic go run ~/src/sketch-clean/cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$prompt" "$@"
 fi

@@ -23,14 +23,13 @@ p=$(pwd)
 cd "$worktree_dir" || exit 1
 echo "Working in worktree: $(pwd)"
 
-# Run go generate similar to sketch-dev
-go generate 'sketch.dev/loop/...' 2>/dev/null || echo "Warning: go generate failed or package not found"
+# No need to run go generate in a non-sketch worktree
 
 # Check if we're on the clock for client using Toggl API (copied from sketch script)
 if ~/pokey-home-files/bin/toggl_check_client.py; then
   echo "On the clock - use Bold client environment"
-  envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
+  envdir ~/envs/bold/anthropic go run ~/src/sketch-clean/cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
 else
   echo "Not on the clock - use personal environment"
-  envdir ~/envs/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
+  envdir ~/envs/anthropic go run ~/src/sketch-clean/cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
 fi
