@@ -38,6 +38,13 @@
       "problemMatcher": []
     },
     {
+      "label": "sketch",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/sketch '${input:prompt}'",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "Publish extension",
       "type": "shell",
       "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
@@ -386,6 +393,11 @@
       "type": "promptString",
       "id": "videoName",
       "description": "Name to give the recorded video"
+    },
+    {
+      "type": "promptString",
+      "id": "prompt",
+      "description": "Sketch prompt"
     }
   ]
 }
