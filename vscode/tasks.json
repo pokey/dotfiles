@@ -45,6 +45,13 @@
       "problemMatcher": []
     },
     {
+      "label": "sketch start",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/sketch",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "Publish extension",
       "type": "shell",
       "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
