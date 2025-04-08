@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+import json
+import re
+import subprocess
+import sys
+
+
+def extract_github_issues(prompt):
+    """Extract GitHub issue numbers from a prompt and fetch details using GitHub CLI."""
+    # Match both #123 format and GitHub URLs with issue numbers
+    issue_pattern = r"(?:#(\d+))|(?:(https?://github\.com/[^/]+/[^/]+/issues/\d+))"
+    matches = re.finditer(issue_pattern, prompt)
+
+    issues_content = ""
+    found_issues = False
+
+    for match in matches:
+        issue_num = match.group(1)
+        issue_url = match.group(2)
+
+        if issue_num:
+            found_issues = True
+            print(f"Found issue #{issue_num}, fetching details...")
+            # Use GitHub CLI to get issue details
+            try:
+                # Get issue details including comments
+                result = subprocess.run(
+                    [
+                        "gh",
+                        "issue",
+                        "view",
+                        issue_num,
+                        "--json",
+                        "title,body,comments,url",
+                    ],
+                    capture_output=True,
+                    text=True,
+                    check=True,
+                )
+
+                # Parse the JSON output
+                issue_data = json.loads(result.stdout)
+
+                # Format issue details in a readable way
+                issues_content += f"\n--- GITHUB ISSUE #{issue_num} ---\n"
+                issues_content += f"Title: {issue_data.get('title', 'No title')}\n"
+                issues_content += f"URL: {issue_data.get('url', 'No URL')}\n\n"
+                issues_content += f"{issue_data.get('body', 'No description')}\n\n"
+
+                # Add comments if any
+                comments = issue_data.get("comments", [])
+                if comments:
+                    issues_content += f"--- COMMENTS ({len(comments)}) ---\n"
+                    for i, comment in enumerate(comments):
+                        issues_content += f"Comment #{i + 1} by {comment.get('author', {}).get('login', 'unknown')}:\n"
+                        issues_content += (
+                            f"{comment.get('body', 'No comment body')}\n\n"
+                        )
+
+            except subprocess.CalledProcessError as e:
+                print(f"Error fetching issue #{issue_num}: {e}")
+                issues_content += f"\n--- GITHUB ISSUE #{issue_num} ---\n"
+                issues_content += f"Error fetching issue: {e.stderr}\n"
+
+        elif issue_url:
+            found_issues = True
+            print(f"Found issue URL: {issue_url}, fetching details...")
+            # Use GitHub CLI to get issue details with the full URL
+            try:
+                # Get issue details including comments using the full URL
+                result = subprocess.run(
+                    [
+                        "gh",
+                        "issue",
+                        "view",
+                        issue_url,
+                        "--json",
+                        "title,body,comments,url",
+                    ],
+                    capture_output=True,
+                    text=True,
+                    check=True,
+                )
+
+                # Parse the JSON output
+                issue_data = json.loads(result.stdout)
+
+                # Extract issue number from URL for display purposes
+                url_issue_num = issue_url.split("/")[-1]
+
+                # Format issue details in a readable way
+                issues_content += (
+                    f"\n--- GITHUB ISSUE #{url_issue_num} (from URL) ---\n"
+                )
+                issues_content += f"Title: {issue_data.get('title', 'No title')}\n"
+                issues_content += f"URL: {issue_url}\n\n"
+                issues_content += f"{issue_data.get('body', 'No description')}\n\n"
+
+                # Add comments if any
+                comments = issue_data.get("comments", [])
+                if comments:
+                    issues_content += f"--- COMMENTS ({len(comments)}) ---\n"
+                    for i, comment in enumerate(comments):
+                        issues_content += f"Comment #{i + 1} by {comment.get('author', {}).get('login', 'unknown')}:\n"
+                        issues_content += (
+                            f"{comment.get('body', 'No comment body')}\n\n"
+                        )
+
+            except subprocess.CalledProcessError as e:
+                print(f"Error fetching issue {issue_url}: {e}")
+                issues_content += f"\n--- GITHUB ISSUE URL: {issue_url} ---\n"
+                issues_content += f"Error fetching issue: {e.stderr}\n"
+
+    if not found_issues:
+        print("No GitHub issues found in prompt")
+
+    return issues_content, found_issues
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print('Usage: extract_github_issues.py "prompt" [output_file]')
+        sys.exit(1)
+
+    prompt = sys.argv[1]
+    output_file = sys.argv[2] if len(sys.argv) > 2 else None
+
+    issues_content, found_issues = extract_github_issues(prompt)
+
+    if output_file:
+        with open(output_file, "w") as f:
+            f.write(issues_content)
+    else:
+        print(issues_content)
+
+    # Return success code based on whether issues were found
+    sys.exit(0 if found_issues else 1)
