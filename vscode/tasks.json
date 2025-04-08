@@ -40,16 +40,62 @@
     {
       "label": "sketch",
       "type": "shell",
-      "command": "sketch '${input:prompt}'",
+      "command": "sketch \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",
       "presentation": {},
-      "problemMatcher": []
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
     },
     {
       "label": "sketch start",
       "type": "shell",
       "command": "sketch",
       "presentation": {},
-      "problemMatcher": []
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
+    },
+    {
+      "label": "sketch clipboard",
+      "type": "shell",
+      "command": "sketch \"$(pbpaste)\"",
+      "presentation": {},
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
+    },
+    {
+      "label": "sketch in worktree",
+      "type": "shell",
+      "command": "sketch-worktree \"$(cat << 'HEREDOC' \n${input:newBranchName}\nHEREDOC\n)\"",
+      "presentation": {},
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
+    },
+    {
+      "label": "sketch clipboard in worktree",
+      "type": "shell",
+      "command": "sketch-worktree \"$(pbpaste)\"",
+      "presentation": {},
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
+    },
+    {
+      "label": "sketch in worktree issue",
+      "type": "shell",
+      "command": "sketch-worktree \"Implement $(cat << 'HEREDOC' \n${input:issue}\nHEREDOC\n). Use gh cli to look up issue, being sure to look at comments.\"",
+      "presentation": {},
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
     },
     {
       "label": "Publish extension",
@@ -405,6 +451,11 @@
       "type": "promptString",
       "id": "prompt",
       "description": "Sketch prompt"
+    },
+    {
+      "type": "promptString",
+      "id": "issue",
+      "description": "Issue number or URL"
     }
   ]
 }
