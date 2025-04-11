@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-p=$(pwd)
-cd ~/src/sketch || exit
-go generate 'sketch.dev/loop/...'
-envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -unsafe -skaband-addr=http://localhost:38283 -open "$@"
+# Execute the unified sketch script in dev mode with -open flag
+exec "$(dirname "$0")/run-sketch.sh" --dev --sketch-dir "$HOME/src/sketch" -- -open "$@"

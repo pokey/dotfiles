@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-p=$(pwd)
-cd ~/src/sketch-clean || exit
-
-# Check if we're on the clock for client using Toggl API
-if ~/pokey-home-files/bin/toggl_check_client.py; then
-  echo On the clock - use Bold client environment
-  envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
-else
-  echo Not on the clock - use personal environment
-  envdir ~/envs/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
-fi
+# Execute the unified sketch script with -open flag
+exec "$(dirname "$0")/run-sketch.sh" -- -open "$@"

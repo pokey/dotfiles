@@ -11,7 +11,7 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-# Check if we're on the clock for client using Toggl API (copied from sketch script)
+# Determine which environment directory to use
 if ~/pokey-home-files/bin/toggl_check_client.py; then
   echo "On the clock - using Bold client environment"
   envdir=~/envs/bold/anthropic
@@ -22,6 +22,7 @@ fi
 
 # Capture the prompt (first argument)
 prompt="$1"
+shift
 
 # Extract GitHub issue numbers from the prompt and fetch details
 echo "Extracting GitHub issues from prompt..."
@@ -81,11 +82,8 @@ else
   git worktree add -b "$branch_name" "$worktree_path"
 fi
 
-# Change to the worktree directory and run sketch
-cd ~/src/sketch-clean || exit 1
-echo "Working in worktree: $worktree_path"
-
 # Cleanup temporary file
 rm -f "$TEMP_ISSUES_FILE"
 
-envdir "$envdir" go run ./cmd/sketch -C "$worktree_path" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
+# Execute the unified sketch script with the created worktree
+exec "$(dirname "$0")/run-sketch.sh" --sketch-dir "$worktree_path" -- -open "$prompt" "$@"

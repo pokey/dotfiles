@@ -17,22 +17,19 @@ if ! [[ "$repetitions" =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 
-p=$(pwd)
-cd ~/src/sketch-clean || exit
-
-# Determine which environment directory to use
-if ~/pokey-home-files/bin/toggl_check_client.py; then
-  echo On the clock - use Bold client environment
-  env_dir=~/envs/bold/anthropic
+# Determine environment once outside the loop
+if "$HOME/pokey-home-files/bin/toggl_check_client.py"; then
+  echo "On the clock - use Bold client environment"
+  ENV_DIR="$HOME/envs/bold/anthropic"
 else
-  echo Not on the clock - use personal environment
-  env_dir=~/envs/anthropic
+  echo "Not on the clock - use personal environment"
+  ENV_DIR="$HOME/envs/anthropic"
 fi
 
 # Run the sketch command the specified number of times
 for ((i = 1; i <= repetitions; i++)); do
   echo "Running iteration $i of $repetitions"
-  
-  # Run sketch with the appropriate environment
-  envdir "$env_dir" go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -one "$@"
+
+  # Run sketch with the pre-determined environment
+  "$(dirname "$0")/run-sketch.sh" -e "$ENV_DIR" -- -one "$@"
 done

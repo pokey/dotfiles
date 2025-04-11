@@ -2,27 +2,19 @@
 set -euo pipefail
 
 if [ $# -lt 1 ]; then
-  echo "Usage: sketch-in-worktree <worktree-directory> [additional sketch arguments...]"
+  echo "Usage: sketch-dev-in-dir <worktree-directory> [additional sketch arguments...]"
   exit 1
 fi
 
-# Get the worktree directory from the first argument
-worktree_dir="$1"
+# Get the sketch directory from the first argument
+sketch_dir="$1"
 shift
 
-# Make sure the worktree directory exists
-if [ ! -d "$worktree_dir" ]; then
-  echo "Error: Worktree directory '$worktree_dir' does not exist"
+# Make sure the sketch directory exists
+if [ ! -d "$sketch_dir" ]; then
+  echo "Error: Sketch directory '$sketch_dir' does not exist"
   exit 1
 fi
 
-# Store the current directory to return to after sketch
-p=$(pwd)
-
-# Change to the worktree directory
-cd "$worktree_dir" || exit 1
-echo "Working in worktree: $(pwd)"
-
-go generate 'sketch.dev/loop/...'
-
-envdir ~/envs/bold/anthropic go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -open "$@"
+# Execute the unified sketch script in dev mode with -open flag
+exec "$(dirname "$0")/run-sketch.sh" --dev --sketch-dir "$sketch_dir" -- -open "$@"
