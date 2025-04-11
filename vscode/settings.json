@@ -539,7 +539,7 @@
   "window.autoDetectColorScheme": true,
   "workbench.activityBar.location": "bottom",
   "diffEditor.experimental.showMoves": true,
-  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
   "window.zoomLevel": 1,
   "gitlens.advanced.messages": {
