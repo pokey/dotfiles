@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Check if at least one argument is provided
+if [ $# -lt 1 ]; then
+  echo "Usage: sketch-loop <number_of_repetitions> [sketch_arguments...]"
+  exit 1
+fi
+
+# Get the first argument as the number of repetitions
+repetitions=$1
+shift
+
+# Validate that repetitions is a number
+if ! [[ "$repetitions" =~ ^[0-9]+$ ]]; then
+  echo "Error: First argument must be a number"
+  exit 1
+fi
+
+p=$(pwd)
+cd ~/src/sketch-clean || exit
+
+# Determine which environment directory to use
+if ~/pokey-home-files/bin/toggl_check_client.py; then
+  echo On the clock - use Bold client environment
+  env_dir=~/envs/bold/anthropic
+else
+  echo Not on the clock - use personal environment
+  env_dir=~/envs/anthropic
+fi
+
+# Run the sketch command the specified number of times
+for ((i = 1; i <= repetitions; i++)); do
+  echo "Running iteration $i of $repetitions"
+  
+  # Run sketch with the appropriate environment
+  envdir "$env_dir" go run ./cmd/sketch -C "$p" -skaband-addr=http://localhost:38283 -unsafe -one "$@"
+done
