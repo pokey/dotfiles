@@ -409,13 +409,23 @@
     "key": "ctrl+shift+cmd+f12",
     "command": "review.openLocalFile",
     "when": "!isInDiffEditor && resourceScheme =~ /^review$/"
-},
-{
+  },
+  {
+    "key": "ctrl+shift+cmd+f12",
+    "command": "multiDiffEditor.goToFile",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": {
-        "text": "\\\r\n"
+      "text": "\\\r\n"
     },
     "when": "terminalFocus"
-}
+  },
+  {
+    "key": "ctrl+shift+cmd+f12",
+    "command": "gitlens.openWorkingFile",
+    "when": "gitlens:enabled && !isInDiffEditor && resourceScheme == 'git'"
+  }
 ]

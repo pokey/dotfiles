@@ -38,6 +38,13 @@
       "problemMatcher": []
     },
     {
+      "label": "Add to sketch merge queue",
+      "type": "shell",
+      "command": "git push -f origin HEAD:refs/heads/queue-main-pokey",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "sketch",
       "type": "shell",
       "command": "sketch \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",

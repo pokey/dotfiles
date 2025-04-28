@@ -597,5 +597,8 @@
   "chat.agent.enabled": true,
   "github.copilot.chat.agent.thinkingTool": true,
   "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:claude-3.7-sonnet"
+  "gitlens.ai.vscode.model": "copilot:claude-3.7-sonnet",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# eza tree without --git-ignore
+
+eza --tree -I __pycache__ $EXA_LA_OPTIONS --colour always "$@" |
+    zoom-run

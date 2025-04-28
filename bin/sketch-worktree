@@ -31,13 +31,13 @@ TEMP_ISSUES_FILE=$(mktemp)
 # Use the extract_github_issues.py script to get issue details
 extract-github-issues "$prompt" "$TEMP_ISSUES_FILE" 2>/dev/null || true
 
-# Initialize branch_name_prompt with the original prompt
-branch_name_prompt="$prompt"
+# Initialize branch_description with the original prompt
+branch_description="$prompt"
 
 # If issues were found, append them to the prompt
 if [ -s "$TEMP_ISSUES_FILE" ]; then
   echo "Issues found, adding details to prompt..."
-  branch_name_prompt="$prompt\n\nIssue details from GitHub:$(cat "$TEMP_ISSUES_FILE")"
+  branch_description="$prompt\n\nIssue details from GitHub:$(cat "$TEMP_ISSUES_FILE")"
 else
   echo "No GitHub issues found in prompt, proceeding with original prompt"
 fi
@@ -48,7 +48,17 @@ current_dir=$(basename "$(pwd)")
 # Generate branch name using LLM
 echo "Generating branch name from prompt..."
 
-branch_name=$(echo "$branch_name_prompt" | envdir "$envdir" llm -m claude-3.7-sonnet -s 'Please generate a concise branch name using only [a-z-] chars. If there are github issues included, start the branch name with eg issue-123-, otherwise don'"'"'t start with issue-. Please output only the branch name and nothing else')
+# Define branch_name_prompt using a heredoc
+branch_name_prompt=$(
+  cat <<EOF
+Please generate a concise branch name using only [a-z-] chars. 
+If there are github issues included, start the branch name with eg issue-123-, otherwise don't start with issue-. 
+Please output only the branch name and nothing else. No preamble or additional text.
+Your output will be directly fed as the name of a branch into a git branch command.
+EOF
+)
+
+branch_name=$(echo "$branch_description" | envdir "$envdir" llm -m claude-3.7-sonnet -s "$branch_name_prompt")
 
 # Sanitize branch name further to ensure it only contains allowed chars
 branch_name=$(echo "$branch_name" | tr -cd 'a-z-')
@@ -85,5 +95,10 @@ fi
 # Cleanup temporary file
 rm -f "$TEMP_ISSUES_FILE"
 
+cd "$worktree_path" || {
+  echo "Failed to change to directory: $worktree_path"
+  exit 1
+}
+
 # Execute the unified sketch script with the created worktree
-exec "$(dirname "$0")/run-sketch.sh" --sketch-dir "$worktree_path" -- -open "$prompt" "$@"
+exec "$(dirname "$0")/run-sketch.sh" -- -open "$prompt" "$@"

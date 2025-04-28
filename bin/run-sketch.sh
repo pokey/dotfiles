@@ -83,9 +83,8 @@ fi
 CMD=("envdir" "$ENV_DIR" "go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
 
 # Add standard flags
-if [ "$SKABAND_ADDR" != "" ]; then
-  CMD+=("-skaband-addr=$SKABAND_ADDR")
-fi
+
+CMD+=("-skaband-addr=$SKABAND_ADDR")
 
 if [ "$USE_UNSAFE" = true ]; then
   CMD+=("-unsafe")
