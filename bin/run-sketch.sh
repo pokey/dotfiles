@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Helper function to show usage
 show_usage() {
-  echo "Usage: run-sketch.sh [options] -- [sketch arguments...]"
+  echo "Usage: run-sketch.sh [options] -- [sketch arguments...] [prompt]"
   echo ""
   echo "Options:"
   echo "  -d, --sketch-dir DIR   Directory containing sketch source (default: ~/src/sketch-clean)"
@@ -13,6 +13,7 @@ show_usage() {
   echo ""
   echo "Example:"
   echo "  run-sketch.sh -- -open \"My prompt\""
+  echo "  run-sketch.sh -- -some-flag -another-flag \"My prompt\""
   exit 0
 }
 
@@ -83,15 +84,30 @@ fi
 CMD=("envdir" "$ENV_DIR" "go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
 
 # Add standard flags
-
 CMD+=("-skaband-addr=$SKABAND_ADDR")
 
 if [ "$USE_UNSAFE" = true ]; then
   CMD+=("-unsafe")
 fi
 
-# Add all remaining arguments
-CMD+=("${POSITIONAL_ARGS[@]}")
+# Check if we have positional args to process
+if [ ${#POSITIONAL_ARGS[@]} -gt 0 ]; then
+  # Extract the last argument as the prompt if there are args
+  PROMPT="${POSITIONAL_ARGS[-1]}"
+
+  # If we have more than one arg, add all except the last as regular args
+  if [ ${#POSITIONAL_ARGS[@]} -gt 1 ]; then
+    for ((i = 0; i < ${#POSITIONAL_ARGS[@]} - 1; i++)); do
+      CMD+=("${POSITIONAL_ARGS[$i]}")
+    done
+  fi
+
+  # Add the prompt as -prompt argument
+  CMD+=("-prompt" "$PROMPT")
+else
+  # If no positional args, just continue as before
+  CMD+=("${POSITIONAL_ARGS[@]}")
+fi
 
 # Execute the command
 echo "Running: ${CMD[*]}"

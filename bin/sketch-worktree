@@ -3,11 +3,10 @@ set -euo pipefail
 # Creates a git worktree and then runs the sketch command in that worktree.
 # This script is intended to be run from a directory that is a git repository.
 # It creates a new branch in a worktree under ~/src/worktrees/<current_dir>/<branch_name>.
-# The branch name is passed as the first argument to the script.
-# If no branch name is provided, it defaults to "sketch-<timestamp>".
+# The prompt is passed as the last argument to the script.
 
 if [ $# -lt 1 ]; then
-  echo "Usage: sketch-worktree \"prompt\" [additional sketch arguments...]"
+  echo "Usage: sketch-worktree [additional sketch arguments...] \"prompt\""
   exit 1
 fi
 
@@ -20,9 +19,12 @@ else
   envdir=~/envs/anthropic
 fi
 
-# Capture the prompt (first argument)
-prompt="$1"
-shift
+# Capture the prompt (last argument) and additional arguments (all except the last one)
+prompt="${@: -1}"
+additional_args=()
+if [ $# -gt 1 ]; then
+  additional_args=("${@:1:$#-1}")
+fi
 
 # Extract GitHub issue numbers from the prompt and fetch details
 echo "Extracting GitHub issues from prompt..."
@@ -101,4 +103,4 @@ cd "$worktree_path" || {
 }
 
 # Execute the unified sketch script with the created worktree
-exec "$(dirname "$0")/run-sketch.sh" -- -open "$prompt" "$@"
+exec "$(dirname "$0")/run-sketch.sh" -- -open "$prompt" "${additional_args[@]+"${additional_args[@]}"}"

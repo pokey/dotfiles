@@ -31,5 +31,5 @@ for ((i = 1; i <= repetitions; i++)); do
   echo "Running iteration $i of $repetitions"
 
   # Run sketch with the pre-determined environment
-  "$(dirname "$0")/run-sketch.sh" -e "$ENV_DIR" -- -one "$@"
+  "$(dirname "$0")/run-sketch.sh" -e "$ENV_DIR" -- -one-shot "$@"
 done
