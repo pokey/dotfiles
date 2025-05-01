@@ -552,7 +552,6 @@
   "window.customTitleBarVisibility": "windowed",
   "python.analysis.diagnosticMode": "workspace",
   "github.copilot.editor.enableAutoCompletions": true,
-  "editor.minimap.enabled": false,
   "debug.onTaskErrors": "debugAnyway",
   "dvc.doNotShowSetupAfterInstall": true,
   // "go.alternateTools": {
@@ -600,5 +599,14 @@
   "gitlens.ai.vscode.model": "copilot:claude-3.7-sonnet",
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "mcp": {
+    "servers": {
+      "puppeteer": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+      }
+    }
+  },
+  "editor.minimap.enabled": false
 }
