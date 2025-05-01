@@ -108,6 +108,7 @@ alias to-string="jq -Rs"
 alias gra="git rebase --abort"
 alias gma="git merge --abort"
 alias upgrade-branchless="cargo install --locked --git https://github.com/arxanas/git-branchless git-branchless"
+alias claude="run-claude.sh"
 
 # Run man zoomed if in a tmux pane
 alias man='zoom-run -p man'
