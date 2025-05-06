@@ -90,23 +90,29 @@ if [ "$USE_UNSAFE" = true ]; then
   CMD+=("-unsafe")
 fi
 
-# Check if we have positional args to process
-if [ ${#POSITIONAL_ARGS[@]} -gt 0 ]; then
-  # Extract the last argument as the prompt if there are args
-  PROMPT="${POSITIONAL_ARGS[-1]}"
+# Process positional args, treating any arg not starting with '-' as part of the prompt
+SKETCH_FLAGS=()
+PROMPT_PARTS=()
 
-  # If we have more than one arg, add all except the last as regular args
-  if [ ${#POSITIONAL_ARGS[@]} -gt 1 ]; then
-    for ((i = 0; i < ${#POSITIONAL_ARGS[@]} - 1; i++)); do
-      CMD+=("${POSITIONAL_ARGS[$i]}")
-    done
+for arg in "${POSITIONAL_ARGS[@]}"; do
+  if [[ "$arg" == -* ]]; then
+    # This is a flag, add it to sketch flags
+    SKETCH_FLAGS+=("$arg")
+  else
+    # This is not a flag, add it to prompt parts
+    PROMPT_PARTS+=("$arg")
   fi
+done
 
-  # Add the prompt as -prompt argument
+# Add any sketch flags to the command
+if [ ${#SKETCH_FLAGS[@]} -gt 0 ]; then
+  CMD+=("${SKETCH_FLAGS[@]}")
+fi
+
+# Combine prompt parts if any exist
+if [ ${#PROMPT_PARTS[@]} -gt 0 ]; then
+  PROMPT="${PROMPT_PARTS[*]}"
   CMD+=("-prompt" "$PROMPT")
-else
-  # If no positional args, just continue as before
-  CMD+=("${POSITIONAL_ARGS[@]}")
 fi
 
 # Execute the command
