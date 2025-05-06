@@ -53,9 +53,16 @@
 [user]
 	email = 755842+pokey@users.noreply.github.com
 	name = Pokey Rule
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDaA4bJK+HxQ/Ge9EIEW2rFd1P79KCTsncpKjg3p+y6s
 [branchless "core"]
 	mainBranch = main
 [blame]
 	ignoreRevsFile = .git-blame-ignore-revs
 [pull]
 	rebase = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
