@@ -21,9 +21,22 @@ show_usage() {
 TARGET_DIR=$(pwd)
 SKETCH_DIR="$HOME/src/sketch-clean"
 DEV_MODE=false
-SKABAND_ADDR="http://localhost:38283"
-USE_UNSAFE=true
+
+# `production` uses no -skaband-addr flag, which will cause sketch
+# to just connect to production sketch.dev
+SKABAND_ADDR="production"
+
+# Local address for testing
+# SKABAND_ADDR="http://localhost:38283"
+
+# No skaband at all
+# SKABAND_ADDR=""
+
+USE_UNSAFE=false
+VERBOSE=true
+FORCE_REBUILD_CONTAINER=false
 SPECIFIED_ENV=""
+USE_MEMORY=true
 
 # Parse command line arguments
 POSITIONAL_ARGS=()
@@ -84,10 +97,24 @@ fi
 CMD=("envdir" "$ENV_DIR" "go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
 
 # Add standard flags
-CMD+=("-skaband-addr=$SKABAND_ADDR")
+if [ "$SKABAND_ADDR" != production ]; then
+  CMD+=("-skaband-addr=$SKABAND_ADDR")
+fi
 
 if [ "$USE_UNSAFE" = true ]; then
   CMD+=("-unsafe")
+fi
+
+if [ "$VERBOSE" = true ]; then
+  CMD+=("-verbose")
+fi
+
+if [ "$FORCE_REBUILD_CONTAINER" = true ]; then
+  CMD+=("-force-rebuild-container")
+fi
+
+if [ "$USE_MEMORY" = true ]; then
+  CMD+=("-x" "memory")
 fi
 
 # Process positional args, treating any arg not starting with '-' as part of the prompt
