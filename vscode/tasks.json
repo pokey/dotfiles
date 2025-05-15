@@ -416,6 +416,13 @@
       "problemMatcher": []
     },
     {
+      "label": "Move recorded video sketch",
+      "type": "shell",
+      "command": "/Users/pokey/pokey-home-files/bin/move-recorded-video-sketch '${input:videoName}'",
+      "presentation": {},
+      "problemMatcher": []
+    },
+    {
       "label": "bun run",
       "type": "shell",
       "command": "bun run ${file}",
