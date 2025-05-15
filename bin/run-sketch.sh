@@ -7,7 +7,6 @@ show_usage() {
   echo ""
   echo "Options:"
   echo "  -d, --sketch-dir DIR   Directory containing sketch source (default: ~/src/sketch-clean)"
-  echo "  -e, --env ENV          Environment to use (default: determined by toggl status)"
   echo "  --dev                  Use development mode (~/src/sketch instead of ~/src/sketch-clean)"
   echo "  -h, --help             Show this help message"
   echo ""
@@ -33,10 +32,16 @@ SKABAND_ADDR="production"
 # SKABAND_ADDR=""
 
 USE_UNSAFE=false
-VERBOSE=true
 FORCE_REBUILD_CONTAINER=false
-SPECIFIED_ENV=""
-USE_MEMORY=true
+
+# Check if /tmp/is-recording-video exists
+if [ -e /tmp/is-recording-video ]; then
+  SILENT=true
+  VERBOSE=false
+else
+  SILENT=false
+  VERBOSE=true
+fi
 
 # Parse command line arguments
 POSITIONAL_ARGS=()
@@ -44,10 +49,6 @@ while [[ $# -gt 0 ]]; do
   case $1 in
   -d | --sketch-dir)
     SKETCH_DIR="$2"
-    shift 2
-    ;;
-  -e | --env)
-    SPECIFIED_ENV="$2"
     shift 2
     ;;
   --dev)
@@ -69,19 +70,6 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Determine which environment directory to use
-if [ -n "$SPECIFIED_ENV" ]; then
-  ENV_DIR="$SPECIFIED_ENV"
-else
-  if "$HOME/pokey-home-files/bin/toggl_check_client.py"; then
-    echo "On the clock - use Bold client environment"
-    ENV_DIR="$HOME/envs/bold/anthropic"
-  else
-    echo "Not on the clock - use personal environment"
-    ENV_DIR="$HOME/envs/anthropic"
-  fi
-fi
-
 # Change to the sketch directory
 cd "$SKETCH_DIR" || {
   echo "Failed to change to directory: $SKETCH_DIR"
@@ -94,7 +82,7 @@ if [ "$DEV_MODE" = true ]; then
 fi
 
 # Build the sketch command
-CMD=("envdir" "$ENV_DIR" "go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
+CMD=("go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
 
 # Add standard flags
 if [ "$SKABAND_ADDR" != production ]; then
@@ -113,9 +101,8 @@ if [ "$FORCE_REBUILD_CONTAINER" = true ]; then
   CMD+=("-force-rebuild-container")
 fi
 
-if [ "$USE_MEMORY" = true ]; then
-  CMD+=("-x" "memory")
-fi
+# Experiments
+export SKETCH_EXPERIMENT="all"
 
 # Process positional args, treating any arg not starting with '-' as part of the prompt
 SKETCH_FLAGS=()
@@ -143,5 +130,5 @@ if [ ${#PROMPT_PARTS[@]} -gt 0 ]; then
 fi
 
 # Execute the command
-echo "Running: ${CMD[*]}"
+[ ! $SILENT ] && echo "Running: ${CMD[*]}"
 exec "${CMD[@]}"
