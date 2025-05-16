@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Creates a git worktree for the specified branch of sketch and then runs the
+# sketch command in that worktree, using cwd as target directory.
+
+if [ $# -lt 1 ]; then
+  echo "Usage: sketch-dev-in-worktree <branch_name> [additional sketch arguments...] \"prompt\""
+  exit 1
+fi
+
+# Get the branch name from the first argument
+branch_name="$1"
+shift
+
+# Create worktrees directory if it doesn't exist
+worktree_root=~/src/worktrees
+if [ ! -d "$worktree_root" ]; then
+  mkdir -p "$worktree_root"
+fi
+
+# Create project-specific worktree directory
+project_worktree_dir="$worktree_root/sketch"
+if [ ! -d "$project_worktree_dir" ]; then
+  mkdir -p "$project_worktree_dir"
+fi
+
+# Full path to this specific worktree
+worktree_path="$project_worktree_dir/$branch_name"
+
+# Check if worktree already exists
+if [ -d "$worktree_path" ]; then
+  echo "Worktree for branch '$branch_name' already exists at $worktree_path"
+else
+  echo "Creating worktree for branch '$branch_name' at $worktree_path"
+  # Create the git worktree
+  # Check if the branch already exists
+  if git -C ~/src/sketch show-ref --verify --quiet refs/heads/"$branch_name"; then
+    # Branch exists, create worktree without -b flag
+    git -C ~/src/sketch worktree add "$worktree_path" "$branch_name"
+  else
+    # Branch doesn't exist, create new branch with worktree
+    git -C ~/src/sketch worktree add -b "$branch_name" "$worktree_path"
+  fi
+fi
+
+# Execute the unified sketch script in dev mode with -open flag
+exec "$(dirname "$0")/run-sketch.sh" --dev --sketch-dir "$worktree_path" -- -open "$@"
