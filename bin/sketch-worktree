@@ -20,7 +20,7 @@ else
 fi
 
 # Capture the prompt (last argument) and additional arguments (all except the last one)
-prompt="${@: -1}"
+prompt="${*: -1}"
 additional_args=()
 if [ $# -gt 1 ]; then
   additional_args=("${@:1:$#-1}")
