@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Automatically selects the appropriate environment directory based on toggl status
+# and then runs the specified command with that environment.
+# Usage: autoenv command [args...]
+
+# Check if any arguments were provided
+if [ $# -lt 1 ]; then
+  echo "Usage: autoenv command [args...]"
+  exit 1
+fi
+
+# Determine which environment directory to use
+if ~/pokey-home-files/bin/toggl_check_client.py; then
+  echo "On the clock - using Bold client environment" >&2
+  envdir=~/envs/bold/anthropic
+else
+  echo "Not on the clock - using personal environment" >&2
+  envdir=~/envs/anthropic
+fi
+
+# Run the specified command with the appropriate environment
+exec envdir "$envdir" "$@"
