@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+# Get the repository root (parent directory of the bin folder)
+REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." &>/dev/null && pwd)"
+
+prompt=$(
+  cat <<EOF
+Please construct a revset for the following query.
+Please output only the revset, and nothing else.
+Your output will be fed directly as an argument to a cli command
+EOF
+)
+
+# Define fragment paths as an array
+fragment_paths=(
+  "llm/fragments/revset-grammar.md"
+  "llm/fragments/revset-examples.md"
+)
+
+# Build the fragment options array
+fragment_options=()
+for path in "${fragment_paths[@]}"; do
+  fragment_options+=("-f" "$REPO_ROOT/$path")
+done
+
+# Get git email
+git_email=$(git config --get user.email)
+if [[ -z "$git_email" ]]; then
+  echo "Git email not found. Please set your git email using 'git config --global user.email <email>'"
+  exit 1
+fi
+
+# Execute the command with properly quoted arguments
+revset_raw=$(autoenv llm -m anthropic/claude-3-7-sonnet-latest "${fragment_options[@]}" -s "$prompt" "$*")
+
+# Replace <me> with the git email
+revset=${revset_raw//<my_email>/\"$git_email\"}
+
+# Copy the revset to the clipboard
+if command -v xclip &>/dev/null; then
+  echo -n "$revset" | xclip -selection clipboard
+elif command -v pbcopy &>/dev/null; then
+  echo -n "$revset" | pbcopy
+else
+  echo "No clipboard utility found. Please copy the revset manually."
+fi
+
+echo
+commits=$(git query -r "$revset")
+
+if [[ -z "$commits" ]]; then
+  echo "No commits found for the revset: $revset"
+else
+  echo "$commits" | xargs git show --format="%C(auto)%h%d %s %C(green)(%cr) %C(bold blue)<%an>%Creset" --no-patch
+fi
+
+# Print the revset to stdout like (green-bold)revset:(/green-bold) $revset
+echo -e "\n\033[1;32mrevset:\033[0m '$revset' (copied)"
