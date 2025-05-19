@@ -608,5 +608,7 @@
       }
     }
   },
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "github.copilot.nextEditSuggestions.fixes": true,
+  "github.copilot.chat.search.keywordSuggestions": true
 }
