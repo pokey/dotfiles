@@ -105,6 +105,13 @@
       }
     },
     {
+      "label": "update sketch",
+      "type": "shell",
+      "command": "update-sketch",
+      "presentation": { "reveal": "always" },
+      "problemMatcher": []
+    },
+    {
       "label": "Publish extension",
       "type": "shell",
       "command": "vsce publish && npx ovsx publish -p $(cat ~/envs/openvsx/OPEN_VSX_TOKEN)",
