@@ -445,7 +445,7 @@
       "type": "shell",
       "command": "echo \"'$(pbpaste)'\" && git-auto-query \"$(pbpaste)\"",
       "presentation": {
-        "focus": false,
+        "focus": true,
         "showReuseMessage": false,
         "echo": false,
         "reveal": "always"
