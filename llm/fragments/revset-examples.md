@@ -40,6 +40,15 @@ draft() - stack()
 
 <example>
 <input>
+commits mentioning hello world
+</input>
+<output>
+message("hello world")
+</output>
+</example>
+
+<example>
+<input>
 all branches in the current stack
 </input>
 <output>
@@ -79,4 +88,4 @@ Notes:
 
 - the user sometimes says things like "mi" instead of "my" because the output might be from voice recognition software.
 - Don't use `draft()` unless the user asks for draft commits.
-- If you want to include spaces in an argument to a function, use double quotes, eg `message("my branch")`.
+- If you want to include spaces in an argument to a function, use double quotes, eg `message("hello world")`.
