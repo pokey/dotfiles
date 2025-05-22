@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Get user query from command line arguments
+user_query="$*"
+
+if [[ -z "$user_query" ]]; then
+  echo "Usage: $0 <user_query>"
+  exit 1
+fi
+
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 # Get the repository root (parent directory of the bin folder)
@@ -34,7 +42,7 @@ if [[ -z "$git_email" ]]; then
 fi
 
 # Execute the command with properly quoted arguments
-revset_raw=$(autoenv llm -m anthropic/claude-3-7-sonnet-latest "${fragment_options[@]}" -s "$prompt" "$*")
+revset_raw=$(autoenv llm -m anthropic/claude-3-7-sonnet-latest "${fragment_options[@]}" -s "$prompt" "$user_query")
 
 # Replace <me> with the git email
 revset=${revset_raw//<my_email>/\"$git_email\"}

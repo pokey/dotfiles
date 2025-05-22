@@ -443,7 +443,7 @@
     {
       "label": "Git auto-query",
       "type": "shell",
-      "command": "git-auto-query \"$(pbpaste)\"",
+      "command": "echo \"'$(pbpaste)'\" && git-auto-query \"$(pbpaste)\"",
       "presentation": {
         "focus": false,
         "showReuseMessage": false,
