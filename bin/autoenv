@@ -10,12 +10,15 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
+# Check if we're recording a video
+SILENT=$([ -e /tmp/is-recording-video ] && echo true || echo false)
+
 # Determine which environment directory to use
 if ~/pokey-home-files/bin/toggl_check_client.py; then
-  echo "On the clock - using Bold client environment" >&2
+  [ "$SILENT" != true ] && echo "On the clock - using Bold client environment" >&2
   envdir=~/envs/bold/anthropic
 else
-  echo "Not on the clock - using personal environment" >&2
+  [ "$SILENT" != true ] && echo "Not on the clock - using personal environment" >&2
   envdir=~/envs/anthropic
 fi
 
