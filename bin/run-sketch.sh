@@ -7,6 +7,7 @@ show_usage() {
   echo ""
   echo "Options:"
   echo "  -d, --sketch-dir DIR   Directory containing sketch source (default: ~/src/sketch-clean)"
+  echo "  -e, --env ENV          Environment to use (default: determined by toggl status)"
   echo "  --dev                  Use development mode (~/src/sketch instead of ~/src/sketch-clean)"
   echo "  -h, --help             Show this help message"
   echo ""
@@ -33,8 +34,9 @@ SKABAND_ADDR="production"
 
 USE_UNSAFE=false
 FORCE_REBUILD_CONTAINER=false
+SPECIFIED_ENV=""
 
-# Check if /tmp/is-recording-video exists
+# Check if we're recording a video
 if [ -e /tmp/is-recording-video ]; then
   SILENT=true
   VERBOSE=false
@@ -49,6 +51,10 @@ while [[ $# -gt 0 ]]; do
   case $1 in
   -d | --sketch-dir)
     SKETCH_DIR="$2"
+    shift 2
+    ;;
+  -e | --env)
+    SPECIFIED_ENV="$2"
     shift 2
     ;;
   --dev)
@@ -70,6 +76,19 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# Determine which environment directory to use
+if [ -n "$SPECIFIED_ENV" ]; then
+  ENV_DIR="$SPECIFIED_ENV"
+else
+  if "$HOME/pokey-home-files/bin/toggl_check_client.py"; then
+    [ ! $SILENT ] && echo "On the clock - use Bold client environment"
+    ENV_DIR="$HOME/envs/bold/anthropic"
+  else
+    [ ! $SILENT ] && echo "Not on the clock - use personal environment"
+    ENV_DIR="$HOME/envs/anthropic"
+  fi
+fi
+
 # Change to the sketch directory
 cd "$SKETCH_DIR" || {
   echo "Failed to change to directory: $SKETCH_DIR"
@@ -82,7 +101,7 @@ if [ "$DEV_MODE" = true ]; then
 fi
 
 # Build the sketch command
-CMD=("go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
+CMD=("envdir" "$ENV_DIR" "go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
 
 # Add standard flags
 if [ "$SKABAND_ADDR" != production ]; then
