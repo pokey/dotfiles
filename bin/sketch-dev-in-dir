@@ -10,11 +10,5 @@ fi
 sketch_dir="$1"
 shift
 
-# Make sure the sketch directory exists
-if [ ! -d "$sketch_dir" ]; then
-  echo "Error: Sketch directory '$sketch_dir' does not exist"
-  exit 1
-fi
-
 # Execute the unified sketch script in dev mode with -open flag
 exec "$(dirname "$0")/run-sketch.sh" --dev --sketch-dir "$sketch_dir" -- -open "$@"

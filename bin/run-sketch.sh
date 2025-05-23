@@ -37,13 +37,7 @@ FORCE_REBUILD_CONTAINER=false
 SPECIFIED_ENV=""
 
 # Check if we're recording a video
-if [ -e /tmp/is-recording-video ]; then
-  SILENT=true
-  VERBOSE=false
-else
-  SILENT=false
-  VERBOSE=true
-fi
+VERBOSE=$([ -e /tmp/is-recording-video ] && echo "false" || echo "true")
 
 # Parse command line arguments
 POSITIONAL_ARGS=()
@@ -81,13 +75,16 @@ if [ -n "$SPECIFIED_ENV" ]; then
   ENV_DIR="$SPECIFIED_ENV"
 else
   if "$HOME/pokey-home-files/bin/toggl_check_client.py"; then
-    [ ! $SILENT ] && echo "On the clock - use Bold client environment"
+    [ "$VERBOSE" = true ] && echo "On the clock - use Bold client environment"
     ENV_DIR="$HOME/envs/bold/anthropic"
   else
-    [ ! $SILENT ] && echo "Not on the clock - use personal environment"
+    [ "$VERBOSE" = true ] && echo "Not on the clock - use personal environment"
     ENV_DIR="$HOME/envs/anthropic"
   fi
 fi
+
+# Expand ~
+SKETCH_DIR="${SKETCH_DIR/#\~/$HOME}"
 
 # Change to the sketch directory
 cd "$SKETCH_DIR" || {
@@ -149,5 +146,5 @@ if [ ${#PROMPT_PARTS[@]} -gt 0 ]; then
 fi
 
 # Execute the command
-[ ! $SILENT ] && echo "Running: ${CMD[*]}"
+[ "$VERBOSE" = true ] && echo "Running: ${CMD[*]}"
 exec "${CMD[@]}"
