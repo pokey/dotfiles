@@ -5,14 +5,13 @@ SAVEHIST=1000
 setopt appendhistory extendedglob nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.zshrc'
 
-fpath+=~/.zfunc
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+  autoload -Uz compinit
+  compinit
+fi
 
 zstyle ':completion:*' menu select=5
 
