@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Helper function to show usage
 show_usage() {
-  echo "Usage: run-sketch.sh [options] -- [sketch arguments...] [prompt]"
+  echo "Usage: run-sketch.sh [options] -- [sketch arguments...]"
   echo ""
   echo "Options:"
   echo "  -d, --sketch-dir DIR   Directory containing sketch source (default: ~/src/sketch-clean)"
@@ -12,8 +12,8 @@ show_usage() {
   echo "  -h, --help             Show this help message"
   echo ""
   echo "Example:"
-  echo "  run-sketch.sh -- -open \"My prompt\""
-  echo "  run-sketch.sh -- -some-flag -another-flag \"My prompt\""
+  echo "  run-sketch.sh -- -open -prompt \"My prompt\""
+  echo "  run-sketch.sh -- -some-flag -another-flag -prompt \"My prompt\""
   exit 0
 }
 
@@ -120,29 +120,9 @@ fi
 # Experiments
 export SKETCH_EXPERIMENT="all"
 
-# Process positional args, treating any arg not starting with '-' as part of the prompt
-SKETCH_FLAGS=()
-PROMPT_PARTS=()
-
-for arg in "${POSITIONAL_ARGS[@]}"; do
-  if [[ "$arg" == -* ]]; then
-    # This is a flag, add it to sketch flags
-    SKETCH_FLAGS+=("$arg")
-  else
-    # This is not a flag, add it to prompt parts
-    PROMPT_PARTS+=("$arg")
-  fi
-done
-
-# Add any sketch flags to the command
-if [ ${#SKETCH_FLAGS[@]} -gt 0 ]; then
-  CMD+=("${SKETCH_FLAGS[@]}")
-fi
-
-# Combine prompt parts if any exist
-if [ ${#PROMPT_PARTS[@]} -gt 0 ]; then
-  PROMPT="${PROMPT_PARTS[*]}"
-  CMD+=("-prompt" "$PROMPT")
+# Add any remaining positional args directly to the command
+if [ ${#POSITIONAL_ARGS[@]} -gt 0 ]; then
+  CMD+=("${POSITIONAL_ARGS[@]}")
 fi
 
 # Execute the command

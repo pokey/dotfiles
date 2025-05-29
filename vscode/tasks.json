@@ -47,7 +47,7 @@
     {
       "label": "sketch",
       "type": "shell",
-      "command": "sketch \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",
+      "command": "sketch -prompt \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
@@ -67,7 +67,7 @@
     {
       "label": "sketch clipboard",
       "type": "shell",
-      "command": "sketch \"$(pbpaste)\"",
+      "command": "sketch -prompt \"$(pbpaste)\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
@@ -77,7 +77,7 @@
     {
       "label": "sketch in worktree",
       "type": "shell",
-      "command": "sketch-worktree \"$(cat << 'HEREDOC' \n${input:newBranchName}\nHEREDOC\n)\"",
+      "command": "sketch-worktree -prompt \"$(cat << 'HEREDOC' \n${input:newBranchName}\nHEREDOC\n)\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
@@ -87,7 +87,7 @@
     {
       "label": "sketch clipboard in worktree",
       "type": "shell",
-      "command": "sketch-worktree \"$(pbpaste)\"",
+      "command": "sketch-worktree -prompt \"$(pbpaste)\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
@@ -97,7 +97,7 @@
     {
       "label": "sketch in worktree issue",
       "type": "shell",
-      "command": "sketch-worktree \"Implement $(cat << 'HEREDOC' \n${input:issue}\nHEREDOC\n). Use gh cli to look up issue, being sure to look at comments.\"",
+      "command": "sketch-worktree -prompt \"Implement $(cat << 'HEREDOC' \n${input:issue}\nHEREDOC\n). Use gh cli to look up issue, being sure to look at comments.\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {

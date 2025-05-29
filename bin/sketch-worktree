@@ -6,7 +6,7 @@ set -euo pipefail
 # The prompt is passed as the last argument to the script.
 
 if [ $# -lt 1 ]; then
-  echo "Usage: sketch-worktree [additional sketch arguments...] \"prompt\""
+  echo "Usage: sketch-worktree [additional sketch arguments...] -prompt \"prompt\""
   exit 1
 fi
 
@@ -19,26 +19,36 @@ else
   envdir=~/envs/anthropic
 fi
 
-# Capture the prompt (last argument) and additional arguments (all except the last one)
-prompt="${*: -1}"
-additional_args=()
-if [ $# -gt 1 ]; then
-  additional_args=("${@:1:$#-1}")
+# Parse arguments to find the prompt for branch name generation
+prompt=""
+args=("$@")
+for ((i = 0; i < ${#args[@]}; i++)); do
+  if [[ "${args[i]}" == "-prompt" && $((i + 1)) -lt ${#args[@]} ]]; then
+    prompt="${args[$((i + 1))]}"
+    break
+  fi
+done
+
+# Fail if no prompt found
+if [ -z "$prompt" ]; then
+  echo "Error: -prompt flag is required"
+  echo "Usage: sketch-worktree [additional sketch arguments...] -prompt \"prompt\""
+  exit 1
 fi
 
 # Extract GitHub issue numbers from the prompt and fetch details
 echo "Extracting GitHub issues from prompt..."
 TEMP_ISSUES_FILE=$(mktemp)
 
-# Use the extract_github_issues.py script to get issue details
+# Use the extract_github_issues.py script to get issue details from the prompt
 extract-github-issues "$prompt" "$TEMP_ISSUES_FILE" 2>/dev/null || true
 
-# Initialize branch_description with the original prompt
+# Initialize branch_description with the prompt
 branch_description="$prompt"
 
-# If issues were found, append them to the prompt
+# If issues were found, append them to the branch description
 if [ -s "$TEMP_ISSUES_FILE" ]; then
-  echo "Issues found, adding details to prompt..."
+  echo "Issues found, adding details to branch description..."
   branch_description="$prompt\n\nIssue details from GitHub:$(cat "$TEMP_ISSUES_FILE")"
 else
   echo "No GitHub issues found in prompt, proceeding with original prompt"
@@ -103,4 +113,4 @@ cd "$worktree_path" || {
 }
 
 # Execute the unified sketch script with the created worktree
-exec "$(dirname "$0")/run-sketch.sh" -- -open "$prompt" "${additional_args[@]+"${additional_args[@]}"}"
+exec "$(dirname "$0")/run-sketch.sh" -- -open "$@"
