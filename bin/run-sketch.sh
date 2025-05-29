@@ -11,6 +11,9 @@ show_usage() {
   echo "  --dev                  Use development mode (~/src/sketch instead of ~/src/sketch-clean)"
   echo "  -h, --help             Show this help message"
   echo ""
+  echo "The script will also read additional arguments from .sketch-args file in the target directory"
+  echo "if it exists. Each line should contain one argument. Lines starting with # are ignored."
+  echo ""
   echo "Example:"
   echo "  run-sketch.sh -- -open -prompt \"My prompt\""
   echo "  run-sketch.sh -- -some-flag -another-flag -prompt \"My prompt\""
@@ -119,6 +122,31 @@ fi
 
 # Experiments
 export SKETCH_EXPERIMENT="all"
+
+# Check for .sketch-args file in the target directory and add its contents
+SKETCH_ARGS_FILE="$TARGET_DIR/.sketch-args"
+if [ -f "$SKETCH_ARGS_FILE" ]; then
+  # Security check: ensure the file is readable and not a symlink to prevent directory traversal attacks
+  if [ -L "$SKETCH_ARGS_FILE" ]; then
+    [ "$VERBOSE" = true ] && echo "Warning: Ignoring .sketch-args because it's a symbolic link (security precaution)"
+  elif [ ! -r "$SKETCH_ARGS_FILE" ]; then
+    [ "$VERBOSE" = true ] && echo "Warning: .sketch-args file exists but is not readable"
+  else
+    # Read the file safely, ignoring empty lines and comments
+    while IFS= read -r line || [ -n "$line" ]; do
+      # Skip empty lines and comments (lines starting with #)
+      if [[ -n "$line" && ! "$line" =~ ^[[:space:]]*# ]]; then
+        # Security: Only allow safe characters (alphanumeric, spaces, dashes, underscores, equals, slashes, dots, colons, tildes)
+        if [[ "$line" =~ ^[a-zA-Z0-9[:space:]._/=:~-]+$ ]]; then
+          CMD+=("$line")
+          [ "$VERBOSE" = true ] && echo "Added from .sketch-args: $line"
+        else
+          [ "$VERBOSE" = true ] && echo "Warning: Skipping potentially unsafe argument from .sketch-args: $line"
+        fi
+      fi
+    done <"$SKETCH_ARGS_FILE"
+  fi
+fi
 
 # Add any remaining positional args directly to the command
 if [ ${#POSITIONAL_ARGS[@]} -gt 0 ]; then
