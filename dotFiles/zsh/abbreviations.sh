@@ -151,7 +151,7 @@ abbreviations=(
   "ilm"   '| envdir ~/envs/openai llm -s "__CURSOR__"'
   "lm"    'envdir ~/envs/openai llm'
   "s"    'sketch'
-  "sp"   'sketch --prompt "__CURSOR__"'
+  "sp"   'sketch -prompt "__CURSOR__"'
 )
 
 for i in {1..9};
