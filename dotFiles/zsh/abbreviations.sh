@@ -1,3 +1,4 @@
+#!/bin/zsh
 # From http://stackoverflow.com/a/28641065/2605678
 setopt extendedglob
 typeset -Ag abbreviations
@@ -171,9 +172,17 @@ do
 done
 
 magic-abbrev-expand() {
-    local MATCH MBEGIN MEND expansion expand expand_star line
+    local MATCH MBEGIN MEND expansion expand expand_star line original_buffer
+    original_buffer="$LBUFFER"
     LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
     line="$LBUFFER"
+    
+    # Don't expand if preceded by word character or dash
+    if [[ $MBEGIN -gt 1 && "${original_buffer[MBEGIN-1]}" =~ [_a-zA-Z0-9-] ]]; then
+        LBUFFER="${original_buffer} "
+        return
+    fi
+    
     expansion=${abbreviations[$MATCH]}
 
     if [[ "${expansion}" == *__EXPAND__ ]]
