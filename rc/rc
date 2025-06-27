@@ -50,6 +50,7 @@ vim() {
 source "$HOME/.sh/aliases.sh"
 
 [ -f /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 
 # fasd
 fasd_cache="$HOME/.fasd-init-bash"
@@ -109,3 +110,9 @@ source "$HOME/src/git-subrepo/.rc"
 launchctl setenv PATH $PATH
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
