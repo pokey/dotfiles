@@ -397,7 +397,7 @@
   },
   {
     "key": "shift+cmd+ctrl+f12",
-    "command": "gitlens.openWorkingFileInDiffRight",
+    "command": "gitlens.openWorkingFile",
     "when": "gitlens:enabled && isInDiffRightEditor && resourceScheme =~ /^(gitlens|pr)$/"
   },
   {
