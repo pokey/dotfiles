@@ -558,7 +558,7 @@
   //   "gopls": "/Users/pokey/.vscode/extensions/bold.bold-dev-0.0.1/bin/goplsproxy-darwin-arm64"
   // },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "go.alternateTools": {
@@ -600,17 +600,15 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "mcp": {
-    "servers": {
-      "puppeteer": {
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
-      }
-    }
-  },
   "editor.minimap.enabled": false,
   "github.copilot.nextEditSuggestions.fixes": true,
   "github.copilot.chat.search.keywordSuggestions": true,
   "workbench.editor.showTabs": "multiple",
-  "latex-workshop.latex.autoBuild.run": "never"
+  "latex-workshop.latex.autoBuild.run": "never",
+  "workbench.settings.showAISearchToggle": true,
+  "search.searchView.keywordSuggestions": true,
+  "python.terminal.shellIntegration.enabled": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.statusBarItem.enabled": false
 }
