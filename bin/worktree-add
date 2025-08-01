@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Creates a git worktree with the specified branch name.
+# This script is intended to be run from a directory that is a git repository.
+# It creates a new branch in a worktree under ~/src/worktrees/<current_dir>/<branch_name>.
+
+if [ $# -ne 1 ]; then
+  echo "Usage: worktree-add <branch_name>"
+  exit 1
+fi
+
+branch_name="$1"
+
+# Validate branch name (basic validation)
+if [[ ! "$branch_name" =~ ^[a-zA-Z0-9._/-]+$ ]]; then
+  echo "Error: Branch name contains invalid characters. Use only letters, numbers, dots, underscores, slashes, and hyphens."
+  exit 1
+fi
+
+# Check if we're in a git repository
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+  echo "Error: Not in a git repository"
+  exit 1
+fi
+
+# Get current directory name for worktree subdirectory
+current_dir=$(basename "$(pwd)")
+
+# Create worktrees directory if it doesn't exist
+worktree_root=~/src/worktrees
+if [ ! -d "$worktree_root" ]; then
+  mkdir -p "$worktree_root"
+fi
+
+# Create project-specific worktree directory
+project_worktree_dir="$worktree_root/$current_dir"
+if [ ! -d "$project_worktree_dir" ]; then
+  mkdir -p "$project_worktree_dir"
+fi
+
+# Full path to this specific worktree
+worktree_path="$project_worktree_dir/$branch_name"
+
+# Check if worktree already exists
+if [ -d "$worktree_path" ]; then
+  echo "Worktree for branch '$branch_name' already exists at $worktree_path"
+  echo "Changing to existing worktree directory..."
+else
+  echo "Creating worktree for branch '$branch_name' at $worktree_path"
+  # Check if branch already exists
+  if git show-ref --verify --quiet "refs/heads/$branch_name"; then
+    echo "Branch '$branch_name' already exists, creating worktree from existing branch"
+    git worktree add "$worktree_path" "$branch_name"
+  else
+    echo "Creating new branch '$branch_name' and worktree"
+    git worktree add -b "$branch_name" "$worktree_path"
+  fi
+fi
+
+# Change to the worktree directory
+cd "$worktree_path" || {
+  echo "Failed to change to directory: $worktree_path"
+  exit 1
+}
+
+echo "Created worktree: $worktree_path"
+
+code "$worktree_path" || {
+  echo "Failed to open VS Code in the worktree directory: $worktree_path"
+  exit 1
+}
