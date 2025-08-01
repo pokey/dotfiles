@@ -90,8 +90,8 @@ fi
 SKETCH_DIR="${SKETCH_DIR/#\~/$HOME}"
 
 # Change to the sketch directory
-cd "$SKETCH_DIR" || {
-  echo "Failed to change to directory: $SKETCH_DIR"
+cd "$TARGET_DIR" || {
+  echo "Failed to change to directory: $TARGET_DIR"
   exit 1
 }
 
@@ -101,7 +101,7 @@ if [ "$DEV_MODE" = true ]; then
 fi
 
 # Build the sketch command
-CMD=("envdir" "$ENV_DIR" "go" "run" "./cmd/sketch" "-C" "$TARGET_DIR")
+CMD=("envdir" "$ENV_DIR" "$SKETCH_DIR/sketch")
 
 # Add standard flags
 if [ "$SKABAND_ADDR" != production ]; then

@@ -4,6 +4,4 @@ set -euo pipefail
 cd ~/src/sketch-clean
 
 git pull
-go generate 'sketch.dev/webui/...'
-cd webui
-make install
+make
