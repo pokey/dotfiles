@@ -101,7 +101,7 @@ if [ "$DEV_MODE" = true ]; then
 fi
 
 # Build the sketch command
-CMD=("envdir" "$ENV_DIR" "$SKETCH_DIR/sketch")
+CMD=("envdir" "$ENV_DIR" "$SKETCH_DIR/sketch" "-mcp" '{"name": "context7", "type": "http", "url": "https://mcp.context7.com/mcp"}')
 
 # Add standard flags
 if [ "$SKABAND_ADDR" != production ]; then
