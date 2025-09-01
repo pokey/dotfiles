@@ -80,13 +80,11 @@ log("---------------------------");
 try {
   execAndLog("git add --all", REFERENCES_FOLDER);
   // Commit if there are changes
-  const toCommit: string[] = [];
   if (execAndLog("git status --porcelain", REFERENCES_FOLDER)) {
     execAndLog(
       `git commit -m "[content] ${new Date().toISOString()}"`,
       REFERENCES_FOLDER
     );
-    toCommit.push(exec("git rev-parse --short HEAD", REFERENCES_FOLDER));
   }
 
   // Find all commits in references repository that are not in notes repository,
@@ -102,13 +100,10 @@ try {
     "git log --pretty=format:'%s' --reverse",
     NOTES_FOLDER
   );
-  const missingReferenceCommits = referencesCommits
+  const toCommit = referencesCommits
     .split("\n")
     .filter((sha) => !notesCommits.includes(`[references] ${sha}`))
     .filter((sha) => !KNOWN_MISSING.includes(sha));
-
-  // Ensure that the only missing commits are expected
-  assert.deepStrictEqual(missingReferenceCommits, toCommit);
 
   if (toCommit.length === 0) {
     log("No new commits to apply");
