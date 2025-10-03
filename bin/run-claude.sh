@@ -6,5 +6,5 @@ if "$HOME/pokey-home-files/bin/toggl_check_client.py"; then
   CLAUDE_CONFIG_DIR="$HOME/claude-bold" claude "$@"
 else
   echo "Not on the clock - use personal environment"
-  claude "$@"
+  envdir ~/envs/context7 claude "$@"
 fi

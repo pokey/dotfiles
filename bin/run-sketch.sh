@@ -100,8 +100,11 @@ if [ "$DEV_MODE" = true ]; then
   go generate 'sketch.dev/loop/...'
 fi
 
-# Build the sketch command
-CMD=("envdir" "$ENV_DIR" "$SKETCH_DIR/sketch" "-mcp" '{"name": "context7", "type": "http", "url": "https://mcp.context7.com/mcp"}')
+# Build the sketch command with Context7 API key from environment
+# We use envdir to load both the main env and Context7 API key
+CONTEXT7_API_KEY=$(cat "$HOME/envs/context7/CONTEXT7_API_KEY")
+MCP_CONFIG='{"name": "context7", "type": "http", "url": "https://mcp.context7.com/mcp", "headers": {"CONTEXT7_API_KEY": "'"$CONTEXT7_API_KEY"'"}}'
+CMD=("envdir" "$ENV_DIR" "$SKETCH_DIR/sketch" "-mcp" "$MCP_CONFIG")
 
 # Add standard flags
 if [ "$SKABAND_ADDR" != production ]; then
@@ -154,5 +157,15 @@ if [ ${#POSITIONAL_ARGS[@]} -gt 0 ]; then
 fi
 
 # Execute the command
-[ "$VERBOSE" = true ] && echo "Running: ${CMD[*]}"
+if [ "$VERBOSE" = true ]; then
+  # Sanitize the command output to hide the API key
+  SANITIZED_CMD=("${CMD[@]}")
+  # Replace the MCP config in the sanitized version
+  for i in "${!SANITIZED_CMD[@]}"; do
+    if [[ "${SANITIZED_CMD[$i]}" == *"CONTEXT7_API_KEY"* ]]; then
+      SANITIZED_CMD[$i]='{"name": "context7", "type": "http", "url": "https://mcp.context7.com/mcp", "headers": {"CONTEXT7_API_KEY": "***REDACTED***"}}'
+    fi
+  done
+  echo "Running: ${SANITIZED_CMD[*]}"
+fi
 exec "${CMD[@]}"
