@@ -67,13 +67,6 @@ export FZF_DEFAULT_OPTS="--exact"
 
 source "$HOME/.sh/commands.sh"
 
-# Init pyenv
-if which pyenv >/dev/null; then
-   eval "$(pyenv init --path)"
-   eval "$(pyenv init -)"
-fi
-if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
 # http://marianposaceanu.com/articles/macos-sierra-upgrade-from-a-developers-perspective
 # https://discussions.apple.com/thread/7682417?start=0&tstart=0
 # https://www.reddit.com/r/MacOS/comments/4vro9d/macos_sierra_key_repeat/
