@@ -1,0 +1,15 @@
+{
+  "alwaysThinkingEnabled": true,
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/local/bin/terminal-notifier -title 'Claude Code' -message \"$CLAUDE_PROJECT_DIR\" -sound default"
+          }
+        ]
+      }
+    ]
+  }
+}
