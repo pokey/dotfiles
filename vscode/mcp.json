@@ -1,0 +1,49 @@
+{
+  "servers": {
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "type": "stdio"
+    },
+    "taskmaster-ai": {
+      "command": "npx",
+      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "env": {
+        "ANTHROPIC_API_KEY": "${input:anthropic-key}",
+        "PERPLEXITY_API_KEY": "${input:perplexity-key}"
+      },
+      "type": "stdio"
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${input:context7-key}"
+      }
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "perplexity-key",
+      "description": "Perplexity API Key",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "anthropic-key",
+      "description": "Anthropic API Key",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "context7-key",
+      "description": "Context7 API Key",
+      "password": true
+    }
+  ]
+}

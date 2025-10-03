@@ -324,7 +324,7 @@
     {
       "label": "Start tunnel",
       "type": "shell",
-      "command": "curl -s icanhazip.com | pbcopy && /Users/pokey/n/bin/localtunnel --port 3000",
+      "command": "curl -s icanhazip.com | pbcopy && /Users/pokey/n/bin/localtunnel --port 3001",
       "presentation": {},
       "problemMatcher": []
     },

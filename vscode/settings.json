@@ -8,9 +8,6 @@
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
-  "[java]": {
-    "editor.defaultFormatter": "mwpb.java-prettier-formatter"
-  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -51,14 +48,20 @@
     "editor.formatOnSave": true
   },
   "[typescript]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": ["source.fixAll.format", "source.fixAll.eslint"]
+    "editor.codeActionsOnSave": {
+      "source.fixAll.format": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": ["source.fixAll.format", "source.fixAll.eslint"]
+    "editor.codeActionsOnSave": {
+      "source.fixAll.format": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
   },
   "breadcrumbs.enabled": false,
   "cSpell.showStatus": false,
@@ -439,8 +442,7 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.addImport.heuristics": true,
   "python.analysis.indexing": true,
-  "python.analysis.typeCheckingMode": "basic",
-  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "strict",
   "python.analysis.diagnosticSeverityOverrides": {
     "reportMissingModuleSource": "none"
   },
@@ -539,7 +541,7 @@
   "window.autoDetectColorScheme": true,
   "workbench.activityBar.location": "bottom",
   "diffEditor.experimental.showMoves": true,
-  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
   "window.zoomLevel": 1,
   "gitlens.advanced.messages": {
@@ -591,7 +593,7 @@
     "arguments": "off",
     "unknown": "off"
   },
-  "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
+  "github.copilot.selectedCompletionModel": "gpt-41-copilot",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "chat.agent.enabled": true,
   "github.copilot.chat.agent.thinkingTool": true,
@@ -610,5 +612,17 @@
   "python.terminal.shellIntegration.enabled": true,
   "docker.extension.enableComposeLanguageServer": false,
   "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": false
+  "git.blame.statusBarItem.enabled": false,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferGoToSourceDefinition": true,
+  "terminal.integrated.stickyScroll.enabled": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
