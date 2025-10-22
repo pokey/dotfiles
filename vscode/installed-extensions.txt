@@ -12,6 +12,7 @@ github.copilot-chat
 github.vscode-pull-request-github
 hashicorp.terraform
 humao.rest-client
+mechatroner.rainbow-csv
 mrob95.vscode-talonscript
 ms-python.debugpy
 ms-python.python
@@ -28,5 +29,7 @@ pokey.talon
 redhat.vscode-yaml
 ryuta46.multi-command
 sleistner.vscode-fileutils
-streetsidesoftware.code-spell-checker
+stkb.rewrap
 tamasfe.even-better-toml
+unifiedjs.vscode-mdx
+usernamehw.commands
