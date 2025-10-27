@@ -11,9 +11,9 @@ if [ $# -lt 1 ]; then
 fi
 
 # Determine which environment directory to use
-if ~/pokey-home-files/bin/toggl_check_client.py; then
-  echo "On the clock - using Bold client environment"
-  envdir=~/envs/bold/anthropic
+if client_name=$(~/pokey-home-files/bin/toggl_check_client.py 2>/dev/null); then
+  echo "On the clock - using $client_name client environment"
+  envdir=~/envs/"$client_name"/anthropic
 else
   echo "Not on the clock - using personal environment"
   envdir=~/envs/anthropic

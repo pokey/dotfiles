@@ -12,8 +12,11 @@ API_TOKEN_PATH = Path("~/envs/toggl/TOGGL_API_TOKEN").expanduser()
 API_TOKEN = API_TOKEN_PATH.read_text().strip()
 WORKSPACE_ID = 8497458
 
-# Bold client ID
-BOLD_CLIENT_ID = 65532308
+# Client ID to kebab-case name mapping
+CLIENT_MAPPING = {
+    65532308: "bold",  # Bold client
+    68179013: "brm",
+}
 
 # Create auth headers
 headers = {
@@ -61,12 +64,13 @@ def main():
         project = get_project(project_id)
         client_id = project.get("client_id")
 
-        # Check if this is the Bold client
-        if client_id == BOLD_CLIENT_ID:
-            # On the clock for Bold client
+        # Check if this client is in our tracking list
+        if client_id in CLIENT_MAPPING:
+            # Output the client name and exit successfully
+            print(CLIENT_MAPPING[client_id])
             sys.exit(0)
         else:
-            # Not on Bold client time
+            # Not tracking time for a monitored client
             sys.exit(1)
     except Exception as e:
         print(f"Error checking Toggl status: {e}", file=sys.stderr)
