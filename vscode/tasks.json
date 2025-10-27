@@ -155,7 +155,7 @@
     {
       "label": "Git update main",
       "type": "shell",
-      "command": "main=$(get-main-branch) && git fetch origin \"$main:$main\" --update-head-ok && git branchless smartlog",
+      "command": "main=$(get-main-branch) && git fetch $(git config \"branch.$main.remote\") \"$main:$main\" --update-head-ok && git branchless smartlog",
       "presentation": {},
       "problemMatcher": []
     },
