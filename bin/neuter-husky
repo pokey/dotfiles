@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Disables Husky git hooks by:
+# 1. Replacing the husky executable with a no-op script
+# 2. Unsetting the git core.hooksPath configuration
+#
+# This is useful when you want to temporarily disable git hooks without
+# uninstalling Husky or modifying package.json.
+
+# Find husky executable
+HUSKY_PATH=$(npm exec which husky 2>/dev/null)
+
+if [ -z "$HUSKY_PATH" ]; then
+  echo "Warning: Husky not found, skipping husky neutering"
+else
+  echo "Neutering husky at: $HUSKY_PATH"
+  printf "#!/usr/bin/env bash\necho \"Husky neutered\"\n" > "$HUSKY_PATH"
+fi
+
+# Unset core.hooksPath if it exists
+echo "Unsetting core.hooksPath"
+git config unset core.hooksPath
+
+echo "Husky neutering complete"
