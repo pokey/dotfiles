@@ -2,9 +2,9 @@
 set -euo pipefail
 
 if client_name=$("$HOME/pokey-home-files/bin/toggl_check_client.py"); then
-  echo "On the clock - use $client_name client environment"
+  echo "On the clock - using $client_name client environment"
   envdir ~/envs/context7 envdir ~/envs/$client_name/gemini gemini "$@"
 else
-  echo "Not on the clock - use personal environment"
+  echo "Not On the clock - using personal environment"
   envdir ~/envs/context7 envdir ~/envs/gemini gemini "$@"
 fi
