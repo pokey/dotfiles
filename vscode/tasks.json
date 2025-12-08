@@ -45,9 +45,9 @@
       "problemMatcher": []
     },
     {
-      "label": "sketch",
+      "label": "claude",
       "type": "shell",
-      "command": "sketch -prompt \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",
+      "command": "run-claude.sh \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
@@ -55,9 +55,9 @@
       }
     },
     {
-      "label": "sketch start",
+      "label": "claude start",
       "type": "shell",
-      "command": "sketch",
+      "command": "run-claude.sh",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
@@ -65,9 +65,9 @@
       }
     },
     {
-      "label": "sketch clipboard",
+      "label": "claude clipboard",
       "type": "shell",
-      "command": "sketch -prompt \"$(pbpaste)\"",
+      "command": "run-claude.sh \"$(pbpaste)\"",
       "presentation": {},
       "problemMatcher": [],
       "runOptions": {
