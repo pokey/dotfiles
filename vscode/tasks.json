@@ -95,6 +95,21 @@
       }
     },
     {
+      "label": "claude resolve merge conflicts",
+      "type": "shell",
+      "command": "run-claude.sh \"resolve merge conflicts\"",
+      "presentation": {
+        "focus": true,
+        "reveal": "always",
+        "showReuseMessage": false,
+        "echo": false
+      },
+      "problemMatcher": [],
+      "runOptions": {
+        "instanceLimit": 10
+      }
+    },
+    {
       "label": "sketch in worktree issue",
       "type": "shell",
       "command": "sketch-worktree -prompt \"Implement $(cat << 'HEREDOC' \n${input:issue}\nHEREDOC\n). Use gh cli to look up issue, being sure to look at comments.\"",
