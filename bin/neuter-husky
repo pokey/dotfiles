@@ -8,14 +8,47 @@ set -euo pipefail
 # This is useful when you want to temporarily disable git hooks without
 # uninstalling Husky or modifying package.json.
 
-# Find husky executable
-HUSKY_PATH=$(npm exec which husky 2>/dev/null)
+# Detect package manager
+detect_package_manager() {
+  if [ -f "yarn.lock" ]; then
+    echo "yarn"
+  elif [ -f "pnpm-lock.yaml" ]; then
+    echo "pnpm"
+  elif [ -f "package-lock.json" ] || [ -f "package.json" ]; then
+    echo "npm"
+  else
+    echo ""
+  fi
+}
 
-if [ -z "$HUSKY_PATH" ]; then
-  echo "Warning: Husky not found, skipping husky neutering"
+PACKAGE_MANAGER=$(detect_package_manager)
+
+if [ -z "$PACKAGE_MANAGER" ]; then
+  echo "Warning: No package manager detected (no package.json, yarn.lock, or pnpm-lock.yaml found)"
+  echo "Skipping husky neutering"
 else
-  echo "Neutering husky at: $HUSKY_PATH"
-  printf "#!/usr/bin/env bash\necho \"Husky neutered\"\n" > "$HUSKY_PATH"
+  echo "Detected package manager: $PACKAGE_MANAGER"
+
+  # Find husky executable using the appropriate package manager
+  HUSKY_PATH=""
+  case "$PACKAGE_MANAGER" in
+    npm)
+      HUSKY_PATH=$(npm exec which husky 2>/dev/null) || true
+      ;;
+    yarn)
+      HUSKY_PATH=$(yarn exec which husky 2>/dev/null) || true
+      ;;
+    pnpm)
+      HUSKY_PATH=$(pnpm exec which husky 2>/dev/null) || true
+      ;;
+  esac
+
+  if [ -z "$HUSKY_PATH" ]; then
+    echo "Warning: Husky not found using $PACKAGE_MANAGER, skipping husky neutering"
+  else
+    echo "Neutering husky at: $HUSKY_PATH"
+    printf "#!/usr/bin/env bash\necho \"Husky neutered\"\n" > "$HUSKY_PATH"
+  fi
 fi
 
 # Unset core.hooksPath if it exists
