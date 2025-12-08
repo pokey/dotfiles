@@ -1,5 +1,4 @@
 {
-  "alwaysThinkingEnabled": true,
   "hooks": {
     "Notification": [
       {
@@ -11,5 +10,9 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true
+  },
+  "alwaysThinkingEnabled": true
 }
