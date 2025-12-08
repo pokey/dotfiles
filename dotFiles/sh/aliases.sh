@@ -102,6 +102,7 @@ alias gra="git rebase --abort"
 alias gma="git merge --abort"
 alias upgrade-branchless="cargo install --locked --git https://github.com/arxanas/git-branchless git-branchless"
 alias claude="run-claude.sh"
+alias gemini="run-gemini.sh"
 alias llm="autoenv llm"
 alias s="sketch"
 
