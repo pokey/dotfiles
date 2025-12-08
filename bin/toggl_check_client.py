@@ -70,6 +70,7 @@ def main():
             print(CLIENT_MAPPING[client_id])
             sys.exit(0)
         else:
+            print(f"Unknown client ID: {client_id}", file=sys.stderr)
             # Not tracking time for a monitored client
             sys.exit(1)
     except Exception as e:

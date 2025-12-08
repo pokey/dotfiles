@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if client_name=$("$HOME/pokey-home-files/bin/toggl_check_client.py" 2>/dev/null); then
+if client_name=$("$HOME/pokey-home-files/bin/toggl_check_client.py"); then
   echo "On the clock - use $client_name client environment"
   CLAUDE_CONFIG_DIR="$HOME/claude-$client_name" envdir ~/envs/context7 claude "$@"
 else
