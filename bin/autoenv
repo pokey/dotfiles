@@ -15,8 +15,14 @@ SILENT=$([ -e /tmp/is-recording-video ] && echo true || echo false)
 
 # Determine which environment directory to use
 if client_name=$(~/pokey-home-files/bin/toggl_check_client.py 2>/dev/null); then
-  [ "$SILENT" != true ] && echo "On the clock - using $client_name client environment" >&2
-  envdir=~/envs/"$client_name"/anthropic
+  client_envdir=~/envs/"$client_name"/anthropic
+  if [ -d "$client_envdir" ]; then
+    [ "$SILENT" != true ] && echo "On the clock - using $client_name client environment" >&2
+    envdir="$client_envdir"
+  else
+    [ "$SILENT" != true ] && echo "On the clock but client environment not found - falling back to personal environment" >&2
+    envdir=~/envs/anthropic
+  fi
 else
   [ "$SILENT" != true ] && echo "Not on the clock - using personal environment" >&2
   envdir=~/envs/anthropic
