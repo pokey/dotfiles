@@ -12,10 +12,10 @@ fi
 
 # Determine which environment directory to use
 if client_name=$(~/pokey-home-files/bin/toggl_check_client.py 2>/dev/null); then
-  echo "On the clock - using $client_name client environment"
+  echo "On the clock - using $client_name client environment" >&2
   envdir=~/envs/"$client_name"/anthropic
 else
-  echo "Not on the clock - using personal environment"
+  echo "Not on the clock - using personal environment" >&2
   envdir=~/envs/anthropic
 fi
 

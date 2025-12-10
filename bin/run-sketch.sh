@@ -78,10 +78,10 @@ if [ -n "$SPECIFIED_ENV" ]; then
   ENV_DIR="$SPECIFIED_ENV"
 else
   if client_name=$("$HOME/pokey-home-files/bin/toggl_check_client.py" 2>/dev/null); then
-    [ "$VERBOSE" = true ] && echo "On the clock - using $client_name client environment"
+    [ "$VERBOSE" = true ] && echo "On the clock - using $client_name client environment" >&2
     ENV_DIR="$HOME/envs/$client_name/anthropic"
   else
-    [ "$VERBOSE" = true ] && echo "Not On the clock - using personal environment"
+    [ "$VERBOSE" = true ] && echo "Not On the clock - using personal environment" >&2
     ENV_DIR="$HOME/envs/anthropic"
   fi
 fi
