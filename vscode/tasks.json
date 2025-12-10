@@ -45,20 +45,16 @@
       "problemMatcher": []
     },
     {
-      "label": "claude",
-      "type": "shell",
-      "command": "run-claude.sh \"$(cat << 'HEREDOC' \n${input:prompt}\nHEREDOC\n)\"",
-      "presentation": {},
-      "problemMatcher": [],
-      "runOptions": {
-        "instanceLimit": 10
-      }
-    },
-    {
       "label": "claude start",
+      "icon": { "id": "robot" },
       "type": "shell",
       "command": "run-claude.sh",
-      "presentation": {},
+      "presentation": {
+        "focus": true,
+        "reveal": "always",
+        "showReuseMessage": false,
+        "echo": false
+      },
       "problemMatcher": [],
       "runOptions": {
         "instanceLimit": 10
@@ -66,9 +62,15 @@
     },
     {
       "label": "claude clipboard",
+      "icon": { "id": "robot" },
       "type": "shell",
       "command": "run-claude.sh \"$(pbpaste)\"",
-      "presentation": {},
+      "presentation": {
+        "focus": true,
+        "reveal": "always",
+        "showReuseMessage": false,
+        "echo": false
+      },
       "problemMatcher": [],
       "runOptions": {
         "instanceLimit": 10
