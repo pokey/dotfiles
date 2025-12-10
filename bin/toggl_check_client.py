@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -46,6 +47,35 @@ def get_project(project_id):
         return json.loads(response.read().decode("utf-8"))
 
 
+def show_client_picker():
+    """Show a client picker and return the selected client name"""
+    client_names = list(CLIENT_MAPPING.values())
+    choices = client_names + ["None"]
+
+    # Build AppleScript to show a dialog
+    choices_str = '", "'.join(choices)
+    script = f'''
+    choose from list {{"{choices_str}"}} with prompt "Select a client:" default items {{"{choices[0]}"}}
+    '''
+
+    try:
+        result = subprocess.run(
+            ["osascript", "-e", script],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        selected = result.stdout.strip()
+
+        # User cancelled or selected "None"
+        if selected == "false" or selected == "None":
+            return None
+
+        return selected
+    except subprocess.CalledProcessError:
+        return None
+
+
 def main():
     try:
         current_entry = get_current_time_entry()
@@ -61,8 +91,18 @@ def main():
             sys.exit(1)
 
         # Get project details including client ID
-        project = get_project(project_id)
-        client_id = project.get("client_id")
+        try:
+            project = get_project(project_id)
+            client_id = project.get("client_id")
+        except Exception as e:
+            print(f"Error fetching client: {e}", file=sys.stderr)
+            # Show client picker on error
+            selected_client = show_client_picker()
+            if selected_client:
+                print(selected_client)
+                sys.exit(0)
+            else:
+                sys.exit(1)
 
         # Check if this client is in our tracking list
         if client_id in CLIENT_MAPPING:
@@ -75,7 +115,13 @@ def main():
             sys.exit(1)
     except Exception as e:
         print(f"Error checking Toggl status: {e}", file=sys.stderr)
-        sys.exit(1)
+        # Show client picker on any error
+        selected_client = show_client_picker()
+        if selected_client:
+            print(selected_client)
+            sys.exit(0)
+        else:
+            sys.exit(1)
 
 
 if __name__ == "__main__":
