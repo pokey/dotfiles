@@ -30,17 +30,20 @@ style = "green bold"
 format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
 symbol = "❁ "
 style = "blue bold"
-detect_files = ["requirements.txt", "pyproject.toml", ".python-version", "Pipfile"]
+detect_files = [
+  "requirements.txt",
+  "pyproject.toml",
+  ".python-version",
+  "Pipfile",
+]
 
 [git_branch]
 format = "[$symbol$branch]($style) "
-symbol = " "
-style = "magenta bold"
 
 [git_status]
 format = "[$all_status$ahead_behind]($style)"
 style = "red"
 
 [character]
-success_symbol = "[➜](green bold)"
-error_symbol = "[➜](red bold)"
+success_symbol = "[ ➜](green bold)"
+error_symbol = "[ ➜](red bold)"
