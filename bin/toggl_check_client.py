@@ -15,8 +15,8 @@ WORKSPACE_ID = 8497458
 
 # Client ID to kebab-case name mapping
 CLIENT_MAPPING = {
-    65532308: "bold",  # Bold client
     68179013: "brm",
+    65532308: "bold",  # Bold client
 }
 
 # Create auth headers
@@ -60,10 +60,7 @@ def show_client_picker():
 
     try:
         result = subprocess.run(
-            ["osascript", "-e", script],
-            capture_output=True,
-            text=True,
-            check=True
+            ["osascript", "-e", script], capture_output=True, text=True, check=True
         )
         selected = result.stdout.strip()
 
