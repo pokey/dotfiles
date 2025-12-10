@@ -55,7 +55,10 @@ def show_client_picker():
     # Build AppleScript to show a dialog
     choices_str = '", "'.join(choices)
     script = f'''
-    choose from list {{"{choices_str}"}} with prompt "Select a client:" default items {{"{choices[0]}"}}
+    tell application "System Events"
+        activate
+        choose from list {{"{choices_str}"}} with prompt "Select a client:" default items {{"{choices[0]}"}}
+    end tell
     '''
 
     try:
