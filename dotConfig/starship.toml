@@ -1,0 +1,46 @@
+# Single line prompt
+add_newline = false
+
+# Prompt format - similar to your Spaceship setup
+format = """
+$directory\
+$package\
+$nodejs\
+$python\
+$git_branch\
+$git_status\
+$character"""
+
+[directory]
+style = "cyan bold"
+truncation_length = 3
+truncate_to_repo = true
+
+[package]
+format = "[$symbol$version]($style) "
+symbol = "⇢ "
+style = "red bold"
+
+[nodejs]
+format = "[$symbol$version]($style) "
+symbol = "⬢ "
+style = "green bold"
+
+[python]
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+symbol = "❁ "
+style = "blue bold"
+detect_files = ["requirements.txt", "pyproject.toml", ".python-version", "Pipfile"]
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
+style = "magenta bold"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+style = "red"
+
+[character]
+success_symbol = "[➜](green bold)"
+error_symbol = "[➜](red bold)"
