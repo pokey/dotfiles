@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Outputs markdown from a Claude Code message given unique text to search for.
+# Fails if not exactly one matching message is found.
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: $0 <search-text>" >&2
+    exit 1
+fi
+
+search_text="$1"
+
+# Determine Claude config dir using same logic as run-claude.sh
+if client_name=$("$HOME/pokey-home-files/bin/toggl_check_client.py" 2>/dev/null); then
+    claude_config_dir="$HOME/claude-$client_name"
+else
+    claude_config_dir="$HOME/.claude"
+fi
+
+# Search for matching messages
+matches=$(rg -FINc "$search_text" "$claude_config_dir" 2>/dev/null || true)
+match_count=$(echo "$matches" | grep -v '^$' | wc -l | tr -d ' ')
+
+if [[ "$match_count" -eq 0 ]]; then
+    echo "Error: No matching messages found" >&2
+    exit 1
+elif [[ "$match_count" -gt 1 ]]; then
+    echo "Error: Found $match_count matching messages (expected exactly 1):" >&2
+    echo "$matches" >&2
+    exit 1
+fi
+
+# Extract the file path from the match (format is "file:count")
+matching_file=$(echo "$matches" | cut -d: -f1)
+
+# Output the markdown content
+rg -FIN "$search_text" "$matching_file" | jq -r '.message.content[].text | select(. != null)'
