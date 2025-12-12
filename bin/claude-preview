@@ -1,0 +1,24 @@
+#!/bin/bash
+# Run a prompt through Claude and preview the markdown output in a browser via Grip
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 \"Your prompt here\"" >&2
+    exit 1
+fi
+
+# Create temporary markdown file
+tmpfile=$(mktemp /tmp/claude_output_XXXXXX).md
+
+# Run claude and save output
+run-claude.sh -p "$1" > "$tmpfile"
+
+# Find an available port starting from 63372
+port=63372
+while lsof -i :"$port" >/dev/null 2>&1; do
+    ((port++))
+done
+
+# Serve with grip
+grip -b "$tmpfile" "$port"
