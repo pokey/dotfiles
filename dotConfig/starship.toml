@@ -19,6 +19,9 @@ symbol = "⬢ "
 format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
 symbol = "❁ "
 
+[lua]
+format = "[$symbol$version]($style) "
+
 [git_branch]
 format = "[$symbol$branch ]($style)"
 
