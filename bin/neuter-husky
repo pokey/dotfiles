@@ -53,6 +53,6 @@ fi
 
 # Unset core.hooksPath if it exists
 echo "Unsetting core.hooksPath"
-git config unset core.hooksPath
+git config --unset core.hooksPath 2>/dev/null || true
 
 echo "Husky neutering complete"
