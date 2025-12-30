@@ -25,6 +25,10 @@ format = "[$symbol$version]($style) "
 [git_branch]
 format = "[$symbol$branch ]($style)"
 
+[bun]
+format = "[$symbol$version]($style) "
+symbol = "🥟"
+
 [gcloud]
 disabled = true
 
