@@ -18,20 +18,78 @@ else
 fi
 
 # Search for matching messages
-matches=$(rg -FINc "$search_text" "$claude_config_dir" 2>/dev/null || true)
+matches=$(rg -FINc --with-filename -g '*.jsonl' "$search_text" "$claude_config_dir" 2>/dev/null || true)
 match_count=$(echo "$matches" | grep -v '^$' | wc -l | tr -d ' ')
 
 if [[ "$match_count" -eq 0 ]]; then
     echo "Error: No matching messages found" >&2
     exit 1
-elif [[ "$match_count" -gt 1 ]]; then
-    echo "Error: Found $match_count matching messages (expected exactly 1):" >&2
-    echo "$matches" >&2
-    exit 1
 fi
 
-# Extract the file path from the match (format is "file:count")
-matching_file=$(echo "$matches" | cut -d: -f1)
+# Function to extract markdown content from a file
+# Handles string content, text blocks, and Write tool_use blocks
+extract_content() {
+    rg -FIN "$search_text" "$1" | jq -rs '
+        [.[] | .message.content |
+        if type == "string" then .
+        elif type == "array" then
+            [.[] |
+                if .text then .text
+                elif .type == "tool_use" and .name == "Write" and .input.content then .input.content
+                else empty
+                end
+            ] | join("\n")
+        else empty
+        end] | map(select(. != "")) | unique | join("\n---\n")
+    ' 2>/dev/null
+}
 
-# Output the markdown content
-rg -FIN "$search_text" "$matching_file" | jq -r '.message.content[].text | select(. != null)'
+# Extract file path from "filepath:count" format (filepath may contain colons)
+get_filepath() {
+    echo "${1%:*}"
+}
+
+if [[ "$match_count" -eq 1 ]]; then
+    # Single match - simple case
+    matching_file=$(get_filepath "$matches")
+    extract_content "$matching_file"
+else
+    # Multiple matches - check if all have the same content
+    declare -a contents=()
+    declare -a files_with_content=()
+
+    while IFS= read -r line; do
+        [[ -z "$line" ]] && continue
+        file=$(get_filepath "$line")
+        content=$(extract_content "$file")
+        if [[ -n "$content" ]]; then
+            contents+=("$content")
+            files_with_content+=("$file")
+        fi
+    done <<< "$matches"
+
+    if [[ ${#contents[@]} -eq 0 ]]; then
+        echo "Error: No matching messages with content found" >&2
+        exit 1
+    fi
+
+    # Check if all contents are identical
+    first_content="${contents[0]}"
+    all_same=true
+    for content in "${contents[@]:1}"; do
+        if [[ "$content" != "$first_content" ]]; then
+            all_same=false
+            break
+        fi
+    done
+
+    if [[ "$all_same" == true ]]; then
+        echo "$first_content"
+    else
+        echo "Error: Found ${#files_with_content[@]} matching messages with different content:" >&2
+        for file in "${files_with_content[@]}"; do
+            echo "  $file" >&2
+        done
+        exit 1
+    fi
+fi
