@@ -2,8 +2,7 @@ Dotfiles
 ========
 These are my dot files.  Your mileage may vary.
 
-This setup has only been tested on MacOS, although a lot of it should work on
-Linux.
+This setup is macOS only.
 
 Setup
 -----
@@ -11,7 +10,6 @@ Setup
 1. Install deps
    1. Install [Hammerspoon](http://www.hammerspoon.org/)
    1. Install [Karabiner Elements](https://pqrs.org/osx/karabiner/)
-   1. Install [Alacritty](https://github.com/jwilm/alacritty).
    1. Install [Homebrew](https://brew.sh)
 1. Setup github and clone this repo
    1. Generate ssh key
@@ -54,7 +52,7 @@ Setup
        [`karabiner.yaml`](karabiner-gen/karabiner.yaml) for the exact
        shortcuts
      - A few other shortcuts. See
-       [`karabiner.yaml`](karabiner-gen/karabiner-input.json)
+       [`karabiner-input.json`](karabiner-gen/karabiner-input.json)
 1. Read the [docs](doc)
 
 Updates

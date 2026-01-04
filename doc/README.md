@@ -14,7 +14,7 @@ just use all the time.
 
 Getting started
 ===============
-1. Run the Alacritty application.
+1. Open a terminal (VS Code integrated terminal, or any terminal app).
 1. Execute `tmux`.
 1. Try the [tutorials](tutorials.md) for some examples combining commands to do
    various tasks.

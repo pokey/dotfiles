@@ -1,9 +1,9 @@
 # Zsh customizations
 
-I use [iTerm2](https://www.iterm2.com/) as my terminal emulator and `zsh` as my
-shell. Always run `tmux` the first time you startup your computer and run
-iTerm2. If you open iTerm2 again and you haven't restarted your computer, you
-can use `tmux attach` to attach to an existing tmux session.
+I use VS Code's integrated terminal with `zsh` as my shell. Always run `tmux`
+the first time you startup your computer and open a terminal. If you open
+another terminal and you haven't restarted your computer, you can use
+`tmux attach` to attach to an existing tmux session.
 
 ## Shortcuts
 
@@ -89,8 +89,8 @@ terminal.
     ag -l --py "\bfoo\b"
     ```
 
-- `ia` is shorthand for `| ag`. For example, to see which version of a python
-  package you have, you can type
+- `ir` is shorthand for `| rg` (ripgrep). For example, to see which version of
+  a python package you have, you can type
 
   ```
   pip freeze -l ia <name>

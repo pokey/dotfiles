@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-# Select package manager based on OS
-case "$(uname)" in
-Darwin) INSTALL='brew install' ;;
-*) INSTALL='sudo apt-get install' ;;
-esac
+set -e  # Exit on error
+
+# macOS only
+if [ "$(uname)" != "Darwin" ]; then
+   echo "This script only supports macOS"
+   exit 1
+fi
 
 # Get paths
 pushd $(dirname $0) >/dev/null
@@ -71,23 +73,18 @@ symlinkIntoDir "$DOTCONFIG" "$CONFIG_DIR"
 mkdir -p "$VSCODE_TARGET"
 symlinkIntoDir "$VSCODE_SRC" "$VSCODE_TARGET"
 
-$INSTALL tmux
-$INSTALL fasd
-
+brew install tmux
+brew install fasd
 brew install python
 pip install glances
 pip install pyyaml
-
-$INSTALL pyenv-virtualenv
+brew install pyenv-virtualenv
 
 # Setup neovim python
 $SCRIPTPATH/neovim_python.sh
 
 # Install neovim
-case "$(uname)" in
-Darwin) brew install neovim/neovim/neovim ;;
-*) sudo apt-get install neovim ;;
-esac
+brew install neovim
 
 # Make old vim still work (ish)
 backup "$HOME/.vim"
@@ -101,21 +98,15 @@ vim +PlugUpgrade +PlugUpdate +PlugClean +qall
 
 # setup zsh
 git clone https://github.com/olivierverdier/zsh-git-prompt.git
-$INSTALL zsh
+brew install zsh
 command -v zsh | sudo tee -a /etc/shells
 sudo chsh -s "$(command -v zsh)" "${USER}"
 
 # Install ag
-case "$(uname)" in
-Darwin) brew install the_silver_searcher ;;
-*) sudo apt-get install silversearcher-ag ;;
-esac
+brew install the_silver_searcher
 
 # Install ripgrep
-case "$(uname)" in
-Darwin) brew install ripgrep ;;
-*) sudo apt-get install ripgrep ;;
-esac
+brew install ripgrep
 
 mkdir -p $HOME/sources
 mkdir -p $HOME/bin
@@ -132,22 +123,17 @@ git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 # Install useful MacOS stuff
-if test "$(uname)" = "Darwin"; then
-   brew tap tldr-pages/tldr && brew install tldr
-   brew install reattach-to-user-namespace
-   brew install thefuck
-   brew install fd
-   brew tap universal-ctags/universal-ctags &&
-      brew install --HEAD universal-ctags
-fi
+brew tap tldr-pages/tldr && brew install tldr
+brew install reattach-to-user-namespace
+brew install thefuck
+brew install fd
+brew tap universal-ctags/universal-ctags &&
+   brew install --HEAD universal-ctags
 
-$INSTALL hub
+brew install gh
 
 # Install git-flow
-case "$(uname)" in
-Darwin) brew install git-flow-avh ;;
-*) sudo apt-get install git-flow ;;
-esac
+brew install git-flow-avh
 
 # Install git-flow completions
 cd sources
@@ -194,12 +180,12 @@ brew install libyaml
 python -m pip install --user pyyaml
 karabiner_dir="$HOME/.config/karabiner"
 mkdir -p $karabiner_dir
-backup "$karabiner/karabiner.json"
+backup "$karabiner_dir/karabiner.json"
 (
    cd "$BASEPATH/karabiner-gen"
-   ./generate_karabiner.py >"$karabiner/karabiner.json"
+   ./generate_karabiner.py >"$karabiner_dir/karabiner.json"
 )
 
-$INSTALL git-delta
+brew install git-delta
 
 mkdir -p "$HOME/.zfunc"
