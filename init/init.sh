@@ -73,85 +73,36 @@ symlinkIntoDir "$DOTCONFIG" "$CONFIG_DIR"
 mkdir -p "$VSCODE_TARGET"
 symlinkIntoDir "$VSCODE_SRC" "$VSCODE_TARGET"
 
+# Install Homebrew packages
 brew install tmux
 brew install fasd
-brew install python
-pip install glances
-pip install pyyaml
-brew install pyenv-virtualenv
-
-# Setup neovim python
-$SCRIPTPATH/neovim_python.sh
-
-# Install neovim
 brew install neovim
-
-# Make old vim still work (ish)
-backup "$HOME/.vim"
-backup "$HOME/.vimrc"
-backup "$HOME/.viminfo"
-ln -s $HOME/.config/nvim $HOME/.vim
-ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
-
-# Install vim plugins
-vim +PlugUpgrade +PlugUpdate +PlugClean +qall
-
-# setup zsh
-git clone https://github.com/olivierverdier/zsh-git-prompt.git
-brew install zsh
-command -v zsh | sudo tee -a /etc/shells
-sudo chsh -s "$(command -v zsh)" "${USER}"
-
-# Install ag
-brew install the_silver_searcher
-
-# Install ripgrep
 brew install ripgrep
+brew install fd
+brew install eza
+brew install fzf
+brew install gh
+brew install git-delta
+brew install starship
 
-mkdir -p $HOME/sources
+# Setup fzf key bindings and completion
+$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
+
+mkdir -p $HOME/src
 mkdir -p $HOME/bin
 
-# Install eza (replacement for ls)
-cargo install eza
-
-# Install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
-$HOME/.fzf/install
-
-# Install tpm
+# Install tpm (tmux plugin manager)
 git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
-# Install useful MacOS stuff
-brew tap tldr-pages/tldr && brew install tldr
-brew install reattach-to-user-namespace
-brew install thefuck
-brew install fd
-brew tap universal-ctags/universal-ctags &&
-   brew install --HEAD universal-ctags
-
-brew install gh
-
-# Install git-flow
-brew install git-flow-avh
-
-# Install git-flow completions
-cd sources
-git clone git@github.com:petervanderdoes/git-flow-completion.git
-cd $HOME
-
-# Download Inconsolata-g for Powerline font
-curl -so "$HOME/Library/Fonts/Inconsolata-g for Powerline.otf" \
-   https://raw.githubusercontent.com/powerline/fonts/master/Inconsolata-g/Inconsolata-g%20for%20Powerline.otf
-
+# Install zsh syntax highlighting
 mkdir -p $HOME/.zsh.plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
    $HOME/.zsh.plugins/zsh-syntax-highlighting
 
-# Install node, npm and spaceship-prompt
-brew install node
-brew install npm
-npm install -g spaceship-prompt
+# Install mise (version manager for node, python, etc)
+curl https://mise.run | sh
+~/.local/bin/mise install
 
 # For use in template files
 echo -n "Full name: "
@@ -165,27 +116,26 @@ read ssid
 export BASEPATH fullname gh_user email ssid
 
 # Instantiate template files
-backup "$HOME/.cookiecutterrc"
 backup "$HOME/.gitconfig.personal"
 backup "$HOME/.zshrc"
 backup "$HOME/.bashrc"
-$SCRIPTPATH/template.sh cookiecutterrc "$HOME/.cookiecutterrc"
 $SCRIPTPATH/template.sh gitconfig.personal "$HOME/.gitconfig.personal"
 $SCRIPTPATH/template.sh zshrc "$HOME/.zshrc"
 $SCRIPTPATH/template.sh bashrc "$HOME/.bashrc"
 $SCRIPTPATH/template.sh hammerspoon "$BASEPATH/dotFiles/hammerspoon/ssid.lua"
 
 # Setup karabiner
-brew install libyaml
-python -m pip install --user pyyaml
 karabiner_dir="$HOME/.config/karabiner"
 mkdir -p $karabiner_dir
 backup "$karabiner_dir/karabiner.json"
 (
    cd "$BASEPATH/karabiner-gen"
-   ./generate_karabiner.py >"$karabiner_dir/karabiner.json"
+   uv run generate_karabiner.py >"$karabiner_dir/karabiner.json"
 )
 
-brew install git-delta
-
 mkdir -p "$HOME/.zfunc"
+
+echo ""
+echo "Done! Remember to:"
+echo "  - Run 'source ~/.zshrc' to reload shell config"
+echo "  - Run Talon setup: $BASEPATH/init/setup-talon-repos.sh"

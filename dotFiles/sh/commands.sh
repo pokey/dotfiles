@@ -4,13 +4,7 @@ j() {
    dir="$(fasd -Rdl "$1" | fzf-tmux -1 -0 --no-sort +m)" && cd "${dir}" || return 1
 }
 
-# Quick open in vim
-v() {
-  local file
-  file="$(fasd -Rfl "$1" | fzf-tmux -1 -0 --no-sort +m)" && vim "${file}" || return 1
-}
-
-# list git branches
+# list git branches with fzf
 g() {
   local branches branch out key
   branches=$(git branch -vv --color --sort=-committerdate)
@@ -41,33 +35,26 @@ mc() {
    cd $1
 }
 
+# Backup file
 bk() {
    file="$1"
    cp -rf "$file" "$file.bak"
 }
 
+# Backup file (move)
 bkm() {
    file="$1"
    mv "$file" "$file.bak"
 }
 
-aw() {
-   profileName="$1"
-   eval $(awsenvwrapper "$1")
-}
-
-awm() {
-   profile_name="$1"
-   unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
-   eval $(awsmfa "$profile_name")
-}
-
+# Print arguments (debugging helper)
 printargs() {
     for arg; do
         echo "$arg"
     done
 }
 
+# Fake tty for commands that need it
 faketty() {
     cmd="$1"
     if alias "$cmd" > /dev/null; then
@@ -80,24 +67,14 @@ faketty() {
     script -q /dev/null ${=cmd} $@
 }
 
-pyn() {
-   for last; do true; done
-   name="$last"
-   pyenv_new $@
-   pyenv shell $name
-}
-
-# tags - search ctags
-tags() {
-  local line
-  [ -e .tags ] &&
-  line=$(
-    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' .tags |
-    cut -c1-80 | fzf-tmux --nth=1,2
-  ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
-                                      -c "silent tag $(cut -f2 <<< "$line")"
-}
-
+# Get tree hash for a commit
 tree-hash() {
     git cat-file -p $(git rev-parse "$1") | head -1 | cut -d' ' -f2
+}
+
+# AWS MFA wrapper
+awm() {
+   profile_name="$1"
+   unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+   eval $(awsmfa "$profile_name")
 }

@@ -1,34 +1,26 @@
-# Make shared libs work
-export LD_LIBRARY_PATH=/usr/local/lib
-
 # Core dumps
 ulimit -c unlimited
 
-export GEM_HOME=$HOME/.gem
-export N_PREFIX=$HOME/n
-
 # Setup PATH
-export PATH=$PATH:~/bin:/usr/local/ssl/bin:~/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:/usr/local/Cellar/qt@5.5/5.5.1_1/bin
-export PATH=$GEM_HOME/bin:$PATH
-export PATH=$N_PREFIX/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/go/bin
 
 export EXA_LA_OPTIONS="-l --git --color-scale --classify --group-directories-first"
 export LESS_OPTIONS="--tabs=3 -RXF"
 
-# Other envvars
+# Editor
 export VISUAL="edit-in-vscode"
 export EDITOR="edit-in-vscode"
 export REACT_EDITOR="code"
-export VIMPAGER_VIM="nvim"
 export PAGER="less $LESS_OPTIONS"
-export VIMCAT="$HOME/.config/nvim/plugged/vimpager/vimcat -u NONE"
-export CTAGS_FLAGS='--tag-relative=yes --fields=+l --extras=+q --regex-python=/^@binding\("(.+)"\)$/\1/f/'
+
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--exact"
 # Hack around https://github.com/junegunn/fzf/issues/809
 export FZF_TMUX=1
 
@@ -48,37 +40,10 @@ vim() {
 }
 
 source "$HOME/.sh/aliases.sh"
-
-[ -f /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-
-# fasd
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-   fasd --init auto >|"$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-
-# fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--exact"
-
 source "$HOME/.sh/commands.sh"
 
-# http://marianposaceanu.com/articles/macos-sierra-upgrade-from-a-developers-perspective
-# https://discussions.apple.com/thread/7682417?start=0&tstart=0
-# https://www.reddit.com/r/MacOS/comments/4vro9d/macos_sierra_key_repeat/
-if test "$(uname)" = "Darwin"; then
-   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-   defaults write NSGlobalDomain KeyRepeat -int 1
-   defaults write NSGlobalDomain InitialKeyRepeat -int 20
-fi
-
-# Init thefuck
-eval $(thefuck --alias)
-alias fu='fuck'
+# Java
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 
 # man page colors
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
@@ -91,32 +56,25 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 export PYTHONBREAKPOINT=ipdb.set_trace
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-
-source "$HOME/src/git-subrepo/.rc"
-
-launchctl setenv PATH $PATH
-
+# Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Add asdf shims AFTER homebrew shellenv to ensure asdf takes precedence
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# fasd (for `j` command)
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+   fasd --init auto >|"$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
 
+# Android SDK
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 
-# append completions to fpath
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/pokey/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/pokey/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/pokey/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/pokey/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# macOS key repeat settings
+if test "$(uname)" = "Darwin"; then
+   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+   defaults write NSGlobalDomain KeyRepeat -int 1
+   defaults write NSGlobalDomain InitialKeyRepeat -int 20
+fi

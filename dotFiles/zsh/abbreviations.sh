@@ -3,153 +3,85 @@
 setopt extendedglob
 typeset -Ag abbreviations
 abbreviations=(
+  # Git - commits
   "gc"    "git commit -m \"__CURSOR__\""
   "gca"   "git commit -am \"__CURSOR__\""
   "gcm"   'git commit --amend'
   "gcf"   'git commit --fixup'
   "gcam"  'git commit -a --amend'
   "gcl"   'pbpaste | xargs git clone'
+  # Git - branches
   "gm"    'git merge'
-  "gp"    'git push origin HEAD'
   "gb"    'git branch'
+  "gn"    "git checkout -b"
+  "gco"   'git checkout'
+  "god"   'git checkout develop'
+  "gom"   'git checkout main'
+  "gdh"   'git checkout --detach head'
+  # Git - push/pull/fetch
+  "gp"    'git push origin HEAD'
+  "gpf"   'git push --force-with-lease origin HEAD'
   "gf"    'git fetch'
+  # Git - rebase
   "gr"    'git rebase'
   "gri"   'git rebase -i'
-  "grd"   'git rebase develop'
-  "grmr"   'git rebase master'
-  "grid"  'git rebase -i develop'
   "grim"  'git rebase -i main'
   "grqm"  'git rebase -i --autosquash main'
   "grq"  'git rebase -i --autosquash'
-  "grimr"  'git rebase -i master'
+  "grc"   'git rebase --continue'
+  "gra"   'git rebase --abort'
+  # Git - reset
   "grh"   'git reset --hard'
   "grl"   'git reset --hard HEAD~'
   "grs"   'git reset --soft'
   "grm"   'git reset --mixed'
-  "gpf"   'git push --force-with-lease origin HEAD'
-  "grc"   'git rebase --continue'
-  "gra"   'git rebase --abort'
+  # Git - other
   "gma"   'git merge --abort'
   "gcp"   'git cherry-pick'
-  "ghp"   'git subtree push --prefix dist origin main'
   "ghr"   'git hide -r'
   "gls"   "git-branchless smartlog 'stack(__CURSOR__)'"
-  "god"   'git checkout develop'
-  "gom"   'git checkout main'
-  "gomr"   'git checkout master'
-  "gco"   'git checkout'
-  "gdh"   'git checkout --detach head'
-  "gct"   'git ctags'
-  "gla"   'gl --branches --tags --remotes'
+  "gst"   "git stash"
+  "gstp"  "git stash pop"
+  "ga"    "git add"
+  "gap"   "git add -p"
+  # Pipe shortcuts
   "ix"    "| xargs"
   "ixx"   "| xargs -n1 -I{}"
-  "ia"    "| rg"
   "ir"    "| rg"
-  "ig"    "| rg"
   "ih"    "| head"
   "ic"    "| pbcopy"
   "iw"    "| wc -l"
   "ij"    "| jq '.__CURSOR__'"
-  "ijc"   "| jq '.count'"
-  "iji"   "| jq '.items[] | __CURSOR__'"
   "ijr"   "| jq -r '.__CURSOR__'"
-  "ijf"   "| jq '[leaf_paths as \$path | {\"key\": \$path | join(\".\"), \"value\": getpath(\$path)}] | from_entries'"
-  "ip"    "faketty __LINE__ | zoom-run"
+  # History shortcuts
   "cl"    "echo \"!!\" | pbcopy__EXPAND__"
-  "lp"    "faketty !! | zoom-run__EXPAND__"
-  "pl"    "faketty !! | zoom-run__EXPAND__"
-  "tx"    "tar xzf"
-  "tc"    "tar czf"
-  "tt"    "tar tzf"
-  "fi"    "git flow init"
-  "ffs"   "git flow feature start"
-  "ffn"   "git flow feature start"
-  "ffp"   "git flow feature publish"
-  "frs"   "git flow release start"
-  "frp"   "git flow release publish"
-  "nid"   "npm install -D"
-  "ns"    "npm install -d"
-  "pys"   "pyenv shell"
-  "pyw"   'pyenv shell ${PWD##*/}__EXPAND__'
-  "pynw"  'pyn ${PWD##*/}__EXPAND__'
-  "pylw"  'pyenv local ${PWD##*/}__EXPAND__'
-  "pyc"   'pyenv shell ${PWD##*/}__EXPAND__'
-  "pi"    "pip install"
-  "piu"   "pip install -U"
-  "pu"    "pip uninstall"
-  "pie"   "pip install -e ."
-  "pis"   "pip install flake8 flake8-isort flake8-print mypy ipdb"
-  "pisj"  "pip install flake8 flake8-isort flake8-print mypy ipdb jupyterlab"
-  "pieu"  "pip install -e . -U"
-  "gpie"  "gpip -e ."
-  "gpu"   "gpip -U"
-  "gpit"  "gpip -e '.[test]'"
-  "gpieu" "gpip -e . -U"
-  "gpir"  "gpip -r requirements.txt"
-  "pir"   "pip install -r requirements.txt"
-  "pf"    'pip freeze -l > requirements.txt'
-  "gst"   "git stash"
-  "gstp"  "git stash pop"
-  "gn"    "git checkout -b"
-  "gp"    "git push"
-  "ga"    "git add"
-  "gai"   "git add -i"
-  "gap"   "git add -p"
-  "dp"    "dvc push"
-  "dvpl"  "dvc pull"
-  "dc"    "dvc commit"
-  "ds"    "dvc status"
-  "dr"    "dvc repro -R"
-  "dr."   "dvc repro -R ."
-  "prc"   "git pull-request -ocpb"
-  "prd"   "git pull-request -ocpb develop"
-  "prm"   "git pull-request -ocpb main"
-  "prmr"  "git pull-request -ocpb master"
-  "prs"   "git pr show"
-  "awd"   'eval $(awsdev)'
-  "dl"    'eval $(aws ecr get-login --no-include-email)'
   "ev"    '$(__CURSOR__)'
   "evl"   '$(!!)__EXPAND__'
-  "ppv"   "pip list | rg"
-  "cg"    'cd $(git rev-parse --show-toplevel)__EXPAND__'
   "lf"    '!$__EXPAND__'
   "lc"    '!!:0__EXPAND__'
   "lw"    '!!__EXPAND__'
-  "k9"    'kill -9 __EXPAND__'
-  "hp"    'hp **__EXPAND__'
-  "hpw"   'hp ${PWD##*/}__EXPAND_STAR__'
-  "ghc"   'git rev-parse HEAD'
-  "rf"    'rm -rf'
+  # Tar
+  "tx"    "tar xzf"
+  "tc"    "tar czf"
+  "tt"    "tar tzf"
+  # Navigation
+  "cg"    'cd $(git rev-parse --show-toplevel)__EXPAND__'
   "cs"    'cd ~/src'
+  # File operations
+  "rf"    'rm -rf'
   "cpr"   'cp -rf'
-  "cf"    'cp -rf'
-  "jl"    'jupyter lab'
-  "vs"    'vim -S'
+  # Jobs
+  "k9"    'kill -9 __EXPAND__'
   "jo"    'jobs'
   "k1"    'kill %1'
   "k91"   'kill -9 %1'
-  "nv"    'kill -9 %1 ; pyenv shell ${PWD##*/} ; nvim -S'
-  "ya"    'yarn add'
+  # Misc
+  "h1"    "head -1"
   "idc"   'uuid | pbcopy'
-  "ba"    'eval $(awsmfa administrator)'
-  "bd"    'eval $(botoenv -p development)'
-  "bml"   'eval $(botoenv -p machine-learning)'
-  "bmlp"  'eval $(botoenv -p machine-learning-prod)'
-  "bds"   'eval $(botoenv -p datascience)'
-  "bp"    'eval $(botoenv -p production-readonly)'
-  "bpad"  'eval $(botoenv -p prod-ai-developer)'
-  "bpaa"  'eval $(botoenv -p prod-ai-admin)'
-  "nose"  'python setup.py nosetests --failed'
-  "dpl"   'docker pull'
-  "db"    'docker run -it --entrypoint /bin/bash'
   "rp"    'rg --type py'
   "ua"    'unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN'
-  "jti"   'jupytext --set-formats ipynb,py:percent'
-  "ptv"   "http --verify=no 'https://miranda.prod.globality.io/api/health'| jq -r '.checks.taxonomies_version.message'"
-  "h1"    "head -1"
-  "ede"   'export $(env -i ~/bin/envdir __CURSOR__ env)'
+  # LLM
   "il"    '| envdir ~/envs/openai llm -s "__CURSOR__"'
-  "ilm"   '| envdir ~/envs/openai llm -s "__CURSOR__"'
   "lm"    'envdir ~/envs/openai llm'
   "s"    'sketch'
   "sp"   'sketch -prompt "__CURSOR__"'
