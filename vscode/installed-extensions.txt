@@ -2,6 +2,7 @@ andreasarvidsson.andreas-talon
 anthropic.claude-code
 asvetliakov.vscode-neovim-hacked
 charliermarsh.ruff
+connor4312.esbuild-problem-matchers
 dbaeumer.vscode-eslint
 eamodio.gitlens
 esbenp.prettier-vscode
@@ -9,6 +10,7 @@ foam.foam-vscode
 foxundermoon.shell-format
 github.copilot
 github.copilot-chat
+github.vscode-github-actions
 github.vscode-pull-request-github
 hashicorp.terraform
 humao.rest-client
