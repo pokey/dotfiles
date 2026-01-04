@@ -31,6 +31,18 @@ declare -A TEST_REPOS=(
     ["talon_hud_dev"]="git@github.com:pokey/talon_hud.git"
 )
 
+# Pokey's current branches (optional - use with USE_POKEY_BRANCHES=1)
+# Format: "remote:branch" where remote is optional (defaults to origin)
+declare -A BRANCHES=(
+    ["cursorless-talon"]="staging:pr/3133"
+    ["talon_hud"]="pokey-active"
+)
+
+# Additional remotes to add: repo -> "remote_name:url"
+declare -A EXTRA_REMOTES=(
+    ["cursorless-talon"]="staging:git@github.com:cursorless-dev/cursorless-talon-staging.git"
+)
+
 # Symlinks to create in ~/.talon/user: link name -> target relative to ~/src
 # Most are just the repo name, but cursorless has subdirectories
 declare -A SYMLINKS=(
@@ -52,33 +64,67 @@ declare -A SYMLINKS=(
 echo "=== Talon Environment Setup ==="
 echo ""
 
+# Ask about using Pokey's branches
+if [ -z "$USE_POKEY_BRANCHES" ]; then
+    read -p "Use Pokey's exact branches instead of defaults? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        USE_POKEY_BRANCHES=1
+    fi
+fi
+
 # Create directories if they don't exist
 mkdir -p "$SRC_DIR"
 mkdir -p "$TALON_USER_DIR"
 
-# Clone repos
-echo "=== Cloning repositories ==="
-for repo in "${!REPOS[@]}"; do
-    target_dir="$SRC_DIR/$repo"
+# Helper function to clone and optionally checkout branch
+clone_repo() {
+    local repo=$1
+    local url=$2
+    local target_dir="$SRC_DIR/$repo"
+
     if [ -d "$target_dir" ]; then
         echo "  $repo: already exists, skipping"
     else
         echo "  Cloning $repo..."
-        git clone "${REPOS[$repo]}" "$target_dir"
+        git clone "$url" "$target_dir"
+
+        # Add extra remotes if defined
+        if [ -n "${EXTRA_REMOTES[$repo]}" ]; then
+            local remote_name="${EXTRA_REMOTES[$repo]%%:*}"
+            local remote_url="${EXTRA_REMOTES[$repo]#*:}"
+            echo "    Adding remote $remote_name..."
+            git -C "$target_dir" remote add "$remote_name" "$remote_url"
+            git -C "$target_dir" fetch "$remote_name"
+        fi
+
+        # Checkout specific branch if USE_POKEY_BRANCHES is set and branch is defined
+        if [ "$USE_POKEY_BRANCHES" = "1" ] && [ -n "${BRANCHES[$repo]}" ]; then
+            local branch_spec="${BRANCHES[$repo]}"
+            if [[ "$branch_spec" == *:* ]]; then
+                local remote="${branch_spec%%:*}"
+                local branch="${branch_spec#*:}"
+                echo "    Checking out $remote/$branch..."
+                git -C "$target_dir" checkout -b "$branch" "$remote/$branch"
+            else
+                echo "    Checking out $branch_spec..."
+                git -C "$target_dir" checkout "$branch_spec"
+            fi
+        fi
     fi
+}
+
+# Clone repos
+echo "=== Cloning repositories ==="
+for repo in "${!REPOS[@]}"; do
+    clone_repo "$repo" "${REPOS[$repo]}"
 done
 echo ""
 
 # Clone test repos (for swapper scripts)
 echo "=== Cloning test repositories (for swapper scripts) ==="
 for repo in "${!TEST_REPOS[@]}"; do
-    target_dir="$SRC_DIR/$repo"
-    if [ -d "$target_dir" ]; then
-        echo "  $repo: already exists, skipping"
-    else
-        echo "  Cloning $repo..."
-        git clone "${TEST_REPOS[$repo]}" "$target_dir"
-    fi
+    clone_repo "$repo" "${TEST_REPOS[$repo]}"
 done
 echo ""
 
