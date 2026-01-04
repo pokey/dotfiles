@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
-eval "$(pyenv init -)"
-pyenv shell awsenv
-awsenv development
+# Set AWS profile to development
+export AWS_PROFILE=development
+echo "AWS_PROFILE set to development"

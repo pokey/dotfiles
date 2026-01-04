@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
-eval "$(pyenv init -)"
-pyenv shell awsenv
-awsenv root
+# Set AWS profile to root
+export AWS_PROFILE=root
+echo "AWS_PROFILE set to root"

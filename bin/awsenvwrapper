@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
+# Set AWS profile
 profileName="$1"
-
-eval "$(pyenv init -)"
-pyenv shell awsenv
-awsenv "$profileName"
+export AWS_PROFILE="$profileName"
+echo "AWS_PROFILE set to $profileName"
