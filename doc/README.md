@@ -10,11 +10,9 @@ just use all the time.
 - [fzf](fzf.md) contains info about how I use the fzf fuzzy-finder
 - [hammerspoon](hammerspoon.md) contains info about customizations that
   leverage hammerspoon
-- [aws](aws.md) contains info about how I use the aws cli
+- [aws](aws.md) contains info about AWS CLI with MFA via YubiKey
 
 Getting started
 ===============
 1. Open a terminal (VS Code integrated terminal, or any terminal app).
 1. Execute `tmux`.
-1. Try the [tutorials](tutorials.md) for some examples combining commands to do
-   various tasks.

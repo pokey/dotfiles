@@ -1,6 +1,6 @@
 Dotfiles
 ========
-These are my dot files.  Your mileage may vary.
+These are my dot files. Your mileage may vary.
 
 This setup is macOS only.
 
@@ -33,30 +33,26 @@ Setup
    ```
 
    from this directory.
+
    Notes:
    - This will backup and disable all your customizations for vim, terminal,
-     etc.  You can add bash customizations to `~/.custom.rc`.  If you need
-     other customizations, file an issue, and I can add a way to source custom
-     vim, tmux, etc.
+     etc. You can add bash customizations to `~/.custom.rc`.
    - This will remap your keyboard kind of severely, but it's reversible if you
-     find it too annoying.  It's better for RSI and faster.  In particular:
+     find it too annoying. It's better for RSI and faster. In particular:
      - `W+J` => `<shift>`
      - `V+J` => `<ctrl>`
      - `F+J` simultaneously => `<enter>`
      - `;` => `<backspace>`
      - `D+;` => `;`
      - `F+;` => `:`
-     - Key repeat rate is jacked up really high.  Every millisecond counts ☺️
+     - Key repeat rate is jacked up really high
      - The right `<command>` button is remapped to be a launcher, so for
-       instance pressing `<right_command>-c` launches Google Chrome.  See
+       instance pressing `<right_command>-c` launches Google Chrome. See
        [`karabiner.yaml`](karabiner-gen/karabiner.yaml) for the exact
        shortcuts
-     - A few other shortcuts. See
-       [`karabiner-input.json`](karabiner-gen/karabiner-input.json)
 1. Read the [docs](doc)
 
 Updates
 -------
 Whenever you pull a new version, run `sz` in any open shells to update zsh
-settings, and `vu` to download new vim plugins.  Then you can type `gv` in any
-running vim processes to reload vim settings.
+settings.
